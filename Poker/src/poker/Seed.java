@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poker;
 
-/**
- *
- * @author Nickelsilver
- */
+import static poker.SeedType.*;
+
 public class Seed {
     
     private SeedType seed;
@@ -26,6 +19,23 @@ public class Seed {
         this.seed = seed;
         this.value = value;
     }
+
+    public Seed(int value) {
+        this.seed = seedConvert(value);
+        this.value = value;
+    }
     
-    
+    private SeedType seedConvert(int number){
+        switch (number){
+            case 0:
+                return HEARTS;
+            case 1:
+                return SPADES;
+            case 2:
+                return CLUBS;
+            case 3:
+                return DIAMONDS;
+        }
+        return null;
+    }
 }

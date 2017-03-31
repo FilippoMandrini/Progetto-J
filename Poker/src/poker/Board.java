@@ -1,27 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poker;
 
 import java.util.ArrayList;
+import java.util.Random;
 
-/**
- *
- * @author Nickelsilver
- */
 public class Board {
+    int[][] mazzo = new int[4][13];
 
     public Points evaluateSingle(ArrayList<Card> cards) 
     {
-        if (checkColor(cards)) { // colore
+        if (checkColor(cards)) {    // Colore
             System.out.println("COLORE");
             Points points = new Points(6, cards.get(0).getSeed().getValue());
             return points;
         }
         
-        int[] cardCounter = new int[13];  // poker
+        int[] cardCounter = new int[13];    // Poker
         for (Card carta : cards) {
             cardCounter[carta.getValue()-1]++;
         }
@@ -46,5 +39,18 @@ public class Board {
             }
         }
         return false;
+    }
+    
+    public Card giveCard(){
+        Random random = new Random();
+        int seed, value;
+        while(true){
+            seed = random.nextInt(4);
+            value = random.nextInt(13);
+            if(mazzo[seed][value] == 0){
+                mazzo[seed][value] = 1;
+                return new Card(value+1,new Seed(seed));
+            }
+        }
     }
 }
