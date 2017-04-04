@@ -32,7 +32,7 @@ public class Card {
         return null;
     }
 
-    private String valueNameConvert(){
+    private String valueNameConvert(){ // da modificare
         switch (value){
             case 1:
                 return "Due";
