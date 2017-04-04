@@ -7,6 +7,7 @@ public class Seed {
     private SeedType seed;
     private int value;
 
+    
     public SeedType getSeed() {
         return seed;
     }
@@ -38,4 +39,5 @@ public class Seed {
         }
         return null;
     }
+    
 }

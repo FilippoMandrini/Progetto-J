@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Board {
-    private int[][] mazzo = new int[4][13];
-    private ArrayList<Player> giocatori = new ArrayList();
     
-
+    private int[][] mazzo;
+    private ArrayList<Player> giocatori;
+    
+    
     public Points evaluateSingle(ArrayList<Card> cards) 
     {
         if (checkColor(cards)) {    // Colore
@@ -18,11 +19,11 @@ public class Board {
         
         int[] cardCounter = new int[13];    // Poker
         for (Card carta : cards) {
-            cardCounter[carta.getValue()-1]++;
+            cardCounter[carta.getValue()]++;
         }
         for (int i = 0; i < cardCounter.length; i++) {
             if (cardCounter[i] == 4) {
-                Points points = new Points(8, i+1);
+                Points points = new Points(8, i);
                 return points;
             }
         }
@@ -51,8 +52,14 @@ public class Board {
             value = random.nextInt(13);
             if(mazzo[seed][value] == 0){
                 mazzo[seed][value] = 1;
-                return new Card(value+1,new Seed(seed));
+                return new Card(value,new Seed(seed));
             }
         }
     }
+
+    public Board(){
+        mazzo = new int[4][13];
+        giocatori = new ArrayList();
+    }
+
 }

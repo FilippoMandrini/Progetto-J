@@ -32,6 +32,7 @@ public class Poker {
         for(Card carta: carteDate){
             System.out.println(carta);
         }
+        
     }
 
 }

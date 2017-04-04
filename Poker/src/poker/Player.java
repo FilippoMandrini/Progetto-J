@@ -1,6 +1,4 @@
-
 package poker;
-
 
 public class Player {
     
@@ -8,6 +6,7 @@ public class Player {
     private String psw;
     private int stake;
 
+    
     public Player(String name, String psw) {
         this.name = name;
         this.psw = psw;

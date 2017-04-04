@@ -6,6 +6,7 @@ public class Points {
     private int main;
     private int other;
 
+    
     public int getType() {
         return type;
     }
@@ -29,6 +30,5 @@ public class Points {
         this.main = main;
         this.other = 0;
     }
-    
-    
+        
 }
