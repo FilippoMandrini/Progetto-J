@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Board {
-    int[][] mazzo = new int[4][13];
+    private int[][] mazzo = new int[4][13];
+    private ArrayList<Player> giocatori = new ArrayList();
+    
 
     public Points evaluateSingle(ArrayList<Card> cards) 
     {
