@@ -1,6 +1,7 @@
 package poker;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class Board {
@@ -8,29 +9,86 @@ public class Board {
     private int[][] mazzo;
     private ArrayList<Player> giocatori;
     
+    public void sortHand()
+    {
+        
+    }
     
     public Points evaluateSingle(ArrayList<Card> cards) 
     {
-        if (checkColor(cards)) {    // Colore
-            System.out.println("COLORE");
-            Points points = new Points(6, cards.get(0).getSeed().getValue());
-            return points;
-        }
-        
+        Collections.sort(cards);
+        int secondMaxIndex = 0;
+        int maxIndex =0;
+        int max = 0;
         int[] cardCounter = new int[13];    // Poker
         for (Card carta : cards) {
             cardCounter[carta.getValue()]++;
         }
         for (int i = 0; i < cardCounter.length; i++) {
-            if (cardCounter[i] == 4) {
-                Points points = new Points(8, i);
-                return points;
+            if (cardCounter[i] > max) {
+                max = cardCounter[i];
+                maxIndex = i;
             }
         }
-        
+        cardCounter[maxIndex] = 0;
+        int secondMax = 0;
+        for (int j = 0; j < cardCounter.length; j++) {
+            if (cardCounter[j] > secondMax) {
+                secondMax = cardCounter[j];
+                secondMaxIndex = j;
+            }
+        }
+        if (checkColor(cards) && checkFlush(cards))
+        {
+            // return scala reale
+        }
+        if (max == 4)
+        {
+            // nuovo punteggio Poker con carta trovata a maxindex e seconda carta a secondMaxIdex
+            // return punteggio
+        }
+        if (max == 3)
+        {
+            if (secondMax == 2)
+            {
+                // nuovo punteggio Full con carta trovata maxindex come tris e seconda carta secondMaxIndex
+                // return punteggio
+            }
+        }
+        if (checkColor(cards))
+        {
+            // return colore
+        }
+        if (checkFlush(cards))
+        {
+            // return scala
+        }
+        if (max == 3)
+        {
+            if (secondMax != 2)
+            {
+                // nuovo punteggio Tris con carta trovata maxindex come tris e carta alta secondMaxIndex
+            }
+        }
+        if (max == 2)
+        {
+            if (secondMax == 2)
+            {
+                // nuovo punteggio Doppia coppia con carta trovata a maxindex come tris e seconda carta a secondMaxIndex
+            }
+            else
+            {
+                // nuovo punteggio Coppia con carta trovata a maxindex come tris e carta alta a secondMaxIndex
+            }
+        }
+        if (max == 1)
+        {
+            //nuovo punteggio carta alta con la carta a maxIndex
+        } 
         return null;
     }
-
+        
+     
     private boolean checkColor(ArrayList<Card> cards) {
         int[] seedCounter = new int[4];
         for (Card carta : cards) {
@@ -42,6 +100,29 @@ public class Board {
             }
         }
         return false;
+    }
+    
+    private boolean checkFlush(ArrayList<Card> cards)
+    {
+        boolean spy = true;
+        for (int i= 0; i<cards.size()-1; i++) 
+        {
+            if (cards.get(i).getValue()- cards.get(i+1).getValue() != 1 )
+            {
+                spy = false;
+            }
+        }
+        if (cards.get(0).getValue() == 12 && cards.get(1).getValue() == 3)
+        {
+            spy = true;
+            for (int i = 1; i < cards.size() - 1; i++) {
+                if (cards.get(i).getValue() - cards.get(i + 1).getValue() != 1) {
+                    spy = false;
+                }
+            }
+        }
+        return spy;
+
     }
     
     public Card giveCard(){
@@ -56,6 +137,10 @@ public class Board {
             }
         }
     }
+    
+    Points checkMultiple(ArrayList<Card> cards)
+    {
+        
 
     public Board(){
         mazzo = new int[4][13];

@@ -1,6 +1,7 @@
 package poker;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Poker {
 
@@ -16,6 +17,11 @@ public class Poker {
             cards.add(new Card(1, S0));
         }
         cards.add(new Card(2, S1));
+        Collections.sort(cards);
+        for (int i = 0; i<5; i++)
+        {
+            System.out.println(cards.get(i).toString());
+        }
         Board B1 = new Board();
         Points points = B1.evaluateSingle(cards);
         if (points== null)

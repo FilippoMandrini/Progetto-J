@@ -1,6 +1,8 @@
 package poker;
 
-public class Card {
+import java.util.Objects;
+
+public class Card implements Comparable {
     
     private int value;
     private Seed seed;
@@ -26,5 +28,37 @@ public class Card {
     public String toString() {
         return valueName[value] + " di " + seedName[seed.getValue()];
     }
+    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Card other = (Card) obj;
+        if (this.value != other.value) {
+            return false;
+        }
+        if (!Objects.equals(this.seed, other.seed)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int compareTo(Object t) {
+        
+        final Card other = (Card) t;
+        return other.getValue()- this.getValue();
+    }
+    
+    
+    
+    
+    
+    
     
 }
