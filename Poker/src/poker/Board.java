@@ -61,7 +61,7 @@ public class Board {
         }
         if (checkFlush(cards))
         {
-            // return scala
+            // return scala 
         }
         if (max == 3)
         {
@@ -137,10 +137,6 @@ public class Board {
             }
         }
     }
-    
-    Points checkMultiple(ArrayList<Card> cards)
-    {
-        
 
     public Board(){
         mazzo = new int[4][13];
