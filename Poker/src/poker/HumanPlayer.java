@@ -2,11 +2,11 @@ package poker;
 
 public class HumanPlayer extends Player {
     
-    private int stake;
+    private String psw;
 
-    public HumanPlayer(String name) {
+    public HumanPlayer(String name, String psw) {
         super(name);
-        this.stake = stake;
+        this.psw = psw;
     }
 
     @Override
