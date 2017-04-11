@@ -7,7 +7,7 @@ import java.util.Random;
 public class Board {
     
     private int[][] mazzo;
-    private ArrayList<Player> giocatori;
+    private ArrayList<HumanPlayer> giocatori;
     
     public void sortHand()
     {
@@ -142,5 +142,4 @@ public class Board {
         mazzo = new int[4][13];
         giocatori = new ArrayList();
     }
-
 }

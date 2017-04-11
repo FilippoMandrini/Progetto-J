@@ -1,24 +1,25 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package poker;
 
-public class Player {
+/**
+ *
+ * @author FilippoMandrini
+ */
+public abstract class Player {
     
     private String name;
-    private String psw;
     private int stake;
-
     
-    public Player(String name, String psw) {
+    public Player(String name) {
         this.name = name;
-        this.psw = psw;
-        this.stake = 200;
     }
 
     public String getName() {
         return name;
-    }
-
-    public String getPsw() {
-        return psw;
     }
 
     public int getStake() {
