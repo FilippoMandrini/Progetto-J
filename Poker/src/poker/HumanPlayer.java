@@ -18,4 +18,8 @@ public class HumanPlayer extends Player {
     public String getName() {
         return super.getName();
     }
+
+    public String getPsw() {
+        return psw;
+    }
 }
