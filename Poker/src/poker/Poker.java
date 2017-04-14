@@ -1,5 +1,6 @@
 package poker;
 
+import handtypes.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -23,13 +24,7 @@ public class Poker {
             System.out.println(cards.get(i).toString());
         }
         Board B1 = new Board();
-        Points points = B1.evaluateSingle(cards);
-        if (points== null)
-            System.out.println("NON PREVISTO");
-        else
-            System.out.println("Punteggio:" + points.getType() + " " + points.getMain());
-        
-        //Test distribuzione carte
+        Hand points = B1.evaluateSingle(cards);
         Board B2 = new Board();
         ArrayList<Card> carteDate = new ArrayList<>();
         for (int i = 0; i<5; i++){

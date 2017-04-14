@@ -3,16 +3,24 @@ package poker;
 import java.util.Objects;
 
 public class Card implements Comparable {
-    
+
     private int value;
     private Seed seed;
-    private static final String seedName[] = {"Cuori","Picche","Fiori","Denari"};
-    private static final String valueName[] = {"Due","Tre","Quattro","Cinque","Sei",
-        "Sette","Otto","Nove","Dieci","Fante","Regina","Re","Asso"};
-    
+    private static final String seedName[] = {"Cuori", "Picche", "Fiori", "Denari"};
+    private static final String valueName[] = {"Due", "Tre", "Quattro", "Cinque", "Sei",
+        "Sette", "Otto", "Nove", "Dieci", "Fante", "Regina", "Re", "Asso"};
 
     public int getValue() {
         return value;
+    }
+
+    public static String getValueName(int value) {
+        return valueName[value];
+    }
+    
+    public static String getSeedName(Seed seed) {
+        
+        return seedName[seed.getValue()];
     }
 
     public Seed getSeed() {
@@ -24,11 +32,16 @@ public class Card implements Comparable {
         this.seed = seed;
     }
 
+    public Card(int value) {
+        this.value = value;
+    }
+    
+    
+
     @Override
     public String toString() {
         return valueName[value] + " di " + seedName[seed.getValue()];
     }
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -50,15 +63,9 @@ public class Card implements Comparable {
 
     @Override
     public int compareTo(Object t) {
-        
+
         final Card other = (Card) t;
-        return other.getValue()- this.getValue();
+        return other.getValue() - this.getValue();
     }
-    
-    
-    
-    
-    
-    
-    
+
 }

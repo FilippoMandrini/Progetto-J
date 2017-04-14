@@ -1,5 +1,6 @@
 package poker;
 
+import handtypes.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -14,7 +15,7 @@ public class Board {
         
     }
     
-    public Points evaluateSingle(ArrayList<Card> cards) 
+    public Hand evaluateSingle(ArrayList<Card> cards) 
     {
         Collections.sort(cards);
         int secondMaxIndex = 0;
@@ -38,7 +39,7 @@ public class Board {
                 secondMaxIndex = j;
             }
         }
-        if (checkColor(cards) && checkFlush(cards))
+        if (checkFlush(cards) && checkStraight(cards))
         {
             // return scala reale
         }
@@ -55,11 +56,11 @@ public class Board {
                 // return punteggio
             }
         }
-        if (checkColor(cards))
+        if (checkFlush(cards))
         {
             // return colore
         }
-        if (checkFlush(cards))
+        if (checkStraight(cards))
         {
             // return scala 
         }
@@ -89,7 +90,7 @@ public class Board {
     }
         
      
-    private boolean checkColor(ArrayList<Card> cards) {
+    private boolean checkFlush(ArrayList<Card> cards) {
         int[] seedCounter = new int[4];
         for (Card carta : cards) {
             seedCounter[carta.getSeed().getValue()]++;
@@ -102,7 +103,7 @@ public class Board {
         return false;
     }
     
-    private boolean checkFlush(ArrayList<Card> cards)
+    private boolean checkStraight(ArrayList<Card> cards)
     {
         boolean spy = true;
         for (int i= 0; i<cards.size()-1; i++) 
