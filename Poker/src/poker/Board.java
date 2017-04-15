@@ -21,7 +21,7 @@ public class Board {
         int secondMaxIndex = 0;
         int maxIndex =0;
         int max = 0;
-        int[] cardCounter = new int[13];    // Poker
+        int[] cardCounter = new int[13];
         for (Card carta : cards) {
             cardCounter[carta.getValue()]++;
         }
@@ -41,28 +41,64 @@ public class Board {
         }
         if (checkFlush(cards) && checkStraight(cards))
         {
-            // return scala reale
+            return new StraightFlush(cards.get(0));
         }
         if (max == 4)
         {
-            // nuovo punteggio Poker con carta trovata a maxindex e seconda carta a secondMaxIdex
-            // return punteggio
-        }
-        if (max == 3)
-        {
-            if (secondMax == 2)
+            ArrayList<Card> tohand = new ArrayList<>();
+            int spy = 0;
+            for (Card inhand : cards)
             {
-                // nuovo punteggio Full con carta trovata maxindex come tris e seconda carta secondMaxIndex
-                // return punteggio
+                if (inhand.getValue() == maxIndex && spy == 0)
+                {
+                    tohand.add(inhand);
+                    spy = 1;
+                }
+            }
+            spy = 0;
+            for (Card inhand : cards)
+            {
+                if (inhand.getValue() == secondMaxIndex && spy == 0)
+                {
+                    tohand.add(inhand);
+                    spy = 1;
+                }
+            }
+            return new FourOfAKind(tohand.get(0), tohand.get(1));
+        }
+        if (max == 3) 
+        {
+            if (secondMax == 2) 
+            {
+                ArrayList<Card> tohand = new ArrayList<>();
+                int spy = 0;
+                for (Card inhand : cards) 
+                {
+                    if (inhand.getValue() == maxIndex && spy == 0) 
+                    {
+                        tohand.add(inhand);
+                        spy = 1;
+                    }
+                }
+                spy = 0;
+                for (Card inhand : cards) 
+                {
+                    if (inhand.getValue() == secondMaxIndex && spy == 0) 
+                    {
+                        tohand.add(inhand);
+                        spy = 1;
+                    }
+                }
+                return new FullHouse(tohand.get(0), tohand.get(1));
             }
         }
         if (checkFlush(cards))
         {
-            // return colore
+            return new Flush(cards);
         }
         if (checkStraight(cards))
         {
-            // return scala 
+            return new Straight(cards);
         }
         if (max == 3)
         {
@@ -84,7 +120,7 @@ public class Board {
         }
         if (max == 1)
         {
-            //nuovo punteggio carta alta con la carta a maxIndex
+            return new HighCard(cards);
         } 
         return null;
     }

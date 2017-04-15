@@ -5,6 +5,7 @@
  */
 package handtypes;
 
+import java.util.ArrayList;
 import poker.Card;
 
 /**
@@ -29,5 +30,10 @@ public class FullHouse extends Hand{
     @Override
     public String toString() {
         return "Full di " + Card.getValueName(three.getValue()) + " e " + Card.getValueName(pair.getValue());
+    }
+
+    @Override
+    public ArrayList<Card> generateHand() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

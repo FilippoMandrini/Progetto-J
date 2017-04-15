@@ -40,4 +40,9 @@ public class HighCard extends Hand{
     {
         return "Carta Alta: " + Card.getValueName(cards.get(0).getValue());
     }
+
+    @Override
+    public ArrayList<Card> generateHand() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -5,6 +5,8 @@
  */
 package handtypes;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import poker.Card;
 
 /**
@@ -13,21 +15,27 @@ import poker.Card;
  */
 public class Straight extends Hand {
 
-    private Card high;
-    
-    public Straight(Card high) {
-        this.high = high;
+    private ArrayList<Card> cards;
+
+    public Straight(ArrayList<Card> cards) {
+        this.cards = cards;
+        Collections.sort(cards);
     }
     
     @Override
     public double getPoints() {
-        return 400 +high.getValue();
+        return 400 +cards.get(0).getValue();
     }
 
     @Override
     public String toString()
     {
-        return "Scala al " + Card.getValueName(high.getValue());
+        return "Scala al " + Card.getValueName(cards.get(0).getValue());
+    }
+
+    @Override
+    public ArrayList<Card> generateHand() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

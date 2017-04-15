@@ -5,6 +5,7 @@
  */
 package handtypes;
 
+import java.util.ArrayList;
 import poker.Card;
 
 /**
@@ -36,6 +37,11 @@ public class OnePair extends Hand {
     public String toString()
     {
         return "Coppia di " + Card.getValueName(pair.getValue());
+    }
+
+    @Override
+    public ArrayList<Card> generateHand() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

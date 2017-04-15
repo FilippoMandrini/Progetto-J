@@ -40,5 +40,10 @@ public class Flush extends Hand{
     {
         return "Colore di " + Card.getSeedName(cards.get(0).getSeed()) + " al " + Card.getValueName(cards.get(0).getValue());
     }
+
+    @Override
+    public ArrayList<Card> generateHand() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

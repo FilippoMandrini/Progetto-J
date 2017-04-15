@@ -27,19 +27,19 @@ public class HandTester {
         Hand H4 = new ThreeOfAKind(new Card(10), new Card(5), new Card(9));
         Hand H5 = new FullHouse(new Card(4), new Card(5));
         ArrayList<Card> cards = new ArrayList<>();
-        for (int i = 0; i<4; i++)
+        for (int i = 0; i<5; i++)
         {
             cards.add(new Card(i+2, S3));
             i++;
         }
         Hand H6 = new Flush(cards);
         cards.clear();
-        for (int i = 0; i<4; i++)
+        for (int i = 0; i<5; i++)
         {
             cards.add(new Card(i+7, S2));
         }
         
-        Hand H7 = new Straight(cards.get(0));
+        Hand H7 = new Straight(cards);
         ArrayList<Hand> hands = new ArrayList<>();
         hands.add(H1);
         hands.add(H2);

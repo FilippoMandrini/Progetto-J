@@ -25,14 +25,15 @@ public class Poker {
         }
         Board B1 = new Board();
         Hand points = B1.evaluateSingle(cards);
-        Board B2 = new Board();
+        System.out.println(points.toString());
+        /*Board B2 = new Board();
         ArrayList<Card> carteDate = new ArrayList<>();
         for (int i = 0; i<5; i++){
             carteDate.add(B2.giveCard());
         }
         for(Card carta: carteDate){
             System.out.println(carta);
-        }
+        }*/
         
     }
 

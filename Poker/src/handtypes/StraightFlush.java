@@ -5,6 +5,7 @@
  */
 package handtypes;
 
+import java.util.ArrayList;
 import poker.Card;
 
 /**
@@ -15,7 +16,7 @@ public class StraightFlush extends Hand {
     
     private Card high;
     
-    public StraightFlush(Card high, Card secondHigh) {
+    public StraightFlush(Card high) {
         this.high = high;
     }
     
@@ -28,6 +29,11 @@ public class StraightFlush extends Hand {
     public String toString()
     {
         return "Scala Colore di " + Card.getValueName(high.getValue());
+    }
+
+    @Override
+    public ArrayList<Card> generateHand() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
