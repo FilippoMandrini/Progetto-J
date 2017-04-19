@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Board {
     
-    private int[][] mazzo;
+    private Deck mazzo;
     private ArrayList<HumanPlayer> giocatori;
     
     public void sortHand()
@@ -163,20 +163,33 @@ public class Board {
     }
     
     public Card giveCard(){
-        Random random = new Random();
-        int seed, value;
-        while(true){
-            seed = random.nextInt(4);
-            value = random.nextInt(13);
-            if(mazzo[seed][value] == 0){
-                mazzo[seed][value] = 1;
-                return new Card(value,new Seed(seed));
-            }
-        }
+        
+        return mazzo.chooseCard();
+        
     }
+//    public Card giveCard(){
+//        Random random = new Random();
+//        int seed, value;
+//        while(true){
+//            seed = random.nextInt(4);
+//            value = random.nextInt(13);
+//            if(mazzo[seed][value] == 0){
+//                mazzo[seed][value] = 1;
+//                return new Card(value,new Seed(seed));
+//            }
+//        }
+//    }
 
     public Board(){
-        mazzo = new int[4][13];
+        mazzo = new Deck();
         giocatori = new ArrayList();
+    }
+
+    public Deck getMazzo() {
+        return mazzo;
+    }
+
+    public ArrayList<HumanPlayer> getGiocatori() {
+        return giocatori;
     }
 }

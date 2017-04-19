@@ -21,19 +21,27 @@ public class Poker {
         Collections.sort(cards);
         for (int i = 0; i<5; i++)
         {
-            System.out.println(cards.get(i).toString());
+            System.out.println(cards.get(i));
         }
         Board B1 = new Board();
         Hand points = B1.evaluateSingle(cards);
-        System.out.println(points.toString());
-        /*Board B2 = new Board();
-        ArrayList<Card> carteDate = new ArrayList<>();
-        for (int i = 0; i<5; i++){
-            carteDate.add(B2.giveCard());
-        }
-        for(Card carta: carteDate){
-            System.out.println(carta);
-        }*/
+        System.out.println(points);
+        
+//        System.out.println("\nConsegna carte");
+//        Board B2 = new Board();
+//        ArrayList<Card> carteDate = new ArrayList<>();
+//        for (int i = 0; i<5; i++){
+//            carteDate.add(B2.giveCard());
+//        }
+//        for(Card carta: carteDate){
+//            System.out.println(carta);
+//        }
+        
+//        System.out.println("\nStampa tutte le carte");
+//        Board B3 = new Board();
+//        for(Card carta: B3.getMazzo().getMazzo()){
+//            System.out.println(carta);
+//        }
         
     }
 
