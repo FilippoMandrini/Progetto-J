@@ -6,11 +6,8 @@ import java.util.Random;
 public class Deck {
     
     private ArrayList<Card> mazzo;
-    private int carteRimaste;
-    
-    
+  
     public Deck() {
-        this.carteRimaste = 52;
         this.mazzo = new ArrayList();
         for(int i=0; i<4 ; i++){
             for(int j=0; j<13 ; j++){
@@ -21,9 +18,8 @@ public class Deck {
     
     public Card chooseCard() {
         Random random = new Random();
-        Card cartaEstratta = mazzo.get(random.nextInt(carteRimaste));
+        Card cartaEstratta = mazzo.get(random.nextInt(mazzo.size()));
         mazzo.remove(cartaEstratta);
-        carteRimaste--;
         return cartaEstratta;
     }
 
@@ -31,8 +27,5 @@ public class Deck {
         return mazzo;
     }
 
-    public int getCarteRimaste() {
-        return carteRimaste;
-    }
 
 }

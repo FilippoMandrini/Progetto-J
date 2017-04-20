@@ -27,15 +27,15 @@ public class Poker {
         Hand points = B1.evaluateSingle(cards);
         System.out.println(points);
         
-//        System.out.println("\nConsegna carte");
-//        Board B2 = new Board();
-//        ArrayList<Card> carteDate = new ArrayList<>();
-//        for (int i = 0; i<5; i++){
-//            carteDate.add(B2.giveCard());
-//        }
-//        for(Card carta: carteDate){
-//            System.out.println(carta);
-//        }
+        System.out.println("\nConsegna carte");
+        Board B2 = new Board();
+        ArrayList<Card> carteDate = new ArrayList<>();
+        for (int i = 0; i<5; i++){
+            carteDate.add(B2.giveCard());
+        }
+        for(Card carta: carteDate){
+            System.out.println(carta);
+        }
         
 //        System.out.println("\nStampa tutte le carte");
 //        Board B3 = new Board();
