@@ -15,7 +15,7 @@ public class Poker {
         Seed S0 = new Seed(SeedType.SPADES, 0);
         for (int i = 0; i<4; i++)
         {
-            cards.add(new Card(1, S0));
+            cards.add(new Card(1, new Seed(i)));
         }
         cards.add(new Card(2, S1));
         Collections.sort(cards);
@@ -24,10 +24,24 @@ public class Poker {
             System.out.println(cards.get(i));
         }
         Board B1 = new Board();
-        Hand points = B1.evaluateSingle(cards);
+        Hand points = B1.evaluateSingle(cards);        
+        System.out.println(points);
+        cards.clear();        
+        System.out.println("");
+        cards.add(new Card(4, S1));
+        cards.add(new Card(2, S2));
+        cards.add(new Card(2, S0));
+        cards.add(new Card(1, S2));
+        cards.add(new Card(3, S3));
+        for (int i = 0; i<5; i++)
+        {
+            System.out.println(cards.get(i));
+        }
+        points = B1.evaluateSingle(cards);
         System.out.println(points);
         
-        System.out.println("\nConsegna carte");
+        System.out.println("\nConsegna carte\n");
+        
         Board B2 = new Board();
         ArrayList<Card> carteDate = new ArrayList<>();
         for (int i = 0; i<5; i++){
@@ -41,7 +55,7 @@ public class Poker {
 //        Board B3 = new Board();
 //        for(Card carta: B3.getMazzo().getMazzo()){
 //            System.out.println(carta);
-//        }
+//        }*/
         
     }
 

@@ -3,21 +3,19 @@ package poker;
 import handtypes.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class Board {
     
     private Deck mazzo;
     private ArrayList<HumanPlayer> giocatori;
     
-    public void sortHand()
-    {
-        
-    }
-    
     public Hand evaluateSingle(ArrayList<Card> cards) 
     {
         Collections.sort(cards);
+        ArrayList<Card> sortedCards = new ArrayList<>();
+        HashMap<Card, Integer> cardMap = new HashMap<>();
         int secondMaxIndex = 0;
         int maxIndex =0;
         int max = 0;
@@ -25,7 +23,7 @@ public class Board {
         for (Card carta : cards) {
             cardCounter[carta.getValue()]++;
         }
-        for (int i = 0; i < cardCounter.length; i++) {
+        for (int i = cardCounter.length-1; i >= 0; i--) {
             if (cardCounter[i] > max) {
                 max = cardCounter[i];
                 maxIndex = i;
@@ -33,96 +31,77 @@ public class Board {
         }
         cardCounter[maxIndex] = 0;
         int secondMax = 0;
-        for (int j = 0; j < cardCounter.length; j++) {
-            if (cardCounter[j] > secondMax) {
-                secondMax = cardCounter[j];
-                secondMaxIndex = j;
+        for (int i = cardCounter.length-1; i >= 0; i--) {
+            if (cardCounter[i] > secondMax) {
+                secondMax = cardCounter[i];
+                secondMaxIndex = i;
+            }
+        }        
+        for (int i = 0; i<cards.size(); i++) {
+            if (cards.get(i).getValue() == maxIndex)
+            {
+                sortedCards.add(cards.get(i));
+                cards.remove(cards.get(i));
+                i--;
             }
         }
-        if (checkFlush(cards) && checkStraight(cards))
+        for (int i = 0; i<cards.size(); i++) {
+            if (cards.get(i).getValue() == secondMaxIndex)
+            {
+                sortedCards.add(cards.get(i));
+                cards.remove(cards.get(i));
+                i--;
+            }
+        }
+        sortedCards.addAll(cards);
+        cards.clear();
+        if (checkFlush(sortedCards) && checkStraight(sortedCards))
         {
-            return new StraightFlush(cards.get(0));
+            return new StraightFlush(sortedCards);
         }
         if (max == 4)
         {
-            ArrayList<Card> tohand = new ArrayList<>();
-            int spy = 0;
-            for (Card inhand : cards)
-            {
-                if (inhand.getValue() == maxIndex && spy == 0)
-                {
-                    tohand.add(inhand);
-                    spy = 1;
-                }
-            }
-            spy = 0;
-            for (Card inhand : cards)
-            {
-                if (inhand.getValue() == secondMaxIndex && spy == 0)
-                {
-                    tohand.add(inhand);
-                    spy = 1;
-                }
-            }
-            return new FourOfAKind(tohand.get(0), tohand.get(1));
+
+            return new FourOfAKind(sortedCards);
         }
         if (max == 3) 
         {
             if (secondMax == 2) 
             {
-                ArrayList<Card> tohand = new ArrayList<>();
-                int spy = 0;
-                for (Card inhand : cards) 
-                {
-                    if (inhand.getValue() == maxIndex && spy == 0) 
-                    {
-                        tohand.add(inhand);
-                        spy = 1;
-                    }
-                }
-                spy = 0;
-                for (Card inhand : cards) 
-                {
-                    if (inhand.getValue() == secondMaxIndex && spy == 0) 
-                    {
-                        tohand.add(inhand);
-                        spy = 1;
-                    }
-                }
-                return new FullHouse(tohand.get(0), tohand.get(1));
+                return new FullHouse(sortedCards);
             }
         }
-        if (checkFlush(cards))
+        if (checkFlush(sortedCards))
         {
-            return new Flush(cards);
+            return new Flush(sortedCards);
         }
-        if (checkStraight(cards))
+        if (checkStraight(sortedCards))
         {
-            return new Straight(cards);
+            return new Straight(sortedCards);
         }
         if (max == 3)
         {
             if (secondMax != 2)
             {
-                // nuovo punteggio Tris con carta trovata maxindex come tris e carta alta secondMaxIndex
+                return new ThreeOfAKind(sortedCards);
             }
         }
         if (max == 2)
         {
             if (secondMax == 2)
             {
-                // nuovo punteggio Doppia coppia con carta trovata a maxindex come tris e seconda carta a secondMaxIndex
+                return new TwoPair(sortedCards);
             }
             else
             {
-                // nuovo punteggio Coppia con carta trovata a maxindex come tris e carta alta a secondMaxIndex
+                return new OnePair(sortedCards);
             }
         }
         if (max == 1)
         {
-            return new HighCard(cards);
-        } 
-        return null;
+            return new HighCard(sortedCards);
+        }
+        return null; 
     }
         
      

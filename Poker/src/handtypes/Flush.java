@@ -15,10 +15,9 @@ import poker.Card;
  */
 public class Flush extends Hand{
     
-    private ArrayList<Card> cards;
 
     public Flush(ArrayList<Card> cards) {
-        this.cards = cards;
+        super(cards);
         Collections.sort(cards);
     }
     
@@ -27,7 +26,7 @@ public class Flush extends Hand{
         
         double points = 500;
         double i = 1;
-        for (Card card: cards )
+        for (Card card: this.cards )
         {
             points = points + (double)card.getValue() /  (double)Math.pow(100, i);
             i += 1;
@@ -41,9 +40,6 @@ public class Flush extends Hand{
         return "Colore di " + Card.getSeedName(cards.get(0).getSeed()) + " al " + Card.getValueName(cards.get(0).getValue());
     }
 
-    @Override
-    public ArrayList<Card> generateHand() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
     
 }

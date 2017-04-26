@@ -17,9 +17,10 @@ public class FourOfAKind extends Hand{
     private Card poker;
     private Card firstKicker;
 
-    public FourOfAKind(Card poker, Card firstKicker) {
-        this.poker = poker;
-        this.firstKicker = firstKicker;
+    public FourOfAKind(ArrayList<Card> cards) {
+        super(cards);
+        this.poker = cards.get(0);
+        this.firstKicker = cards.get(4);
     }
 
     @Override
@@ -33,9 +34,6 @@ public class FourOfAKind extends Hand{
         return "Poker di " + Card.getValueName(poker.getValue());
     }
 
-    @Override
-    public ArrayList<Card> generateHand() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+
+ 
 }

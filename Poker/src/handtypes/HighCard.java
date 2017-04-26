@@ -15,10 +15,9 @@ import poker.Card;
  */
 public class HighCard extends Hand{
 
-    private ArrayList<Card> cards;
 
     public HighCard(ArrayList<Card> cards) {
-        this.cards = cards;
+        super(cards);
         Collections.sort(cards);
     }
     
@@ -27,7 +26,7 @@ public class HighCard extends Hand{
         
         double points = 0;
         double i = 1;
-        for (Card card: cards )
+        for (Card card: this.cards )
         {
             points = points + (double)card.getValue() / (double)Math.pow(100, i);
             i += 1;
@@ -39,10 +38,5 @@ public class HighCard extends Hand{
     public String toString()
     {
         return "Carta Alta: " + Card.getValueName(cards.get(0).getValue());
-    }
-
-    @Override
-    public ArrayList<Card> generateHand() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

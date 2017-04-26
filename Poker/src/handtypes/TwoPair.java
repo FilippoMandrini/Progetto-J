@@ -18,12 +18,13 @@ public class TwoPair extends Hand{
     private Card secondPair;
     private Card firstKicker;
 
-    public TwoPair(Card firstPair, Card secondPair, Card firstKicker) {
-        this.firstPair = firstPair;
-        this.secondPair = secondPair;
-        this.firstKicker = firstKicker;
-    }
+    public TwoPair(ArrayList<Card> cards) {
+        super(cards);
+        this.firstPair = this.cards.get(0);
+        this.secondPair = this.cards.get(2);
+        this.firstKicker = this.cards.get(4);
 
+    }
 
     @Override
     public double getPoints() {
@@ -34,10 +35,5 @@ public class TwoPair extends Hand{
     public String toString()
     {
         return "Doppia Coppia di " + Card.getValueName(firstPair.getValue()) + " e " + Card.getValueName(secondPair.getValue());
-    }
-
-    @Override
-    public ArrayList<Card> generateHand() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

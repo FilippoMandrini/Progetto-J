@@ -18,10 +18,12 @@ public class ThreeOfAKind extends Hand {
     private Card firstKicker;
     private Card secondKicker;
 
-    public ThreeOfAKind(Card three, Card firstKicker, Card secondKicker) {
-        this.three = three;
-        this.firstKicker = firstKicker;
-        this.secondKicker = secondKicker;
+    public ThreeOfAKind(ArrayList<Card> cards) {
+        super(cards);
+        this.three = this.cards.get(0);
+        this.firstKicker = this.cards.get(3);
+        this.secondKicker = this.cards.get(4);
+
     }
 
     @Override
@@ -33,11 +35,6 @@ public class ThreeOfAKind extends Hand {
     public String toString()
     {
         return "Tris di " + Card.getValueName(three.getValue());
-    }
-
-    @Override
-    public ArrayList<Card> generateHand() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

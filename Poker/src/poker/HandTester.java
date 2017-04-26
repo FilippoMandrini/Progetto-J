@@ -17,29 +17,73 @@ public class HandTester {
 
     public static void main(String[] args) {
 
+        ArrayList<Card> cards = new ArrayList<>();
         Seed S3 = new Seed(SeedType.HEARTS, 3);
         Seed S2 = new Seed(SeedType.DIAMONDS, 2);
         Seed S1 = new Seed(SeedType.CLUBS, 1);
         Seed S0 = new Seed(SeedType.SPADES, 0);
-        Hand H1 = new TwoPair(new Card(10), new Card(5), new Card(7));
-        Hand H2 = new TwoPair(new Card(11), new Card(7), new Card(8));
-        Hand H3 = new TwoPair(new Card(11), new Card(7), new Card(6));
-        Hand H4 = new ThreeOfAKind(new Card(10), new Card(5), new Card(9));
-        Hand H5 = new FullHouse(new Card(4), new Card(5));
-        ArrayList<Card> cards = new ArrayList<>();
+        cards.clear();
+        cards.add(new Card(4, S1));
+        cards.add(new Card(4, S2));
+        cards.add(new Card(3, S0));
+        cards.add(new Card(3, S2));
+        cards.add(new Card(2, S3));
+        Hand H1 = new TwoPair(cards);
+        cards.clear();
+        cards.add(new Card(2, S1));
+        cards.add(new Card(2, S2));
+        cards.add(new Card(10, S0));
+        cards.add(new Card(4, S2));
+        cards.add(new Card(3, S3));
+        Hand H2 = new OnePair(cards);
+        cards.clear();
+        cards.add(new Card(4, S1));
+        cards.add(new Card(4, S2));
+        cards.add(new Card(4, S0));
+        cards.add(new Card(3, S0));
+        cards.add(new Card(2, S3));
+        Hand H3 = new ThreeOfAKind(cards);
+        cards.clear();
+        cards.add(new Card(6, S1));
+        cards.add(new Card(6, S2));
+        cards.add(new Card(6, S0));
+        cards.add(new Card(10, S2));
+        cards.add(new Card(10, S3));
+        Hand H4 = new FullHouse(cards);
+        cards.clear();
+        cards.add(new Card(10, S1));
+        cards.add(new Card(10, S2));
+        cards.add(new Card(10, S0));
+        cards.add(new Card(6, S2));
+        cards.add(new Card(6, S3));
+        Hand H5 = new FullHouse(cards);
+        cards.clear();
+        cards.add(new Card(12, S3));
+        cards.add(new Card(12, S1));
+        cards.add(new Card(12, S0));
+        cards.add(new Card(12, S2));
+        cards.add(new Card(6, S3));
+        Hand H6 = new FourOfAKind(cards);
+        cards.clear();
+        cards.add(new Card(12, S0));
+        cards.add(new Card(11, S0));
+        cards.add(new Card(10, S0));
+        cards.add(new Card(8, S0));
+        cards.add(new Card(9, S0));
+        Hand H7 = new StraightFlush(cards);
+        cards.clear();
         for (int i = 0; i<5; i++)
         {
             cards.add(new Card(i+2, S3));
             i++;
         }
-        Hand H6 = new Flush(cards);
+        Hand H8 = new Flush(cards);
         cards.clear();
-        for (int i = 0; i<5; i++)
+        for (int i = 12; i>=8; i--)
         {
-            cards.add(new Card(i+7, S2));
+            cards.add(new Card(i, S2));
         }
-        
-        Hand H7 = new Straight(cards);
+        Hand H9 = new Straight(cards);
         ArrayList<Hand> hands = new ArrayList<>();
         hands.add(H1);
         hands.add(H2);
@@ -48,6 +92,8 @@ public class HandTester {
         hands.add(H5);
         hands.add(H6);
         hands.add(H7);
+        hands.add(H8);
+        hands.add(H9);
         Collections.sort(hands);
         for (Hand hand : hands) {
             

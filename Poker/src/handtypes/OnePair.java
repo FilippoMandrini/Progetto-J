@@ -19,11 +19,12 @@ public class OnePair extends Hand {
     private Card secondKicker;
     private Card thirdKicker;
 
-    public OnePair(Card pair, Card firstKicker, Card secondKicker, Card thirdKicker) {
-        this.pair = pair;
-        this.firstKicker = firstKicker;
-        this.secondKicker = secondKicker;
-        this.thirdKicker = thirdKicker;
+    public OnePair(ArrayList<Card> cards) {
+        super(cards);
+        this.pair = this.cards.get(0);
+        this.secondKicker = this.cards.get(3);
+        this.thirdKicker = this.cards.get(4);
+        this.firstKicker = this.cards.get(2);
     }
 
 
@@ -38,10 +39,4 @@ public class OnePair extends Hand {
     {
         return "Coppia di " + Card.getValueName(pair.getValue());
     }
-
-    @Override
-    public ArrayList<Card> generateHand() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

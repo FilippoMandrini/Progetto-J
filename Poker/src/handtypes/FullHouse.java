@@ -17,9 +17,10 @@ public class FullHouse extends Hand{
     private Card three;
     private Card pair;
 
-    public FullHouse(Card three, Card pair) {
-        this.three = three;
-        this.pair = pair;
+    public FullHouse(ArrayList<Card> cards) {
+        super(cards);
+        this.three = this.cards.get(0);
+        this.pair = this.cards.get(3);
     }
     
     @Override
@@ -30,10 +31,5 @@ public class FullHouse extends Hand{
     @Override
     public String toString() {
         return "Full di " + Card.getValueName(three.getValue()) + " e " + Card.getValueName(pair.getValue());
-    }
-
-    @Override
-    public ArrayList<Card> generateHand() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

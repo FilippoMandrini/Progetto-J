@@ -15,27 +15,18 @@ import poker.Card;
  */
 public class Straight extends Hand {
 
-    private ArrayList<Card> cards;
-
     public Straight(ArrayList<Card> cards) {
-        this.cards = cards;
-        Collections.sort(cards);
+        super(cards);
     }
     
     @Override
     public double getPoints() {
-        return 400 +cards.get(0).getValue();
+        return 400 + this.cards.get(0).getValue();
     }
 
     @Override
     public String toString()
     {
-        return "Scala al " + Card.getValueName(cards.get(0).getValue());
+        return "Scala al " + Card.getValueName(this.cards.get(0).getValue());
     }
-
-    @Override
-    public ArrayList<Card> generateHand() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }
