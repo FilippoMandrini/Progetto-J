@@ -14,7 +14,7 @@ import poker.Card;
  * @author Nickelsilver
  */
 public class Flush extends Hand{
-    
+     
 
     public Flush(ArrayList<Card> cards) {
         super(cards);

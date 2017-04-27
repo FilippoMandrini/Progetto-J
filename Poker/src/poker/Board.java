@@ -1,18 +1,76 @@
 package poker;
 
+import exceptions.NotEnoughCardsException;
 import handtypes.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.List;
 
 public class Board {
     
     private Deck mazzo;
     private ArrayList<HumanPlayer> giocatori;
+     
     
-    public Hand evaluateSingle(ArrayList<Card> cards) 
+    @SuppressWarnings("empty-statement")
+    public Hand evaluateFull(ArrayList<Card> cards) throws NotEnoughCardsException
     {
+        if (cards.size() != 7)
+        {
+            throw new NotEnoughCardsException("Carte in numero errato");
+        }
+        ArrayList<Hand> results = new ArrayList<>();
+        int k = 5;                           
+        int indices[] = new int[k];              
+        if (k <= cards.size()) 
+        {
+            for (int i = 0; i <= k - 1; i++)
+            {
+                indices[i] = i;
+            }
+            results.add(evaluateSingle(getSubset(cards, indices)));
+            while(true) 
+            {
+                int i;
+                // find position of item that can be incremented
+                for (i = k - 1; i >= 0 && indices[i] == cards.size() - k + i; i--);
+                if (i < 0) 
+                {
+                    break;
+                }
+                indices[i]++;                    
+                for (++i; i < k; i++) 
+                { 
+                    indices[i] = indices[i - 1] + 1;
+                }
+                results.add(evaluateSingle(getSubset(cards, indices)));
+            }
+        }
+        Collections.sort(results);
+        return results.get(0);  
+    }
+
+
+// generate actual subset by index sequence
+    ArrayList<Card> getSubset(List<Card> input, int[] subset) 
+    {
+        ArrayList<Card> toHand = new ArrayList(subset.length); 
+        toHand.clear(); 
+        for (int i = 0; i < subset.length; i++) 
+        {
+            toHand.add(input.get(subset[i]));
+        }
+        return toHand;
+    }
+
+    
+    public Hand evaluateSingle(ArrayList<Card> cards) throws NotEnoughCardsException 
+    {
+        if (cards.size() != 5)
+        {
+            throw new NotEnoughCardsException("Carte in numero errato");
+        }
         Collections.sort(cards);
         ArrayList<Card> sortedCards = new ArrayList<>();
         HashMap<Card, Integer> cardMap = new HashMap<>();

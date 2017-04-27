@@ -28,10 +28,10 @@ public class Poker {
         System.out.println(points);
         cards.clear();        
         System.out.println("");
-        cards.add(new Card(4, S1));
-        cards.add(new Card(2, S2));
-        cards.add(new Card(2, S0));
-        cards.add(new Card(1, S2));
+        cards.add(new Card(1, S1));
+        cards.add(new Card(6, S2));
+        cards.add(new Card(4, S0));
+        cards.add(new Card(11, S2));
         cards.add(new Card(3, S3));
         for (int i = 0; i<5; i++)
         {
@@ -39,7 +39,19 @@ public class Poker {
         }
         points = B1.evaluateSingle(cards);
         System.out.println(points);
-        
+        cards.clear();        
+        System.out.println("");
+        cards.add(new Card(11, S1));
+        cards.add(new Card(11, S2));
+        cards.add(new Card(11, S3));
+        cards.add(new Card(12, S2));
+        cards.add(new Card(12, S0));
+        cards.add(new Card(12, S1));
+        cards.add(new Card(10, S2));
+        points = B1.evaluateFull(cards);
+        System.out.println(points);
+        System.out.println("");
+        System.out.println(points.getFullDescription());
         System.out.println("\nConsegna carte\n");
         
         Board B2 = new Board();
