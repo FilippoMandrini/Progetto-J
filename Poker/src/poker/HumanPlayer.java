@@ -9,16 +9,6 @@ public class HumanPlayer extends Player {
         this.psw = psw;
     }
 
-    @Override
-    public int getStake() {
-        return super.getStake();
-    }
-
-    @Override
-    public String getName() {
-        return super.getName();
-    }
-
     public String getPsw() {
         return psw;
     }

@@ -18,14 +18,14 @@ public class Flush extends Hand{
 
     public Flush(ArrayList<Card> cards) {
         super(cards);
-        Collections.sort(cards);
+        Collections.sort(this.cards);
     }
     
     @Override
     public double getPoints() {
         
         double points = 500;
-        double i = 1;
+        double i = 0;
         for (Card card: this.cards )
         {
             points = points + (double)card.getValue() /  (double)Math.pow(100, i);

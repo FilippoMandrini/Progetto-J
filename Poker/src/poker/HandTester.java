@@ -75,9 +75,9 @@ public class HandTester {
         for (int i = 0; i<5; i++)
         {
             cards.add(new Card(i+2, S3));
-            i++;
         }
         Hand H8 = new Flush(cards);
+        System.out.println(H8.getFullDescription());
         cards.clear();
         for (int i = 12; i>=8; i--)
         {
