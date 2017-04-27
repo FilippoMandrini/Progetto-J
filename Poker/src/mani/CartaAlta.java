@@ -3,32 +3,32 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package handtypes;
+package mani;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import poker.Card;
+import poker.Carta;
 
 /**
  *
  * @author Nickelsilver
  */
-public class HighCard extends Hand{
+public class CartaAlta extends Mano{
 
 
-    public HighCard(ArrayList<Card> cards) {
-        super(cards);
-        Collections.sort(cards);
+    public CartaAlta(ArrayList<Carta> carte) {
+        super(carte);
+        Collections.sort(carte);
     }
     
     @Override
-    public double getPoints() {
+    public double getPunti() {
         
         double points = 0;
         double i = 1;
-        for (Card card: this.cards )
+        for (Carta carta: this.carte )
         {
-            points = points + (double)card.getValue() / (double)Math.pow(100, i);
+            points = points + (double)carta.getValore() / (double)Math.pow(100, i);
             i += 1;
         }
         return points;
@@ -37,6 +37,6 @@ public class HighCard extends Hand{
     @Override
     public String toString()
     {
-        return "Carta Alta: " + Card.getValueName(cards.get(0).getValue());
+        return "Carta Alta: " + Carta.getNomeValore(carte.get(0).getValore());
     }
 }

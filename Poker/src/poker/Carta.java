@@ -3,7 +3,7 @@ package poker;
 import java.util.Objects;
 
 
-public class Card implements Comparable {
+public class Carta implements Comparable {
 
     private int value;
     private Seed seed;
@@ -15,7 +15,7 @@ public class Card implements Comparable {
      *
      * @Ritorna il valore numerico della Carta
      */
-    public int getValue() {
+    public int getValore() {
         return value;
     }
 
@@ -24,7 +24,7 @@ public class Card implements Comparable {
      * 
      * @Ritorna la Stringa corrispondente al valore della Carta
      */
-    public static String getValueName(int value) {
+    public static String getNomeValore(int value) {
         return valueName[value];
     }
     
@@ -33,7 +33,7 @@ public class Card implements Comparable {
      * @param seed
      * @return
      */
-    public static String getSeedName(Seed seed) {
+    public static String getNomeSeme(Seed seed) {
         
         return seedName[seed.getValue()];
     }
@@ -42,17 +42,17 @@ public class Card implements Comparable {
      *
      * @Ritorna il seme della Carta
      */
-    public Seed getSeed() {
+    public Seed getSeme() {
         return seed;
     }
 
-    public Card(int value, Seed seed) {
+    public Carta(int value, Seed seed) {
         this.value = value;
         this.seed = seed;
     }
 
 
-    public Card(int value) {
+    public Carta(int value) {
         this.value = value;
     }
     
@@ -71,7 +71,7 @@ public class Card implements Comparable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Card other = (Card) obj;
+        final Carta other = (Carta) obj;
         if (this.value != other.value) {
             return false;
         }
@@ -84,8 +84,8 @@ public class Card implements Comparable {
     @Override
     public int compareTo(Object t) {
 
-        final Card other = (Card) t;
-        return other.getValue() - this.getValue();
+        final Carta other = (Carta) t;
+        return other.getValore() - this.getValore();
     }
 
 }

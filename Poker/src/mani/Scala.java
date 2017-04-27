@@ -3,30 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package handtypes;
+package mani;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import poker.Card;
+import poker.Carta;
 
 /**
  *
  * @author Nickelsilver
  */
-public class Straight extends Hand {
+public class Scala extends Mano {
 
-    public Straight(ArrayList<Card> cards) {
-        super(cards);
+    public Scala(ArrayList<Carta> carte) {
+        super(carte);
     }
     
     @Override
-    public double getPoints() {
-        return 400 + this.cards.get(0).getValue();
+    public double getPunti() {
+        return 400 + this.carte.get(0).getValore();
     }
 
     @Override
     public String toString()
     {
-        return "Scala al " + Card.getValueName(this.cards.get(0).getValue());
+        return "Scala al " + Carta.getNomeValore(this.carte.get(0).getValore());
     }
 }

@@ -3,33 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package handtypes;
+package mani;
 
 import java.util.ArrayList;
-import poker.Card;
+import poker.Carta;
 
 /**
  *
  * @author Nickelsilver
  */
-public class StraightFlush extends Hand {
+public class ScalaColore extends Mano {
     
-    private Card high;
+    private Carta alta;
     
-    public StraightFlush(ArrayList<Card> cards) {
-        super(cards);
-        this.high = this.cards.get(0);
+    public ScalaColore(ArrayList<Carta> carte) {
+        super(carte);
+        this.alta = this.carte.get(0);
     }
     
     @Override
-    public double getPoints() {
-        return 800 +high.getValue();
+    public double getPunti() {
+        return 800 +alta.getValore();
     }
     
     @Override
     public String toString()
     {
-        return "Scala Colore di " + Card.getValueName(high.getValue());
+        return "Scala Colore di " + Carta.getNomeValore(alta.getValore());
     }
     
 }

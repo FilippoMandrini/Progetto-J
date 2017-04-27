@@ -1,7 +1,16 @@
 package poker;
 
+import mani.Colore;
+import mani.Scala;
+import mani.Mano;
+import mani.ScalaColore;
+import mani.Coppia;
+import mani.DoppiaCoppia;
+import mani.CartaAlta;
+import mani.Tris;
+import mani.Full;
+import mani.Poker;
 import exceptions.NotEnoughCardsException;
-import handtypes.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,13 +23,13 @@ public class Board {
      
     
     @SuppressWarnings("empty-statement")
-    public Hand evaluateFull(ArrayList<Card> cards) throws NotEnoughCardsException
+    public Mano evaluateFull(ArrayList<Carta> cards) throws NotEnoughCardsException
     {
         if (cards.size() != 7)
         {
             throw new NotEnoughCardsException("Carte in numero errato");
         }
-        ArrayList<Hand> results = new ArrayList<>();
+        ArrayList<Mano> results = new ArrayList<>();
         int k = 5;                           
         int indices[] = new int[k];              
         if (k <= cards.size()) 
@@ -53,9 +62,9 @@ public class Board {
 
 
 // generate actual subset by index sequence
-    ArrayList<Card> getSubset(List<Card> input, int[] subset) 
+    ArrayList<Carta> getSubset(List<Carta> input, int[] subset) 
     {
-        ArrayList<Card> toHand = new ArrayList(subset.length); 
+        ArrayList<Carta> toHand = new ArrayList(subset.length); 
         toHand.clear(); 
         for (int i = 0; i < subset.length; i++) 
         {
@@ -65,21 +74,21 @@ public class Board {
     }
 
     
-    public Hand evaluateSingle(ArrayList<Card> cards) throws NotEnoughCardsException 
+    public Mano evaluateSingle(ArrayList<Carta> cards) throws NotEnoughCardsException 
     {
         if (cards.size() != 5)
         {
             throw new NotEnoughCardsException("Carte in numero errato");
         }
         Collections.sort(cards);
-        ArrayList<Card> sortedCards = new ArrayList<>();
-        HashMap<Card, Integer> cardMap = new HashMap<>();
+        ArrayList<Carta> sortedCards = new ArrayList<>();
+        HashMap<Carta, Integer> cardMap = new HashMap<>();
         int secondMaxIndex = 0;
         int maxIndex =0;
         int max = 0;
         int[] cardCounter = new int[13];
-        for (Card carta : cards) {
-            cardCounter[carta.getValue()]++;
+        for (Carta carta : cards) {
+            cardCounter[carta.getValore()]++;
         }
         for (int i = cardCounter.length-1; i >= 0; i--) {
             if (cardCounter[i] > max) {
@@ -96,7 +105,7 @@ public class Board {
             }
         }        
         for (int i = 0; i<cards.size(); i++) {
-            if (cards.get(i).getValue() == maxIndex)
+            if (cards.get(i).getValore() == maxIndex)
             {
                 sortedCards.add(cards.get(i));
                 cards.remove(cards.get(i));
@@ -104,7 +113,7 @@ public class Board {
             }
         }
         for (int i = 0; i<cards.size(); i++) {
-            if (cards.get(i).getValue() == secondMaxIndex)
+            if (cards.get(i).getValore() == secondMaxIndex)
             {
                 sortedCards.add(cards.get(i));
                 cards.remove(cards.get(i));
@@ -115,58 +124,58 @@ public class Board {
         cards.clear();
         if (checkFlush(sortedCards) && checkStraight(sortedCards))
         {
-            return new StraightFlush(sortedCards);
+            return new ScalaColore(sortedCards);
         }
         if (max == 4)
         {
 
-            return new FourOfAKind(sortedCards);
+            return new Poker(sortedCards);
         }
         if (max == 3) 
         {
             if (secondMax == 2) 
             {
-                return new FullHouse(sortedCards);
+                return new Full(sortedCards);
             }
         }
         if (checkFlush(sortedCards))
         {
-            return new Flush(sortedCards);
+            return new Colore(sortedCards);
         }
         if (checkStraight(sortedCards))
         {
-            return new Straight(sortedCards);
+            return new Scala(sortedCards);
         }
         if (max == 3)
         {
             if (secondMax != 2)
             {
-                return new ThreeOfAKind(sortedCards);
+                return new Tris(sortedCards);
             }
         }
         if (max == 2)
         {
             if (secondMax == 2)
             {
-                return new TwoPair(sortedCards);
+                return new DoppiaCoppia(sortedCards);
             }
             else
             {
-                return new OnePair(sortedCards);
+                return new Coppia(sortedCards);
             }
         }
         if (max == 1)
         {
-            return new HighCard(sortedCards);
+            return new CartaAlta(sortedCards);
         }
         return null; 
     }
         
      
-    private boolean checkFlush(ArrayList<Card> cards) {
+    private boolean checkFlush(ArrayList<Carta> cards) {
         int[] seedCounter = new int[4];
-        for (Card carta : cards) {
-            seedCounter[carta.getSeed().getValue()]++;
+        for (Carta carta : cards) {
+            seedCounter[carta.getSeme().getValue()]++;
         }
         for (int i = 0; i < seedCounter.length; i++) {
             if (seedCounter[i] == 5) {
@@ -176,21 +185,21 @@ public class Board {
         return false;
     }
     
-    private boolean checkStraight(ArrayList<Card> cards)
+    private boolean checkStraight(ArrayList<Carta> cards)
     {
         boolean spy = true;
         for (int i= 0; i<cards.size()-1; i++) 
         {
-            if (cards.get(i).getValue()- cards.get(i+1).getValue() != 1 )
+            if (cards.get(i).getValore()- cards.get(i+1).getValore() != 1 )
             {
                 spy = false;
             }
         }
-        if (cards.get(0).getValue() == 12 && cards.get(1).getValue() == 3)
+        if (cards.get(0).getValore() == 12 && cards.get(1).getValore() == 3)
         {
             spy = true;
             for (int i = 1; i < cards.size() - 1; i++) {
-                if (cards.get(i).getValue() - cards.get(i + 1).getValue() != 1) {
+                if (cards.get(i).getValore() - cards.get(i + 1).getValore() != 1) {
                     spy = false;
                 }
             }
@@ -199,7 +208,7 @@ public class Board {
 
     }
     
-    public Card giveCard(){
+    public Carta giveCard(){
         
         return mazzo.chooseCard();
         
