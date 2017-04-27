@@ -5,10 +5,10 @@ import java.util.Objects;
 
 public class Carta implements Comparable {
 
-    private int value;
-    private Seed seed;
-    private static final String seedName[] = {"Cuori", "Picche", "Fiori", "Denari"};
-    private static final String valueName[] = {"Due", "Tre", "Quattro", "Cinque", "Sei",
+    private int valore;
+    private Seme seme;
+    private static final String nomeSeme[] = {"Cuori", "Picche", "Fiori", "Denari"};
+    private static final String nomeValore[] = {"Due", "Tre", "Quattro", "Cinque", "Sei",
         "Sette", "Otto", "Nove", "Dieci", "Fante", "Regina", "Re", "Asso"};
 
     /**
@@ -16,7 +16,7 @@ public class Carta implements Comparable {
      * @Ritorna il valore numerico della Carta
      */
     public int getValore() {
-        return value;
+        return valore;
     }
 
     /**
@@ -24,43 +24,43 @@ public class Carta implements Comparable {
      * 
      * @Ritorna la Stringa corrispondente al valore della Carta
      */
-    public static String getNomeValore(int value) {
-        return valueName[value];
+    public static String getNomeValore(int valore) {
+        return nomeValore[valore];
     }
     
     /**
      *
-     * @param seed
+     * @param seme
      * @return
      */
-    public static String getNomeSeme(Seed seed) {
+    public static String getNomeSeme(Seme seme) {
         
-        return seedName[seed.getValue()];
+        return nomeSeme[seme.getValore()];
     }
 
     /**
      *
      * @Ritorna il seme della Carta
      */
-    public Seed getSeme() {
-        return seed;
+    public Seme getSeme() {
+        return seme;
     }
 
-    public Carta(int value, Seed seed) {
-        this.value = value;
-        this.seed = seed;
+    public Carta(int valore, Seme seme) {
+        this.valore = valore;
+        this.seme = seme;
     }
 
 
-    public Carta(int value) {
-        this.value = value;
+    public Carta(int valore) {
+        this.valore = valore;
     }
     
     
 
     @Override
     public String toString() {
-        return valueName[value] + " di " + seedName[seed.getValue()];
+        return nomeValore[valore] + " di " + nomeSeme[seme.getValore()];
     }
 
     @Override
@@ -72,10 +72,10 @@ public class Carta implements Comparable {
             return false;
         }
         final Carta other = (Carta) obj;
-        if (this.value != other.value) {
+        if (this.valore != other.valore) {
             return false;
         }
-        if (!Objects.equals(this.seed, other.seed)) {
+        if (!Objects.equals(this.seme, other.seme)) {
             return false;
         }
         return true;
