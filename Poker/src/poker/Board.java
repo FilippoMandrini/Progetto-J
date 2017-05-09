@@ -7,31 +7,70 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Board {
 
     private Deck mazzo;
-    private ArrayList<HumanPlayer> giocatori;
-    private HashMap<Player, Hand> ranking;
+    private ArrayList<Player> ranking;
     private boolean hasPlayers;
     private ArrayList<Card> communityCards;
-    
-    public void playGame(){
-        clearBoard();
+
+    public void playGame() {
         preflop();
         flop();
         turn();
         river();
-        for(Player player : ranking.keySet()){
-            evaluatePlayer(player);      
+        for (Player player : ranking) {
+            evaluatePlayer(player);
+            System.out.println(player.getName() + " ha in mano " + player.getCurrent());
         }
-         //INSERIRE METODO CHE TROVA IL MIGLIORE FRA TUTTI I PLAYER
+        getWinners();
     }
-    
+
+    public void getWinners() {
+        sortRanking();
+        System.out.println("Vincitori: \n");
+        for (int i = 0; i < ranking.size(); i++) {
+            System.out.println(ranking.get(i).getName() + " con " + ranking.get(i).getCurrent());
+            if(ranking.get(i).getCurrent().getPoints() > ranking.get(i+1).getCurrent().getPoints() || ranking.size()-1 == i )
+                break;
+        }
+    }
+
+    /**
+     * Ordina la classifica dei giocatori
+     *
+     * @return
+     */
+    public boolean sortRanking() {
+        ArrayList<Player> sortedRanking = new ArrayList<>();
+        double bestHandPoint;
+        Player bestPlayer = null;
+        Hand bestHand = null;
+        int size = ranking.size();
+        while (sortedRanking.size() < size) {
+            bestHandPoint = 0;
+            for (Player player : ranking) {
+                if (player.getCurrent().getPoints() > bestHandPoint) {
+                    bestPlayer = player;
+                    bestHandPoint = player.getCurrent().getPoints();
+
+                }
+            }
+            sortedRanking.add(bestPlayer);
+            ranking.remove(bestPlayer);
+        }
+        ranking.addAll(sortedRanking);
+        return true;
+
+    }
+
     public boolean clearBoard() {
         this.communityCards.clear();
-        for (Player player : ranking.keySet()) {
-            ranking.put(player, null);
+        for (Player player : ranking) {
+            ranking.add(player);
         }
         this.mazzo.restore();
         return true;
@@ -51,13 +90,14 @@ public class Board {
         return true;
     }
 
-    public boolean preflop(){
-        for(Player player : ranking.keySet()){
-            dealCards(player);       
+    public boolean preflop() {
+        for (Player player : ranking) {
+            dealCards(player);
         }
+
         return true;
     }
-    
+
     public boolean flop() {
         for (int i = 0; i < 3; i++) {
             communityCards.add(mazzo.getCard());
@@ -79,36 +119,37 @@ public class Board {
 
     public boolean hasPlayers() {
         return hasPlayers;
-    
+
     }
 
     public boolean addPlayer(Player player) {
-        if (!ranking.containsKey(player)) {
-            ranking.put(player, null);
+        if (!ranking.contains(player)) {
+            ranking.add(player);
         }
-        return ranking.containsKey(player);
+        return ranking.contains(player);
     }
-  
+
     public Hand getPlayerHand(Player player) {
-        if (ranking.containsKey(player) && ranking.get(player) != null) {
-            return ranking.get(player);
+        if (ranking.contains(player)) {
+            return player.getCurrent();
         }
         throw new PlayerNotFoundException("Giocatore non trovato!");
     }
 
     public void evaluatePlayer(Player player) {
-        if (!ranking.containsKey(player)) {
+        if (!ranking.contains(player)) {
             throw new PlayerNotFoundException("Giocatore non trovato!");
         }
         ArrayList<Card> toEvaluate = new ArrayList<>();
         toEvaluate.addAll(player.getPlayerCards());
         toEvaluate.addAll(this.communityCards);
-        ranking.put(player, evaluateFull(toEvaluate));
-        
+        player.setCurrent(evaluateFull(toEvaluate));
+
     }
 
     /**
      * Restituisce la combinazione migliore tra tutte le combinazioni di carte
+     *
      * @param cards le carte del giocatore e le carte del tavolo
      * @return la mano migliore del giocatore
      * @throws NotEnoughCardsException
@@ -130,8 +171,7 @@ public class Board {
                 int i;
                 // find position of item that can be incremented
                 for (i = k - 1; i >= 0 && indices[i] == cards.size() - k + i; i--);
-                if (i < 0) 
-                {
+                if (i < 0) {
                     break;
                 }
                 indices[i]++;
@@ -145,7 +185,6 @@ public class Board {
         return results.get(0);
     }
 
-
     private ArrayList<Card> getSubset(List<Card> input, int[] subset) {
         ArrayList<Card> toHand = new ArrayList(subset.length);
         toHand.clear();
@@ -157,6 +196,7 @@ public class Board {
 
     /**
      * Determina il punteggio di una singola mano
+     *
      * @param cards un gruppo di cinque carte
      * @return il punteggio per questo specifico gruppo di carte
      * @throws NotEnoughCardsException
@@ -274,16 +314,14 @@ public class Board {
 
     public Board() {
         this.mazzo = new Deck();
-        this.giocatori = new ArrayList<>();
+        this.ranking = new ArrayList<>();
         this.hasPlayers = false;
         this.communityCards = new ArrayList<>();
+
     }
 
     public Deck getMazzo() {
         return mazzo;
     }
 
-    public ArrayList<HumanPlayer> getGiocatori() {
-        return giocatori;
-    }
 }
