@@ -11,37 +11,22 @@ public class Card implements Comparable {
     private static final String valueName[] = {"Due", "Tre", "Quattro", "Cinque", "Sei",
         "Sette", "Otto", "Nove", "Dieci", "Fante", "Regina", "Re", "Asso"};
 
-    /**
-     *
-     * @Ritorna il valore numerico della Carta
-     */
     public int getValue() {
         return value;
     }
 
-    /**
-     *
-     * 
-     * @Ritorna la Stringa corrispondente al valore della Carta
-     */
+
     public static String getValueName(int value) {
         return valueName[value];
     }
     
-    /**
-     *
-     * @param seed
-     * @return
-     */
+ 
     public static String getSeedName(Seed seed) {
         
         return seedName[seed.getValue()];
     }
 
-    /**
-     *
-     * @Ritorna il seme della Carta
-     */
+  
     public Seed getSeed() {
         return seed;
     }

@@ -30,6 +30,14 @@ public abstract class Player {
         return this.cards.contains(card);
     }
     
+    public boolean clearCards()
+    {
+        if (!this.cards.isEmpty())
+            return false;
+        this.cards.clear();
+        return true;
+    }
+    
     public List<Card> getPlayerCards()
     {
         return this.cards;

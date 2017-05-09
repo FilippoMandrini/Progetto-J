@@ -8,7 +8,7 @@ public class Test {
 
     public static void main(String[] args) {
 
-        ArrayList<Card> cards = new ArrayList<>();
+        /*ArrayList<Card> cards = new ArrayList<>();
         Seed S3 = new Seed(SeedType.HEARTS, 3);
         Seed S2 = new Seed(SeedType.DIAMONDS, 2);
         Seed S1 = new Seed(SeedType.CLUBS, 1);
@@ -52,23 +52,9 @@ public class Test {
         System.out.println(points);
         System.out.println("");
         System.out.println(points.getFullDescription());
-        System.out.println("\nConsegna carte\n");
-        
-        Board B2 = new Board();
-        ArrayList<Card> carteDate = new ArrayList<>();
-        for (int i = 0; i<5; i++){
-            carteDate.add(B2.giveCard());
-        }
-        for(Card carta: carteDate){
-            System.out.println(carta);
-        }
-        
-//        System.out.println("\nStampa tutte le carte");
-//        Board B3 = new Board();
-//        for(Card carta: B3.getMazzo().getMazzo()){
-//            System.out.println(carta);
-//        }*/
-        
+        System.out.println("\nConsegna carte\n");*/
+         Board B1= new Board();
+         
     }
 
 }
