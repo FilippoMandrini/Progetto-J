@@ -56,6 +56,8 @@ public class Test {
         Board B1= new Board();
         B1.addPlayer(new HumanPlayer( "Pippo","ciaone"));
         B1.addPlayer(new HumanPlayer( "Marcello","ciao"));
+        B1.addPlayer(new HumanPlayer( "Tizio","ciao"));
+        B1.addPlayer(new HumanPlayer( "Tizia","ciao"));
         B1.playGame();
    
      
