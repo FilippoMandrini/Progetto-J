@@ -1,5 +1,6 @@
 package poker;
 
+import exceptions.InvalidPlayerNameException;
 import exceptions.NotEnoughCardsException;
 import exceptions.PlayerNotFoundException;
 import handtypes.*;
@@ -31,11 +32,12 @@ public class Board {
 
     public void getWinners() {
         sortRanking();
+        double bestPoints = ranking.get(0).getHandPoints();
         System.out.println("Vincitori: \n");
         for (int i = 0; i < ranking.size(); i++) {
-            System.out.println(ranking.get(i).getName() + " con " + ranking.get(i).getCurrent());
-            if(ranking.get(i).getCurrent().getPoints() > ranking.get(i+1).getCurrent().getPoints() || ranking.size()-1 == i )
-                break;
+            if (ranking.get(i).getHandPoints() == bestPoints) {
+                System.out.println(ranking.get(i).getName() + " con " + ranking.get(i).getCurrent());
+            }
         }
     }
 
@@ -123,9 +125,18 @@ public class Board {
     }
 
     public boolean addPlayer(Player player) {
-        if (!ranking.contains(player)) {
-            ranking.add(player);
+        boolean presence = false;
+        for (Player giocatore : ranking) {
+            if (giocatore.getName().equals(player.getName())) {
+                presence = true;
+            }
         }
+        if (presence == false) {
+            ranking.add(player);
+        } else {
+            throw new InvalidPlayerNameException("Nome giá utilizzato!");
+        }
+
         return ranking.contains(player);
     }
 
