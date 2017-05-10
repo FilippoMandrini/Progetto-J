@@ -1,4 +1,3 @@
-
 package poker;
 
 import handtypes.Hand;
@@ -6,15 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Player {
-    
+
     private String name;
     private int stake;
     private ArrayList<Card> cards;
     private Hand current;
-    
+
     public Player(String name) {
         this.name = name;
+        this.cards = new ArrayList<>();
     }
+
 
     public String getName() {
         return name;
@@ -55,4 +56,6 @@ public abstract class Player {
     {
         return current.getPoints();
     }
+    
+    
 }
