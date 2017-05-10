@@ -3,6 +3,9 @@ package handtypes;
 import java.util.ArrayList;
 import poker.Card;
 
+/**
+ * Classe astratta della mano di carte
+ */
 public abstract class Hand implements Comparable {
     
     protected ArrayList<Card> cards;
@@ -16,7 +19,6 @@ public abstract class Hand implements Comparable {
             this.cards.add(carta);
         }
     }
-
     
     @Override
     public int compareTo(Object o) {
@@ -28,8 +30,7 @@ public abstract class Hand implements Comparable {
         return cards;
     }
     
-    public String getFullDescription()
-    {
+    public String getFullDescription(){
         String result = "";
         for (Card carta : cards)
         {

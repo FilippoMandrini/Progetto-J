@@ -2,7 +2,6 @@ package poker;
 
 import java.util.Objects;
 
-
 public class Card implements Comparable {
 
     private int value;
@@ -11,37 +10,30 @@ public class Card implements Comparable {
     private static final String valueName[] = {"Due", "Tre", "Quattro", "Cinque", "Sei",
         "Sette", "Otto", "Nove", "Dieci", "Fante", "Regina", "Re", "Asso"};
 
-    public int getValue() {
-        return value;
-    }
-
-
-    public static String getValueName(int value) {
-        return valueName[value];
-    }
-    
- 
-    public static String getSeedName(Seed seed) {
-        
-        return seedName[seed.getValue()];
-    }
-
-  
-    public Seed getSeed() {
-        return seed;
-    }
-
     public Card(int value, Seed seed) {
         this.value = value;
         this.seed = seed;
     }
 
-
     public Card(int value) {
         this.value = value;
     }
     
+    public int getValue() {
+        return value;
+    }
     
+    public Seed getSeed() {
+        return seed;
+    }
+
+    public static String getValueName(int value) {
+        return valueName[value];
+    }
+ 
+    public static String getSeedName(Seed seed) {
+        return seedName[seed.getValue()];
+    }
 
     @Override
     public String toString() {
@@ -68,7 +60,6 @@ public class Card implements Comparable {
 
     @Override
     public int compareTo(Object t) {
-
         final Card other = (Card) t;
         return other.getValue() - this.getValue();
     }

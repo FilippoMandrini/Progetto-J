@@ -1,4 +1,3 @@
-
 package handtypes;
 
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class ScalaColore extends Hand {
     
     @Override
     public double getPoints() {
-        return 800 +high.getValue();
+        return 800 + high.getValue();
     }
     
     @Override

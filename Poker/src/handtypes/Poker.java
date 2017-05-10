@@ -1,4 +1,3 @@
-
 package handtypes;
 
 import java.util.ArrayList;

@@ -1,4 +1,3 @@
-
 package handtypes;
 
 import java.util.ArrayList;
@@ -21,7 +20,8 @@ public class Full extends Hand{
     }
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "Full di " + Card.getValueName(three.getValue()) + " e " + Card.getValueName(pair.getValue());
     }
 }

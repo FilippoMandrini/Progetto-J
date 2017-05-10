@@ -1,4 +1,3 @@
-
 package poker;
 
 import handtypes.*;
@@ -88,7 +87,6 @@ public class HandTester {
         hands.add(H9);
         Collections.sort(hands);
         for (Hand hand : hands) {
-            
             System.out.println(hand.toString());
             System.out.println(hand.getPoints());
         }

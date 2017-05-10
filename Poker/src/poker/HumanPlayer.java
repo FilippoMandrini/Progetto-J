@@ -2,14 +2,14 @@ package poker;
 
 public class HumanPlayer extends Player {
     
-    private String psw;
+    private String password;
 
-    public HumanPlayer(String name, String psw) {
+    public HumanPlayer(String name, String password) {
         super(name);
-        this.psw = psw;
+        this.password = password;
     }
 
-    public String getPsw() {
-        return psw;
+    public String getPassword() {
+        return password;
     }
 }

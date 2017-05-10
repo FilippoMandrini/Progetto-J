@@ -1,4 +1,3 @@
-
 package handtypes;
 
 import java.util.ArrayList;
@@ -15,7 +14,6 @@ public class DoppiaCoppia extends Hand{
         this.firstPair = this.cards.get(0);
         this.secondPair = this.cards.get(2);
         this.firstKicker = this.cards.get(4);
-
     }
 
     @Override

@@ -6,10 +6,7 @@ import exceptions.PlayerNotFoundException;
 import handtypes.*;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 public class Board {
 
@@ -28,45 +25,6 @@ public class Board {
             System.out.println(player.getName() + " ha in mano " + player.getCurrent());
         }
         getWinners();
-    }
-
-    public void getWinners() {
-        sortRanking();
-        double bestPoints = ranking.get(0).getHandPoints();
-        System.out.println("Vincitori: \n");
-        for (int i = 0; i < ranking.size(); i++) {
-            if (ranking.get(i).getHandPoints() == bestPoints) {
-                System.out.println(ranking.get(i).getName() + " con " + ranking.get(i).getCurrent());
-            }
-        }
-    }
-
-    /**
-     * Ordina la classifica dei giocatori
-     *
-     * @return
-     */
-    public boolean sortRanking() {
-        ArrayList<Player> sortedRanking = new ArrayList<>();
-        double bestHandPoint;
-        Player bestPlayer = null;
-        Hand bestHand = null;
-        int size = ranking.size();
-        while (sortedRanking.size() < size) {
-            bestHandPoint = 0;
-            for (Player player : ranking) {
-                if (player.getCurrent().getPoints() > bestHandPoint) {
-                    bestPlayer = player;
-                    bestHandPoint = player.getCurrent().getPoints();
-
-                }
-            }
-            sortedRanking.add(bestPlayer);
-            ranking.remove(bestPlayer);
-        }
-        ranking.addAll(sortedRanking);
-        return true;
-
     }
 
     public boolean clearBoard() {
@@ -92,12 +50,10 @@ public class Board {
         return true;
     }
 
-    public boolean preflop() {
+    public void preflop() {
         for (Player player : ranking) {
             dealCards(player);
         }
-
-        return true;
     }
 
     public boolean flop() {
@@ -118,10 +74,42 @@ public class Board {
         communityCards.add(mazzo.getCard());
         return true;
     }
+    
+    /**
+    * Ordina la classifica dei giocatori
+    */
+    private void sortRanking() {
+        ArrayList<Player> sortedRanking = new ArrayList<>();
+        double bestHandPoint;
+        Player bestPlayer = null;
+        int size = ranking.size();
+        while (sortedRanking.size() < size) {
+            bestHandPoint = 0;
+            for (Player player : ranking) {
+                if (player.getCurrent().getPoints() > bestHandPoint) {
+                    bestPlayer = player;
+                    bestHandPoint = player.getCurrent().getPoints();
+                }
+            }
+            sortedRanking.add(bestPlayer);
+            ranking.remove(bestPlayer);
+        }
+        ranking.addAll(sortedRanking);
+    }
+    
+    public void getWinners() {
+        sortRanking();
+        double bestPoints = ranking.get(0).getHandPoints();
+        System.out.println("Vincitori:");
+        for (int i = 0; i < ranking.size(); i++) {
+            if (ranking.get(i).getHandPoints() == bestPoints) {
+                System.out.println(ranking.get(i).getName() + " con " + ranking.get(i).getCurrent());
+            }
+        }
+    }
 
     public boolean hasPlayers() {
         return hasPlayers;
-
     }
 
     public boolean addPlayer(Player player) {
@@ -136,7 +124,6 @@ public class Board {
         } else {
             throw new InvalidPlayerNameException("Nome giá utilizzato!");
         }
-
         return ranking.contains(player);
     }
 
@@ -155,7 +142,6 @@ public class Board {
         toEvaluate.addAll(player.getPlayerCards());
         toEvaluate.addAll(this.communityCards);
         player.setCurrent(evaluateFull(toEvaluate));
-
     }
 
     /**
@@ -259,7 +245,6 @@ public class Board {
             return new ScalaColore(sortedCards);
         }
         if (max == 4) {
-
             return new Poker(sortedCards);
         }
         if (max == 3) {
@@ -320,7 +305,6 @@ public class Board {
             }
         }
         return spy;
-
     }
 
     public Board() {
@@ -328,7 +312,6 @@ public class Board {
         this.ranking = new ArrayList<>();
         this.hasPlayers = false;
         this.communityCards = new ArrayList<>();
-
     }
 
     public Deck getMazzo() {

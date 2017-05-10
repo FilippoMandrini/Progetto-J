@@ -16,7 +16,6 @@ public abstract class Player {
         this.cards = new ArrayList<>();
     }
 
-
     public String getName() {
         return name;
     }
@@ -25,22 +24,19 @@ public abstract class Player {
         return stake;
     }
     
-    public boolean addCard(Card card)
-    {
+    public boolean addCard(Card card) {
         this.cards.add(card);
         return this.cards.contains(card);
     }
     
-    public boolean clearCards()
-    {
+    public boolean clearCards() {
         if (!this.cards.isEmpty())
             return false;
         this.cards.clear();
         return true;
     }
     
-    public List<Card> getPlayerCards()
-    {
+    public List<Card> getPlayerCards() {
         return this.cards;
     }
 
@@ -52,10 +48,8 @@ public abstract class Player {
         this.current = current;
     }
     
-    public double getHandPoints()
-    {
+    public double getHandPoints() {
         return current.getPoints();
     }
-    
     
 }

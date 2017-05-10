@@ -1,4 +1,3 @@
-
 package handtypes;
 
 import java.util.ArrayList;
@@ -7,7 +6,6 @@ import poker.Card;
 
 public class Colore extends Hand{
      
-
     public Colore(ArrayList<Card> cards) {
         super(cards);
         Collections.sort(this.cards);
@@ -15,10 +13,9 @@ public class Colore extends Hand{
     
     @Override
     public double getPoints() {
-        
         double points = 500;
         double i = 0;
-        for (Card card: this.cards )
+        for (Card card: this.cards)
         {
             points = points + (double)card.getValue() /  (double)Math.pow(100, i);
             i += 1;

@@ -1,4 +1,3 @@
-
 package handtypes;
 
 import java.util.ArrayList;
@@ -7,7 +6,6 @@ import poker.Card;
 
 public class CartaAlta extends Hand{
 
-
     public CartaAlta(ArrayList<Card> cards) {
         super(cards);
         Collections.sort(cards);
@@ -15,10 +13,9 @@ public class CartaAlta extends Hand{
     
     @Override
     public double getPoints() {
-        
         double points = 0;
         double i = 1;
-        for (Card card: this.cards )
+        for (Card card: this.cards)
         {
             points = points + (double)card.getValue() / (double)Math.pow(100, i);
             i += 1;
