@@ -122,7 +122,7 @@ public class Board {
         if (presence == false) {
             ranking.add(player);
         } else {
-            throw new InvalidPlayerNameException("Nome giá utilizzato!");
+            throw new InvalidPlayerNameException("Nome già utilizzato!");
         }
         return ranking.contains(player);
     }
