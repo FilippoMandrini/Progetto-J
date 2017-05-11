@@ -10,6 +10,10 @@ public abstract class Hand implements Comparable {
     
     protected ArrayList<Card> cards;
     
+    /**
+     * Calcola il punteggio della singola mano 
+     * @return il numero rappresentante il punteggio
+     */
     public abstract double getPoints();
 
     public Hand(ArrayList<Card> cards) {
@@ -30,6 +34,10 @@ public abstract class Hand implements Comparable {
         return cards;
     }
     
+    /**
+     * Stampa la descrizione delle carte nella mano
+     * @return la stringa descrittiva delle carte nella mano
+     */
     public String getFullDescription(){
         String result = "";
         for (Card carta : cards)
