@@ -108,10 +108,10 @@ public class InterfacciaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        if(evt.getActionCommand().equals("OK")) {
-            new HumanPlayer(this.nicknameField.getText(), this.passwordField.getText());
-            // è solo una prova: da implementare la creazione della board e l'aggiunta di giocatori da qui
-        }
+        new HumanPlayer(this.nicknameField.getText(), this.passwordField.getText());
+        // è solo una prova: da implementare la creazione della board e l'aggiunta di giocatori da qui
+        // trasferire le due stringe via socket al server dove verranno creati i giocatori
+        // implementare eccezioni di giocatore già presente e giocatore non valido
     }//GEN-LAST:event_okButtonActionPerformed
 
 
