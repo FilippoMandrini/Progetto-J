@@ -54,7 +54,7 @@ public class HandTester {
         cards.add(new Card(12, S0));
         cards.add(new Card(12, S2));
         cards.add(new Card(6, S3));
-        Hand H6 = new Poker(cards);
+        Hand H6 = new PokerHand(cards);
         cards.clear();
         cards.add(new Card(12, S0));
         cards.add(new Card(11, S0));
