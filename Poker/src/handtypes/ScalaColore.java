@@ -3,6 +3,10 @@ package handtypes;
 import java.util.ArrayList;
 import poker.Card;
 
+/**
+ * Mano che rappresenta la combinazione "Scala Colore"
+ * Mano formata da una "Scala" le cui carte hanno lo stesso seme
+ */
 public class ScalaColore extends Hand {
     
     private Card high;

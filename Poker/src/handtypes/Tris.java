@@ -3,6 +3,10 @@ package handtypes;
 import java.util.ArrayList;
 import poker.Card;
 
+/**
+ * Mano che rappresenta la combinazione "Tris"
+ * Mano formata da tre carte dello stesso valore
+ */
 public class Tris extends Hand {
 
     private Card three;

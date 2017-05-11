@@ -3,6 +3,10 @@ package handtypes;
 import java.util.ArrayList;
 import poker.Card;
 
+/**
+ * Mano che rappresenta la combinazione "Doppia coppia"
+ * Mano che contiene due coppie di valori diversi.
+ */
 public class DoppiaCoppia extends Hand{
 
     private Card firstPair;

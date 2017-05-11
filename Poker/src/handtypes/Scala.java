@@ -3,6 +3,10 @@ package handtypes;
 import java.util.ArrayList;
 import poker.Card;
 
+/**
+ * Mano che rappresenta la combinazione "Scala"
+ * Mano formata da cinque carte con ordine consecutivo di valore
+ */
 public class Scala extends Hand {
 
     public Scala(ArrayList<Card> cards) {

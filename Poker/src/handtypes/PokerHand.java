@@ -3,6 +3,10 @@ package handtypes;
 import java.util.ArrayList;
 import poker.Card;
 
+/**
+ * Mano che rappresenta la combinazione "Poker"
+ * Mano formata da quattro carte dello stesso valore
+ */
 public class PokerHand extends Hand{
 
     private Card poker;

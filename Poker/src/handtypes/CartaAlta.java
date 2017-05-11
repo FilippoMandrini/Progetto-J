@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import poker.Card;
 
+/**
+ * Mano in cui non si hanno combinazioni e si considera solo la carta 
+ * di valore maggiore
+ */
 public class CartaAlta extends Hand{
 
     public CartaAlta(ArrayList<Card> cards) {

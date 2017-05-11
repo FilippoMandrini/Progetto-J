@@ -3,6 +3,10 @@ package handtypes;
 import java.util.ArrayList;
 import poker.Card;
 
+/**
+ * Mano che rappresenta la combinazione "Coppia"
+ * Due carte dello stesso valore
+ */
 public class Coppia extends Hand {
 
     private Card pair;

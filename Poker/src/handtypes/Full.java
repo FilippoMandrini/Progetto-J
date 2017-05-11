@@ -3,6 +3,10 @@ package handtypes;
 import java.util.ArrayList;
 import poker.Card;
 
+/**
+ * Mano che rappresenta la combinazione "Full"
+ * Mano formata da un tris e una coppia
+ */
 public class Full extends Hand{
 
     private Card three;

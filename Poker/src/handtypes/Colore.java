@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import poker.Card;
 
+/**
+ * Mano che rappresenta la combinazione "Colore"
+ * Cinque carte dello stesso seme 
+ */
 public class Colore extends Hand{
      
     public Colore(ArrayList<Card> cards) {

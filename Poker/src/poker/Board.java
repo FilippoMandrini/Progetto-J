@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ *  Classe che rappresenta il banco
+ */
 public class Board {
 
     private Deck mazzo;
@@ -15,6 +18,9 @@ public class Board {
     private boolean hasPlayers;
     private ArrayList<Card> communityCards;
 
+    /**
+     * Esegue una partita di Poker
+     */
     public void playGame() {
         preflop();
         flop();
@@ -27,6 +33,10 @@ public class Board {
         getWinners();
     }
 
+    /**
+     * Esegue il reset delle carte del banco e del mazzo terminando la mano 
+     * @return 
+     */
     public boolean clearBoard() {
         this.communityCards.clear();
         for (Player player : ranking) {
@@ -36,12 +46,21 @@ public class Board {
         return true;
     }
 
+    /**
+     * Termina la partita di Poker
+     * @return
+     */
     public boolean terminateBoard() {
         clearBoard();
         this.ranking.clear();
         return true;
     }
 
+    /**
+     * Distribuisce le due carte personali del giocatore
+     * @param player il giocatore
+     * @return
+     */
     public boolean dealCards(Player player) {
         player.clearCards();
         for (int i = 0; i < 2; i++) {
@@ -50,12 +69,19 @@ public class Board {
         return true;
     }
 
+    /**
+     * Distribuisce le due carte personali di tutti i giocatori
+     */
     public void preflop() {
         for (Player player : ranking) {
             dealCards(player);
         }
     }
 
+    /**
+     * Mostra le prime tre carte comuni
+     * @return
+     */
     public boolean flop() {
         for (int i = 0; i < 3; i++) {
             communityCards.add(mazzo.getCard());
@@ -63,40 +89,29 @@ public class Board {
         return true;
     }
 
+    /**
+     * Mostra la quarta carta comune
+     * @return
+     */
     public boolean turn() {
         mazzo.burnCard();
         communityCards.add(mazzo.getCard());
         return true;
     }
 
+    /**
+     * Mostra la quinta e ultima carta comune
+     * @return
+     */
     public boolean river() {
         mazzo.burnCard();
         communityCards.add(mazzo.getCard());
         return true;
     }
-    
+        
     /**
-    * Ordina la classifica dei giocatori
-    */
-//    private void sortRanking() {
-//        ArrayList<Player> sortedRanking = new ArrayList<>();
-//        double bestHandPoint;
-//        Player bestPlayer = null;
-//        int size = ranking.size();
-//        while (sortedRanking.size() < size) {
-//            bestHandPoint = 0;
-//            for (Player player : ranking) {
-//                if (player.getCurrent().getPoints() > bestHandPoint) {
-//                    bestPlayer = player;
-//                    bestHandPoint = player.getCurrent().getPoints();
-//                }
-//            }
-//            sortedRanking.add(bestPlayer);
-//            ranking.remove(bestPlayer);
-//        }
-//        ranking.addAll(sortedRanking);
-//    }
-    
+     * Stampa la lista dei vincitori
+     */
     public void getWinners() {
         Collections.sort(ranking);
         double bestPoints = ranking.get(0).getHandPoints();
@@ -108,10 +123,20 @@ public class Board {
         }
     }
 
+    /**
+     * Ritorna se sono o no presenti i giocatori
+     * @return
+     */
     public boolean hasPlayers() {
         return hasPlayers;
     }
 
+    /**
+     * Aggiunge un giocatore controllando che non si utilizzi un nome 
+     * già scelto da un altro utente
+     * @param player il giocatore
+     * @return
+     */
     public boolean addPlayer(Player player) {
         boolean presence = false;
         for (Player giocatore : ranking) {
@@ -127,6 +152,11 @@ public class Board {
         return ranking.contains(player);
     }
 
+    /**
+     * Ritorna la mano del giocatore 
+     * @param player il giocatore
+     * @return la mano del giocatore
+     */
     public Hand getPlayerHand(Player player) {
         if (ranking.contains(player)) {
             return player.getCurrent();
@@ -134,6 +164,10 @@ public class Board {
         throw new PlayerNotFoundException("Giocatore non trovato!");
     }
 
+    /**
+     * Valuta la miglior mano del giocatore
+     * @param player il giocatore
+     */
     public void evaluatePlayer(Player player) {
         if (!ranking.contains(player)) {
             throw new PlayerNotFoundException("Giocatore non trovato!");
@@ -181,7 +215,13 @@ public class Board {
         Collections.sort(results);
         return results.get(0);
     }
-
+    
+    /**
+    * Ricava un sottogruppo di cinque carte dalle 7 iniziali
+    * @param input la lista delle carte personali e comuni
+    * @param subset indici delle carte di cui fare un sottogruppo di cinque carte
+    * @return le cinque carte associate agli indici
+    */
     private ArrayList<Card> getSubset(List<Card> input, int[] subset) {
         ArrayList<Card> toHand = new ArrayList(subset.length);
         toHand.clear();
@@ -275,7 +315,12 @@ public class Board {
         }
         return null;
     }
-
+    
+    /**
+    * Controlla se la mano costituisce la combinazione "Colore"
+    * @param cards le carte della mano
+    * @return una variabile booleana che indica se la mano costituisce un "Colore"
+    */
     private boolean checkColore(ArrayList<Card> cards) {
         int[] seedCounter = new int[4];
         for (Card carta : cards) {
@@ -288,7 +333,12 @@ public class Board {
         }
         return false;
     }
-
+    
+    /**
+    * Controlla se la mano costituisce la combinazione "Scala"
+    * @param cards le carte della mano
+    * @return una variabile booleana che indica se la mano costituisce una "Scala"
+    */
     private boolean checkScala(ArrayList<Card> cards) {
         boolean spy = true;
         for (int i = 0; i < cards.size() - 1; i++) {
@@ -313,9 +363,4 @@ public class Board {
         this.hasPlayers = false;
         this.communityCards = new ArrayList<>();
     }
-
-    public Deck getMazzo() {
-        return mazzo;
-    }
-
 }
