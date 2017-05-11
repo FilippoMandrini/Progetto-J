@@ -78,27 +78,27 @@ public class Board {
     /**
     * Ordina la classifica dei giocatori
     */
-    private void sortRanking() {
-        ArrayList<Player> sortedRanking = new ArrayList<>();
-        double bestHandPoint;
-        Player bestPlayer = null;
-        int size = ranking.size();
-        while (sortedRanking.size() < size) {
-            bestHandPoint = 0;
-            for (Player player : ranking) {
-                if (player.getCurrent().getPoints() > bestHandPoint) {
-                    bestPlayer = player;
-                    bestHandPoint = player.getCurrent().getPoints();
-                }
-            }
-            sortedRanking.add(bestPlayer);
-            ranking.remove(bestPlayer);
-        }
-        ranking.addAll(sortedRanking);
-    }
+//    private void sortRanking() {
+//        ArrayList<Player> sortedRanking = new ArrayList<>();
+//        double bestHandPoint;
+//        Player bestPlayer = null;
+//        int size = ranking.size();
+//        while (sortedRanking.size() < size) {
+//            bestHandPoint = 0;
+//            for (Player player : ranking) {
+//                if (player.getCurrent().getPoints() > bestHandPoint) {
+//                    bestPlayer = player;
+//                    bestHandPoint = player.getCurrent().getPoints();
+//                }
+//            }
+//            sortedRanking.add(bestPlayer);
+//            ranking.remove(bestPlayer);
+//        }
+//        ranking.addAll(sortedRanking);
+//    }
     
     public void getWinners() {
-        sortRanking();
+        Collections.sort(ranking);
         double bestPoints = ranking.get(0).getHandPoints();
         System.out.println("Vincitori:");
         for (int i = 0; i < ranking.size(); i++) {
@@ -245,7 +245,7 @@ public class Board {
             return new ScalaColore(sortedCards);
         }
         if (max == 4) {
-            return new Poker(sortedCards);
+            return new PokerHand(sortedCards);
         }
         if (max == 3) {
             if (secondMax == 2) {

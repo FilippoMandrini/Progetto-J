@@ -4,7 +4,7 @@ import handtypes.Hand;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Player {
+public abstract class Player implements Comparable {
 
     private String name;
     private int stake;
@@ -50,6 +50,20 @@ public abstract class Player {
     
     public double getHandPoints() {
         return current.getPoints();
+    }
+    
+    @Override
+    public int compareTo(Object t) {
+        final Player other = (Player) t;
+        double diff = other.getHandPoints() - this.getHandPoints();
+        if(diff>0)
+            return 1;
+        if(diff==0)
+            return 0;
+        if(diff<0)
+            return -1;
+        
+        return 0;
     }
     
 }
