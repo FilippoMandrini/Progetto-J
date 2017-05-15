@@ -17,7 +17,7 @@ import java.util.Set;
 public class Board {
 
     private Deck mazzo;
-    private ArrayList<Player> ranking;
+    private ArrayList<Player> giocatori;
     private boolean hasPlayers;
     private ArrayList<Card> communityCards;
 
@@ -29,7 +29,7 @@ public class Board {
         flop();
         turn();
         river();
-        for (Player player : ranking) {
+        for (Player player : giocatori) {
             evaluatePlayer(player);
             System.out.println(player.getName() + " ha in mano " + player.getCurrent());
         }
@@ -42,8 +42,8 @@ public class Board {
      */
     public boolean clearBoard() {
         this.communityCards.clear();
-        for (Player player : ranking) {
-            ranking.add(player);
+        for (Player player : giocatori) {
+            giocatori.add(player);
         }
         this.mazzo.restore();
         return true;
@@ -55,7 +55,7 @@ public class Board {
      */
     public boolean terminateBoard() {
         clearBoard();
-        this.ranking.clear();
+        this.giocatori.clear();
         return true;
     }
 
@@ -77,13 +77,13 @@ public class Board {
      * e imposta lo stake iniziale a 2000 
      */
     public void preflop() {
-        for (Player player : ranking) {
-            player.setStake(2000);
+        for (Player player : giocatori) {
+//            player.setStake(2000);
             dealCards(player);
-            ranking.get(0).setBottone(true);
-            ranking.get(1).setSmallblind(true);
-            ranking.get(2).setBigblind(true);
-            betBlinds();
+//            ranking.get(0).setBottone(true);
+//            ranking.get(1).setSmallblind(true);
+//            ranking.get(2).setBigblind(true);
+//            betBlinds();
             
             
         }
@@ -121,7 +121,7 @@ public class Board {
     }
     
     public void betBlinds() {
-        for(Player player : ranking) {
+        for(Player player : giocatori) {
             if(player.getSmallblind()) {
                 player.setStake(player.getStake() - 10);
             }
@@ -136,13 +136,20 @@ public class Board {
      * Stampa la lista dei vincitori
      */
     public void getWinners() {
+        ArrayList<Player> ranking = new ArrayList<>();
+        ArrayList<Player> winners = new ArrayList<>();
+        ranking.addAll(giocatori);
         Collections.sort(ranking);
         double bestPoints = ranking.get(0).getHandPoints();
-        System.out.println("Vincitori:");
         for (int i = 0; i < ranking.size(); i++) {
             if (ranking.get(i).getHandPoints() == bestPoints) {
-                System.out.println(ranking.get(i).getName() + " con " + ranking.get(i).getCurrent());
+                winners.add(ranking.get(i));
             }
+        }
+        System.out.println("Vincitori:");
+        for (int i = 0; i < winners.size(); i++) {
+            System.out.println(winners.get(i).getName() + " con " + winners.get(i).getCurrent());
+            //Metodo da invocare che consegna fiches vinte dai vincitori es. winners.get(i).obtainFiches(stake/winners.size());
         }
     }
 
@@ -162,17 +169,17 @@ public class Board {
      */
     public boolean addPlayer(Player player) {
         boolean presence = false;
-        for (Player giocatore : ranking) {
+        for (Player giocatore : giocatori) {
             if (giocatore.getName().equals(player.getName())) {
                 presence = true;
             }
         }
         if (presence == false) {
-            ranking.add(player);
+            giocatori.add(player);
         } else {
             throw new InvalidPlayerNameException("Nome già utilizzato!");
         }
-        return ranking.contains(player);
+        return giocatori.contains(player);
     }
 
     /**
@@ -181,7 +188,7 @@ public class Board {
      * @return la mano del giocatore
      */
     public Hand getPlayerHand(Player player) {
-        if (ranking.contains(player)) {
+        if (giocatori.contains(player)) {
             return player.getCurrent();
         }
         throw new PlayerNotFoundException("Giocatore non trovato!");
@@ -192,7 +199,7 @@ public class Board {
      * @param player il giocatore
      */
     public void evaluatePlayer(Player player) {
-        if (!ranking.contains(player)) {
+        if (!giocatori.contains(player)) {
             throw new PlayerNotFoundException("Giocatore non trovato!");
         }
         ArrayList<Card> toEvaluate = new ArrayList<>();
@@ -382,12 +389,12 @@ public class Board {
 
     public Board() {
         this.mazzo = new Deck();
-        this.ranking = new ArrayList<>();
+        this.giocatori = new ArrayList<>();
         this.hasPlayers = false;
         this.communityCards = new ArrayList<>();
     }
 
-    public ArrayList<Player> getRanking() {
-        return ranking;
+    public ArrayList<Player> getGiocatori() {
+        return giocatori;
     }
 }

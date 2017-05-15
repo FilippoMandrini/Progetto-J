@@ -16,7 +16,7 @@ public class Turni {
 
     private void primoTurno(){
         b1.preflop();
-        for(Player player : b1.getRanking()){
+        for(Player player : b1.getGiocatori()){
             
         }
         
