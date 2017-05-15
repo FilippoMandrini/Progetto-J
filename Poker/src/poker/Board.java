@@ -6,7 +6,10 @@ import exceptions.PlayerNotFoundException;
 import handtypes.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 /**
  *  Classe che rappresenta il banco
@@ -71,10 +74,18 @@ public class Board {
 
     /**
      * Distribuisce le due carte personali di tutti i giocatori
+     * e imposta lo stake iniziale a 2000 
      */
     public void preflop() {
         for (Player player : ranking) {
+            player.setStake(2000);
             dealCards(player);
+            ranking.get(0).setBottone(true);
+            ranking.get(1).setSmallblind(true);
+            ranking.get(2).setBigblind(true);
+            betBlinds();
+            
+            
         }
     }
 
@@ -108,6 +119,18 @@ public class Board {
         communityCards.add(mazzo.getCard());
         return true;
     }
+    
+    public void betBlinds() {
+        for(Player player : ranking) {
+            if(player.getSmallblind()) {
+                player.setStake(player.getStake() - 10);
+            }
+            if(player.getBigblind()) {
+                player.setStake(player.getStake() - 20);
+            }
+        }
+    }
+    
         
     /**
      * Stampa la lista dei vincitori
@@ -362,5 +385,9 @@ public class Board {
         this.ranking = new ArrayList<>();
         this.hasPlayers = false;
         this.communityCards = new ArrayList<>();
+    }
+
+    public ArrayList<Player> getRanking() {
+        return ranking;
     }
 }

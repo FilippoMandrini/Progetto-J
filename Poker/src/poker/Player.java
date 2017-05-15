@@ -10,10 +10,14 @@ public abstract class Player implements Comparable {
     private int stake;
     private ArrayList<Card> cards;
     private Hand current;
+    private boolean bottone;
+    private boolean smallblind;
+    private boolean bigblind;
 
     public Player(String name) {
         this.name = name;
         this.cards = new ArrayList<>();
+        this.bottone = false;
     }
 
     public String getName() {
@@ -22,6 +26,10 @@ public abstract class Player implements Comparable {
 
     public int getStake() {
         return stake;
+    }
+
+    public void setStake(int stake) {
+        this.stake = stake;
     }
     
     public boolean addCard(Card card) {
@@ -51,6 +59,32 @@ public abstract class Player implements Comparable {
     public double getHandPoints() {
         return current.getPoints();
     }
+
+    public boolean getBottone() {
+        return bottone;
+    }
+
+    public void setBottone(boolean bottone) {
+        this.bottone = bottone;
+    }
+
+    public boolean getBigblind() {
+        return bigblind;
+    }
+
+    public void setBigblind(boolean bigblind) {
+        this.bigblind = bigblind;
+    }
+
+    public boolean getSmallblind() {
+        return smallblind;
+    }
+
+    public void setSmallblind(boolean smallblind) {
+        this.smallblind = smallblind;
+    }
+    
+    
     
     @Override
     public int compareTo(Object t) {
