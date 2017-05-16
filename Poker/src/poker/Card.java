@@ -2,6 +2,9 @@ package poker;
 
 import java.util.Objects;
 
+/**
+ * Classe rappresentante la carta
+ */
 public class Card implements Comparable {
 
     private int value;
@@ -27,10 +30,20 @@ public class Card implements Comparable {
         return seed;
     }
 
+    /**
+     * Ritorna il nome del valore della carta
+     * @param value
+     * @return
+     */
     public static String getValueName(int value) {
         return valueName[value];
     }
  
+    /**
+     * Ritorna il nome del seme della carta
+     * @param seed
+     * @return
+     */
     public static String getSeedName(Seed seed) {
         return seedName[seed.getValue()];
     }
