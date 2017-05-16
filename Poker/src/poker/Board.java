@@ -78,14 +78,7 @@ public class Board {
      */
     public void preflop() {
         for (Player player : giocatori) {
-//            player.setStake(2000);
             dealCards(player);
-//            ranking.get(0).setBottone(true);
-//            ranking.get(1).setSmallblind(true);
-//            ranking.get(2).setBigblind(true);
-//            betBlinds();
-            
-            
         }
     }
 
@@ -176,6 +169,7 @@ public class Board {
         }
         if (presence == false) {
             giocatori.add(player);
+            player.setStake(2000);
         } else {
             throw new InvalidPlayerNameException("Nome già utilizzato!");
         }
