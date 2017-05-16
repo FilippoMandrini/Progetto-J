@@ -1,6 +1,7 @@
 package handtypes;
 
 import java.util.ArrayList;
+import java.util.List;
 import poker.Card;
 
 /**
@@ -8,7 +9,7 @@ import poker.Card;
  */
 public abstract class Hand implements Comparable {
     
-    protected ArrayList<Card> cards;
+    protected List<Card> cards;
     
     /**
      * Calcola il punteggio della singola mano 
@@ -16,7 +17,7 @@ public abstract class Hand implements Comparable {
      */
     public abstract double getPoints();
 
-    public Hand(ArrayList<Card> cards) {
+    public Hand(List<Card> cards) {
         this.cards = new ArrayList<>();
         for (Card carta : cards)
         {
@@ -30,7 +31,7 @@ public abstract class Hand implements Comparable {
         return (int)(1000000 * (other.getPoints() - this.getPoints()));
     }
 
-    public ArrayList<Card> getCards() {
+    public List<Card> getCards() {
         return cards;
     }
     

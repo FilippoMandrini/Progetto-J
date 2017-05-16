@@ -2,6 +2,7 @@ package handtypes;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import poker.Card;
 
 /**
@@ -10,7 +11,7 @@ import poker.Card;
  */
 public class CartaAlta extends Hand{
 
-    public CartaAlta(ArrayList<Card> cards) {
+    public CartaAlta(List<Card> cards) {
         super(cards);
         Collections.sort(cards);
     }

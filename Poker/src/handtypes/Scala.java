@@ -1,6 +1,6 @@
 package handtypes;
 
-import java.util.ArrayList;
+import java.util.List;
 import poker.Card;
 
 /**
@@ -9,7 +9,7 @@ import poker.Card;
  */
 public class Scala extends Hand {
 
-    public Scala(ArrayList<Card> cards) {
+    public Scala(List<Card> cards) {
         super(cards);
     }
 

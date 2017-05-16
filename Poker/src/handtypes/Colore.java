@@ -1,7 +1,7 @@
 package handtypes;
 
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import poker.Card;
 
 /**
@@ -10,7 +10,7 @@ import poker.Card;
  */
 public class Colore extends Hand{
      
-    public Colore(ArrayList<Card> cards) {
+    public Colore(List<Card> cards) {
         super(cards);
         Collections.sort(this.cards);
     }

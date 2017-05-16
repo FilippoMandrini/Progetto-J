@@ -1,6 +1,6 @@
 package handtypes;
 
-import java.util.ArrayList;
+import java.util.List;
 import poker.Card;
 
 /**
@@ -13,7 +13,7 @@ public class Tris extends Hand {
     private Card firstKicker;
     private Card secondKicker;
 
-    public Tris(ArrayList<Card> cards) {
+    public Tris(List<Card> cards) {
         super(cards);
         this.three = this.cards.get(0);
         this.firstKicker = this.cards.get(3);

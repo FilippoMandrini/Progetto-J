@@ -1,6 +1,6 @@
 package handtypes;
 
-import java.util.ArrayList;
+import java.util.List;
 import poker.Card;
 
 /**
@@ -12,7 +12,7 @@ public class Full extends Hand{
     private Card three;
     private Card pair;
 
-    public Full(ArrayList<Card> cards) {
+    public Full(List<Card> cards) {
         super(cards);
         this.three = this.cards.get(0);
         this.pair = this.cards.get(3);

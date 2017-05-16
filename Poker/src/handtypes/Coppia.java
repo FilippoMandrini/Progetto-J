@@ -1,6 +1,6 @@
 package handtypes;
 
-import java.util.ArrayList;
+import java.util.List;
 import poker.Card;
 
 /**
@@ -14,7 +14,7 @@ public class Coppia extends Hand {
     private Card secondKicker;
     private Card thirdKicker;
 
-    public Coppia(ArrayList<Card> cards) {
+    public Coppia(List<Card> cards) {
         super(cards);
         this.pair = this.cards.get(0);
         this.secondKicker = this.cards.get(3);

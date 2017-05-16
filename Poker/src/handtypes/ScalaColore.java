@@ -1,6 +1,6 @@
 package handtypes;
 
-import java.util.ArrayList;
+import java.util.List;
 import poker.Card;
 
 /**
@@ -11,7 +11,7 @@ public class ScalaColore extends Hand {
     
     private Card high;
     
-    public ScalaColore(ArrayList<Card> cards) {
+    public ScalaColore(List<Card> cards) {
         super(cards);
         this.high = this.cards.get(0);
     }

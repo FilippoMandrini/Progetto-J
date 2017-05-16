@@ -9,11 +9,13 @@ public abstract class Player implements Comparable {
     private String name;
     private int stake;
     private ArrayList<Card> cards;
-    private Hand current;
+    private Hand currentHand;
+    private boolean active;
 
     public Player(String name) {
         this.name = name;
         this.cards = new ArrayList<>();
+        this.active = true;
     }
 
     public String getName() {
@@ -33,10 +35,11 @@ public abstract class Player implements Comparable {
         return this.cards.contains(card);
     }
     
-    public boolean clearCards() {
+    public boolean reset() {
         if (!this.cards.isEmpty())
             return false;
         this.cards.clear();
+        this.active = true;
         return true;
     }
     
@@ -45,16 +48,47 @@ public abstract class Player implements Comparable {
     }
 
     public Hand getCurrent() {
-        return current;
+        return currentHand;
     }
 
     public void setCurrent(Hand current) {
-        this.current = current;
+        this.currentHand = current;
     }
     
     public double getHandPoints() {
-        return current.getPoints();
+        return currentHand.getPoints();
     }    
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+    
+    public int fold()
+    {
+        this.active = false;
+        return 0;
+    }
+    
+    public int call(int amount)
+    {
+        this.stake-=amount;
+        return amount;
+    }
+    
+    public int check()
+    {
+        return 0;
+    }
+    
+    public int raise(int amount)
+    {
+        this.stake-=amount;
+        return amount;
+    }
     
     @Override
     public int compareTo(Object t) {
@@ -70,4 +104,5 @@ public abstract class Player implements Comparable {
         return 0;
     }
     
+     
 }

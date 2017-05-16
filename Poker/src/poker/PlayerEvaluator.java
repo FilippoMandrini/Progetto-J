@@ -6,7 +6,6 @@
 package poker;
 
 import exceptions.NotEnoughCardsException;
-import exceptions.PlayerNotFoundException;
 import handtypes.CartaAlta;
 import handtypes.Colore;
 import handtypes.Coppia;
@@ -31,10 +30,11 @@ public class PlayerEvaluator {
     /**
      * Valuta la miglior mano del giocatore
      * @param player il giocatore
+     * @param communityCards carte comuni
      */
     public Hand evaluate(Player player, List<Card> communityCards) {
 
-        ArrayList<Card> toEvaluate = new ArrayList<>();
+        List<Card> toEvaluate = new ArrayList<>();
         toEvaluate.addAll(player.getPlayerCards());
         toEvaluate.addAll(communityCards);
         return evaluateFull(toEvaluate);
@@ -48,11 +48,11 @@ public class PlayerEvaluator {
      * @throws NotEnoughCardsException
      */
     @SuppressWarnings("empty-statement")
-    public Hand evaluateFull(ArrayList<Card> cards) throws NotEnoughCardsException {
+    public Hand evaluateFull(List<Card> cards) throws NotEnoughCardsException {
         if (cards.size() != 7) {
             throw new NotEnoughCardsException("Carte in numero errato");
         }
-        ArrayList<Hand> results = new ArrayList<>();
+        List<Hand> results = new ArrayList<>();
         int k = 5;
         int indices[] = new int[k];
         if (k <= cards.size()) {
@@ -84,8 +84,8 @@ public class PlayerEvaluator {
     * @param subset indici delle carte di cui fare un sottogruppo di cinque carte
     * @return le cinque carte associate agli indici
     */
-    private ArrayList<Card> getSubset(List<Card> input, int[] subset) {
-        ArrayList<Card> toHand = new ArrayList(subset.length);
+    private List<Card> getSubset(List<Card> input, int[] subset) {
+        List<Card> toHand = new ArrayList(subset.length);
         toHand.clear();
         for (int i = 0; i < subset.length; i++) {
             toHand.add(input.get(subset[i]));
@@ -100,12 +100,12 @@ public class PlayerEvaluator {
      * @return il punteggio per questo specifico gruppo di carte
      * @throws NotEnoughCardsException
      */
-    public Hand evaluateSingle(ArrayList<Card> cards) throws NotEnoughCardsException {
+    public Hand evaluateSingle(List<Card> cards) throws NotEnoughCardsException {
         if (cards.size() != 5) {
             throw new NotEnoughCardsException("Carte in numero errato");
         }
         Collections.sort(cards);
-        ArrayList<Card> sortedCards = new ArrayList<>();
+        List<Card> sortedCards = new ArrayList<>();
         int secondMaxIndex = 0;
         int maxIndex = 0;
         int max = 0;
@@ -183,7 +183,7 @@ public class PlayerEvaluator {
     * @param cards le carte della mano
     * @return una variabile booleana che indica se la mano costituisce un "Colore"
     */
-    private boolean checkColore(ArrayList<Card> cards) {
+    private boolean checkColore(List<Card> cards) {
         int[] seedCounter = new int[4];
         for (Card carta : cards) {
             seedCounter[carta.getSeed().getValue()]++;
@@ -201,7 +201,7 @@ public class PlayerEvaluator {
     * @param cards le carte della mano
     * @return una variabile booleana che indica se la mano costituisce una "Scala"
     */
-    private boolean checkScala(ArrayList<Card> cards) {
+    private boolean checkScala(List<Card> cards) {
         boolean spy = true;
         for (int i = 0; i < cards.size() - 1; i++) {
             if (cards.get(i).getValue() - cards.get(i + 1).getValue() != 1) {

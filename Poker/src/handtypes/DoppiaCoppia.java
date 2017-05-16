@@ -1,6 +1,6 @@
 package handtypes;
 
-import java.util.ArrayList;
+import java.util.List;
 import poker.Card;
 
 /**
@@ -13,7 +13,7 @@ public class DoppiaCoppia extends Hand{
     private Card secondPair;
     private Card firstKicker;
 
-    public DoppiaCoppia(ArrayList<Card> cards) {
+    public DoppiaCoppia(List<Card> cards) {
         super(cards);
         this.firstPair = this.cards.get(0);
         this.secondPair = this.cards.get(2);
