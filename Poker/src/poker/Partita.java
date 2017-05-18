@@ -23,6 +23,8 @@ public class Partita {
     private StakeManager gestorePuntate;
     private PlayerEvaluator gestoreClassifica;
     private int stakeAmount;
+    private int pot;
+    private int currentBet;
 
     public Partita(List<Player> giocatori) {
         this.giocatori = giocatori;

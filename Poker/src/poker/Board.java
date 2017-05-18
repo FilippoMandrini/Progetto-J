@@ -11,6 +11,11 @@ public class Board {
 
     private Deck mazzo;
     private List<Card> communityCards;
+    private Player dealer;
+    private Player lastBetter;
+
+    
+    
 
     
     public Board() {
