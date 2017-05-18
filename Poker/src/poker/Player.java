@@ -11,6 +11,7 @@ public abstract class Player implements Comparable {
     private ArrayList<Card> cards;
     private Hand currentHand;
     private boolean active;
+    private int bet;
 
     public Player(String name) {
         this.name = name;
@@ -28,6 +29,10 @@ public abstract class Player implements Comparable {
 
     public void setStake(int stake) {
         this.stake = stake;
+    }
+
+    public void setBet(int bet) {
+        this.bet += bet;
     }
     
     public boolean addCard(Card card) {
