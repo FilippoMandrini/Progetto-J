@@ -1,31 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poker;
 
 import exceptions.NotEnoughCardsException;
-import handtypes.CartaAlta;
-import handtypes.Colore;
-import handtypes.Coppia;
-import handtypes.DoppiaCoppia;
-import handtypes.Full;
-import handtypes.Hand;
-import handtypes.PokerHand;
-import handtypes.Scala;
-import handtypes.ScalaColore;
-import handtypes.Tris;
+import handtypes.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 /**
- *
- * @author Nickelsilver
+ * Classe per la valutazione delle mani
  */
 public class PlayerEvaluator {
-    
 
     /**
      * Valuta la miglior mano del giocatore
@@ -33,7 +17,6 @@ public class PlayerEvaluator {
      * @param communityCards carte comuni
      */
     public Hand evaluate(Player player, List<Card> communityCards) {
-
         List<Card> toEvaluate = new ArrayList<>();
         toEvaluate.addAll(player.getPlayerCards());
         toEvaluate.addAll(communityCards);
@@ -62,7 +45,6 @@ public class PlayerEvaluator {
             results.add(evaluateSingle(getSubset(cards, indices)));
             while (true) {
                 int i;
-                // find position of item that can be incremented
                 for (i = k - 1; i >= 0 && indices[i] == cards.size() - k + i; i--);
                 if (i < 0) {
                     break;

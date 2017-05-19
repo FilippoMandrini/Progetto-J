@@ -6,12 +6,12 @@
 package gui;
 
 /**
- *
+ * GUI per la partita di Poker
  */
 public class InterfacciaPoker extends javax.swing.JFrame {
 
     /**
-     * Creates new form NewJFrame
+     * Creates new form InterfacciaPoker
      */
     public InterfacciaPoker() {
         initComponents();
@@ -26,541 +26,683 @@ public class InterfacciaPoker extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BoardPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        CartaB1 = new javax.swing.JLabel();
-        CartaB3 = new javax.swing.JLabel();
-        CartaB2 = new javax.swing.JLabel();
-        CartaB4 = new javax.swing.JLabel();
-        CartaB5 = new javax.swing.JLabel();
-        PlayerPanel = new javax.swing.JPanel();
-        PannelloPulsanti = new javax.swing.JPanel();
-        Check_Call = new javax.swing.JButton();
-        Raise = new javax.swing.JButton();
-        Fold = new javax.swing.JButton();
-        Carta2 = new javax.swing.JLabel();
-        Carta1 = new javax.swing.JLabel();
-        NomeGiocatore = new javax.swing.JLabel();
-        StakeGiocatore = new javax.swing.JLabel();
-        PuntataPanel = new javax.swing.JLabel();
-        PlayerPanel2 = new javax.swing.JPanel();
-        Carta2_2 = new javax.swing.JLabel();
-        Carta2_1 = new javax.swing.JLabel();
-        NomeGiocatore2 = new javax.swing.JLabel();
-        StakeGiocatore2 = new javax.swing.JLabel();
-        PuntataPanel2 = new javax.swing.JLabel();
-        PlayerPanel4 = new javax.swing.JPanel();
-        Carta1_3 = new javax.swing.JLabel();
-        Carta1_4 = new javax.swing.JLabel();
-        NomeGiocatore3 = new javax.swing.JLabel();
-        StakeGiocatore3 = new javax.swing.JLabel();
-        PuntataPanel3 = new javax.swing.JLabel();
-        PlayerPanel5 = new javax.swing.JPanel();
-        Carta1_5 = new javax.swing.JLabel();
-        Carta1_6 = new javax.swing.JLabel();
-        NomeGiocatore4 = new javax.swing.JLabel();
-        StakeGiocatore4 = new javax.swing.JLabel();
-        PuntataPanel4 = new javax.swing.JLabel();
-        PlayerPanel6 = new javax.swing.JPanel();
-        Carta1_7 = new javax.swing.JLabel();
-        Carta1_8 = new javax.swing.JLabel();
-        NomeGiocatore5 = new javax.swing.JLabel();
-        StakeGiocatore5 = new javax.swing.JLabel();
-        PuntataPanel5 = new javax.swing.JLabel();
+        sfondoFrame = new javax.swing.JPanel();
+        boardPanel = new javax.swing.JPanel();
+        cartaBoard1 = new javax.swing.JLabel();
+        cartaBoard4 = new javax.swing.JLabel();
+        cartaBoard2 = new javax.swing.JLabel();
+        cartaBoard5 = new javax.swing.JLabel();
+        cartaBoard3 = new javax.swing.JLabel();
+        potLabel = new javax.swing.JLabel();
+        turnoLabel = new javax.swing.JLabel();
+        playerPanel = new javax.swing.JPanel();
+        pannelloPulsanti = new javax.swing.JPanel();
+        callButton = new javax.swing.JButton();
+        raiseButton = new javax.swing.JButton();
+        foldButton = new javax.swing.JButton();
+        carta2Player = new javax.swing.JLabel();
+        nomePlayer = new javax.swing.JLabel();
+        stakePlayer = new javax.swing.JLabel();
+        azionePlayer = new javax.swing.JLabel();
+        carta1Player = new javax.swing.JLabel();
+        dealerPlayer = new javax.swing.JLabel();
+        pannelloRaise = new javax.swing.JPanel();
+        okButton = new javax.swing.JButton();
+        raiseSpinner = new javax.swing.JSpinner();
+        player1Panel = new javax.swing.JPanel();
+        carta2Player1 = new javax.swing.JLabel();
+        nomePlayer1 = new javax.swing.JLabel();
+        stakePlayer1 = new javax.swing.JLabel();
+        azionePlayer1 = new javax.swing.JLabel();
+        carta1Player1 = new javax.swing.JLabel();
+        dealerPlayer1 = new javax.swing.JLabel();
+        player2Panel = new javax.swing.JPanel();
+        carta2Player2 = new javax.swing.JLabel();
+        nomePlayer2 = new javax.swing.JLabel();
+        stakePlayer2 = new javax.swing.JLabel();
+        azionePlayer2 = new javax.swing.JLabel();
+        carta1Player2 = new javax.swing.JLabel();
+        dealerPlayer2 = new javax.swing.JLabel();
+        player3Panel = new javax.swing.JPanel();
+        carta2Player3 = new javax.swing.JLabel();
+        nomePlayer3 = new javax.swing.JLabel();
+        stakePlayer3 = new javax.swing.JLabel();
+        azionePlayer3 = new javax.swing.JLabel();
+        carta1Player3 = new javax.swing.JLabel();
+        dealerPlayer3 = new javax.swing.JLabel();
+        player4Panel = new javax.swing.JPanel();
+        carta2Player4 = new javax.swing.JLabel();
+        nomePlayer4 = new javax.swing.JLabel();
+        stakePlayer4 = new javax.swing.JLabel();
+        azionePlayer4 = new javax.swing.JLabel();
+        carta1Player4 = new javax.swing.JLabel();
+        dealerPlayer4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Poker");
+        setAutoRequestFocus(false);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setPreferredSize(new java.awt.Dimension(1200, 700));
+        setResizable(false);
 
-        BoardPanel.setBackground(new java.awt.Color(14, 133, 70));
+        sfondoFrame.setBackground(new java.awt.Color(0, 102, 51));
+        sfondoFrame.setPreferredSize(new java.awt.Dimension(1200, 700));
 
-        jLabel1.setText("BANCO");
+        boardPanel.setBackground(new java.awt.Color(0, 102, 51));
+        boardPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 0), 3));
 
-        CartaB1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CartaB1.setText("CartaBanco1");
+        cartaBoard1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartaBoard1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        CartaB3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CartaB3.setText("CartaBanco3");
+        cartaBoard4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartaBoard4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        CartaB2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CartaB2.setText("Cartabanco2");
+        cartaBoard2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartaBoard2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        CartaB4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CartaB4.setText("CartaBanco4");
+        cartaBoard5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartaBoard5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        CartaB5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CartaB5.setText("CartaBanco5");
+        cartaBoard3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartaBoard3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        javax.swing.GroupLayout BoardPanelLayout = new javax.swing.GroupLayout(BoardPanel);
-        BoardPanel.setLayout(BoardPanelLayout);
-        BoardPanelLayout.setHorizontalGroup(
-            BoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BoardPanelLayout.createSequentialGroup()
-                .addGroup(BoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BoardPanelLayout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addComponent(jLabel1))
-                    .addGroup(BoardPanelLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(CartaB1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+        potLabel.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        potLabel.setForeground(new java.awt.Color(177, 177, 4));
+        potLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        potLabel.setText("Pot");
+        potLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
+
+        turnoLabel.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        turnoLabel.setForeground(new java.awt.Color(177, 177, 4));
+        turnoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        turnoLabel.setText("Turno");
+        turnoLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
+        turnoLabel.setMaximumSize(new java.awt.Dimension(26, 20));
+        turnoLabel.setMinimumSize(new java.awt.Dimension(26, 20));
+        turnoLabel.setPreferredSize(new java.awt.Dimension(26, 20));
+
+        javax.swing.GroupLayout boardPanelLayout = new javax.swing.GroupLayout(boardPanel);
+        boardPanel.setLayout(boardPanelLayout);
+        boardPanelLayout.setHorizontalGroup(
+            boardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(boardPanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(boardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(boardPanelLayout.createSequentialGroup()
+                        .addComponent(cartaBoard1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(CartaB2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cartaBoard2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(CartaB3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cartaBoard3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(CartaB4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cartaBoard4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(CartaB5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cartaBoard5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(boardPanelLayout.createSequentialGroup()
+                        .addComponent(turnoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(potLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
-        BoardPanelLayout.setVerticalGroup(
-            BoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BoardPanelLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BoardPanelLayout.createSequentialGroup()
-                .addContainerGap(66, Short.MAX_VALUE)
-                .addGroup(BoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(BoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(CartaB5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(CartaB4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(CartaB3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(BoardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(CartaB1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(CartaB2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+        boardPanelLayout.setVerticalGroup(
+            boardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, boardPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(boardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(turnoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                    .addComponent(potLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(boardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cartaBoard3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cartaBoard5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cartaBoard4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cartaBoard2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cartaBoard1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10))
         );
 
-        PlayerPanel.setBackground(new java.awt.Color(14, 133, 70));
+        playerPanel.setBackground(new java.awt.Color(0, 102, 51));
+        playerPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 0), 3));
 
-        PannelloPulsanti.setBackground(new java.awt.Color(14, 133, 70));
+        pannelloPulsanti.setBackground(new java.awt.Color(0, 102, 51));
 
-        Check_Call.setText("Check/Call");
-
-        Raise.setText("Raise");
-
-        Fold.setText("Fold");
-        Fold.addActionListener(new java.awt.event.ActionListener() {
+        callButton.setBackground(new java.awt.Color(204, 255, 255));
+        callButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        callButton.setText("Call");
+        callButton.setPreferredSize(new java.awt.Dimension(70, 20));
+        callButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FoldActionPerformed(evt);
+                callButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout PannelloPulsantiLayout = new javax.swing.GroupLayout(PannelloPulsanti);
-        PannelloPulsanti.setLayout(PannelloPulsantiLayout);
-        PannelloPulsantiLayout.setHorizontalGroup(
-            PannelloPulsantiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PannelloPulsantiLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Check_Call)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Raise)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Fold)
-                .addGap(34, 34, 34))
-        );
-        PannelloPulsantiLayout.setVerticalGroup(
-            PannelloPulsantiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PannelloPulsantiLayout.createSequentialGroup()
+        raiseButton.setBackground(new java.awt.Color(204, 255, 255));
+        raiseButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        raiseButton.setText("Raise");
+        raiseButton.setPreferredSize(new java.awt.Dimension(70, 20));
+
+        foldButton.setBackground(new java.awt.Color(204, 255, 255));
+        foldButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        foldButton.setText("Fold");
+        foldButton.setPreferredSize(new java.awt.Dimension(70, 20));
+        foldButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                foldButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pannelloPulsantiLayout = new javax.swing.GroupLayout(pannelloPulsanti);
+        pannelloPulsanti.setLayout(pannelloPulsantiLayout);
+        pannelloPulsantiLayout.setHorizontalGroup(
+            pannelloPulsantiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pannelloPulsantiLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PannelloPulsantiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Check_Call)
-                    .addComponent(Raise)
-                    .addComponent(Fold)))
-        );
-
-        Carta2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Carta2.setText("SpazioCarta2");
-
-        Carta1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Carta1.setText("SpazioCarta1");
-
-        NomeGiocatore.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
-        NomeGiocatore.setForeground(new java.awt.Color(151, 161, 24));
-        NomeGiocatore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NomeGiocatore.setText("NomeGiocatore");
-
-        StakeGiocatore.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        StakeGiocatore.setForeground(new java.awt.Color(151, 161, 24));
-        StakeGiocatore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        StakeGiocatore.setText("Stake attuale");
-
-        PuntataPanel.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        PuntataPanel.setForeground(new java.awt.Color(151, 161, 24));
-        PuntataPanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        PuntataPanel.setText("Scelta/puntata");
-
-        javax.swing.GroupLayout PlayerPanelLayout = new javax.swing.GroupLayout(PlayerPanel);
-        PlayerPanel.setLayout(PlayerPanelLayout);
-        PlayerPanelLayout.setHorizontalGroup(
-            PlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PlayerPanelLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(PlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(StakeGiocatore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(NomeGiocatore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PlayerPanelLayout.createSequentialGroup()
-                        .addGroup(PlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PannelloPulsanti, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PlayerPanelLayout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(Carta1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Carta2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 22, Short.MAX_VALUE))
-                    .addComponent(PuntataPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(callButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(raiseButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(foldButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        PlayerPanelLayout.setVerticalGroup(
-            PlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PlayerPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(NomeGiocatore, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(StakeGiocatore)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PuntataPanel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PlayerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Carta1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Carta2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PannelloPulsanti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+        pannelloPulsantiLayout.setVerticalGroup(
+            pannelloPulsantiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pannelloPulsantiLayout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addGroup(pannelloPulsantiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(raiseButton, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                    .addComponent(callButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(foldButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
-        PlayerPanel2.setBackground(new java.awt.Color(14, 133, 70));
+        carta2Player.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta2Player.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        Carta2_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Carta2_2.setText("SpazioCarta2");
+        nomePlayer.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        nomePlayer.setForeground(new java.awt.Color(177, 177, 4));
+        nomePlayer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nomePlayer.setText("NomeGiocatore");
+        nomePlayer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
 
-        Carta2_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Carta2_1.setText("SpazioCarta1");
+        stakePlayer.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        stakePlayer.setForeground(new java.awt.Color(177, 177, 4));
+        stakePlayer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        stakePlayer.setText("Stake");
+        stakePlayer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
 
-        NomeGiocatore2.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
-        NomeGiocatore2.setForeground(new java.awt.Color(151, 161, 24));
-        NomeGiocatore2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NomeGiocatore2.setText("NomeGiocatore");
+        azionePlayer.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        azionePlayer.setForeground(new java.awt.Color(177, 177, 4));
+        azionePlayer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        azionePlayer.setText("Azione");
+        azionePlayer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
 
-        StakeGiocatore2.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        StakeGiocatore2.setForeground(new java.awt.Color(151, 161, 24));
-        StakeGiocatore2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        StakeGiocatore2.setText("Stake attuale");
+        carta1Player.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta1Player.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
-        PuntataPanel2.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        PuntataPanel2.setForeground(new java.awt.Color(151, 161, 24));
-        PuntataPanel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        PuntataPanel2.setText("Scelta/puntata");
+        dealerPlayer.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        dealerPlayer.setForeground(new java.awt.Color(102, 0, 0));
+        dealerPlayer.setText("D");
+        dealerPlayer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 0)));
 
-        javax.swing.GroupLayout PlayerPanel2Layout = new javax.swing.GroupLayout(PlayerPanel2);
-        PlayerPanel2.setLayout(PlayerPanel2Layout);
-        PlayerPanel2Layout.setHorizontalGroup(
-            PlayerPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PlayerPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(PlayerPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(StakeGiocatore2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(NomeGiocatore2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PlayerPanel2Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(Carta2_1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Carta2_2, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 32, Short.MAX_VALUE))
-                    .addComponent(PuntataPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        pannelloRaise.setBackground(new java.awt.Color(0, 102, 51));
+
+        okButton.setBackground(new java.awt.Color(204, 255, 255));
+        okButton.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        okButton.setText("OK");
+        okButton.setMaximumSize(new java.awt.Dimension(57, 23));
+        okButton.setMinimumSize(new java.awt.Dimension(57, 23));
+        okButton.setPreferredSize(new java.awt.Dimension(70, 20));
+
+        raiseSpinner.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        raiseSpinner.setMinimumSize(new java.awt.Dimension(73, 22));
+
+        javax.swing.GroupLayout pannelloRaiseLayout = new javax.swing.GroupLayout(pannelloRaise);
+        pannelloRaise.setLayout(pannelloRaiseLayout);
+        pannelloRaiseLayout.setHorizontalGroup(
+            pannelloRaiseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pannelloRaiseLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(raiseSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
+        );
+        pannelloRaiseLayout.setVerticalGroup(
+            pannelloRaiseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pannelloRaiseLayout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(pannelloRaiseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(okButton, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                    .addComponent(raiseSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        javax.swing.GroupLayout playerPanelLayout = new javax.swing.GroupLayout(playerPanel);
+        playerPanel.setLayout(playerPanelLayout);
+        playerPanelLayout.setHorizontalGroup(
+            playerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(azionePlayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(nomePlayer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(playerPanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(carta1Player, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(carta2Player, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dealerPlayer)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(pannelloPulsanti, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(stakePlayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pannelloRaise, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        playerPanelLayout.setVerticalGroup(
+            playerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(playerPanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(nomePlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(stakePlayer)
+                .addGap(4, 4, 4)
+                .addComponent(azionePlayer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(playerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(carta1Player, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carta2Player, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dealerPlayer))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pannelloPulsanti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(pannelloRaise, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2))
+        );
+
+        player1Panel.setBackground(new java.awt.Color(0, 102, 51));
+        player1Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 0), 3));
+
+        carta2Player1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta2Player1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        nomePlayer1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        nomePlayer1.setForeground(new java.awt.Color(177, 177, 4));
+        nomePlayer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nomePlayer1.setText("NomeGiocatore1");
+        nomePlayer1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
+
+        stakePlayer1.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        stakePlayer1.setForeground(new java.awt.Color(177, 177, 4));
+        stakePlayer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        stakePlayer1.setText("Stake");
+        stakePlayer1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
+
+        azionePlayer1.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        azionePlayer1.setForeground(new java.awt.Color(177, 177, 4));
+        azionePlayer1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        azionePlayer1.setText("Azione");
+        azionePlayer1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
+
+        carta1Player1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta1Player1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        dealerPlayer1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        dealerPlayer1.setForeground(new java.awt.Color(102, 0, 0));
+        dealerPlayer1.setText("D");
+        dealerPlayer1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 0)));
+
+        javax.swing.GroupLayout player1PanelLayout = new javax.swing.GroupLayout(player1Panel);
+        player1Panel.setLayout(player1PanelLayout);
+        player1PanelLayout.setHorizontalGroup(
+            player1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(azionePlayer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(nomePlayer1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(player1PanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(carta1Player1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(carta2Player1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dealerPlayer1)
+                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(stakePlayer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        player1PanelLayout.setVerticalGroup(
+            player1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(player1PanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(nomePlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(stakePlayer1)
+                .addGap(4, 4, 4)
+                .addComponent(azionePlayer1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(player1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(carta1Player1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carta2Player1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dealerPlayer1))
                 .addContainerGap())
         );
-        PlayerPanel2Layout.setVerticalGroup(
-            PlayerPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PlayerPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(NomeGiocatore2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+
+        player2Panel.setBackground(new java.awt.Color(0, 102, 51));
+        player2Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 0), 3));
+
+        carta2Player2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta2Player2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        nomePlayer2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        nomePlayer2.setForeground(new java.awt.Color(177, 177, 4));
+        nomePlayer2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nomePlayer2.setText("NomeGiocatore2");
+        nomePlayer2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
+
+        stakePlayer2.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        stakePlayer2.setForeground(new java.awt.Color(177, 177, 4));
+        stakePlayer2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        stakePlayer2.setText("Stake");
+        stakePlayer2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
+
+        azionePlayer2.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        azionePlayer2.setForeground(new java.awt.Color(177, 177, 4));
+        azionePlayer2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        azionePlayer2.setText("Azione");
+        azionePlayer2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
+
+        carta1Player2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta1Player2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        dealerPlayer2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        dealerPlayer2.setForeground(new java.awt.Color(102, 0, 0));
+        dealerPlayer2.setText("D");
+        dealerPlayer2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 0)));
+
+        javax.swing.GroupLayout player2PanelLayout = new javax.swing.GroupLayout(player2Panel);
+        player2Panel.setLayout(player2PanelLayout);
+        player2PanelLayout.setHorizontalGroup(
+            player2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(azionePlayer2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(nomePlayer2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(player2PanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(carta1Player2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(carta2Player2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(StakeGiocatore2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PuntataPanel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PlayerPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Carta2_1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Carta2_2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70))
+                .addComponent(dealerPlayer2)
+                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(stakePlayer2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        PlayerPanel4.setBackground(new java.awt.Color(14, 133, 70));
-
-        Carta1_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Carta1_3.setText("SpazioCarta2");
-
-        Carta1_4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Carta1_4.setText("SpazioCarta1");
-
-        NomeGiocatore3.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
-        NomeGiocatore3.setForeground(new java.awt.Color(151, 161, 24));
-        NomeGiocatore3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NomeGiocatore3.setText("NomeGiocatore");
-
-        StakeGiocatore3.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        StakeGiocatore3.setForeground(new java.awt.Color(151, 161, 24));
-        StakeGiocatore3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        StakeGiocatore3.setText("Stake attuale");
-
-        PuntataPanel3.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        PuntataPanel3.setForeground(new java.awt.Color(151, 161, 24));
-        PuntataPanel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        PuntataPanel3.setText("Scelta/puntata");
-
-        javax.swing.GroupLayout PlayerPanel4Layout = new javax.swing.GroupLayout(PlayerPanel4);
-        PlayerPanel4.setLayout(PlayerPanel4Layout);
-        PlayerPanel4Layout.setHorizontalGroup(
-            PlayerPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PlayerPanel4Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(PlayerPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(StakeGiocatore3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(NomeGiocatore3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PlayerPanel4Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(Carta1_4, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Carta1_3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 32, Short.MAX_VALUE))
-                    .addComponent(PuntataPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        player2PanelLayout.setVerticalGroup(
+            player2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(player2PanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(nomePlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(stakePlayer2)
+                .addGap(4, 4, 4)
+                .addComponent(azionePlayer2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(player2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(carta1Player2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carta2Player2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dealerPlayer2))
                 .addContainerGap())
         );
-        PlayerPanel4Layout.setVerticalGroup(
-            PlayerPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PlayerPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(NomeGiocatore3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+
+        player3Panel.setBackground(new java.awt.Color(0, 102, 51));
+        player3Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 0), 3));
+
+        carta2Player3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta2Player3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        nomePlayer3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        nomePlayer3.setForeground(new java.awt.Color(177, 177, 4));
+        nomePlayer3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nomePlayer3.setText("NomeGiocatore3");
+        nomePlayer3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
+
+        stakePlayer3.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        stakePlayer3.setForeground(new java.awt.Color(177, 177, 4));
+        stakePlayer3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        stakePlayer3.setText("Stake");
+        stakePlayer3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
+
+        azionePlayer3.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        azionePlayer3.setForeground(new java.awt.Color(177, 177, 4));
+        azionePlayer3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        azionePlayer3.setText("Azione");
+        azionePlayer3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
+
+        carta1Player3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta1Player3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        dealerPlayer3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        dealerPlayer3.setForeground(new java.awt.Color(102, 0, 0));
+        dealerPlayer3.setText("D");
+        dealerPlayer3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 0)));
+
+        javax.swing.GroupLayout player3PanelLayout = new javax.swing.GroupLayout(player3Panel);
+        player3Panel.setLayout(player3PanelLayout);
+        player3PanelLayout.setHorizontalGroup(
+            player3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(azionePlayer3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(nomePlayer3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(player3PanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(carta1Player3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(carta2Player3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(StakeGiocatore3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PuntataPanel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PlayerPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Carta1_4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Carta1_3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70))
+                .addComponent(dealerPlayer3)
+                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(stakePlayer3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        PlayerPanel5.setBackground(new java.awt.Color(14, 133, 70));
-
-        Carta1_5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Carta1_5.setText("SpazioCarta2");
-
-        Carta1_6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Carta1_6.setText("SpazioCarta1");
-
-        NomeGiocatore4.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
-        NomeGiocatore4.setForeground(new java.awt.Color(151, 161, 24));
-        NomeGiocatore4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NomeGiocatore4.setText("NomeGiocatore");
-
-        StakeGiocatore4.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        StakeGiocatore4.setForeground(new java.awt.Color(151, 161, 24));
-        StakeGiocatore4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        StakeGiocatore4.setText("Stake attuale");
-
-        PuntataPanel4.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        PuntataPanel4.setForeground(new java.awt.Color(151, 161, 24));
-        PuntataPanel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        PuntataPanel4.setText("Scelta/puntata");
-
-        javax.swing.GroupLayout PlayerPanel5Layout = new javax.swing.GroupLayout(PlayerPanel5);
-        PlayerPanel5.setLayout(PlayerPanel5Layout);
-        PlayerPanel5Layout.setHorizontalGroup(
-            PlayerPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PlayerPanel5Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(PlayerPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(StakeGiocatore4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(NomeGiocatore4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PlayerPanel5Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(Carta1_6, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Carta1_5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 32, Short.MAX_VALUE))
-                    .addComponent(PuntataPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        player3PanelLayout.setVerticalGroup(
+            player3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(player3PanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(nomePlayer3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(stakePlayer3)
+                .addGap(4, 4, 4)
+                .addComponent(azionePlayer3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(player3PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(carta1Player3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carta2Player3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dealerPlayer3))
                 .addContainerGap())
         );
-        PlayerPanel5Layout.setVerticalGroup(
-            PlayerPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PlayerPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(NomeGiocatore4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+
+        player4Panel.setBackground(new java.awt.Color(0, 102, 51));
+        player4Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 0), 3));
+
+        carta2Player4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta2Player4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        nomePlayer4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        nomePlayer4.setForeground(new java.awt.Color(177, 177, 4));
+        nomePlayer4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nomePlayer4.setText("NomeGiocatore4");
+        nomePlayer4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
+
+        stakePlayer4.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        stakePlayer4.setForeground(new java.awt.Color(177, 177, 4));
+        stakePlayer4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        stakePlayer4.setText("Stake");
+        stakePlayer4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
+
+        azionePlayer4.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        azionePlayer4.setForeground(new java.awt.Color(177, 177, 4));
+        azionePlayer4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        azionePlayer4.setText("Azione");
+        azionePlayer4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
+
+        carta1Player4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta1Player4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+
+        dealerPlayer4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        dealerPlayer4.setForeground(new java.awt.Color(102, 0, 0));
+        dealerPlayer4.setText("D");
+        dealerPlayer4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 0)));
+
+        javax.swing.GroupLayout player4PanelLayout = new javax.swing.GroupLayout(player4Panel);
+        player4Panel.setLayout(player4PanelLayout);
+        player4PanelLayout.setHorizontalGroup(
+            player4PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(azionePlayer4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(nomePlayer4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(player4PanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(carta1Player4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(carta2Player4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(StakeGiocatore4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PuntataPanel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PlayerPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Carta1_6, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Carta1_5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70))
+                .addComponent(dealerPlayer4)
+                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(stakePlayer4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        PlayerPanel6.setBackground(new java.awt.Color(14, 133, 70));
-
-        Carta1_7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Carta1_7.setText("SpazioCarta2");
-
-        Carta1_8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Carta1_8.setText("SpazioCarta1");
-
-        NomeGiocatore5.setFont(new java.awt.Font("Ubuntu", 1, 20)); // NOI18N
-        NomeGiocatore5.setForeground(new java.awt.Color(151, 161, 24));
-        NomeGiocatore5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        NomeGiocatore5.setText("NomeGiocatore");
-
-        StakeGiocatore5.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        StakeGiocatore5.setForeground(new java.awt.Color(151, 161, 24));
-        StakeGiocatore5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        StakeGiocatore5.setText("Stake attuale");
-
-        PuntataPanel5.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
-        PuntataPanel5.setForeground(new java.awt.Color(151, 161, 24));
-        PuntataPanel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        PuntataPanel5.setText("Scelta/puntata");
-
-        javax.swing.GroupLayout PlayerPanel6Layout = new javax.swing.GroupLayout(PlayerPanel6);
-        PlayerPanel6.setLayout(PlayerPanel6Layout);
-        PlayerPanel6Layout.setHorizontalGroup(
-            PlayerPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PlayerPanel6Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(PlayerPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(StakeGiocatore5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(NomeGiocatore5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(PlayerPanel6Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(Carta1_8, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Carta1_7, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 32, Short.MAX_VALUE))
-                    .addComponent(PuntataPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        player4PanelLayout.setVerticalGroup(
+            player4PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(player4PanelLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(nomePlayer4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(stakePlayer4)
+                .addGap(4, 4, 4)
+                .addComponent(azionePlayer4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(player4PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(carta1Player4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(carta2Player4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dealerPlayer4))
                 .addContainerGap())
         );
-        PlayerPanel6Layout.setVerticalGroup(
-            PlayerPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PlayerPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(NomeGiocatore5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(StakeGiocatore5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(PuntataPanel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PlayerPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Carta1_8, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Carta1_7, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70))
+
+        javax.swing.GroupLayout sfondoFrameLayout = new javax.swing.GroupLayout(sfondoFrame);
+        sfondoFrame.setLayout(sfondoFrameLayout);
+        sfondoFrameLayout.setHorizontalGroup(
+            sfondoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sfondoFrameLayout.createSequentialGroup()
+                .addContainerGap(41, Short.MAX_VALUE)
+                .addComponent(player4Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(sfondoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sfondoFrameLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(sfondoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sfondoFrameLayout.createSequentialGroup()
+                                .addComponent(playerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(177, 177, 177))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sfondoFrameLayout.createSequentialGroup()
+                                .addComponent(boardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(41, 41, 41))))
+                    .addGroup(sfondoFrameLayout.createSequentialGroup()
+                        .addComponent(player3Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(player2Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addComponent(player1Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
+        );
+        sfondoFrameLayout.setVerticalGroup(
+            sfondoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(sfondoFrameLayout.createSequentialGroup()
+                .addGroup(sfondoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sfondoFrameLayout.createSequentialGroup()
+                        .addGroup(sfondoFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(player2Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(player3Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(boardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)
+                        .addComponent(playerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sfondoFrameLayout.createSequentialGroup()
+                        .addGap(208, 208, 208)
+                        .addComponent(player1Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(sfondoFrameLayout.createSequentialGroup()
+                        .addGap(204, 204, 204)
+                        .addComponent(player4Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(PlayerPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(PlayerPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(PlayerPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(44, 44, 44))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(BoardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(PlayerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(152, 152, 152)))
-                .addComponent(PlayerPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(sfondoFrame, javax.swing.GroupLayout.DEFAULT_SIZE, 1220, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(PlayerPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PlayerPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PlayerPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BoardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PlayerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(239, 239, 239)
-                .addComponent(PlayerPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(sfondoFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FoldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FoldActionPerformed
+    private void callButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_callButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_FoldActionPerformed
+    }//GEN-LAST:event_callButtonActionPerformed
+
+    private void foldButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foldButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_foldButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    public static void main(String args[]) {
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel BoardPanel;
-    private javax.swing.JLabel Carta1;
-    private javax.swing.JLabel Carta1_3;
-    private javax.swing.JLabel Carta1_4;
-    private javax.swing.JLabel Carta1_5;
-    private javax.swing.JLabel Carta1_6;
-    private javax.swing.JLabel Carta1_7;
-    private javax.swing.JLabel Carta1_8;
-    private javax.swing.JLabel Carta2;
-    private javax.swing.JLabel Carta2_1;
-    private javax.swing.JLabel Carta2_2;
-    private javax.swing.JLabel CartaB1;
-    private javax.swing.JLabel CartaB2;
-    private javax.swing.JLabel CartaB3;
-    private javax.swing.JLabel CartaB4;
-    private javax.swing.JLabel CartaB5;
-    private javax.swing.JButton Check_Call;
-    private javax.swing.JButton Check_Call3;
-    private javax.swing.JButton Fold;
-    private javax.swing.JButton Fold3;
-    private javax.swing.JLabel NomeGiocatore;
-    private javax.swing.JLabel NomeGiocatore2;
-    private javax.swing.JLabel NomeGiocatore3;
-    private javax.swing.JLabel NomeGiocatore4;
-    private javax.swing.JLabel NomeGiocatore5;
-    private javax.swing.JPanel PannelloPulsanti;
-    private javax.swing.JPanel PannelloPulsanti3;
-    private javax.swing.JPanel PlayerPanel;
-    private javax.swing.JPanel PlayerPanel2;
-    private javax.swing.JPanel PlayerPanel3;
-    private javax.swing.JPanel PlayerPanel4;
-    private javax.swing.JPanel PlayerPanel5;
-    private javax.swing.JPanel PlayerPanel6;
-    private javax.swing.JLabel PuntataPanel;
-    private javax.swing.JLabel PuntataPanel2;
-    private javax.swing.JLabel PuntataPanel3;
-    private javax.swing.JLabel PuntataPanel4;
-    private javax.swing.JLabel PuntataPanel5;
-    private javax.swing.JButton Raise;
-    private javax.swing.JButton Raise3;
-    private javax.swing.JLabel StakeGiocatore;
-    private javax.swing.JLabel StakeGiocatore2;
-    private javax.swing.JLabel StakeGiocatore3;
-    private javax.swing.JLabel StakeGiocatore4;
-    private javax.swing.JLabel StakeGiocatore5;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel azionePlayer;
+    private javax.swing.JLabel azionePlayer1;
+    private javax.swing.JLabel azionePlayer2;
+    private javax.swing.JLabel azionePlayer3;
+    private javax.swing.JLabel azionePlayer4;
+    private javax.swing.JPanel boardPanel;
+    private javax.swing.JButton callButton;
+    private javax.swing.JLabel carta1Player;
+    private javax.swing.JLabel carta1Player1;
+    private javax.swing.JLabel carta1Player2;
+    private javax.swing.JLabel carta1Player3;
+    private javax.swing.JLabel carta1Player4;
+    private javax.swing.JLabel carta2Player;
+    private javax.swing.JLabel carta2Player1;
+    private javax.swing.JLabel carta2Player2;
+    private javax.swing.JLabel carta2Player3;
+    private javax.swing.JLabel carta2Player4;
+    private javax.swing.JLabel cartaBoard1;
+    private javax.swing.JLabel cartaBoard2;
+    private javax.swing.JLabel cartaBoard3;
+    private javax.swing.JLabel cartaBoard4;
+    private javax.swing.JLabel cartaBoard5;
+    private javax.swing.JLabel dealerPlayer;
+    private javax.swing.JLabel dealerPlayer1;
+    private javax.swing.JLabel dealerPlayer2;
+    private javax.swing.JLabel dealerPlayer3;
+    private javax.swing.JLabel dealerPlayer4;
+    private javax.swing.JButton foldButton;
+    private javax.swing.JLabel nomePlayer;
+    private javax.swing.JLabel nomePlayer1;
+    private javax.swing.JLabel nomePlayer2;
+    private javax.swing.JLabel nomePlayer3;
+    private javax.swing.JLabel nomePlayer4;
+    private javax.swing.JButton okButton;
+    private javax.swing.JPanel pannelloPulsanti;
+    private javax.swing.JPanel pannelloRaise;
+    private javax.swing.JPanel player1Panel;
+    private javax.swing.JPanel player2Panel;
+    private javax.swing.JPanel player3Panel;
+    private javax.swing.JPanel player4Panel;
+    private javax.swing.JPanel playerPanel;
+    private javax.swing.JLabel potLabel;
+    private javax.swing.JButton raiseButton;
+    private javax.swing.JSpinner raiseSpinner;
+    private javax.swing.JPanel sfondoFrame;
+    private javax.swing.JLabel stakePlayer;
+    private javax.swing.JLabel stakePlayer1;
+    private javax.swing.JLabel stakePlayer2;
+    private javax.swing.JLabel stakePlayer3;
+    private javax.swing.JLabel stakePlayer4;
+    private javax.swing.JLabel turnoLabel;
     // End of variables declaration//GEN-END:variables
 }
