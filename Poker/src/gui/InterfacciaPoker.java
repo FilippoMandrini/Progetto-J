@@ -209,7 +209,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
             .addGroup(pannelloPulsantiLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(pannelloPulsantiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(raiseButton, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                    .addComponent(raiseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, Short.MAX_VALUE)
                     .addComponent(callButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(foldButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -618,7 +618,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
                     .addGroup(sfondoFrameLayout.createSequentialGroup()
                         .addGap(204, 204, 204)
                         .addComponent(player4Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

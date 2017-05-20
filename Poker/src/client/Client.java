@@ -14,7 +14,7 @@ public class Client {
         PrintStream out = null;
         Socket socket = null;
         final int port = 7777;
-        final String ip = "192.168.1.101";
+        final String ip = "localhost";
         String testMessage;
         
         try {
