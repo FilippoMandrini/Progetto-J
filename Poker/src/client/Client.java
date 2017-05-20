@@ -10,8 +10,9 @@ public class Client {
     public static void main(String[] args) throws IOException {
         
         final int port = 7777;
+        final String ip = "192.168.1.101";
         
-        Socket client = new Socket("10.87.221.87.", port);
+        Socket client = new Socket(ip, port);
         
         PrintWriter out = new PrintWriter(client.getOutputStream(), true);
         Scanner in = new Scanner(client.getInputStream());
