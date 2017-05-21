@@ -618,7 +618,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
                     .addGroup(sfondoFrameLayout.createSequentialGroup()
                         .addGap(204, 204, 204)
                         .addComponent(player4Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -649,7 +649,8 @@ public class InterfacciaPoker extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-
+        InterfacciaPoker prova = new InterfacciaPoker();
+        prova.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
