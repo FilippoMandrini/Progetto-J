@@ -22,6 +22,7 @@ public class Client {
             in = new Scanner(new InputStreamReader(socket.getInputStream()));
             out = new PrintStream(socket.getOutputStream(), true);
             testMessage = in.nextLine();
+            out.println("Ciaooo");
             System.out.println("Messaggio ricevuto: " + testMessage);
             out.close();
             in.close();

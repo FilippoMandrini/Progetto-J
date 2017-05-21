@@ -63,6 +63,7 @@ public class Server extends Thread {
         
         public void run() {
             try {
+                out.println("Brutto nabbo");
                 out.flush();
                 out.close();
                 in.close();
