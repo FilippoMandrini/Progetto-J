@@ -50,7 +50,6 @@ public class Server extends Thread {
             try {
                 in = new Scanner(new InputStreamReader(client.getInputStream()));
                 out = new PrintStream(client.getOutputStream(), true);
-                System.out.println(in.nextLine());
             }
             catch (IOException ex2) {
                 try {
@@ -66,15 +65,19 @@ public class Server extends Thread {
         
         public void run() {
             try {
-                out.println("Prova 1");
                 out.flush();
+                out.println("Prova " + numClients);
                 Scanner tastiera = new Scanner(System.in);
-                while(!tastiera.nextLine().equals("STOP")) {   
-                    out.println(tastiera.nextLine());
+                String prova = tastiera.nextLine();
+                out.flush();
+                while(!prova.equals("STOP")) {   
+                    out.println(prova);
+                    prova = tastiera.nextLine();
+                    out.flush();
                 }
-                //out.close();
-                //in.close();
-                //client.close();
+                out.close();
+                in.close();
+                client.close();
             }
             catch(Exception ex3) {   
             }
