@@ -14,7 +14,7 @@ public class Client {
         PrintStream out = null;
         Socket socket = null;
         final int port = 7777;
-        final String ip = "localhost";
+        final String ip = "192.168.2.120";
         String testMessage;
         
         try {
@@ -22,10 +22,12 @@ public class Client {
             in = new Scanner(new InputStreamReader(socket.getInputStream()));
             out = new PrintStream(socket.getOutputStream(), true);
             testMessage = in.nextLine();
-            out.println("Ciaooo");
             System.out.println("Messaggio ricevuto: " + testMessage);
-            out.close();
-            in.close();
+//            while(true) {
+//                
+//            }
+            //out.close();
+            //in.close();
         }
         catch(Exception e) {
             System.out.println(e.getMessage());

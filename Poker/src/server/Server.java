@@ -11,6 +11,7 @@ public class Server extends Thread {
     
     private ServerSocket server;
     final int port = 7777;
+    int numClients = 0;
     
     public static void main(String[] args) throws IOException, Exception {
         
@@ -29,6 +30,7 @@ public class Server extends Thread {
             try {
                 Socket client = server.accept();
                 Connect c = new Connect(client);
+                this.numClients ++;
             } 
             catch (IOException ex1) {
             }
@@ -48,10 +50,11 @@ public class Server extends Thread {
             try {
                 in = new Scanner(new InputStreamReader(client.getInputStream()));
                 out = new PrintStream(client.getOutputStream(), true);
+                System.out.println(in.nextLine());
             }
             catch (IOException ex2) {
                 try {
-                    client.close();
+                    //client.close();
                 }
                 catch(Exception ex3) {
                     System.out.println(ex3.getMessage());
@@ -63,11 +66,15 @@ public class Server extends Thread {
         
         public void run() {
             try {
-                out.println("Brutto nabbo");
+                out.println("Prova 1");
                 out.flush();
-                out.close();
-                in.close();
-                client.close();
+                Scanner tastiera = new Scanner(System.in);
+                while(!tastiera.nextLine().equals("STOP")) {   
+                    out.println(tastiera.nextLine());
+                }
+                //out.close();
+                //in.close();
+                //client.close();
             }
             catch(Exception ex3) {   
             }
