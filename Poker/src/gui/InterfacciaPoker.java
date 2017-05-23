@@ -92,18 +92,23 @@ public class InterfacciaPoker extends javax.swing.JFrame {
         boardPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 0), 3));
 
         cartaBoard1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartaBoard1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         cartaBoard1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         cartaBoard4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartaBoard4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         cartaBoard4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         cartaBoard2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartaBoard2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         cartaBoard2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         cartaBoard5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartaBoard5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         cartaBoard5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         cartaBoard3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cartaBoard3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         cartaBoard3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         potLabel.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -215,6 +220,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
         );
 
         carta2Player.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta2Player.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         carta2Player.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         nomePlayer.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -236,6 +242,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
         azionePlayer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
 
         carta1Player.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta1Player.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         carta1Player.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         dealerPlayer.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -318,6 +325,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
         player1Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 0), 3));
 
         carta2Player1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta2Player1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         carta2Player1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         nomePlayer1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -339,6 +347,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
         azionePlayer1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
 
         carta1Player1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta1Player1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         carta1Player1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         dealerPlayer1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -383,6 +392,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
         player2Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 0), 3));
 
         carta2Player2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta2Player2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         carta2Player2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         nomePlayer2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -404,6 +414,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
         azionePlayer2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
 
         carta1Player2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta1Player2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         carta1Player2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         dealerPlayer2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -448,6 +459,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
         player3Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 0), 3));
 
         carta2Player3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta2Player3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         carta2Player3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         nomePlayer3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -469,6 +481,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
         azionePlayer3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
 
         carta1Player3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta1Player3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         carta1Player3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         dealerPlayer3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -513,6 +526,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
         player4Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 0), 3));
 
         carta2Player4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta2Player4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         carta2Player4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         nomePlayer4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -534,6 +548,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
         azionePlayer4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
 
         carta1Player4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        carta1Player4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         carta1Player4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         dealerPlayer4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
