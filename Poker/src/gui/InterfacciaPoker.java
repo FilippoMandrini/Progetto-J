@@ -215,7 +215,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
             .addGroup(pulsantiPanelLayout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(pulsantiPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(raiseButton, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                    .addComponent(raiseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, Short.MAX_VALUE)
                     .addComponent(callButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(foldButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -528,7 +528,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
         player4Panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(95, 63, 43), 3));
 
         carta2Player4Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        carta2Player4Label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
+        carta2Player4Label.setIcon(new javax.swing.ImageIcon(getClass().getResource("resources/images/Retro.png")));
         carta2Player4Label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         nomePlayer4Label.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -635,7 +635,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
                     .addGroup(sfondoPanelLayout.createSequentialGroup()
                         .addGap(204, 204, 204)
                         .addComponent(player4Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
