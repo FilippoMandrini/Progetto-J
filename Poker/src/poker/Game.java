@@ -10,33 +10,40 @@ import java.util.List;
 /**
  * Classe per la gestione della partita
  */
-public class Partita {
+public class Game {
     
     private Board tavolo;
     private List<Player> giocatori;
-    private StakeManager gestorePuntate;
+    private Pot gestorePuntate;
     private PlayerEvaluator gestoreClassifica;
     private int stakeAmount;
     private int pot;
     private int currentBet;
 
-    public Partita(List<Player> giocatori) {
+    /**
+     * Costruttore di Game
+     * @param giocatori la lista dei giocatori
+     */
+    public Game(List<Player> giocatori) {
         this.giocatori = giocatori;
         this.gestoreClassifica = new PlayerEvaluator();
-        this.gestorePuntate = new StakeManager();
+        this.gestorePuntate = new Pot();
         this.tavolo = new Board();
     }
     
-    public Partita() {
+    /**
+     * Costruttore di Game
+     */
+    public Game() {
         this.giocatori = new ArrayList<>();
         this.gestoreClassifica = new PlayerEvaluator();
-        this.gestorePuntate = new StakeManager();
+        this.gestorePuntate = new Pot();
         this.tavolo = new Board();
     }
     
     /**
      * Stampa la lista dei vincitori
-     * @return 
+     * @return la classifica
      */
     public ArrayList<Player> getRanking() {
         ArrayList<Player> ranking = new ArrayList<>();
@@ -47,20 +54,18 @@ public class Partita {
 
     /**
      * Ritorna se sono o no presenti i giocatori
-     * @return
+     * @return true se sono presenti giocatori, false altrimenti
      */
     public boolean hasPlayers() {
-        return giocatori.isEmpty();
+        return !giocatori.isEmpty();
     }
-
+    
     /**
      * Aggiunge un giocatore controllando che non si utilizzi un nome 
      * già scelto da un altro utente
      * @param player il giocatore
-     * @return
      */
-    
-    public boolean addPlayer(Player player) {
+    public void addPlayer(Player player) {
         boolean presence = false;
         for (Player giocatore : giocatori) {
             if (giocatore.getName().equals(player.getName())) {
@@ -73,7 +78,6 @@ public class Partita {
         } else {
             throw new InvalidPlayerNameException("Nome già utilizzato!");
         }
-        return giocatori.contains(player);
     }
 
     /**
@@ -88,6 +92,10 @@ public class Partita {
         throw new PlayerNotFoundException("Giocatore non trovato!");
     }
 
+    /**
+     * Restituisce i giocatori
+     * @return la lista dei giocatori
+     */
     public List<Player> getGiocatori() {
         return giocatori;
     }

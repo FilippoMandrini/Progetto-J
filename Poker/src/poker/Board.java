@@ -14,10 +14,9 @@ public class Board {
     private Player dealer;
     private Player lastBetter;
 
-    
-    
-
-    
+    /**
+     * Costruttore di Board
+     */
     public Board() {
         this.mazzo = new Deck();      
         this.communityCards = new ArrayList<>();

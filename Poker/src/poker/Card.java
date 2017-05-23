@@ -13,27 +13,36 @@ public class Card implements Comparable {
     private static final String valueName[] = {"Due", "Tre", "Quattro", "Cinque", "Sei",
         "Sette", "Otto", "Nove", "Dieci", "Fante", "Regina", "Re", "Asso"};
 
+    /**
+     * Costruttore di Card
+     * @param value valore della carta
+     * @param seed seme della carta
+     */
     public Card(int value, Seed seed) {
         this.value = value;
         this.seed = seed;
     }
-
-    public Card(int value) {
-        this.value = value;
-    }
-    
+  
+    /**
+     * Ritorna il valore della carta
+     * @return valore della carta
+     */
     public int getValue() {
         return value;
     }
     
+    /**
+     * Ritorna il seme della carta
+     * @return seme della carta
+     */
     public Seed getSeed() {
         return seed;
     }
 
     /**
      * Ritorna il nome del valore della carta
-     * @param value
-     * @return
+     * @param value valore della carta
+     * @return nome del valore della carta
      */
     public static String getValueName(int value) {
         return valueName[value];
@@ -41,18 +50,20 @@ public class Card implements Comparable {
  
     /**
      * Ritorna il nome del seme della carta
-     * @param seed
-     * @return
+     * @param seed seme della carta
+     * @return il nome del seme della carta
      */
     public static String getSeedName(Seed seed) {
         return seedName[seed.getValue()];
     }
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         return valueName[value] + " di " + seedName[seed.getValue()];
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
@@ -71,6 +82,7 @@ public class Card implements Comparable {
         return true;
     }
 
+    /** {@inheritDoc} */
     @Override
     public int compareTo(Object t) {
         final Card other = (Card) t;
