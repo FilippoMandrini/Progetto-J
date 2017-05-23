@@ -22,12 +22,12 @@ public class DoppiaCoppia extends Hand{
 
     @Override
     public double getPoints() {
-        return 200 + firstPair.getValue() + (double) secondPair.getValue() /100 + (double)firstKicker.getValue() / 10000;
+        return 200 + firstPair.getRank() + (double) secondPair.getRank() /100 + (double)firstKicker.getRank() / 10000;
     }
     
     @Override
     public String toString()
     {
-        return "Doppia Coppia di " + Card.getValueName(firstPair.getValue()) + " e " + Card.getValueName(secondPair.getValue());
+        return "Doppia Coppia di " + Card.getRankName(firstPair.getRank()) + " e " + Card.getRankName(secondPair.getRank());
     }
 }

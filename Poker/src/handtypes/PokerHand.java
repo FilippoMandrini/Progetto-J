@@ -20,12 +20,12 @@ public class PokerHand extends Hand{
 
     @Override
     public double getPoints() {
-        return 700 + poker.getValue() + (double) firstKicker.getValue()/100;
+        return 700 + poker.getRank() + (double) firstKicker.getRank()/100;
     }
     
     @Override
     public String toString()
     {
-        return "Poker di " + Card.getValueName(poker.getValue());
+        return "Poker di " + Card.getRankName(poker.getRank());
     }
 }

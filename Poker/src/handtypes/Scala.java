@@ -15,17 +15,17 @@ public class Scala extends Hand {
 
     @Override
     public double getPoints() {
-        if (cards.get(0).getValue() == 12 && cards.get(1).getValue() == 3) {
-            return 400 + this.cards.get(1).getValue();
+        if (cards.get(0).getRank() == 12 && cards.get(1).getRank() == 3) {
+            return 400 + this.cards.get(1).getRank();
         }
-        return 400 + this.cards.get(0).getValue();
+        return 400 + this.cards.get(0).getRank();
     }
 
     @Override
     public String toString() {
-        if (cards.get(0).getValue() == 12 && cards.get(1).getValue() == 3) {
-            return "Scala al " + Card.getValueName(this.cards.get(1).getValue());
+        if (cards.get(0).getRank() == 12 && cards.get(1).getRank() == 3) {
+            return "Scala al " + Card.getRankName(this.cards.get(1).getRank());
         }
-        return "Scala al " + Card.getValueName(this.cards.get(0).getValue());
+        return "Scala al " + Card.getRankName(this.cards.get(0).getRank());
     }
 }

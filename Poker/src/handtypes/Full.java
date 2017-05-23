@@ -20,12 +20,12 @@ public class Full extends Hand{
     
     @Override
     public double getPoints() {
-        return 600 + three.getValue() + (double) pair.getValue() / 100.;
+        return 600 + three.getRank() + (double) pair.getRank() / 100.;
     }
 
     @Override
     public String toString() 
     {
-        return "Full di " + Card.getValueName(three.getValue()) + " e " + Card.getValueName(pair.getValue());
+        return "Full di " + Card.getRankName(three.getRank()) + " e " + Card.getRankName(pair.getRank());
     }
 }

@@ -22,12 +22,12 @@ public class Tris extends Hand {
 
     @Override
     public double getPoints() {
-        return 300 + three.getValue() + (double) firstKicker.getValue() / 100 + (double) secondKicker.getValue() / 10000;
+        return 300 + three.getRank() + (double) firstKicker.getRank() / 100 + (double) secondKicker.getRank() / 10000;
     }
     
     @Override
     public String toString()
     {
-        return "Tris di " + Card.getValueName(three.getValue());
+        return "Tris di " + Card.getRankName(three.getRank());
     }
 }

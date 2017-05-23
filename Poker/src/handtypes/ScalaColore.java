@@ -18,12 +18,12 @@ public class ScalaColore extends Hand {
     
     @Override
     public double getPoints() {
-        return 800 + high.getValue();
+        return 800 + high.getRank();
     }
     
     @Override
     public String toString()
     {
-        return "Scala Colore di " + Card.getValueName(high.getValue());
+        return "Scala Colore di " + Card.getRankName(high.getRank());
     }
 }

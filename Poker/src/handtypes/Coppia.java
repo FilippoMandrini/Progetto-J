@@ -24,12 +24,12 @@ public class Coppia extends Hand {
 
     @Override
     public double getPoints() {
-        return 100 + pair.getValue() + (double) firstKicker.getValue() / 100. + (double) secondKicker.getValue() / 10000. + (double) thirdKicker.getValue() / 1000000.;
+        return 100 + pair.getRank() + (double) firstKicker.getRank() / 100. + (double) secondKicker.getRank() / 10000. + (double) thirdKicker.getRank() / 1000000.;
     }
 
     @Override
     public String toString()
     {
-        return "Coppia di " + Card.getValueName(pair.getValue());
+        return "Coppia di " + Card.getRankName(pair.getRank());
     }
 }

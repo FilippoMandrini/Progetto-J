@@ -22,7 +22,7 @@ public class CartaAlta extends Hand{
         double i = 1;
         for (Card card: this.cards)
         {
-            points = points + (double)card.getValue() / (double)Math.pow(100, i);
+            points = points + (double)card.getRank() / (double)Math.pow(100, i);
             i += 1;
         }
         return points;
@@ -31,6 +31,6 @@ public class CartaAlta extends Hand{
     @Override
     public String toString()
     {
-        return "Carta Alta: " + Card.getValueName(cards.get(0).getValue());
+        return "Carta Alta: " + Card.getRankName(cards.get(0).getRank());
     }
 }
