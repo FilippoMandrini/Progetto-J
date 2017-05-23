@@ -32,23 +32,30 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="sfondoFrame" alignment="0" pref="1220" max="32767" attributes="0"/>
+          <Component id="sfondoPanel" alignment="0" pref="1220" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Component id="sfondoFrame" min="-2" max="-2" attributes="0"/>
+              <Component id="sfondoPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="sfondoFrame">
+    <Container class="javax.swing.JPanel" name="sfondoPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="33" green="66" red="0" type="rgb"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder thickness="3">
+              <Color PropertyName="color" blue="22" green="35" red="54" type="rgb"/>
+            </LineBorder>
+          </Border>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1200, 700]"/>
@@ -59,7 +66,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                  <EmptySpace pref="27" max="32767" attributes="0"/>
                   <Component id="player4Panel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -99,7 +106,7 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="boardPanel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Component id="playerPanel" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
@@ -111,7 +118,7 @@
                           <Component id="player4Panel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace pref="27" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -124,8 +131,8 @@
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-                <LineBorder thickness="3">
-                  <Color PropertyName="color" blue="0" green="66" red="66" type="rgb"/>
+                <LineBorder thickness="5">
+                  <Color PropertyName="color" blue="2b" green="3f" red="5f" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
@@ -138,15 +145,15 @@
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="cartaBoard1" min="-2" pref="85" max="-2" attributes="0"/>
+                              <Component id="cartaBoard1Label" min="-2" pref="85" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cartaBoard2" min="-2" pref="85" max="-2" attributes="0"/>
+                              <Component id="cartaBoard2Label" min="-2" pref="85" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cartaBoard3" min="-2" pref="85" max="-2" attributes="0"/>
+                              <Component id="cartaBoard3Label" min="-2" pref="85" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="cartaBoard4" min="-2" pref="85" max="-2" attributes="0"/>
+                              <Component id="cartaBoard4Label" min="-2" pref="85" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cartaBoard5" min="-2" pref="85" max="-2" attributes="0"/>
+                              <Component id="cartaBoard5Label" min="-2" pref="85" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="turnoLabel" min="-2" pref="240" max="-2" attributes="0"/>
@@ -168,11 +175,11 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="cartaBoard3" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="cartaBoard5" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="cartaBoard4" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="cartaBoard2" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="cartaBoard1" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="cartaBoard3Label" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="cartaBoard5Label" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="cartaBoard4Label" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="cartaBoard2Label" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="cartaBoard1Label" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
@@ -180,7 +187,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="cartaBoard1">
+            <Component class="javax.swing.JLabel" name="cartaBoard1Label">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -195,7 +202,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="cartaBoard4">
+            <Component class="javax.swing.JLabel" name="cartaBoard4Label">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -210,7 +217,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="cartaBoard2">
+            <Component class="javax.swing.JLabel" name="cartaBoard2Label">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -225,7 +232,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="cartaBoard5">
+            <Component class="javax.swing.JLabel" name="cartaBoard5Label">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -240,7 +247,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="cartaBoard3">
+            <Component class="javax.swing.JLabel" name="cartaBoard3Label">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -261,7 +268,7 @@
                   <Font name="Arial" size="16" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Pot"/>
@@ -280,7 +287,7 @@
                   <Font name="Arial" size="16" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Turno"/>
@@ -312,7 +319,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder thickness="3">
-                  <Color PropertyName="color" blue="0" green="66" red="66" type="rgb"/>
+                  <Color PropertyName="color" blue="2b" green="3f" red="5f" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
@@ -321,48 +328,48 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="azionePlayer" alignment="0" max="32767" attributes="0"/>
-                  <Component id="nomePlayer" alignment="1" max="32767" attributes="0"/>
+                  <Component id="azionePlayerLabel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="nomePlayerLabel" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="carta1Player" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="carta1PlayerLabel" min="-2" pref="85" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="carta2Player" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="carta2PlayerLabel" min="-2" pref="85" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="dealerPlayer" min="-2" max="-2" attributes="0"/>
+                      <Component id="dealerPlayerLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Component id="pannelloPulsanti" alignment="1" max="32767" attributes="0"/>
-                  <Component id="stakePlayer" alignment="0" max="32767" attributes="0"/>
-                  <Component id="pannelloRaise" alignment="0" max="32767" attributes="0"/>
+                  <Component id="pulsantiPanel" alignment="1" max="32767" attributes="0"/>
+                  <Component id="stakePlayerLabel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="raisePanel" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="nomePlayer" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="nomePlayerLabel" min="-2" pref="24" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="stakePlayer" min="-2" max="-2" attributes="0"/>
+                      <Component id="stakePlayerLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Component id="azionePlayer" min="-2" max="-2" attributes="0"/>
+                      <Component id="azionePlayerLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="carta1Player" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="carta2Player" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="dealerPlayer" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="carta1PlayerLabel" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="carta2PlayerLabel" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="dealerPlayerLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pannelloPulsanti" min="-2" max="-2" attributes="0"/>
+                      <Component id="pulsantiPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="pannelloRaise" min="-2" max="-2" attributes="0"/>
+                      <Component id="raisePanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Container class="javax.swing.JPanel" name="pannelloPulsanti">
+            <Container class="javax.swing.JPanel" name="pulsantiPanel">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="66" red="0" type="rgb"/>
@@ -400,7 +407,7 @@
                 <Component class="javax.swing.JButton" name="callButton">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="cc" type="rgb"/>
+                      <Color blue="ff" green="33" red="33" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
@@ -417,7 +424,7 @@
                 <Component class="javax.swing.JButton" name="raiseButton">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="cc" type="rgb"/>
+                      <Color blue="0" green="33" red="ff" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
@@ -431,7 +438,7 @@
                 <Component class="javax.swing.JButton" name="foldButton">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="cc" type="rgb"/>
+                      <Color blue="33" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
@@ -447,7 +454,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JLabel" name="carta2Player">
+            <Component class="javax.swing.JLabel" name="carta2PlayerLabel">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -462,13 +469,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="nomePlayer">
+            <Component class="javax.swing.JLabel" name="nomePlayerLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="18" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="NomeGiocatore"/>
@@ -481,13 +488,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="stakePlayer">
+            <Component class="javax.swing.JLabel" name="stakePlayerLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="15" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Stake"/>
@@ -500,13 +507,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="azionePlayer">
+            <Component class="javax.swing.JLabel" name="azionePlayerLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="15" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Azione"/>
@@ -519,7 +526,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="carta1Player">
+            <Component class="javax.swing.JLabel" name="carta1PlayerLabel">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -534,7 +541,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="dealerPlayer">
+            <Component class="javax.swing.JLabel" name="dealerPlayerLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
@@ -552,7 +559,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Container class="javax.swing.JPanel" name="pannelloRaise">
+            <Container class="javax.swing.JPanel" name="raisePanel">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="66" red="0" type="rgb"/>
@@ -587,7 +594,7 @@
                 <Component class="javax.swing.JButton" name="okButton">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="cc" type="rgb"/>
+                      <Color blue="0" green="33" red="ff" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
@@ -609,6 +616,13 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="12" style="0"/>
                     </Property>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+                        <LineBorder>
+                          <Color PropertyName="color" blue="0" green="33" red="ff" type="rgb"/>
+                        </LineBorder>
+                      </Border>
+                    </Property>
                     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[73, 22]"/>
                     </Property>
@@ -626,7 +640,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder thickness="3">
-                  <Color PropertyName="color" blue="0" green="66" red="66" type="rgb"/>
+                  <Color PropertyName="color" blue="2b" green="3f" red="5f" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
@@ -635,34 +649,34 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="azionePlayer1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="nomePlayer1" alignment="1" max="32767" attributes="0"/>
+                  <Component id="azionePlayer1Label" alignment="0" max="32767" attributes="0"/>
+                  <Component id="nomePlayer1Label" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="carta1Player1" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="carta1Player1Label" min="-2" pref="85" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="carta2Player1" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="carta2Player1Label" min="-2" pref="85" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="dealerPlayer1" min="-2" max="-2" attributes="0"/>
+                      <Component id="dealerPlayer1Label" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="stakePlayer1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="stakePlayer1Label" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="nomePlayer1" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="nomePlayer1Label" min="-2" pref="24" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="stakePlayer1" min="-2" max="-2" attributes="0"/>
+                      <Component id="stakePlayer1Label" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Component id="azionePlayer1" min="-2" max="-2" attributes="0"/>
+                      <Component id="azionePlayer1Label" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="carta1Player1" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="carta2Player1" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="dealerPlayer1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="carta1Player1Label" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="carta2Player1Label" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="dealerPlayer1Label" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -670,7 +684,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="carta2Player1">
+            <Component class="javax.swing.JLabel" name="carta2Player1Label">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -685,13 +699,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="nomePlayer1">
+            <Component class="javax.swing.JLabel" name="nomePlayer1Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="18" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="NomeGiocatore1"/>
@@ -704,13 +718,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="stakePlayer1">
+            <Component class="javax.swing.JLabel" name="stakePlayer1Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="15" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Stake"/>
@@ -723,13 +737,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="azionePlayer1">
+            <Component class="javax.swing.JLabel" name="azionePlayer1Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="15" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Azione"/>
@@ -742,7 +756,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="carta1Player1">
+            <Component class="javax.swing.JLabel" name="carta1Player1Label">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -757,7 +771,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="dealerPlayer1">
+            <Component class="javax.swing.JLabel" name="dealerPlayer1Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
@@ -785,7 +799,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder thickness="3">
-                  <Color PropertyName="color" blue="0" green="66" red="66" type="rgb"/>
+                  <Color PropertyName="color" blue="2b" green="3f" red="5f" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
@@ -794,34 +808,34 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="azionePlayer2" alignment="0" max="32767" attributes="0"/>
-                  <Component id="nomePlayer2" alignment="1" max="32767" attributes="0"/>
+                  <Component id="azionePlayer2Label" alignment="0" max="32767" attributes="0"/>
+                  <Component id="nomePlayer2Label" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="carta1Player2" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="carta1Player2Label" min="-2" pref="85" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="carta2Player2" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="carta2Player2Label" min="-2" pref="85" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="dealerPlayer2" min="-2" max="-2" attributes="0"/>
+                      <Component id="dealerPlayer2Label" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="stakePlayer2" alignment="0" max="32767" attributes="0"/>
+                  <Component id="stakePlayer2Label" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="nomePlayer2" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="nomePlayer2Label" min="-2" pref="24" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="stakePlayer2" min="-2" max="-2" attributes="0"/>
+                      <Component id="stakePlayer2Label" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Component id="azionePlayer2" min="-2" max="-2" attributes="0"/>
+                      <Component id="azionePlayer2Label" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="carta1Player2" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="carta2Player2" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="dealerPlayer2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="carta1Player2Label" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="carta2Player2Label" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="dealerPlayer2Label" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -829,7 +843,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="carta2Player2">
+            <Component class="javax.swing.JLabel" name="carta2Player2Label">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -844,13 +858,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="nomePlayer2">
+            <Component class="javax.swing.JLabel" name="nomePlayer2Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="18" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="NomeGiocatore2"/>
@@ -863,13 +877,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="stakePlayer2">
+            <Component class="javax.swing.JLabel" name="stakePlayer2Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="15" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Stake"/>
@@ -882,13 +896,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="azionePlayer2">
+            <Component class="javax.swing.JLabel" name="azionePlayer2Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="15" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Azione"/>
@@ -901,7 +915,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="carta1Player2">
+            <Component class="javax.swing.JLabel" name="carta1Player2Label">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -916,7 +930,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="dealerPlayer2">
+            <Component class="javax.swing.JLabel" name="dealerPlayer2Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
@@ -944,7 +958,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder thickness="3">
-                  <Color PropertyName="color" blue="0" green="66" red="66" type="rgb"/>
+                  <Color PropertyName="color" blue="2b" green="3f" red="5f" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
@@ -953,34 +967,34 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="azionePlayer3" alignment="0" max="32767" attributes="0"/>
-                  <Component id="nomePlayer3" alignment="1" max="32767" attributes="0"/>
+                  <Component id="azionePlayer3Label" alignment="0" max="32767" attributes="0"/>
+                  <Component id="nomePlayer3Label" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="carta1Player3" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="carta1Player3Label" min="-2" pref="85" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="carta2Player3" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="carta2Player3Label" min="-2" pref="85" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="dealerPlayer3" min="-2" max="-2" attributes="0"/>
+                      <Component id="dealerPlayer3Label" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="stakePlayer3" alignment="0" max="32767" attributes="0"/>
+                  <Component id="stakePlayer3Label" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="nomePlayer3" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="nomePlayer3Label" min="-2" pref="24" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="stakePlayer3" min="-2" max="-2" attributes="0"/>
+                      <Component id="stakePlayer3Label" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Component id="azionePlayer3" min="-2" max="-2" attributes="0"/>
+                      <Component id="azionePlayer3Label" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="carta1Player3" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="carta2Player3" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="dealerPlayer3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="carta1Player3Label" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="carta2Player3Label" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="dealerPlayer3Label" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -988,7 +1002,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="carta2Player3">
+            <Component class="javax.swing.JLabel" name="carta2Player3Label">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1003,13 +1017,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="nomePlayer3">
+            <Component class="javax.swing.JLabel" name="nomePlayer3Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="18" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="NomeGiocatore3"/>
@@ -1022,13 +1036,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="stakePlayer3">
+            <Component class="javax.swing.JLabel" name="stakePlayer3Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="15" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Stake"/>
@@ -1041,13 +1055,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="azionePlayer3">
+            <Component class="javax.swing.JLabel" name="azionePlayer3Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="15" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Azione"/>
@@ -1060,7 +1074,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="carta1Player3">
+            <Component class="javax.swing.JLabel" name="carta1Player3Label">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1075,7 +1089,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="dealerPlayer3">
+            <Component class="javax.swing.JLabel" name="dealerPlayer3Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
@@ -1103,7 +1117,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder thickness="3">
-                  <Color PropertyName="color" blue="0" green="66" red="66" type="rgb"/>
+                  <Color PropertyName="color" blue="2b" green="3f" red="5f" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
@@ -1112,34 +1126,34 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="azionePlayer4" alignment="0" max="32767" attributes="0"/>
-                  <Component id="nomePlayer4" alignment="1" max="32767" attributes="0"/>
+                  <Component id="azionePlayer4Label" alignment="0" max="32767" attributes="0"/>
+                  <Component id="nomePlayer4Label" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="carta1Player4" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="carta1Player4Label" min="-2" pref="85" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="carta2Player4" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="carta2Player4Label" min="-2" pref="85" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="dealerPlayer4" min="-2" max="-2" attributes="0"/>
+                      <Component id="dealerPlayer4Label" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="14" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="stakePlayer4" alignment="0" max="32767" attributes="0"/>
+                  <Component id="stakePlayer4Label" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                      <Component id="nomePlayer4" min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="nomePlayer4Label" min="-2" pref="24" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="stakePlayer4" min="-2" max="-2" attributes="0"/>
+                      <Component id="stakePlayer4Label" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                      <Component id="azionePlayer4" min="-2" max="-2" attributes="0"/>
+                      <Component id="azionePlayer4Label" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="carta1Player4" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="carta2Player4" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="dealerPlayer4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="carta1Player4Label" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="carta2Player4Label" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                          <Component id="dealerPlayer4Label" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -1147,7 +1161,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="carta2Player4">
+            <Component class="javax.swing.JLabel" name="carta2Player4Label">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1162,13 +1176,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="nomePlayer4">
+            <Component class="javax.swing.JLabel" name="nomePlayer4Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="18" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="NomeGiocatore4"/>
@@ -1181,13 +1195,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="stakePlayer4">
+            <Component class="javax.swing.JLabel" name="stakePlayer4Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="15" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Stake"/>
@@ -1200,13 +1214,13 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="azionePlayer4">
+            <Component class="javax.swing.JLabel" name="azionePlayer4Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="15" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="4" green="b1" red="b1" type="rgb"/>
+                  <Color blue="33" green="cd" red="ff" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Azione"/>
@@ -1219,7 +1233,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="carta1Player4">
+            <Component class="javax.swing.JLabel" name="carta1Player4Label">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1234,7 +1248,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="dealerPlayer4">
+            <Component class="javax.swing.JLabel" name="dealerPlayer4Label">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="14" style="1"/>
