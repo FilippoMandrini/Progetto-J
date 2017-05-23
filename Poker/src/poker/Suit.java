@@ -1,13 +1,13 @@
 package poker;
 
-import static poker.SeedType.*;
+import static poker.SuitType.*;
 
 /**
  * Classe che rappresenta il seme della carta
  */
-public class Seed {
+public class Suit {
     
-    private SeedType seed;
+    private SuitType seed;
     private int value;
 
     /**
@@ -15,7 +15,7 @@ public class Seed {
      * @param seed il seme della carta
      * @param value il valore simbolico del seme
      */
-    public Seed(SeedType seed, int value) {
+    public Suit(SuitType seed, int value) {
         this.seed = seed;
         this.value = value;
     }
@@ -24,7 +24,7 @@ public class Seed {
      * Costruttore di Seed
      * @param value il valore simbolico del seme
      */
-    public Seed(int value) {
+    public Suit(int value) {
         this.seed = seedConvert(value);
         this.value = value;
     }
@@ -41,7 +41,7 @@ public class Seed {
      * Restituisce il seme della carta
      * @return il seme della carta 
      */
-    public SeedType getSeed() {
+    public SuitType getSeed() {
         return seed;
     }
     
@@ -50,7 +50,7 @@ public class Seed {
      * @param value valore simbolico del seme
      * @return il seme come enumerazione
      */
-    private SeedType seedConvert(int value){
+    private SuitType seedConvert(int value){
         switch (value){
             case 0:
                 return HEARTS;

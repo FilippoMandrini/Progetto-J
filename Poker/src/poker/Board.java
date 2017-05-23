@@ -11,9 +11,7 @@ public class Board {
 
     private Deck mazzo;
     private List<Card> communityCards;
-    private Player dealer;
-    private Player lastBetter;
-
+    
     /**
      * Costruttore di Board
      */
@@ -23,6 +21,10 @@ public class Board {
         
     }
 
+    public List<Card> getCommunityCards() {
+        return communityCards;
+    }
+    
     /**
      * Distribuisce le due carte personali del giocatore
      * @param player il giocatore
@@ -31,7 +33,7 @@ public class Board {
     public boolean dealCards(Player player) {
         player.reset();
         for (int i = 0; i < 2; i++) {
-            player.addCard(this.mazzo.getCard());
+            player.addCard(this.mazzo.dealCard());
         }
         return true;
     }
@@ -53,7 +55,7 @@ public class Board {
      */
     public boolean flop() {
         for (int i = 0; i < 3; i++) {
-            communityCards.add(mazzo.getCard());
+            communityCards.add(mazzo.dealCard());
         }
         return true;
     }
@@ -64,7 +66,7 @@ public class Board {
      */
     public boolean turn() {
         mazzo.burnCard();
-        communityCards.add(mazzo.getCard());
+        communityCards.add(mazzo.dealCard());
         return true;
     }
 
@@ -74,7 +76,7 @@ public class Board {
      */
     public boolean river() {
         mazzo.burnCard();
-        communityCards.add(mazzo.getCard());
+        communityCards.add(mazzo.dealCard());
         return true;
     }
       

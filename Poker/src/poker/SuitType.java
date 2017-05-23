@@ -3,7 +3,7 @@ package poker;
 /**
  * Enumerazione dei quattro semi delle carte
  */
-public enum SeedType {
+public enum SuitType {
     
     /**
      * Cuori,Picche,Fiori,Denari

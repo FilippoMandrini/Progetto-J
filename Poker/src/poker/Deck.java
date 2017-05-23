@@ -1,65 +1,65 @@
 package poker;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
- * Classe che rappresenta il mazzo
+ * Classe che rappresenta il deck
  */
 public class Deck {
     
-    private ArrayList<Card> mazzo;
+    private ArrayList<Card> deck;
    
     /**
      * Costruttore di Deck
      */
     public Deck() {
-        this.mazzo = new ArrayList();
+        this.deck = new ArrayList();
         for(int i=0; i<4 ; i++){
             for(int j=0; j<13 ; j++){
-                mazzo.add(new Card(j,new Seed(i)));
+                deck.add(new Card(j,new Suit(i)));
             }
         }
     }
     
     /**
-     * Resetta il mazzo 
+     * Resetta il deck 
      */
     public void restore() {
-        this.mazzo.clear();
+        this.deck.clear();
         for(int i=0; i<4 ; i++){
             for(int j=0; j<13 ; j++){
-                mazzo.add(new Card(j,new Seed(i)));
+                deck.add(new Card(j,new Suit(i)));
             }
         }
     }    
  
     /**
-     * Estrae una carta dal mazzo casualmente
+     * Estrae una carta dal deck casualmente
      * @return la carta estratta
      */
-    public Card getCard() {
-        Random random = new Random();
-        Card cartaEstratta = mazzo.get(random.nextInt(mazzo.size()));
-        mazzo.remove(cartaEstratta);
+    public Card dealCard() {
+        SecureRandom random = new SecureRandom();
+        Card cartaEstratta = deck.get(random.nextInt(deck.size()));
+        deck.remove(cartaEstratta);
         return cartaEstratta;
     }
     
     /**
-     * Elimina una carta scelta casualmente dal mazzo
+     * Elimina una carta scelta casualmente dal deck
      */
     public void burnCard() {
-        Random random = new Random();
-        Card cartaEstratta = mazzo.get(random.nextInt(mazzo.size()));
-        mazzo.remove(cartaEstratta);
+        SecureRandom random = new SecureRandom();
+        Card cartaEstratta = deck.get(random.nextInt(deck.size()));
+        deck.remove(cartaEstratta);
     }
 
     /**
-     * Restituisce il mazzo
-     * @return il mazzo
+     * Restituisce il deck
+     * @return il deck
      */
     public ArrayList<Card> getMazzo() {
-        return mazzo;
+        return deck;
     }
 
 }
