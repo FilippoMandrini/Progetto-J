@@ -15,7 +15,7 @@ import poker.Card;
  */
 public abstract class ChenEvaluator {
 
-    public static double getChenScore(List<Card> cards) {
+    public static double evaluate(List<Card> cards) {
         
         if (cards.size() != 2) 
         {

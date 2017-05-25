@@ -32,6 +32,7 @@ public abstract class HandEvaluator {
      * Valuta la miglior mano del giocatore
      * @param player il giocatore
      * @param communityCards carte comuni
+     * @return la migliore mano del giocatore
      */
     public static Hand evaluate(Player player, List<Card> communityCards) {
         List<Card> toEvaluate = new ArrayList<>();
