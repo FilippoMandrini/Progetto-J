@@ -1,5 +1,6 @@
 package poker;
 
+import actions.Action;
 import handtypes.Hand;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,8 @@ public abstract class Player implements Comparable {
     private ArrayList<Card> cards;
     private Hand currentHand;
     private boolean active;
-    private int bet;
+    private int currentBet;
+    private Action lastAction; 
 
     /**
      * Costruttore di Player
@@ -25,6 +27,13 @@ public abstract class Player implements Comparable {
         this.cards = new ArrayList<>();
         this.active = true;
     }
+
+    public Player(String name, int stake) {
+        this.name = name;
+        this.stake = stake;
+    }
+    
+    
 
     /**
      * Restituisce il nome del giocatore
@@ -42,6 +51,12 @@ public abstract class Player implements Comparable {
         return stake;
     }
 
+    public void setLastAction(Action lastAction) {
+        this.lastAction = lastAction;
+    }
+
+    
+    
     /**
      * Imposta lo stake del giocatore
      * @param stake lo stake di partenza del giocatore
@@ -49,9 +64,27 @@ public abstract class Player implements Comparable {
     public void setStake(int stake) {
         this.stake = stake;
     }
+    
+    public void pay(int amount)
+    {
+        if (amount > stake)
+        {
+            throw new IllegalArgumentException("Stake insufficiente per coprire puntata");
+        }
+        this.stake -= amount;
+    }
+    
+    public void win(int amount)
+    {
+        stake += amount;
+    }
 
-    public void setBet(int bet) {
-        this.bet += bet;
+    public void setCurrentBet(int bet) {
+        this.currentBet = bet;
+    }
+
+    public int getCurrentBet() {
+        return currentBet;
     }
     
     /**
@@ -71,6 +104,7 @@ public abstract class Player implements Comparable {
             return false;
         this.cards.clear();
         this.active = true;
+        this.lastAction = null;
         return true;
     }
     
@@ -86,7 +120,7 @@ public abstract class Player implements Comparable {
      * Restituisce la mano migliore del giocatore
      * @return la mano migliore
      */
-    public Hand getCurrent() {
+    public Hand getCurrentHand() {
         return currentHand;
     }
 
@@ -94,7 +128,7 @@ public abstract class Player implements Comparable {
      * Imposta la mano migliore del giocatore
      * @param current la mano migliore del giocatore
      */
-    public void setCurrent(Hand current) {
+    public void setCurrentHand(Hand current) {
         this.currentHand = current;
     }
     
@@ -135,6 +169,12 @@ public abstract class Player implements Comparable {
             return -1;
         
         return 0;
+    }
+    
+    public void foldCards()
+    {
+        this.cards = null;
+        setActive(false);
     }
     
      

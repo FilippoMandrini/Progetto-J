@@ -9,14 +9,14 @@ import java.util.List;
  */
 public class Board {
 
-    private Deck mazzo;
+    private Deck deck;
     private List<Card> communityCards;
     
     /**
      * Costruttore di Board
      */
     public Board() {
-        this.mazzo = new Deck();      
+        this.deck = new Deck();      
         this.communityCards = new ArrayList<>();
         
     }
@@ -33,7 +33,7 @@ public class Board {
     public boolean dealCards(Player player) {
         player.reset();
         for (int i = 0; i < 2; i++) {
-            player.addCard(this.mazzo.dealCard());
+            player.addCard(this.deck.dealCard());
         }
         return true;
     }
@@ -55,7 +55,7 @@ public class Board {
      */
     public boolean flop() {
         for (int i = 0; i < 3; i++) {
-            communityCards.add(mazzo.dealCard());
+            communityCards.add(deck.dealCard());
         }
         return true;
     }
@@ -65,8 +65,8 @@ public class Board {
      * @return
      */
     public boolean turn() {
-        mazzo.burnCard();
-        communityCards.add(mazzo.dealCard());
+        deck.burnCard();
+        communityCards.add(deck.dealCard());
         return true;
     }
 
@@ -75,18 +75,18 @@ public class Board {
      * @return
      */
     public boolean river() {
-        mazzo.burnCard();
-        communityCards.add(mazzo.dealCard());
+        deck.burnCard();
+        communityCards.add(deck.dealCard());
         return true;
     }
       
     /**
-     * Esegue il reset delle carte del banco e del mazzo terminando la mano 
+     * Esegue il reset delle carte del banco e del deck terminando la mano 
      * @return 
      */
     public boolean clear() {
         this.communityCards.clear();
-        this.mazzo.restore();
+        this.deck.restore();
         return true;
     }
 }

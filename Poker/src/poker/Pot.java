@@ -34,6 +34,12 @@ public class Pot {
     {
         return members.contains(player);
     }
+    
+    public int getValue()
+    {
+        int total = bet * members.size();
+        return total;
+    }
             
     public void reset()
     {
@@ -41,7 +47,18 @@ public class Pot {
         bet = 0;
     }
     
-    
+    public Pot getSidePot(int amount, Player player)
+    {
+        members.add(player);
+        Pot sidePot = new Pot(bet - amount);
+        this.bet = amount;
+        for (Player member : members)
+        {
+            sidePot.addMember(member);
+        }
+        return sidePot;
+           
+    }
     
     
     

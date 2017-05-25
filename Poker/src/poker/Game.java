@@ -1,12 +1,14 @@
 package poker;
 
-import exceptions.InvalidPlayerNameException;
-import exceptions.PlayerNotFoundException; 
-import gametypes.GameType;
-import handtypes.Hand;
+import actions.*;
+import exceptions.*;
+import gametypes.*;
+import handtypes.*;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 /**
  * Classe per la gestione della partita
@@ -39,9 +41,15 @@ public class Game {
     
     private Player lastAggressor;
     
+    private Action currentAction;
+    
     private int raises;
     
     private int currentBigBlind;
+    
+    private int currentHandStage;
+  
+    
     
     
     
@@ -74,6 +82,8 @@ public class Game {
     private void playSingleHand()
     {
         resetHand();
+        shiftCurrentPlayer();
+        currentHandStage = 0;
         if (activePlayers.size() > 2)
         {
             shiftCurrentPlayer();
@@ -81,26 +91,19 @@ public class Game {
         betSmallBlind();
         shiftCurrentPlayer();
         betBigBlind();
+        currentHandStage = 1;
         preFlop();
         if (activePlayers.size() > 1) 
         {
-            bet = 0;
-            preFlop();
-            bettingRound();
+            flop();
             if (activePlayers.size() > 1) 
             {
-                bet = 0;
-                flop();
-                minBet = 2 * currentBigBlind;
-                bettingRound();
+                turn();
                 if (activePlayers.size() > 1) 
                 {
-                    bet = 0;
-                    turn();
-                    bettingRound();
+                    river();
                     if (activePlayers.size() > 1) 
                     {
-                        bet = 0;
                         showdown();
                     }
                 }
@@ -111,7 +114,19 @@ public class Game {
     
     private void resetHand()
     {
-       
+        board.clear();
+        pots.clear();
+        activePlayers.clear();
+        for (Player player: players)
+        {
+            player.reset();
+        }
+        setActivePlayers();
+        shiftDealer();
+        currentPlayerPosition = dealerPosition;
+        currentPlayer = activePlayers.get(currentPlayerPosition);
+        minBet = currentBigBlind;
+        bet = currentBigBlind;
     }
     
     /**
@@ -119,7 +134,145 @@ public class Game {
      */
     private void bettingRound()
     {
+        int playersLeft = activePlayers.size();
+        if (currentHandStage == 1)
+        {
+            minBet = currentBigBlind;
+            bet = currentBigBlind;
+        }
+        else
+        {
+            currentPlayerPosition = dealerPosition;
+            bet = 0;
+            minBet = currentBigBlind;
+        }
+        lastAggressor = null;
+        raises = 0;
+        while (playersLeft > 0)
+        {
+            shiftCurrentPlayer();
+            Action action = null;
+            if (!currentPlayer.getPlayerCards().isEmpty() && currentPlayer.getStake() == 0) 
+            {
+                action = new Check();
+                playersLeft--;
+            }
+            else
+            {
+                Set<ActionSet> allowedActions = getActionSet(currentPlayer);
+                // chiedo al client l'azione da fare, simulo come Azione Generica
+                currentAction = new GenericAction(new Random().nextInt(2000));
+                playersLeft--;
+                if (currentAction instanceof Call)
+                {
+                    int callAmount = bet - currentPlayer.getCurrentBet();
+                    if(callAmount > currentPlayer.getStake())
+                    {
+                        callAmount = currentPlayer.getStake();
+                    }
+                    currentPlayer.pay(callAmount);
+                    currentPlayer.setCurrentBet(currentPlayer.getCurrentBet() + callAmount);
+                    addToPot(callAmount);
+                }
+                else if (action instanceof Bet)
+                {
+                    int betAmount = action.getAmount();
+                    if (betAmount < minBet || betAmount < currentPlayer.getStake())
+                    {
+                        throw new IllegalActionException("Azione illegale");
+                    }
+                    currentPlayer.setCurrentBet(betAmount);
+                    currentPlayer.pay(betAmount);
+                    addToPot(betAmount);
+                    bet = betAmount;
+                    minBet =  betAmount;
+                    lastAggressor = currentPlayer;
+                }
+                else if (action instanceof Raise)
+                {
+                    int amount = action.getAmount();
+                    if (amount < minBet || amount < currentPlayer.getStake())
+                    {
+                        throw new IllegalActionException("Azione illegale");
+                    }
+                    bet += amount;
+                    minBet = amount;
+                    int raiseAmount = bet - currentPlayer.getCurrentBet();
+                    if(raiseAmount > currentPlayer.getStake())
+                    {
+                        raiseAmount = currentPlayer.getStake();
+                        bet = raiseAmount;
+                    }    
+                    currentPlayer.pay(raiseAmount);
+                    addToPot(raiseAmount);
+                    currentPlayer.setCurrentBet(currentPlayer.getCurrentBet() + raiseAmount);
+                    playersLeft = activePlayers.size() - 1;
+
+                }                    
+                else if (action instanceof Fold) 
+                {
+                    activePlayers.remove(currentPlayer);
+                    currentPlayer.foldCards();
+                    currentPlayerPosition--;
+                    if (activePlayers.size() == 1)
+                    {
+                        activePlayers.get(0).win(getTotalPot());
+                        playersLeft = 0;
+                    }
+                }
+                else if (action instanceof Check)
+                {
+                    //non fare nulla
+                }
+                else
+                {
+                    throw new IllegalActionException("Azione illegale");
+                }
+            }
+            currentPlayer.setLastAction(action);
+            
+        }
+        for (Player player : players) 
+        {
+            player.setCurrentBet(0);
+            player.setLastAction(null);
+        }
         
+    }
+    
+    private Set<ActionSet> getActionSet(Player player)
+    {
+        Set<ActionSet> allowedActions = new HashSet<>();
+        if (!player.getPlayerCards().isEmpty() && player.getStake() == 0)
+        {
+            allowedActions.add(ActionSet.CHECK);
+        }
+        else
+        {
+            int currentPlayerBet = currentPlayer.getCurrentBet();
+            if (bet == 0)
+            {
+                allowedActions.add(ActionSet.BET);
+            }
+            else if (currentPlayerBet < bet)
+            {
+                allowedActions.add(ActionSet.CALL);
+                if(raises < settings.getMaxRaises())
+                {
+                    allowedActions.add(ActionSet.RAISE);
+                }
+            }
+            else
+            {
+                allowedActions.add(ActionSet.CHECK);
+                if (raises < settings.getMaxRaises())                
+                {
+                    allowedActions.add(ActionSet.RAISE);
+                }
+            }
+            allowedActions.add(ActionSet.FOLD);
+        }
+        return allowedActions;
     }
     
     /**
@@ -127,17 +280,28 @@ public class Game {
      */
     private void shiftCurrentPlayer()
     {
-        
+        currentPlayerPosition = (currentPlayerPosition +1) % (activePlayers.size());
+        currentPlayer = activePlayers.get(currentPlayerPosition);
+    }
+    
+    private void shiftDealer()
+    {
+        dealerPosition = (dealerPosition +1) % (activePlayers.size());
+        dealer = activePlayers.get(dealerPosition);
     }
     
     private void betSmallBlind()
     {
-        
+        currentPlayer.pay(currentBigBlind/2);
+        currentPlayer.setLastAction(new SmallBlind(currentBigBlind/2));
+        currentPlayer.setCurrentBet(currentBigBlind/2);
     }
     
     private void betBigBlind()
     {
-        
+        currentPlayer.pay(currentBigBlind);
+        currentPlayer.setLastAction(new BigBlind(currentBigBlind));
+        currentPlayer.setCurrentBet(currentBigBlind);
     }
     
     private void preFlop()
@@ -146,31 +310,82 @@ public class Game {
         {
             this.board.dealCards(player);
         }
+        currentHandStage = 1;
+        bettingRound();
+
     }
     
     private void flop()
     {
+        bet = 0;
+        minBet = currentBigBlind;
+        bettingRound();
         this.board.flop();
+        currentHandStage = 2;
+        bettingRound();
     }
     
     private void turn()
     {
+        bet = 0;
         this.board.turn();
+        currentHandStage = 3;
+        bettingRound();
     }
     
     private void river()
     {
+        bet = 0;
         this.board.river();
+        currentHandStage = 4;
+        bettingRound();
     }
     
     private void showdown()
     {
-        
+        currentHandStage = 5;
+        bet = 0;
     }
     
-    private void getTotalPot()
+    public int getTotalPot()
     {
-        
+        int total = 0;
+        for (Pot pot : pots)
+        {
+            total+=pot.getValue();
+        }
+        return total;
+    }
+    
+    private void addToPot(int amount)
+    {
+        for (Pot pot : pots)
+        {
+            if (!pot.hasMember(currentPlayer))
+            {
+                int currentPotBet = pot.getBet();
+                if (amount >= currentPotBet)
+                {
+                    pot.addMember(currentPlayer);
+                    amount -= currentPotBet;
+                }
+                else
+                {
+                    pots.add(pot.getSidePot(amount, currentPlayer));
+                    amount = 0;
+                }
+            }
+            if (amount == 0)
+            {
+                break;
+            }
+        }
+        if (amount > 0)
+        {
+            Pot pot = new Pot(amount);
+            pot.addMember(currentPlayer);
+            pots.add(pot);
+        }
     }
     
     /**
@@ -200,7 +415,7 @@ public class Game {
      */
     public Hand getPlayerHand(Player player) {
         if (players.contains(player)) {
-            return player.getCurrent();
+            return player.getCurrentHand();
         }
         throw new PlayerNotFoundException("Giocatore non trovato!");
     }
@@ -211,6 +426,22 @@ public class Game {
      */
     public List<Player> getGiocatori() {
         return players;
+    }
+    
+    public void setActivePlayers()
+    {
+        for (Player player: players)
+        {
+            if (player.getStake() >= currentBigBlind)
+            {
+                player.setActive(true);
+                activePlayers.add(player);
+            }
+            else
+            {
+                player.setActive(false);
+            }
+        }
     }
 
     /**
