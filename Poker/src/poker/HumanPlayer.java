@@ -3,7 +3,7 @@ package poker;
 /**
  * Classe del giocatore umano
  */
-public class HumanPlayer extends Player {
+public class HumanPlayer extends Player implements Client {
     
     private String password;
 

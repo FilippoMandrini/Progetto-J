@@ -7,7 +7,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class Client {
+public class PokerClient {
     
     public static void main(String[] args) throws IOException {
         
