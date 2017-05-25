@@ -3,6 +3,7 @@ package client;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -14,7 +15,8 @@ public class Client {
         PrintStream out = null;
         Socket socket = null;
         final int port = 7777;
-        final String ip = "192.168.2.120";
+        InetAddress ip = InetAddress.getLocalHost();
+        
         String testMessage;
         
         try {
