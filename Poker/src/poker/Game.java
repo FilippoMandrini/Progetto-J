@@ -1,14 +1,19 @@
 package poker;
 
+import players.Player;
 import actions.*;
 import exceptions.*;
 import gametypes.*;
 import handtypes.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import java.util.TreeMap;
+import utilities.HandEvaluator;
 
 /**
  * Classe per la gestione della partita
@@ -345,6 +350,126 @@ public class Game {
     {
         currentHandStage = 5;
         bet = 0;
+        Set<Player> playersToShow = new HashSet<>();
+        for (Pot pot : pots)
+        {
+            for (Player member : pot.getMembers())
+            {
+                if (!playersToShow.contains(member) && member.getPlayerCards() != null && member.getStake() == 0)
+                {
+                    playersToShow.add(member);
+                }
+            }
+            if (lastAggressor != null)
+            {
+                playersToShow.add(lastAggressor);
+            }
+            int position = (dealerPosition +1) % activePlayers.size();
+            while (playersToShow.size() < activePlayers.size())
+            {
+                playersToShow.add(activePlayers.get(position));
+                position = (position + 1) % activePlayers.size();
+            }
+        }
+        Map<Hand, List<Player>> ranking = getRanking();
+        showCards();
+        distributeWinnings(ranking);
+        
+        
+        
+    }
+    
+    private void showCards()
+    {
+        
+    }
+    
+    private void distributeWinnings(Map<Hand, List<Player>> ranking)
+    {
+        Map<Player, Integer> winners =  new HashMap<>();
+        for (Hand hand : ranking.keySet())
+        {
+            List<Player> handWinners = ranking.get(hand);
+            for (Pot pot : pots) 
+            {
+                int potWinners = 0;
+                for (Player handWinner : handWinners) 
+                {
+                    if (pot.hasMember(handWinner)) 
+                    {
+                        potWinners++;
+                    }
+                }
+                if (potWinners > 0)
+                {
+                    int potShare =  pot.getValue() / potWinners;
+                    for (Player handWinner : handWinners)
+                    {
+                        if (pot.hasMember(handWinner))
+                        {
+                            Integer previousShare = winners.get(handWinner);
+                            if (previousShare == null)
+                            {
+                                previousShare = 0;
+                            }
+                            winners.put(handWinner, previousShare + potShare);                            
+                        }
+
+                    }
+                    int chipsLeft = pot.getValue() % potWinners;
+                    if (chipsLeft > 0)
+                    {
+                        int position = dealerPosition;
+                        for (int i = 0; chipsLeft > 0; chipsLeft--)
+                        {
+                            position = (position + 1) % activePlayers.size();
+                            Player currentOddWinner = activePlayers.get(position);
+                            if (winners.containsKey(currentOddWinner))
+                            {
+                                winners.put(currentOddWinner, winners.get(currentOddWinner) + 1);
+                            }
+                        }
+                    }
+                    pot.reset();
+                }
+            }
+        }
+        int totalWin = 0;
+        for (Player winner : winners.keySet())
+        {
+            totalWin += winners.get(winner);
+        }
+        if (totalWin > getTotalPot())
+        {
+            throw new IllegalStateException("Si sono generati soldi dal nulla!");
+        }
+        for (Player winner : winners.keySet())
+        {
+            winner.win(winners.get(winner));
+        }
+        
+    }
+
+    
+    private Map<Hand, List<Player>> getRanking()
+    {
+        for (Player player : activePlayers)
+        {
+            player.setCurrentHand(HandEvaluator.evaluate(player, board.getCommunityCards()));
+        }
+        Map<Hand, List<Player>> ranking = new TreeMap<>();
+        for (Player player : activePlayers)
+        {
+            List<Player> currentHandPlayers = ranking.get(player.getCurrentHand());
+
+            if (currentHandPlayers == null)
+            {
+                currentHandPlayers = new ArrayList<>();
+            }
+            currentHandPlayers.add(player);
+            ranking.put(player.getCurrentHand(), currentHandPlayers);
+        }
+        return ranking;
     }
     
     public int getTotalPot()
@@ -419,6 +544,8 @@ public class Game {
         }
         throw new PlayerNotFoundException("Giocatore non trovato!");
     }
+    
+    
 
     /**
      * Restituisce i players
