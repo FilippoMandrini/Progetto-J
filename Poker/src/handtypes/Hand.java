@@ -2,6 +2,7 @@ package handtypes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import poker.Card;
 
 /**
@@ -47,4 +48,31 @@ public abstract class Hand implements Comparable {
         }
         return result;
     }       
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.cards);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Hand other = (Hand) obj;
+        if (!Objects.equals(this.cards, other.cards)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }
