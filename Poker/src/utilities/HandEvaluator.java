@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import poker.Card;
-import poker.Player;
+import players.Player;
 
 /**
  *
