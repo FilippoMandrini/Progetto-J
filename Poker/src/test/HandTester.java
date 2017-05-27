@@ -3,7 +3,14 @@ package test;
 import handtypes.*;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 import poker.Card;
+import players.HumanPlayer;
+import players.Player;
 import poker.Suit;
 import poker.SuitType;
 
@@ -89,10 +96,53 @@ public class HandTester {
         hands.add(H8);
         hands.add(H9);
         Collections.sort(hands);
-        for (Hand hand : hands) {
-            System.out.println(hand.toString());
-            System.out.println(hand.getPoints());
+//        for (Hand hand : hands) {
+//            System.out.println(hand.toString());
+//            System.out.println(hand.getPoints());
+//        }
+        Map<Hand, List<Player>> ranking = new TreeMap<>();
+        Player P1 = new HumanPlayer("Luca");
+        Player P5 = new HumanPlayer("Giacomo");
+        Player P6 = new HumanPlayer("Giuda");
+        Player P2 = new HumanPlayer("Matteo");
+        Player P3 = new HumanPlayer("Marco");
+        Player P4 = new HumanPlayer("Giovanni");
+        P1.setCurrentHand(H1);
+        P5.setCurrentHand(H1);
+        P2.setCurrentHand(H3);
+        P3.setCurrentHand(H9);
+        P4.setCurrentHand(H6);
+        P6.setCurrentHand(H9);
+        Set<Player> activePlayers = new HashSet<>();
+        activePlayers.add(P1);
+        activePlayers.add(P5);
+        activePlayers.add(P6);
+        activePlayers.add(P4);
+        activePlayers.add(P3);
+        activePlayers.add(P2);
+        for (Player player : activePlayers)
+        {
+            List<Player> currentHandPlayers = ranking.get(player.getCurrentHand());
+
+            if (currentHandPlayers == null)
+            {
+                currentHandPlayers = new ArrayList<>();
+            }
+            currentHandPlayers.add(player);
+            ranking.put(player.getCurrentHand(), currentHandPlayers);
         }
+        for (Hand hand : ranking.keySet())
+        {
+            System.out.println(hand.toString());
+            for (Player player : ranking.get(hand))
+            {
+                System.out.println(player.toString());
+            }
+        }
+        
+
+
+        
     }
 
 }
