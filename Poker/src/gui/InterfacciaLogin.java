@@ -1,5 +1,6 @@
 package gui;
 
+import players.HumanPlayer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import poker.*;
@@ -109,7 +110,7 @@ public class InterfacciaLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        new HumanPlayer(this.nicknameField.getText(), this.passwordField.getText());
+        //new HumanPlayer(this.nicknameField.getText(), this.passwordField.getText());
         // è solo una prova: da implementare la creazione della board e l'aggiunta di giocatori da qui
         // trasferire le due stringe via socket al server dove verranno creati i giocatori
         // implementare eccezioni di giocatore già presente e giocatore non valido
