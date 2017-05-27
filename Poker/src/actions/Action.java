@@ -27,6 +27,12 @@ public abstract class Action {
         return amount;
     }
 
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+    
+    
+
     public Action(String name, String description) {
         this.name = name;
         this.description = description;

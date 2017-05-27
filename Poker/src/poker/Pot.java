@@ -15,7 +15,7 @@ public class Pot {
     public Pot(int bet) 
     {
         members = new HashSet<>();
-        bet = bet;
+        this.bet = bet;
     }
 
     public int getBet() {

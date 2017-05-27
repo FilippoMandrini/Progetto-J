@@ -27,6 +27,7 @@ public class StandardGame extends GameType{
         this.isBigBlindFixed = true;
         this.alwaysDoShowdown = true;
         this.startingStake = amount;
+        this.bigBlind = 50;
     }
     
     

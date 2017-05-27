@@ -5,8 +5,9 @@ import actions.Action;
 /**
  * Classe del giocatore umano
  */
-public class HumanPlayer extends Player implements Client {
+public class HumanPlayer extends Player {
     
+    protected HumanStrategy client;
     /**
      * Costruttore di HumanPlayer
      * @param name nome del giocatore
@@ -17,14 +18,14 @@ public class HumanPlayer extends Player implements Client {
     }
 
     @Override
+    public Client getClient() {
+        return client; //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+
+    @Override
     public String toString() {
         return "Giocatore: " + name;
     }
-
-    @Override
-    public Action act() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
 }

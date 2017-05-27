@@ -19,6 +19,11 @@ public abstract class Player implements Comparable {
     private boolean active;
     private int currentBet;
     private Action lastAction; 
+    protected Client client;
+
+    public Client getClient() {
+        return client;
+    }
 
     /**
      * Costruttore di Player

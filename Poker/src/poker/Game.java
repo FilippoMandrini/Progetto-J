@@ -79,7 +79,49 @@ public class Game {
      */
     public void playGame()
     {
-
+        System.out.println("[TEST] Giocatori: ");
+        for (Player player : players)
+        {
+            System.out.println("[TEST] " + player.toString());
+            player.setStake(settings.getStartingStake());
+        }
+        System.out.println("[TEST] Inizio Partita...");
+        int noOfHands = 0;
+        dealerPosition = -1;
+        currentPlayerPosition = -1;
+        while(true && noOfHands < 1)
+        {
+            int playersAbleToPlay = 0;
+            for (Player player : players)
+            {
+                if (player.getStake() >= currentBigBlind)
+                {
+                    playersAbleToPlay++;
+                }
+                
+            }
+            if (playersAbleToPlay > 1)
+            {
+                System.out.println("\n\n");
+                System.out.println("[TEST] Mano n°: " + (noOfHands + 1));
+                playSingleHand();
+                noOfHands++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        
+        board.clear();
+        pots.clear();
+        bet = 0;
+        for (Player player : players)
+        {
+            player.reset();
+            player.setActive(false);
+        }
+        System.out.println("Game Over");
     }
     /**
      * metodo che gioca una mano
@@ -87,7 +129,6 @@ public class Game {
     private void playSingleHand()
     {
         resetHand();
-        shiftCurrentPlayer();
         currentHandStage = 0;
         if (activePlayers.size() > 2)
         {
@@ -166,9 +207,10 @@ public class Game {
             {
                 Set<ActionSet> allowedActions = getActionSet(currentPlayer);
                 // chiedo al client l'azione da fare, simulo come Azione Generica
-                currentAction = new GenericAction(new Random().nextInt(2000));
+                action = currentPlayer.getClient().act();
+                //currentAction = new GenericAction(new Random().nextInt(2000));
                 playersLeft--;
-                if (currentAction instanceof Call)
+                if (action instanceof Call)
                 {
                     int callAmount = bet - currentPlayer.getCurrentBet();
                     if(callAmount > currentPlayer.getStake())
@@ -178,6 +220,7 @@ public class Game {
                     currentPlayer.pay(callAmount);
                     currentPlayer.setCurrentBet(currentPlayer.getCurrentBet() + callAmount);
                     addToPot(callAmount);
+                    action.setAmount(callAmount);
                 }
                 else if (action instanceof Bet)
                 {
@@ -233,7 +276,12 @@ public class Game {
                 {
                     throw new IllegalActionException("Azione illegale");
                 }
+                System.out.println("[TEST] "+ currentPlayer.toString() + " " + action.getDescription() + " " + action.getAmount());
+                System.out.println("[TEST] Pot totale: " + getTotalPot());
+                System.out.println("[TEST] RPM: " + playersLeft);
+
             }
+            currentAction = action;
             currentPlayer.setLastAction(action);
             
         }
@@ -287,12 +335,14 @@ public class Game {
     {
         currentPlayerPosition = (currentPlayerPosition +1) % (activePlayers.size());
         currentPlayer = activePlayers.get(currentPlayerPosition);
+        System.out.println("[TEST] Current Player: " + currentPlayer.toString());
     }
     
     private void shiftDealer()
     {
         dealerPosition = (dealerPosition +1) % (activePlayers.size());
         dealer = activePlayers.get(dealerPosition);
+        System.out.println("[TEST] Current Dealer: " + dealer.toString());
     }
     
     private void betSmallBlind()
@@ -300,6 +350,10 @@ public class Game {
         currentPlayer.pay(currentBigBlind/2);
         currentPlayer.setLastAction(new SmallBlind(currentBigBlind/2));
         currentPlayer.setCurrentBet(currentBigBlind/2);
+        addToPot(currentBigBlind/2);
+        System.out.println("[TEST] "+ currentPlayer.toString() + " paga Small Blind: " + currentBigBlind/2);
+        
+
     }
     
     private void betBigBlind()
@@ -307,6 +361,8 @@ public class Game {
         currentPlayer.pay(currentBigBlind);
         currentPlayer.setLastAction(new BigBlind(currentBigBlind));
         currentPlayer.setCurrentBet(currentBigBlind);
+        addToPot(currentBigBlind);
+        System.out.println("[TEST] "+ currentPlayer.toString() + " paga Big Blind: " + currentBigBlind);
     }
     
     private void preFlop()
@@ -314,6 +370,11 @@ public class Game {
         for(Player player : activePlayers)
         {
             this.board.dealCards(player);
+            System.out.println("[TEST] "+ player.toString() + " ha carte: ");
+            for(Card card : player.getPlayerCards())
+            {
+                System.out.println("[TEST] " + card.toString());
+            }
         }
         currentHandStage = 1;
         bettingRound();
@@ -324,8 +385,12 @@ public class Game {
     {
         bet = 0;
         minBet = currentBigBlind;
-        bettingRound();
         this.board.flop();
+        System.out.println("[TEST] Flop...");
+        for(Card card : board.getCommunityCards())
+        {
+            System.out.println("[TEST] " + card.toString());
+        }
         currentHandStage = 2;
         bettingRound();
     }
@@ -334,6 +399,11 @@ public class Game {
     {
         bet = 0;
         this.board.turn();
+        System.out.println("[TEST] Turn...");
+        for(Card card : board.getCommunityCards())
+        {
+            System.out.println("[TEST] " + card.toString());
+        }
         currentHandStage = 3;
         bettingRound();
     }
@@ -342,6 +412,11 @@ public class Game {
     {
         bet = 0;
         this.board.river();
+        System.out.println("[TEST] River...");
+        for(Card card : board.getCommunityCards())
+        {
+            System.out.println("[TEST] " + card.toString());
+        }
         currentHandStage = 4;
         bettingRound();
     }
@@ -372,21 +447,36 @@ public class Game {
             }
         }
         Map<Hand, List<Player>> ranking = getRanking();
-        showCards();
+        showCards(playersToShow);
+        System.out.println("[TEST] Classifica...");
+        for (Hand hand : ranking.keySet())
+        {
+            for (Player player : ranking.get(hand))
+            {
+                System.out.println("[TEST] " + player.toString());
+            }
+        }
         distributeWinnings(ranking);
         
         
         
     }
     
-    private void showCards()
+    private void showCards(Set<Player> playersToShow)
     {
-        
+        System.out.println("[TEST] Showdown...");
+        for(Player player: playersToShow)
+        {
+            System.out.println("[TEST] " + player.toString() + " ha la mano: ");
+            System.out.println(player.getCurrentHand().toString());
+        }
     }
     
     private void distributeWinnings(Map<Hand, List<Player>> ranking)
     {
+        System.out.println("[TEST] Distribuzione vincite...");
         Map<Player, Integer> winners =  new HashMap<>();
+        int totalPot = getTotalPot();
         for (Hand hand : ranking.keySet())
         {
             List<Player> handWinners = ranking.get(hand);
@@ -439,13 +529,14 @@ public class Game {
         {
             totalWin += winners.get(winner);
         }
-        if (totalWin > getTotalPot())
+        if (totalWin > totalPot)
         {
             throw new IllegalStateException("Si sono generati soldi dal nulla!");
         }
         for (Player winner : winners.keySet())
         {
-            winner.win(winners.get(winner));
+            System.out.println("[TEST] " + winner.toString() + " vince " + winners.get(winner));
+            winner.win(winners.get(winner));                     
         }
         
     }

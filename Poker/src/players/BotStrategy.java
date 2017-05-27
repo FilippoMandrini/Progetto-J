@@ -6,18 +6,16 @@
 package players;
 
 import actions.Action;
-import actions.GenericAction;
-import java.io.BufferedReader;
-import java.util.Scanner;
 
 /**
  *
  * @author Nickelsilver
  */
-public class HumanTestPlayer extends HumanPlayer {
+public class BotStrategy implements Client{
+
+    @Override
+    public Action act() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
-    public HumanTestPlayer(String name) {
-        super(name);
-        client = new TestHumanStrategy();
-    } 
 }
