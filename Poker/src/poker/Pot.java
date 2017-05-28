@@ -50,13 +50,13 @@ public class Pot {
     
     public Pot getSidePot(int amount, Player player)
     {
-        members.add(player);
         Pot sidePot = new Pot(bet - amount);
         this.bet = amount;
         for (Player member : members)
         {
             sidePot.addMember(member);
         }
+        members.add(player);
         return sidePot;
            
     }

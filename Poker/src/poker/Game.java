@@ -18,7 +18,7 @@ import utilities.HandEvaluator;
 /**
  * Classe per la gestione della partita
  */
-public class Game {
+public class Game extends GameObservable {
     
     private GameType settings;
     
@@ -82,14 +82,13 @@ public class Game {
         System.out.println("[TEST] Giocatori: ");
         for (Player player : players)
         {
-            System.out.println("[TEST] " + player.toString());
-            player.setStake(settings.getStartingStake());
+            System.out.println("[TEST] " + player.toString() + " con stake " + player.getStake());
         }
         System.out.println("[TEST] Inizio Partita...");
         int noOfHands = 0;
         dealerPosition = -1;
         currentPlayerPosition = -1;
-        while(true && noOfHands < 1)
+        while(true)
         {
             int playersAbleToPlay = 0;
             for (Player player : players)
@@ -198,7 +197,7 @@ public class Game {
         {
             shiftCurrentPlayer();
             Action action = null;
-            if (!currentPlayer.getPlayerCards().isEmpty() && currentPlayer.getStake() == 0) 
+            if (!currentPlayer.getCards().isEmpty() && currentPlayer.getStake() == 0) 
             {
                 action = new Check();
                 playersLeft--;
@@ -207,7 +206,7 @@ public class Game {
             {
                 Set<ActionSet> allowedActions = getActionSet(currentPlayer);
                 // chiedo al client l'azione da fare, simulo come Azione Generica
-                action = currentPlayer.getClient().act();
+                action = currentPlayer.getClient().act(allowedActions);
                 //currentAction = new GenericAction(new Random().nextInt(2000));
                 playersLeft--;
                 if (action instanceof Call)
@@ -225,11 +224,12 @@ public class Game {
                 else if (action instanceof Bet)
                 {
                     int betAmount = action.getAmount();
-                    if (betAmount < minBet || betAmount < currentPlayer.getStake())
+                    if (betAmount < minBet && betAmount < currentPlayer.getStake())
                     {
                         throw new IllegalActionException("Azione illegale");
                     }
                     currentPlayer.setCurrentBet(betAmount);
+                    playersLeft = activePlayers.size() - 1;
                     currentPlayer.pay(betAmount);
                     addToPot(betAmount);
                     bet = betAmount;
@@ -239,7 +239,7 @@ public class Game {
                 else if (action instanceof Raise)
                 {
                     int amount = action.getAmount();
-                    if (amount < minBet || amount < currentPlayer.getStake())
+                    if (amount < minBet && amount < currentPlayer.getStake())
                     {
                         throw new IllegalActionException("Azione illegale");
                     }
@@ -250,6 +250,7 @@ public class Game {
                     {
                         raiseAmount = currentPlayer.getStake();
                         bet = raiseAmount;
+                        minBet = raiseAmount;
                     }    
                     currentPlayer.pay(raiseAmount);
                     addToPot(raiseAmount);
@@ -296,7 +297,7 @@ public class Game {
     private Set<ActionSet> getActionSet(Player player)
     {
         Set<ActionSet> allowedActions = new HashSet<>();
-        if (!player.getPlayerCards().isEmpty() && player.getStake() == 0)
+        if (!player.getCards().isEmpty() && player.getStake() == 0)
         {
             allowedActions.add(ActionSet.CHECK);
         }
@@ -305,6 +306,7 @@ public class Game {
             int currentPlayerBet = currentPlayer.getCurrentBet();
             if (bet == 0)
             {
+                allowedActions.add(ActionSet.CHECK);
                 allowedActions.add(ActionSet.BET);
             }
             else if (currentPlayerBet < bet)
@@ -371,7 +373,7 @@ public class Game {
         {
             this.board.dealCards(player);
             System.out.println("[TEST] "+ player.toString() + " ha carte: ");
-            for(Card card : player.getPlayerCards())
+            for(Card card : player.getCards())
             {
                 System.out.println("[TEST] " + card.toString());
             }
@@ -430,7 +432,7 @@ public class Game {
         {
             for (Player member : pot.getMembers())
             {
-                if (!playersToShow.contains(member) && member.getPlayerCards() != null && member.getStake() == 0)
+                if (!playersToShow.contains(member) && member.getCards() != null && member.getStake() == 0)
                 {
                     playersToShow.add(member);
                 }
@@ -618,7 +620,7 @@ public class Game {
         }
         if (presence == false) {
             players.add(player);
-            player.setStake(settings.getStartingStake());
+            //player.setStake(settings.getStartingStake());
         } else {
             throw new InvalidPlayerNameException("Nome già utilizzato!");
         }
@@ -669,8 +671,11 @@ public class Game {
     public boolean hasPlayers() {
         return !players.isEmpty();
     }
+    
+    
 }
     
+
     
     
    
