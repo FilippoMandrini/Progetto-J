@@ -37,12 +37,15 @@ public abstract class Player implements Comparable {
         this.name = name;
         this.stake = stake;
         this.client = client;
+        this.cards = new ArrayList<>();
+
     }
     
     protected Player(String name, int stake){
         this.name = name;
         this.stake = stake;
         this.client = null;
+        this.cards = new ArrayList<>();
     }
     
     
@@ -62,7 +65,7 @@ public abstract class Player implements Comparable {
      * Restituisce lo stake del giocatore
      * @return lo stake del giocatore
      */
-    public int getStake() {
+    public int getStake()  {
         return stake;
     }
 
@@ -135,13 +138,16 @@ public abstract class Player implements Comparable {
      * Dà una carta al giocatore
      * @param card la carta del giocatore
      */
-    public void addCard(Card card) {
+    public void addCard(Card card) 
+    {
         this.cards.add(card);
     }
     
 
-    public boolean reset() {
-        this.cards.clear();
+    public boolean reset() 
+    {
+        if (this.cards != null)
+            this.cards.clear();
         this.active = true;
         this.lastAction = null;
         return true;
