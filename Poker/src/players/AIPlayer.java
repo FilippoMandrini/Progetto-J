@@ -5,17 +5,15 @@
  */
 package players;
 
-import actions.Action;
-
 /**
  *
  * @author Nickelsilver
  */
-public class BotStrategy implements Client{
-
-    @Override
-    public Action act() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+public class AIPlayer extends Player {
+  
+    public AIPlayer(String name, AIStrategy client)
+    {
+        super(name, client);
     }
     
 }

@@ -19,25 +19,30 @@ public abstract class Player implements Comparable {
     private boolean active;
     private int currentBet;
     private Action lastAction; 
-    protected Client client;
-
-    public Client getClient() {
-        return client;
-    }
+    protected final Client client;
 
     /**
      * Costruttore di Player
      * @param name nome del giocatore
+     * @param client
      */
-    public Player(String name) {
+    public Player(String name, Client client) {
         this.name = name;
         this.cards = new ArrayList<>();
         this.active = true;
+        this.client = client;
     }
 
-    public Player(String name, int stake) {
+    public Player(String name, int stake, Client client) {
         this.name = name;
         this.stake = stake;
+        this.client = client;
+    }
+    
+    protected Player(String name, int stake){
+        this.name = name;
+        this.stake = stake;
+        this.client = null;
     }
     
     
@@ -50,6 +55,9 @@ public abstract class Player implements Comparable {
         return name;
     }
 
+    public Client getClient() {
+        return client;
+    }
     /**
      * Restituisce lo stake del giocatore
      * @return lo stake del giocatore
@@ -60,6 +68,10 @@ public abstract class Player implements Comparable {
 
     public void setLastAction(Action lastAction) {
         this.lastAction = lastAction;
+    }
+
+    public Action getLastAction() {
+        return lastAction;
     }
 
     @Override
@@ -127,13 +139,8 @@ public abstract class Player implements Comparable {
         this.cards.add(card);
     }
     
-    /**
-     * Resetta le carte del giocatore e reinizializza il giocatore come attivo
-     * @return true se aveva delle carte da resettare, altrimenti false
-     */
+
     public boolean reset() {
-        if (!this.cards.isEmpty())
-            return false;
         this.cards.clear();
         this.active = true;
         this.lastAction = null;
@@ -144,7 +151,7 @@ public abstract class Player implements Comparable {
      * Restituisce le carte del giocatore
      * @return le carte del giocatore
      */
-    public List<Card> getPlayerCards() {
+    public List<Card> getCards() {
         return this.cards;
     }
 

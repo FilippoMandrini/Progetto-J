@@ -13,11 +13,10 @@ import java.util.Scanner;
 /**
  *
  * @author Nickelsilver
- */
+ */ 
 public class HumanTestPlayer extends HumanPlayer {
     
     public HumanTestPlayer(String name) {
-        super(name);
-        client = new TestHumanStrategy();
+        super(name, new HumanTestStrategy());
     } 
 }

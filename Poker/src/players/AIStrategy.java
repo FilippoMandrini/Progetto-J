@@ -7,21 +7,12 @@ package players;
 
 import actions.Action;
 import actions.ActionSet;
-import java.net.Socket;
 import java.util.Set;
 
 /**
  *
  * @author Nickelsilver
  */
-public abstract class HumanStrategy implements Client {
-
+public abstract class AIStrategy implements Client{
     
-    protected Socket socket;
-
-    public HumanStrategy(Socket socket) {
-        this.socket = socket;
-    }
-    
-
 }

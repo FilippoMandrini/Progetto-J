@@ -7,20 +7,23 @@ import actions.Action;
  */
 public class HumanPlayer extends Player {
     
-    protected HumanStrategy client;
     /**
      * Costruttore di HumanPlayer
      * @param name nome del giocatore
-     * @param password password del giocatore
+     * @param client
      */
-    public HumanPlayer(String name) {
-        super(name);
+    
+    public HumanPlayer(String name, HumanStrategy client) {
+        super(name, client);
     }
+    
+    
+    
 
-    @Override
-    public Client getClient() {
-        return client; //To change body of generated methods, choose Tools | Templates.
-    }
+//    @Override
+//    public Client getClient() {
+//        return client; //To change body of generated methods, choose Tools | Templates.
+//    }
     
     
 
