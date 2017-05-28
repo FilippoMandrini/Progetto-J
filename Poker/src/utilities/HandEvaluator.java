@@ -36,7 +36,7 @@ public abstract class HandEvaluator {
      */
     public static Hand evaluate(Player player, List<Card> communityCards) {
         List<Card> toEvaluate = new ArrayList<>();
-        toEvaluate.addAll(player.getPlayerCards());
+        toEvaluate.addAll(player.getCards());
         toEvaluate.addAll(communityCards);
         return evaluateFull(toEvaluate);
     }
