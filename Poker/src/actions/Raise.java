@@ -13,6 +13,8 @@ public class Raise extends Action {
     
     public Raise(int amount) {
         super("Raise", "rilancia", amount);
+        this.actionType = ActionSet.RAISE;
+
     }
     
 }

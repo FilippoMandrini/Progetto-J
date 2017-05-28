@@ -14,6 +14,7 @@ public abstract class Action {
     protected String name;
     protected String description;
     protected int amount;
+    protected ActionSet actionType;
 
     public String getName() {
         return name;
@@ -30,6 +31,12 @@ public abstract class Action {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    public ActionSet getActionType() {
+        return actionType;
+    }
+    
+    
     
     
 

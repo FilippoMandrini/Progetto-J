@@ -13,6 +13,8 @@ public class SmallBlind extends Action {
 
     public SmallBlind(int amount) {
         super("Small Blind", "paga small blind", amount);
+        this.actionType = ActionSet.SMALL_BLIND;
+     
     }
 
 }

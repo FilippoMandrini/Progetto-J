@@ -13,6 +13,7 @@ package actions;
 
     public BigBlind(int amount) {
         super("Big Blind", "paga big blind", amount);
+        this.actionType = ActionSet.BIG_BLIND;
     }
 
 }

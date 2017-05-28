@@ -13,5 +13,7 @@ public class Check extends Action{
     
     public Check() {
         super("Check", "checka");
+        this.actionType = ActionSet.CHECK;
+
     }
 }

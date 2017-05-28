@@ -13,6 +13,7 @@ public class Call extends Action {
     
     public Call() {
         super("Call", "chiama");
+        this.actionType = ActionSet.CALL;
     }
     
 }

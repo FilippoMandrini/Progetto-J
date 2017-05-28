@@ -13,6 +13,7 @@ public class Bet extends Action {
     
     public Bet(int amount) {
         super("Bet", "scommette", amount);
+        this.actionType = ActionSet.BET;
     }
     
 }

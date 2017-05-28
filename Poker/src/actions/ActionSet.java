@@ -15,7 +15,9 @@ public enum ActionSet {
     RAISE("Raise"),
     BET("Bet"),
     CHECK("Check"),
-    FOLD("Fold");
+    FOLD("Fold"),
+    BIG_BLIND("Big Blind"),
+    SMALL_BLIND("Small Blind");
     
     private String name;
     

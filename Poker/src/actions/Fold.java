@@ -13,6 +13,7 @@ public class Fold extends Action {
     
     public Fold() {
         super("Fold", "folda");
+        this.actionType = ActionSet.FOLD;
     }
     
 }
