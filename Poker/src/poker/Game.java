@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 import java.util.TreeMap;
 import utilities.HandEvaluator;
@@ -56,15 +55,12 @@ public class Game extends GameObservable {
   
     
     
-    
-    
-    
     /**
      * Costruttore di Game
      * @param settings le impostazioni del tavolo
      */
-    public Game(GameType settings) {
-        
+    public Game(GameType settings)
+    {
         this.settings = settings;
         this.currentBigBlind = settings.getBigBlind();
         players = new ArrayList<>();
@@ -97,7 +93,6 @@ public class Game extends GameObservable {
                 {
                     playersAbleToPlay++;
                 }
-                
             }
             if (playersAbleToPlay > 1)
             {
@@ -111,7 +106,6 @@ public class Game extends GameObservable {
                 break;
             }
         }
-        
         board.clear();
         pots.clear();
         bet = 0;
@@ -154,7 +148,6 @@ public class Game extends GameObservable {
                 }
             }
         }
-        
     }    
     
     private void resetHand()
@@ -256,7 +249,6 @@ public class Game extends GameObservable {
                     addToPot(raiseAmount);
                     currentPlayer.setCurrentBet(currentPlayer.getCurrentBet() + raiseAmount);
                     playersLeft = activePlayers.size() - 1;
-
                 }                    
                 else if (action instanceof Fold) 
                 {
@@ -280,18 +272,15 @@ public class Game extends GameObservable {
                 System.out.println("[TEST] "+ currentPlayer.toString() + " " + action.getDescription() + " " + action.getAmount());
                 System.out.println("[TEST] Pot totale: " + getTotalPot());
                 System.out.println("[TEST] RPM: " + playersLeft);
-
             }
             currentAction = action;
             currentPlayer.setLastAction(action);
-            
         }
         for (Player player : players) 
         {
             player.setCurrentBet(0);
             player.setLastAction(null);
-        }
-        
+        } 
     }
     
     private Set<ActionSet> getActionSet(Player player)
@@ -354,8 +343,6 @@ public class Game extends GameObservable {
         currentPlayer.setCurrentBet(currentBigBlind/2);
         addToPot(currentBigBlind/2);
         System.out.println("[TEST] "+ currentPlayer.toString() + " paga Small Blind: " + currentBigBlind/2);
-        
-
     }
     
     private void betBigBlind()
@@ -458,12 +445,9 @@ public class Game extends GameObservable {
                 System.out.println("[TEST] " + player.toString());
             }
         }
-        distributeWinnings(ranking);
-        
-        
-        
+        distributeWinnings(ranking);   
     }
-    
+   
     private void showCards(Set<Player> playersToShow)
     {
         System.out.println("[TEST] Showdown...");
@@ -540,10 +524,8 @@ public class Game extends GameObservable {
             System.out.println("[TEST] " + winner.toString() + " vince " + winners.get(winner));
             winner.win(winners.get(winner));                     
         }
-        
     }
 
-    
     private Map<Hand, List<Player>> getRanking()
     {
         for (Player player : activePlayers)
@@ -638,8 +620,6 @@ public class Game extends GameObservable {
         throw new PlayerNotFoundException("Giocatore non trovato!");
     }
     
-    
-
     /**
      * Restituisce i players
      * @return la lista dei players

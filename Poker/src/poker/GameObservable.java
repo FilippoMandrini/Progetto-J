@@ -5,7 +5,7 @@
  */
 package poker;
 
-import gametypes.GameType;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Observable;
 import java.util.Observer;
@@ -75,7 +75,7 @@ public abstract class GameObservable extends Observable {
         clearChanged();
     }
     
-    public synchronized void notifyPlayerActionUpdated(Player player)
+    public synchronized void notifyPlayerUpdated(Player player)
     {
         if (hasChanged()) {
             for (GameObserver observer : observers) {
@@ -140,6 +140,17 @@ public abstract class GameObservable extends Observable {
         if (hasChanged()) {
             for (GameObserver observer : observers) {
                 observer.currentPlayerUpdated(currentPlayer);
+            }
+        }
+        clearChanged();
+    }
+    
+    public synchronized void notifyPlayersUpdated(ArrayList<Player> players)
+    {
+        if (hasChanged()) {
+            for (Player player : players)
+            {
+                notifyPlayerUpdated(player);
             }
         }
         clearChanged();
