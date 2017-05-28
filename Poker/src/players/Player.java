@@ -146,8 +146,7 @@ public abstract class Player implements Comparable {
 
     public boolean reset() 
     {
-        if (this.cards != null)
-            this.cards.clear();
+        this.cards.clear();
         this.active = true;
         this.lastAction = null;
         return true;
@@ -218,7 +217,7 @@ public abstract class Player implements Comparable {
     
     public void foldCards()
     {
-        this.cards = null;
+        this.cards.clear();
         setActive(false);
     }
     
