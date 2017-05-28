@@ -18,9 +18,12 @@ public class GameTest {
     public static void main(String[] args) {
         
         HumanPlayer H1 = new HumanTestPlayer("Filippo");
+        H1.setStake(500);
         HumanPlayer H2 = new HumanTestPlayer("Alice");
+        H2.setStake(1500);
         HumanPlayer H3 = new HumanTestPlayer("Luca");
-        Game MAIN = new Game(new StandardGame(1000));
+        H3.setStake(500);
+        Game MAIN = new Game(new StandardGame(5000));
         MAIN.addPlayer(H1);
         MAIN.addPlayer(H2);
         MAIN.addPlayer(H3);
