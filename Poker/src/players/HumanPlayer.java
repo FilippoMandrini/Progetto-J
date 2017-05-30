@@ -25,10 +25,5 @@ public class HumanPlayer extends Player {
 //        return client; //To change body of generated methods, choose Tools | Templates.
 //    }
     
-    
 
-    @Override
-    public String toString() {
-        return "Giocatore: " + name;
-    }
 }
