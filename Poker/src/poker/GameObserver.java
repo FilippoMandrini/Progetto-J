@@ -9,6 +9,7 @@ import gametypes.*;
 import java.util.Observer;
 import java.util.Set;
 import players.Player;
+import players.ShadowPlayer;
 
 /**
  *
@@ -18,7 +19,7 @@ public abstract interface GameObserver extends Observer {
 
     public void boardUpdated(Board board);
     
-    public void playerActionUpdated(Player player);
+    public void playerUpdated(Player player);
     
     public void messageUpdated(String message);
     
@@ -31,6 +32,8 @@ public abstract interface GameObserver extends Observer {
     public void bettingUpdated(int bet, int minBet, int totalPot);
     
     public void selfUpdated(Player player);
+
+    public void currentPlayerActed(ShadowPlayer shadowCopy);
     
     
 }

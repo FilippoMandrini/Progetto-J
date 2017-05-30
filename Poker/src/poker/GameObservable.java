@@ -5,8 +5,8 @@
  */
 package poker;
 
-import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Set;
@@ -51,7 +51,6 @@ public abstract class GameObservable extends Observable {
         {
             observers.remove(observer);
         }
-
     }
 
     @Override
@@ -65,7 +64,7 @@ public abstract class GameObservable extends Observable {
         
     }
     
-    public synchronized void notifyBoardUpdated(Board board)
+    public void notifyBoardUpdated(Board board)
     {
         if (hasChanged()) {
             for (GameObserver observer : observers) {
@@ -75,27 +74,7 @@ public abstract class GameObservable extends Observable {
         clearChanged();
     }
     
-    public synchronized void notifyPlayerUpdated(Player player)
-    {
-        if (hasChanged()) {
-            for (GameObserver observer : observers) {
-                observer.playerActionUpdated(player);
-            }
-        }
-        clearChanged();
-    }
-    
-    public synchronized void notifySelfUpdated(Player player)
-    {
-        if (hasChanged()) {
-            for (GameObserver observer : observers) {
-                observer.selfUpdated(player);
-            }
-        }
-        clearChanged();
-    }
-    
-    public synchronized void notifyMessageUpdated(String message)
+    public void notifyMessageUpdated(String message)
     {
         if (hasChanged()) {
             for (GameObserver observer : observers) {
@@ -115,17 +94,17 @@ public abstract class GameObservable extends Observable {
         clearChanged();
     }
     
-    public synchronized void notifyHandStarted(Player dealer)
+    public void notifyHandStarted(Player dealer)
     {
         if (hasChanged()) {
             for (GameObserver observer : observers) {
-                observer.handStarted(dealer);
+                observer.handStarted(dealer.getShadowCopy());
             }
         }
         clearChanged();
     }
     
-    public synchronized void notifyBettingUpdate(int bet, int minBet, int totalPot)
+    public void notifyBettingUpdate(int bet, int minBet, int totalPot)
     {
         if (hasChanged()) {
             for (GameObserver observer : observers) {
@@ -135,26 +114,70 @@ public abstract class GameObservable extends Observable {
         clearChanged();
     }
     
-    public synchronized void currentPlayerUpdated(Player currentPlayer)
+    public void notifyCurrentPlayerUpdated(Player currentPlayer)
     {
         if (hasChanged()) {
             for (GameObserver observer : observers) {
-                observer.currentPlayerUpdated(currentPlayer);
+                observer.currentPlayerUpdated(currentPlayer.getShadowCopy());
             }
         }
         clearChanged();
     }
     
-    public synchronized void notifyPlayersUpdated(ArrayList<Player> players)
+    public void notifyCurrentPlayerActed(Player currentPlayer)
     {
         if (hasChanged()) {
-            for (Player player : players)
-            {
-                notifyPlayerUpdated(player);
+            for (GameObserver observer : observers) {
+                observer.currentPlayerActed(currentPlayer.getShadowCopy());
             }
         }
         clearChanged();
     }
+    
+    public void notifyHiddenPlayersUpdated(List<Player> players)
+    {
+        for (Player notifyPlayer : players)
+        {
+            if (hasChanged()) {
+                for (Player player : players)
+                {
+                    if(!notifyPlayer.equals(player))
+                    {
+                        notifyPlayer.getClient().playerUpdated(player.getShadowCopy());
+                    }
+                    else
+                    {
+                        notifyPlayer.getClient().selfUpdated(player);
+                    }
+                }
+            }
+        }
+        clearChanged();
+    }
+
+    public void notifyPlayersUpdated(List<Player> players)
+    {
+        for (Player notifyPlayer : players)
+        {
+            if (hasChanged()) {
+                for (Player player : players)
+                {
+                    notifyPlayer.getClient().playerUpdated(player);                    
+                }
+            }
+        }
+        clearChanged();
+    }
+
+    
+    // implementazione stupida, correggere il resto
+    @Override
+    protected synchronized void clearChanged() {
+        setChanged(); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+    
     
     
     
