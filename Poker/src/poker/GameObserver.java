@@ -15,7 +15,7 @@ import players.ShadowPlayer;
  *
  * @author Nickelsilver
  */
-public abstract interface GameObserver extends Observer {
+public abstract interface GameObserver {
 
     public void boardUpdated(Board board);
     

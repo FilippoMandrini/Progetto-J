@@ -69,11 +69,6 @@ public class HumanCompleteStrategy extends HumanStrategy{
     }
 
     @Override
-    public void update(Observable o, Object arg) {
-
-    }
-
-    @Override
     public void currentPlayerActed(ShadowPlayer shadowCopy) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

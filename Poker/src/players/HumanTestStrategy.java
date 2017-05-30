@@ -111,11 +111,6 @@ public class HumanTestStrategy extends HumanStrategy {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
-
-    }
-
-    @Override
     public void currentPlayerActed(ShadowPlayer shadowCopy) {
         
     }

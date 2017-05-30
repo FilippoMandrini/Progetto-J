@@ -74,88 +74,83 @@ public class AIBasicStrategy extends AIStrategy {
             {
                 if ((chenScore - scoreToPlay) >= ((20.0 - scoreToPlay)/2.0))
                 {
-                    if (aggressiveness == 0)
-                    {
-                        if (allowedActions.contains(ActionSet.CALL))
-                        {
-                            action = new Call();
-                        }
-                        else
-                        {
-                            action = new Check();
-                        }
-                    }
-                    else if (aggressiveness == 100)
-                    {
-                        if (allowedActions.contains(ActionSet.BET))
-                        {
-                            action = new Bet(stake);
-                        }      
-                        else if(allowedActions.contains(ActionSet.RAISE))
-                        {
-                            int toPayAmount = bet - ownBet + this.stake;
-                            int raiseAmount = this.stake - bet + ownBet;
-                            action = new Raise(raiseAmount);
-                        }
-                        else if (allowedActions.contains(ActionSet.CALL))
-                        {
-                            action = new Call();
-                        }
-                        else
-                        {
-                            action = new Check();
-                        }
-                    }
-                    else
-                    {
-                        int amount = minBet;
-                        int betIndex = aggressiveness / 20;
-                        for (int i = 0; i< betIndex; i++)
-                        {
-                            amount *=2;
-                        }
-                        if (bet < amount)
-                        {
-                            if (allowedActions.contains(ActionSet.BET)) 
-                            {
-                                action = new Bet(amount);
-                            } 
-                            else if (allowedActions.contains(ActionSet.RAISE)) 
-                            {
-                                int toPayAmount = bet - ownBet + amount;
-                                int raiseAmount = amount - bet + ownBet;
-                                action = new Raise(raiseAmount);
-                            } 
-                            else if (allowedActions.contains(ActionSet.CALL)) 
+                    switch (aggressiveness) {
+                        case 0:
+                            if (allowedActions.contains(ActionSet.CALL)) 
                             {
                                 action = new Call();
-                            } 
+                            }
                             else 
                             {
                                 action = new Check();
-                            }
-                        }
-                        else
-                        {
-                            if (allowedActions.contains(ActionSet.CALL))
+                            }   break;
+                        case 100:
+                            if (allowedActions.contains(ActionSet.BET))
                             {
-                                if ((bet-ownBet / 2) < amount)
+                                action = new Bet(stake);
+                            }
+                            else if(allowedActions.contains(ActionSet.RAISE))
+                            {
+                                int toPayAmount = bet - ownBet + this.stake;
+                                int raiseAmount = this.stake - bet + ownBet;
+                                action = new Raise(raiseAmount);
+                            }
+                            else if (allowedActions.contains(ActionSet.CALL)) 
+                            {
+                                action = new Call();
+                            }
+                            else 
+                            {
+                                action = new Check();
+                            }   break;
+                        default:
+                            int amount = minBet;
+                            int betIndex = aggressiveness / 20;
+                            for (int i = 0; i< betIndex; i++)
+                            {
+                                amount *=2;
+                            }   if (bet < amount)
+                            {
+                                if (allowedActions.contains(ActionSet.BET))
+                                {
+                                    action = new Bet(amount);
+                                }
+                                else if (allowedActions.contains(ActionSet.RAISE))
+                                {
+                                    int toPayAmount = bet - ownBet + amount;
+                                    int raiseAmount = amount - bet + ownBet;
+                                    action = new Raise(raiseAmount);
+                                }
+                                else if (allowedActions.contains(ActionSet.CALL))
                                 {
                                     action = new Call();
                                 }
                                 else
                                 {
-                                    if (allowedActions.contains(ActionSet.FOLD))
-                                    {
-                                        action = new Fold();
-                                    }
+                                    action = new Check();
                                 }
                             }
-                            if (allowedActions.contains(ActionSet.CHECK)) 
+                            else 
                             {
-                                action = new Check();
-                            }
-                        }
+                                if (allowedActions.contains(ActionSet.CALL))
+                                {
+                                    if ((bet-ownBet / 2) < amount)
+                                    {
+                                        action = new Call();
+                                    }
+                                    else
+                                    {
+                                        if (allowedActions.contains(ActionSet.FOLD))
+                                        {
+                                            action = new Fold();
+                                        }
+                                    }
+                                }
+                                if (allowedActions.contains(ActionSet.CHECK))
+                                {
+                                    action = new Check();
+                                }
+                            }   break;
                     }
                 }
                 else
@@ -246,9 +241,6 @@ public class AIBasicStrategy extends AIStrategy {
         // non implementato
     }
 
-    @Override
-    public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
     
 }

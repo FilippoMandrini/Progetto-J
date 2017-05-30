@@ -184,12 +184,12 @@ public abstract class HandEvaluator {
     * @return una variabile booleana che indica se la mano costituisce un "Colore"
     */
     private static boolean checkColore(List<Card> cards) {
-        int[] seedCounter = new int[4];
+        int[] suitCounter = new int[4];
         for (Card carta : cards) {
-            seedCounter[carta.getSuit().getValue()]++;
+            suitCounter[carta.getSuit().getValue()]++;
         }
-        for (int i = 0; i < seedCounter.length; i++) {
-            if (seedCounter[i] == 5) {
+        for (int i = 0; i < suitCounter.length; i++) {
+            if (suitCounter[i] == 5) {
                 return true;
             }
         }

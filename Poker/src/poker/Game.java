@@ -72,7 +72,6 @@ public class Game extends GameObservable {
      */
     public void playGame()
     {
-        setChanged();
         System.out.println("[TEST] Giocatori: ");
         for (Player player : players)
         {
