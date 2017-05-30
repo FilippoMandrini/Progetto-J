@@ -74,6 +74,7 @@ public class AIBasicStrategy extends AIStrategy {
             {
                 if ((chenScore - scoreToPlay) >= ((20.0 - scoreToPlay)/2.0))
                 {
+                    System.out.println("[BOTTEST] Carte ottime");
                     switch (aggressiveness) {
                         case 0:
                             if (allowedActions.contains(ActionSet.CALL)) 
@@ -83,7 +84,8 @@ public class AIBasicStrategy extends AIStrategy {
                             else 
                             {
                                 action = new Check();
-                            }   break;
+                            }   
+                            break;
                         case 100:
                             if (allowedActions.contains(ActionSet.BET))
                             {
@@ -102,14 +104,16 @@ public class AIBasicStrategy extends AIStrategy {
                             else 
                             {
                                 action = new Check();
-                            }   break;
+                            }   
+                            break;
                         default:
                             int amount = minBet;
                             int betIndex = aggressiveness / 20;
                             for (int i = 0; i< betIndex; i++)
                             {
                                 amount *=2;
-                            }   if (bet < amount)
+                            }   
+                            if (bet < amount)
                             {
                                 if (allowedActions.contains(ActionSet.BET))
                                 {
@@ -134,27 +138,19 @@ public class AIBasicStrategy extends AIStrategy {
                             {
                                 if (allowedActions.contains(ActionSet.CALL))
                                 {
-                                    if ((bet-ownBet / 2) < amount)
-                                    {
-                                        action = new Call();
-                                    }
-                                    else
-                                    {
-                                        if (allowedActions.contains(ActionSet.FOLD))
-                                        {
-                                            action = new Fold();
-                                        }
-                                    }
+                                    action = new Call();
                                 }
                                 if (allowedActions.contains(ActionSet.CHECK))
                                 {
                                     action = new Check();
                                 }
-                            }   break;
+                            }
+                            break;
                     }
                 }
                 else
-                {
+                {   
+                    System.out.println("[BOTTEST] Carte decenti");
                     if (allowedActions.contains(ActionSet.CHECK)) 
                     {
                         action = new Check();
@@ -162,19 +158,10 @@ public class AIBasicStrategy extends AIStrategy {
                     else 
                     {
                         if (allowedActions.contains(ActionSet.CALL))
-                        {
-                            if ((bet-ownBet / 2) < minBet)
-                            {
-                                action = new Call();
-                            }
-                            else
-                            {
-                                if (allowedActions.contains(ActionSet.FOLD))
-                                {
-                                    action = new Fold();
-                                }
-                            }                    
+                        {                         
+                            action = new Call();  
                         }
+
                     }
                 }
             }

@@ -9,8 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 import poker.Card;
-import players.HumanPlayer;
-import players.HumanTestPlayer;
+import players.TestPlayer;
 import players.Player;
 import poker.Suit;
 import poker.SuitType;
@@ -102,12 +101,12 @@ public class HandTester {
 //            System.out.println(hand.getPoints());
 //        }
         Map<Hand, List<Player>> ranking = new TreeMap<>();
-        Player P1 = new HumanTestPlayer("Luca");
-        Player P5 = new HumanTestPlayer("Giacomo");
-        Player P6 = new HumanTestPlayer("Giuda");
-        Player P2 = new HumanTestPlayer("Matteo");
-        Player P3 = new HumanTestPlayer("Marco");
-        Player P4 = new HumanTestPlayer("Giovanni");
+        Player P1 = new TestPlayer("Luca");
+        Player P5 = new TestPlayer("Giacomo");
+        Player P6 = new TestPlayer("Giuda");
+        Player P2 = new TestPlayer("Matteo");
+        Player P3 = new TestPlayer("Marco");
+        Player P4 = new TestPlayer("Giovanni");
         P1.setCurrentHand(H1);
         P5.setCurrentHand(H1);
         P2.setCurrentHand(H3);

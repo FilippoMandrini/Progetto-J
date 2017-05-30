@@ -1,6 +1,5 @@
 package gui;
 
-import players.HumanPlayer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import poker.*;

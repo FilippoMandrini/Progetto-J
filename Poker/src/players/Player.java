@@ -10,7 +10,7 @@ import poker.Card;
 /**
  * Classe astratta che rappresenta un generico giocatore
  */
-public abstract class Player implements Comparable {
+public class Player implements Comparable {
 
     protected String name;
     private int stake;

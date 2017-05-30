@@ -8,7 +8,7 @@ package test;
 import actions.Action;
 import actions.Bet;
 import java.util.ArrayList;
-import players.HumanTestPlayer;
+import players.TestPlayer;
 import players.Player;
 
 /**
@@ -17,7 +17,7 @@ import players.Player;
  */
 public class ObserverTest {
     public static void main(String[] args) {
-        Player P1 = new HumanTestPlayer("Luca");
+        Player P1 = new TestPlayer("Luca");
         P1.setLastAction(new Bet(100));
         ArrayList<Action> actions = new ArrayList<>();
         actions.add(P1.getLastAction());

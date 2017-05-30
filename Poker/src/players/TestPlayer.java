@@ -14,9 +14,9 @@ import java.util.Scanner;
  *
  * @author Nickelsilver
  */ 
-public class HumanTestPlayer extends HumanPlayer {
+public class TestPlayer extends Player {
     
-    public HumanTestPlayer(String name) {
+    public TestPlayer(String name) {
         super(name, new HumanTestStrategy());
     } 
 }
