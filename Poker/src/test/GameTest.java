@@ -17,16 +17,20 @@ public class GameTest {
     
     public static void main(String[] args) {
         
-        HumanPlayer H1 = new HumanTestPlayer("Filippo");
-        H1.setStake(500);
-        HumanPlayer H2 = new HumanTestPlayer("Alice");
-        H2.setStake(1500);
-        HumanPlayer H3 = new HumanTestPlayer("Luca");
-        H3.setStake(500);
+        HumanPlayer H1 = new HumanTestPlayer("Luca");
+        AIPlayer A1 = new AIPlayer("Bot_1", new AIBasicStrategy(0, 50));
+        AIPlayer A2 = new AIPlayer("Bot_2", new AIBasicStrategy(100, 50));
+//        HumanPlayer H2 = new HumanTestPlayer("Alice");
+//        H2.setStake(1000);
+//        HumanPlayer H3 = new HumanTestPlayer("Luca");
+//        H3.setStake(1000);
         Game MAIN = new Game(new StandardGame(5000));
         MAIN.addPlayer(H1);
-        MAIN.addPlayer(H2);
-        MAIN.addPlayer(H3);
+        MAIN.addObserver(H1.getClient());
+        MAIN.addPlayer(A1);
+        MAIN.addObserver(A1.getClient());
+        MAIN.addPlayer(A2);
+        MAIN.addObserver(A2.getClient());
         MAIN.playGame();
     }
     
