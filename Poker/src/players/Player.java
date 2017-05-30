@@ -20,6 +20,7 @@ public abstract class Player implements Comparable {
     private int currentBet;
     private Action lastAction; 
     protected final Client client;
+    protected int id = 0;
 
     /**
      * Costruttore di Player
@@ -47,8 +48,14 @@ public abstract class Player implements Comparable {
         this.client = null;
         this.cards = new ArrayList<>();
     }
-    
-    
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     /**
      * Restituisce il nome del giocatore
@@ -79,8 +86,9 @@ public abstract class Player implements Comparable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 67 * hash + Objects.hashCode(this.name);
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.name);
+        hash = 23 * hash + this.id;
         return hash;
     }
 
@@ -96,13 +104,15 @@ public abstract class Player implements Comparable {
             return false;
         }
         final Player other = (Player) obj;
+        if (this.id != other.id) {
+            return false;
+        }
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
         return true;
     }
 
-    
     
     /**
      * Imposta lo stake del giocatore
@@ -143,7 +153,6 @@ public abstract class Player implements Comparable {
         this.cards.add(card);
     }
     
-
     public boolean reset() 
     {
         this.cards.clear();
@@ -152,6 +161,14 @@ public abstract class Player implements Comparable {
         return true;
     }
     
+    public ShadowPlayer getShadowCopy()
+    {
+        ShadowPlayer copy = new ShadowPlayer(name, stake);
+        copy.setHasCards(!this.cards.isEmpty());
+        copy.setCurrentBet(currentBet);
+        copy.setLastAction(lastAction);
+        return copy;
+    }
     /**
      * Restituisce le carte del giocatore
      * @return le carte del giocatore
@@ -213,6 +230,11 @@ public abstract class Player implements Comparable {
             return -1;
         
         return 0;
+    }
+    
+    @Override
+    public String toString() {
+        return "Giocatore: " + name;
     }
     
     public void foldCards()
