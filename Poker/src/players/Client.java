@@ -8,6 +8,7 @@ import poker.GameObserver;
 
 public interface Client extends GameObserver{
     
-    public Action act(Set<ActionSet> allowedActions);
+    public Action act(int minBet, int bet, Set<ActionSet> allowedActions);
+    
     
 }
