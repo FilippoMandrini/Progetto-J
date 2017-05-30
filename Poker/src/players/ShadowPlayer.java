@@ -11,9 +11,23 @@ package players;
  */
 public class ShadowPlayer extends Player{
     
+    private boolean hasCards;
+    
     public ShadowPlayer(String name, int stake) {
-        super(name, stake);
+        super(name, stake, null);   
+        
     }
+
+    public boolean hasCards() {
+        return hasCards;
+    }
+
+    public void setHasCards(boolean hasCards) {
+        this.hasCards = hasCards;
+    }
+    
+    
+    
     
     
     
