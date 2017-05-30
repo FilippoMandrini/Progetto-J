@@ -8,6 +8,7 @@ package players;
 import actions.Action;
 import actions.ActionSet;
 import java.net.Socket;
+import java.util.Observable;
 import java.util.Set;
 
 /**
@@ -22,6 +23,7 @@ public abstract class HumanStrategy implements Client {
     public HumanStrategy(Socket socket) {
         this.socket = socket;
     }
+    
     
 
 }

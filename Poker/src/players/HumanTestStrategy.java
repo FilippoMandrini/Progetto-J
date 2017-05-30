@@ -34,7 +34,7 @@ public class HumanTestStrategy extends HumanStrategy {
     
     
     @Override
-    public Action act(Set<ActionSet> allowedActions)
+    public Action act(int minBet, int bet, Set<ActionSet> allowedActions)
     {            
         Action action = null;
         System.out.println(this.toString() + " chiede di agire: ");
@@ -76,7 +76,7 @@ public class HumanTestStrategy extends HumanStrategy {
     }
 
     @Override
-    public void playerActionUpdated(Player player) {
+    public void playerUpdated(Player player) {
 
     }
 
@@ -113,5 +113,10 @@ public class HumanTestStrategy extends HumanStrategy {
     @Override
     public void update(Observable o, Object arg) {
 
+    }
+
+    @Override
+    public void currentPlayerActed(ShadowPlayer shadowCopy) {
+        
     }
 }

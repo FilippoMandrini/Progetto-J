@@ -24,7 +24,7 @@ public class HumanCompleteStrategy extends HumanStrategy{
     }
     
     @Override
-    public Action act(Set<ActionSet> allowedActions) {
+    public Action act(int minBet, int bet, Set<ActionSet> allowedActions) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -34,7 +34,7 @@ public class HumanCompleteStrategy extends HumanStrategy{
     }
 
     @Override
-    public void playerActionUpdated(Player player) {
+    public void playerUpdated(Player player) {
 
     }
 
@@ -71,6 +71,11 @@ public class HumanCompleteStrategy extends HumanStrategy{
     @Override
     public void update(Observable o, Object arg) {
 
+    }
+
+    @Override
+    public void currentPlayerActed(ShadowPlayer shadowCopy) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
