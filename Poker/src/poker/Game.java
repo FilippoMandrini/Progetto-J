@@ -225,6 +225,10 @@ public class Game extends GameObservable {
                     {
                         throw new IllegalActionException("Azione illegale");
                     }
+                    if (betAmount > currentPlayer.getStake())
+                    {
+                        throw new IllegalActionException("Impossibile scommettere più dello stake");
+                    }
                     currentPlayer.setCurrentBet(betAmount);
                     playersLeft = activePlayers.size() - 1;
                     currentPlayer.pay(betAmount);
@@ -240,6 +244,7 @@ public class Game extends GameObservable {
                     {
                         throw new IllegalActionException("Azione illegale");
                     }
+                    
                     bet += amount;
                     minBet = bet;
                     int raiseAmount = bet - currentPlayer.getCurrentBet();

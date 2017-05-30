@@ -117,7 +117,12 @@ public class AIBasicStrategy extends AIStrategy {
                             {
                                 if (allowedActions.contains(ActionSet.BET))
                                 {
+                                    if (amount > stake)
+                                    {
+                                        amount = stake;
+                                    }
                                     action = new Bet(amount);
+
                                 }
                                 else if (allowedActions.contains(ActionSet.RAISE))
                                 {
