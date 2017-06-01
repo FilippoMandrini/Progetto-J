@@ -1,21 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package utilities;
 
 import exceptions.WrongCardNumberException;
-import handtypes.CartaAlta;
-import handtypes.Colore;
-import handtypes.Coppia;
-import handtypes.DoppiaCoppia;
-import handtypes.Full;
-import handtypes.Hand;
-import handtypes.PokerHand;
-import handtypes.Scala;
-import handtypes.ScalaColore;
-import handtypes.Tris;
+import handtypes.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,8 +9,7 @@ import poker.Card;
 import players.Player;
 
 /**
- *
- * @author Nickelsilver
+ * Classe astratta per la valutazione delle mani 
  */
 public abstract class HandEvaluator {
 
@@ -42,8 +27,9 @@ public abstract class HandEvaluator {
     }
 
     /**
-     * Restituisce la combinazione migliore tra tutte le combinazioni di carte
-     *
+     * Restituisce la combinazione migliore tra tutte le combinazioni di carte.
+     * Crea tutti i sottogruppi possibili di cinque carte e li ordina in una 
+     * classifica, resistuendo la prima mano ovvero la migliore
      * @param cards le carte del giocatore e le carte del tavolo
      * @return la mano migliore del giocatore
      * @throws WrongCardNumberException
@@ -94,8 +80,13 @@ public abstract class HandEvaluator {
     }
 
     /**
-     * Determina il punteggio di una singola mano
-     *
+     * Determina il punteggio di una singola mano.
+     * Inizialmente ordina in modo decrescente le carte per quantità e successivamente 
+     * per valore. Riempie il vettore di contatori del valore delle carte per ricavarne
+     * i due valori più presenti nella mano. 
+     * Una serie di confronti permettono di determinare il miglior tipo di 
+     * combinazione in base ai due valori precedentemente calcolati (il secondMax
+     * viene utilizzato per valutare se si è nel caso di "Full" e "Doppia Coppia").
      * @param cards un gruppo di cinque carte
      * @return il punteggio per questo specifico gruppo di carte
      * @throws WrongCardNumberException
@@ -182,6 +173,7 @@ public abstract class HandEvaluator {
     * Controlla se la mano costituisce la combinazione "Colore"
     * @param cards le carte della mano
     * @return una variabile booleana che indica se la mano costituisce un "Colore"
+    * true se la combinazione costituisce "Colore", false altrimenti
     */
     private static boolean checkColore(List<Card> cards) {
         int[] suitCounter = new int[4];
@@ -200,6 +192,7 @@ public abstract class HandEvaluator {
     * Controlla se la mano costituisce la combinazione "Scala"
     * @param cards le carte della mano
     * @return una variabile booleana che indica se la mano costituisce una "Scala"
+    * true se la combinazione costituisce una "Scala", false altrimenti
     */
     private static boolean checkScala(List<Card> cards) {
         boolean spy = true;

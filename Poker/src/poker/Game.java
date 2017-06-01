@@ -12,47 +12,29 @@ import utilities.HandEvaluator;
  * Classe per la gestione della partita
  */
 public class Game extends GameObservable {
-    
-    private final GameType settings;
-    
-    private final Board board;
-        
-    private final List<Player> players;
-    
-    private final List<Player> activePlayers;
-    
-    private Player currentPlayer;
-    
-    private int currentPlayerPosition;
-    
-    private Player dealer;
-   
-    private int dealerPosition;
-    
-    private final List<Pot> pots;
-    
-    private int bet;
 
+    private final GameType settings;
+    private final Board board;
+    private final List<Player> players;
+    private final List<Player> activePlayers;
+    private Player currentPlayer;
+    private int currentPlayerPosition;
+    private Player dealer;
+    private int dealerPosition;
+    private final List<Pot> pots;
+    private int bet;
     private int minBet;
-    
     private Player lastAggressor;
-    
     private Action currentAction;
-    
     private int raises;
-    
     private int currentBigBlind;
-    
     private int currentHandStage;
-  
-    
-    
+
     /**
      * Costruttore di Game
      * @param settings le impostazioni del tavolo
      */
-    public Game(GameType settings)
-    {
+    public Game(GameType settings){
         this.settings = settings;
         this.currentBigBlind = settings.getBigBlind();
         players = new ArrayList<>();
@@ -62,7 +44,8 @@ public class Game extends GameObservable {
     }
     
     /**
-     * metodo principale del gioco
+     * Esegue la partita
+     * Gestisce 
      */
     public void playGame()
     {

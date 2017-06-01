@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package utilities;
 
 import exceptions.WrongCardNumberException;
@@ -10,11 +5,20 @@ import java.util.List;
 import poker.Card;
 
 /**
- *
- * @author Nickelsilver
+ * Classe astratta utlizzata per assegnare un punteggio alle proprie due carte 
+ * in modo da avere un set di azioni prefissato per un determinato range di punteggi
+ * (utilizzata per il bot AI)
  */
 public abstract class ChenEvaluator {
 
+    /**
+     * Applica la formula di Chen, che si basa sul valore della carta che vale di più,
+     * sul loro seme se uguale o diverso e sulla loro distanza di valore.
+     * Il punteggio vale al massimo 20 punti
+     * @param cards le due carte del giocatore
+     * @throws WrongCardNumberException quando il numero delle carte è diverso da due 
+     * @return il punteggio arrotondato delle carte
+     */
     public static double evaluate(List<Card> cards) {
         
         if (cards.size() != 2) 

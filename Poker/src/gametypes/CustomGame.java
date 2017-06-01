@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gametypes;
 
 /**
- *
- * @author Nickelsilver
+ * Classe che rappresenta le impostazioni personalizzate della partita
  */
 public class CustomGame extends GameType{
 
@@ -21,26 +15,50 @@ public class CustomGame extends GameType{
         return "Big Blind di base: " + this.bigBlind + "\nIl Big Blind raddoppia: " + !this.isBigBlindFixed + "\nMax giocatori: " + this.maxPlayers +"\nMax numero di raise: " + this.maxRaises;
     }
 
+    /**
+     * Imposta il valore massimo dei giocatori
+     * @param maxPlayers valore massimo dei giocatori
+     */
     public void setMaxPlayers(int maxPlayers) {
         this.maxPlayers = maxPlayers;
     }
 
+    /**
+     * Imposta il numero massimo dei raise
+     * @param maxRaises numero massimo dei raise
+     */
     public void setMaxRaises(int maxRaises) {
         this.maxRaises = maxRaises;
     }
 
+    /**
+     *
+     * @param bigBlind
+     */
     public void setBigBlind(int bigBlind) {
         this.bigBlind = bigBlind;
     }
 
+    /**
+     *
+     * @param isBigBlindFixed
+     */
     public void setIsBigBlindFixed(boolean isBigBlindFixed) {
         this.isBigBlindFixed = isBigBlindFixed;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getRoundsForDoubling() {
         return roundsForDoubling;
     }
 
+    /**
+     *
+     * @param roundsForDoubling
+     */
     public void setRoundsForDoubling(int roundsForDoubling) {
         
         if(isBigBlindFixed)
@@ -50,10 +68,18 @@ public class CustomGame extends GameType{
         this.roundsForDoubling = roundsForDoubling;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isAlwaysDoShowdown() {
         return alwaysDoShowdown;
     }
 
+    /**
+     *
+     * @param alwaysDoShowdown
+     */
     public void setAlwaysDoShowdown(boolean alwaysDoShowdown) {
         this.alwaysDoShowdown = alwaysDoShowdown;
     }
