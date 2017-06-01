@@ -45,7 +45,8 @@ public class Game extends GameObservable {
     
     /**
      * Esegue la partita
-     * Gestisce 
+     * Gestisce la lista dei giocatori e se possono giocare. Se ci sono almeno due giocatori
+     * inizia una nuova mano
      */
     public void playGame()
     {
@@ -95,8 +96,9 @@ public class Game extends GameObservable {
         System.out.println("Game Over");
         notifyMessageUpdated("Game Over");
     }
+    
     /**
-     * metodo che gioca una mano
+     * Gioca una mano richiamando i metodi attraverso le varie fasi
      */
     private void playSingleHand()
     {
@@ -128,6 +130,12 @@ public class Game extends GameObservable {
         }
     }    
     
+    
+    /**
+     * Reinizializza il tavolo per poter iniziare una nuova mano.
+     * Pulisce il tavolo, le puntate, le carte date, reinizializza il mazzo e
+     * imposta il Dealer, i giocatori attivi e le puntate di partenza
+     */
     private void resetHand()
     {
         currentHandStage = 0;
@@ -151,7 +159,10 @@ public class Game extends GameObservable {
     }
     
     /**
-     * Metodo del giro di puntate
+     * Esegue un giro di puntate in base al tipo di azione scelto e al valore 
+     * dell'eventuale scommessa
+     * Gestisce la rotazione dei giocatori e la correttezza delle puntate
+     * @throws IllegalActionException quando il giocatore compie un'azione vietata
      */
     private void bettingRound()
     {
@@ -257,7 +268,7 @@ public class Game extends GameObservable {
                 }
                 else if (action instanceof Check)
                 {
-                    //non fare nulla
+                    // Non compie alcuna azione
                 }
                 else
                 {
@@ -284,6 +295,11 @@ public class Game extends GameObservable {
         notifyHiddenPlayersUpdated(players);
     }
     
+    /**
+     * Ritorna un set delle mosse che il giocatore può compiere
+     * @param player il giocatore
+     * @return set delle mosse che il giocatore può compiere
+     */
     private Set<ActionSet> getActionSet(Player player)
     {
         Set<ActionSet> allowedActions = new HashSet<>();
@@ -321,7 +337,7 @@ public class Game extends GameObservable {
     }
     
     /**
-     * cambia ruotando la posizione del giocatore che deve agire
+     * Ruota la posizione del giocatore che deve agire
      */
     private void shiftCurrentPlayer()
     {
@@ -331,6 +347,9 @@ public class Game extends GameObservable {
         System.out.println("[TEST] Current Player: " + currentPlayer.toString());
     }
     
+    /**
+     * Cambia la posizione del Dealer
+     */
     private void shiftDealer()
     {
         dealerPosition = (dealerPosition +1) % (activePlayers.size());
@@ -338,6 +357,9 @@ public class Game extends GameObservable {
         System.out.println("[TEST] Current Dealer: " + dealer.toString());
     }
     
+    /**
+     * Scommette il piccolo buio
+     */
     private void betSmallBlind()
     {
         currentPlayer.pay(currentBigBlind/2);
@@ -349,6 +371,9 @@ public class Game extends GameObservable {
         System.out.println("[TEST] "+ currentPlayer.toString() + " paga Small Blind: " + currentBigBlind/2);
     }
     
+    /**
+     * Scommette il grande buio
+     */
     private void betBigBlind()
     {
         currentPlayer.pay(currentBigBlind);
@@ -360,6 +385,10 @@ public class Game extends GameObservable {
         System.out.println("[TEST] "+ currentPlayer.toString() + " paga Big Blind: " + currentBigBlind);
     }
     
+    /**
+     * Esegue il turno del pre Flop
+     * Consegna le due carte ai giocatori
+     */
     private void preFlop()
     {
         for(Player player : activePlayers)
@@ -374,9 +403,12 @@ public class Game extends GameObservable {
         }
         currentHandStage = 1;
         bettingRound();
-
     }
     
+    /**
+     * Esegue il turno del flop
+     * Il banco mostra le prime tre carte comuni
+     */
     private void flop()
     {
         bet = 0;
@@ -393,6 +425,10 @@ public class Game extends GameObservable {
         bettingRound();
     }
     
+    /**
+     * Esegue il turno di turn
+     * Il banco mostra la quarta carta comune
+     */
     private void turn()
     {
         bet = 0;
@@ -408,6 +444,10 @@ public class Game extends GameObservable {
         bettingRound();
     }
     
+    /**
+     * Esegue il turno di river
+     * Il banco mostra la quinta carta comune
+     */
     private void river()
     {
         bet = 0;
@@ -423,6 +463,10 @@ public class Game extends GameObservable {
         bettingRound();
     }
     
+    /**
+     * Mostra tutte le carte di tutti i giocatori 
+     * Determina i vincitori e assegna le vincite corrette
+     */
     private void showdown()
     {
         bet = 0;
@@ -460,6 +504,10 @@ public class Game extends GameObservable {
         distributeWinnings(ranking);   
     }
    
+    /**
+     * Mostra le carte dei giocatori
+     * @param playersToShow la lista dei giocatori di cui mostrare le carte
+     */
     private void showCards(Set<Player> playersToShow)
     {
         currentHandStage = 5;
@@ -475,6 +523,10 @@ public class Game extends GameObservable {
         }
     }
     
+    /**
+     * Distribuisce le vincite ai giocatori
+     * @param ranking la classifica dei giocatori in base alle mani
+     */
     private void distributeWinnings(Map<Hand, List<Player>> ranking)
     {
         System.out.println("[TEST] Distribuzione vincite...");
@@ -544,6 +596,10 @@ public class Game extends GameObservable {
         }
     }
 
+    /**
+     * Restituisce la classifica dei giocatori in base alle mani 
+     * @return la classifica dei giocatori in base alle mani
+     */
     private Map<Hand, List<Player>> getRanking()
     {
         for (Player player : activePlayers)
@@ -566,6 +622,10 @@ public class Game extends GameObservable {
         return ranking;
     }
     
+    /**
+     * Ritorna il quantitativo totale delle puntate
+     * @return quantitativo totale delle puntate
+     */
     public int getTotalPot()
     {
         int total = 0;
@@ -576,6 +636,12 @@ public class Game extends GameObservable {
         return total;
     }
     
+    /**
+     * Aggiunge la puntata del giocatore al pot complessivo 
+     * Crea un nuovo oggetto pot se si verifica un raise o se un giocatore va in all-in
+     * senza comprire totalmente la puntata attuale 
+     * @param amount valore versato nel pot complessivo
+     */
     private void addToPot(int amount)
     {
         for (Pot pot : pots)
@@ -607,6 +673,9 @@ public class Game extends GameObservable {
         }
     }
         
+    /**
+     * Imposta se i giocatori risultano attivi oppure no
+     */
     public void setActivePlayers()
     {
         for (Player player: players)
@@ -627,6 +696,7 @@ public class Game extends GameObservable {
      * Aggiunge un giocatore controllando che non si utilizzi un nome 
      * già scelto da un altro utente
      * @param player il giocatore
+     * @throws InvalidPlayerNameException quando si utilizza un nome già in uso
      */
     public void addPlayer(Player player) {
         boolean presence = false;
@@ -645,13 +715,17 @@ public class Game extends GameObservable {
     }
 
     /**
-     * Restituisce i players
-     * @return la lista dei players
+     * Restituisce i giocatori
+     * @return la lista dei giocatori
      */
     public List<Player> getGiocatori() {
         return players;
     }
 
+    /**
+     * Ritorna le impostazioni del tavolo
+     * @return le impostazioni del tavolo
+     */
     public GameType getSettings() {
         return settings;
     }
