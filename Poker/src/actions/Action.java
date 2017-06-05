@@ -9,6 +9,9 @@ public abstract class Action {
     protected String description;
     protected int amount;
     protected ActionSet actionType;
+
+    public Action() {
+    }
     
     /**
      * Costruttore della classe Action
@@ -71,4 +74,22 @@ public abstract class Action {
     public ActionSet getActionType() {
         return actionType;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setActionType(ActionSet actionType) {
+        this.actionType = actionType;
+    }
+    
+    public String toString()
+    {
+        return description + " " + amount;
+    }
+    
 }
