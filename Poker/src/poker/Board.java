@@ -4,12 +4,14 @@ package poker;
 import players.Player;
 import java.util.ArrayList;
 import java.util.List;
+import annotations.JSONExclude;
 
 /**
  *  Classe che rappresenta il banco
  */
 public class Board {
 
+    @JSONExclude
     private Deck deck;
     private List<Card> communityCards;
     
