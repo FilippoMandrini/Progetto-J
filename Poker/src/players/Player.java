@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import poker.Card;
+import annotations.JSONExclude;
 
 /**
  * Classe astratta che rappresenta un generico giocatore
@@ -15,10 +16,12 @@ public class Player implements Comparable {
     protected String name;
     private int stake;
     private ArrayList<Card> cards;
+    @JSONExclude
     private Hand currentHand;
     private boolean active;
     private int currentBet;
     private Action lastAction; 
+    @JSONExclude
     protected final Client client;
     protected int id = 0;
 
