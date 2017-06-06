@@ -75,18 +75,32 @@ public abstract class Action {
         return actionType;
     }
 
+    /**
+     * Imposta il nome dell'azione
+     * @param name il nome dell'azione
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Imposta la descrizione dell'azione
+     * @param description la descrizione dell'azione
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Imposta il set di azioni
+     * @param actionType il set di azioni
+     */
     public void setActionType(ActionSet actionType) {
         this.actionType = actionType;
     }
     
+    /** {@inheritDoc} */
+    @Override
     public String toString()
     {
         return description + " " + amount;
