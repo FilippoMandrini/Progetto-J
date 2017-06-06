@@ -128,8 +128,12 @@ public class JSONDecoder {
     
     private void decodeHandStarted(String toDecode)
     {
+        JsonParser parser = new JsonParser();
+        game.setDealer(gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("dealer"), Player.class));
+        game.setDealerPosition(game.getActivePlayers().indexOf(game.getDealer()));
         
     }
+  
     
     private void decodeGameStarted(String toDecode)
     {
@@ -138,6 +142,7 @@ public class JSONDecoder {
         game.setSettings(gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("settings"), GameType.class));
         List<Player> players = gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("players"), playerListType);
         game.setPlayers(players);
+        game.setActivePlayers();
         
     }
 }
