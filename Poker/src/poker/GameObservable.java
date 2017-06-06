@@ -5,6 +5,7 @@
  */
 package poker;
 
+import gametypes.GameType;
 import java.util.*;
 import players.Player;
 
@@ -43,9 +44,9 @@ public abstract class GameObservable {
         }
     }
 
-    public synchronized void notifyGameStarted() {
+    public synchronized void notifyGameStarted(List<Player> players, GameType settings) {
         for (GameObserver observer : observers) {
-            observer.gameStarted(this);
+            observer.gameStarted(players, settings);
 
         }
     }

@@ -191,16 +191,9 @@ public class AIBasicStrategy extends AIStrategy {
     }
 
     @Override
-    public void gameStarted(GameObservable game) {
+    public void gameStarted(List<Player> players, GameType settings) {
 
-        if (game instanceof Game)
-        {
-            this.settings = ((Game)game).getSettings();
-        }
-        else
-        {
-            throw new IllegalArgumentException("Classe dell'oggetto observable non corretta");
-        }
+        this.settings = settings;
     }
 
     @Override

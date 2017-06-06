@@ -6,6 +6,7 @@
 package poker;
 
 import gametypes.*;
+import java.util.List;
 import java.util.Observer;
 import java.util.Set;
 import players.Player;
@@ -23,7 +24,7 @@ public abstract interface GameObserver {
     
     public void messageUpdated(String message);
     
-    public void gameStarted(GameObservable game);
+    public void gameStarted(List<Player> players, GameType settings);
     
     public void handStarted(Player dealer);
     

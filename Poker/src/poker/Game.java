@@ -53,7 +53,7 @@ public class Game extends GameObservable {
         System.out.println("[TEST] Giocatori: ");
         for (Player player : players)
         {
-            notifyGameStarted();
+            notifyGameStarted(players, settings);
             System.out.println("[TEST] " + player.toString() + " con stake " + player.getStake());
         }
         System.out.println("[TEST] Inizio Partita...");

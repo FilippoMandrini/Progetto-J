@@ -15,7 +15,9 @@ import actions.Fold;
 import actions.GenericAction;
 import actions.Raise;
 import actions.SmallBlind;
+import gametypes.GameType;
 import java.net.Socket;
+import java.util.List;
 import java.util.Observable;
 import java.util.Scanner;
 import java.util.Set;
@@ -86,11 +88,6 @@ public class HumanTestStrategy extends HumanStrategy {
     }
 
     @Override
-    public void gameStarted(GameObservable game) {
-
-    }
-
-    @Override
     public void handStarted(Player dealer) {
 
     }
@@ -113,5 +110,10 @@ public class HumanTestStrategy extends HumanStrategy {
     @Override
     public void currentPlayerActed(ShadowPlayer shadowCopy) {
         
+    }
+
+    @Override
+    public void gameStarted(List<Player> players, GameType settings) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
