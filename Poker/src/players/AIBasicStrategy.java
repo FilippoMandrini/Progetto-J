@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package players;
 
 import actions.*;
@@ -18,8 +13,7 @@ import poker.GameObservable;
 import utilities.ChenEvaluator;
 
 /**
- *
- * @author Nickelsilver
+ *Classe che implementa la strategia del bot
  */
 public class AIBasicStrategy extends AIStrategy {
 
@@ -35,6 +29,11 @@ public class AIBasicStrategy extends AIStrategy {
     
     private int ownBet;
 
+    /**
+     * Costruttore della classe
+     * @param aggressiveness l'aggressivita' (la tendenza a raisare/callare)
+     * @param discipline  la disciplina ( la tendenza a checkare/foldare)
+     */
     public AIBasicStrategy(int aggressiveness, int discipline) {
         if (aggressiveness > 100 || aggressiveness < 0 )
         {
@@ -48,6 +47,7 @@ public class AIBasicStrategy extends AIStrategy {
         this.discipline = discipline;
     }
     
+    /** {@inheritDoc} */    
     @Override
     public Action act(int minBet, int bet, Set<ActionSet> allowedActions){
         Action action = null;
@@ -174,22 +174,26 @@ public class AIBasicStrategy extends AIStrategy {
         return action;
         
     }
-
+    
+    /** {@inheritDoc} */
     @Override
     public void boardUpdated(Board board) {
         // non implementato
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void playerUpdated(Player player) {
         // non implementato
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void messageUpdated(String message) {
         // non implementato
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void gameStarted(GameObservable game) {
 
@@ -203,21 +207,25 @@ public class AIBasicStrategy extends AIStrategy {
         }
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void handStarted(Player dealer) {
         this.cards = new ArrayList<>();
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void currentPlayerUpdated(Player currentPlayer) {
         // non implementato
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void bettingUpdated(int bet, int minBet, int totalPot) {
         // non implementato
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void selfUpdated(Player player) {
         if (player.getCards().size() == 2)
@@ -228,6 +236,7 @@ public class AIBasicStrategy extends AIStrategy {
         }
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void currentPlayerActed(ShadowPlayer shadowCopy) {
         // non implementato

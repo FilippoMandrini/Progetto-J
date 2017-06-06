@@ -23,7 +23,11 @@ public class Board {
         this.communityCards = new ArrayList<>();
         
     }
-
+    
+    /**
+     * Restituisce la lista delle carte comuni
+     * @return le carte comuni
+     */
     public List<Card> getCommunityCards() {
         return communityCards;
     }

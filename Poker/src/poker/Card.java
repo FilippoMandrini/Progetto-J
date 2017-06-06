@@ -90,7 +90,8 @@ public class Card implements Comparable<Card> {
         }
         return true;
     }
-
+    
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         int hash = 3;
