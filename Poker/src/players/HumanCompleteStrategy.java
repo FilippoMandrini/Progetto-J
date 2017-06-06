@@ -8,10 +8,10 @@ package players;
 import actions.Action;
 import actions.ActionSet;
 import java.net.Socket;
-import java.util.Observable;
 import java.util.Set;
 import poker.Board;
 import poker.GameObservable;
+import server.JSONDecoder;
 import server.JSONEncoder;
 
 /**
@@ -21,16 +21,18 @@ import server.JSONEncoder;
 public class HumanCompleteStrategy extends HumanStrategy{
 
     private JSONEncoder encoder;
+    private JSONDecoder decoder;
     
     public HumanCompleteStrategy(Socket socket) {
         super(socket);
         this.encoder = JSONEncoder.getInstance();
+        this.decoder = JSONDecoder.getInstance();
     }
     
     @Override
     public Action act(int minBet, int bet, Set<ActionSet> allowedActions) {
         out.println(encoder.encodeAct(minBet, bet, allowedActions));
-        return new HumanTestStrategy().act(minBet, bet, allowedActions);
+        return decoder.decodeAct(in.nextLine());
     }
 
     @Override
