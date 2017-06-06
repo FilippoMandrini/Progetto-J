@@ -23,6 +23,10 @@ public class Game {
     private int minBet;
     private int totalPot;
     private GameType settings;
+    private Player dealer;
+    private int dealerPosition;
+    private int currentPlayerPosition;
+    private Player currentPlayer;
 
     public Game(GameType settings, List<Player> players) {
         this.settings = settings;
@@ -108,8 +112,57 @@ public class Game {
     public Game() {
     }
     
-    
-    
+    public void updatePlayer(Player player)
+    {
+        int itemIndex = players.indexOf(player);
+        if (itemIndex != -1) {
+            players.set(itemIndex, player);
+        }
+    }
+//        for (Player onClient: players)
+//        {
+//            if(player.equals(onClient))
+//            {
+//                onClient.setActive(player.isActive());
+//                onClient.setCards(player.getCards());
+//                onClient.setId(player.getId());
+//                onClient.setLastAction(player.getLastAction());
+//                onClient.setStake(player.getStake());
+//            }
+//        }
+
+    public Player getDealer() {
+        return dealer;
+    }
+
+    public void setDealer(Player dealer) {
+        this.dealer = dealer;
+    }
+
+    public int getDealerPosition() {
+        return dealerPosition;
+    }
+
+    public void setDealerPosition(int dealerPosition) {
+        this.dealerPosition = dealerPosition;
+    }
+
+    public int getCurrentPlayerPosition() {
+        return currentPlayerPosition;
+    }
+
+    public void setCurrentPlayerPosition(int currentPlayerPosition) {
+        this.currentPlayerPosition = currentPlayerPosition;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(Player currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
     
     
 }
+    
