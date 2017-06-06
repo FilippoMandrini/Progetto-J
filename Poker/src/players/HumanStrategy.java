@@ -1,6 +1,5 @@
 package players;
 
-
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
@@ -10,7 +9,6 @@ import java.util.Scanner;
  */
 public abstract class HumanStrategy implements Client {
 
-    
     protected Socket socket;
     protected Scanner in = null;
     protected PrintStream out = null;
@@ -24,6 +22,4 @@ public abstract class HumanStrategy implements Client {
        
     }
     
-    
-
 }

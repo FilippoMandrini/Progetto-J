@@ -37,7 +37,6 @@ public class Player implements Comparable {
         this.client = client;
     }
 
-    
     /**
      * Costruttore di Player
      * @param name nome del giocatore
@@ -51,7 +50,6 @@ public class Player implements Comparable {
         this.cards = new ArrayList<>();
 
     }
-    
     
     /**
      * Costruttore di Player
@@ -152,7 +150,6 @@ public class Player implements Comparable {
         return true;
     }
 
-    
     /**
      * Imposta lo stake del giocatore
      * @param stake lo stake di partenza del giocatore
@@ -310,7 +307,6 @@ public class Player implements Comparable {
     {
         this.cards.clear();
         setActive(false);
-    }
-    
+    }  
      
 }

@@ -1,6 +1,5 @@
 package poker;
 
-
 import players.Player;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,6 @@ public class Board {
     public Board() {
         this.deck = new Deck();      
         this.communityCards = new ArrayList<>();
-        
     }
     
     /**
@@ -35,7 +33,6 @@ public class Board {
     /**
      * Distribuisce le due carte personali del giocatore
      * @param player il giocatore
-     * @return
      */
     public boolean dealCards(Player player) {
         player.reset();
@@ -58,7 +55,6 @@ public class Board {
 
     /**
      * Mostra le prime tre carte comuni
-     * @return
      */
     public boolean flop() {
         for (int i = 0; i < 3; i++) {
@@ -69,7 +65,6 @@ public class Board {
 
     /**
      * Mostra la quarta carta comune
-     * @return
      */
     public boolean turn() {
         deck.burnCard();
@@ -79,7 +74,6 @@ public class Board {
 
     /**
      * Mostra la quinta e ultima carta comune
-     * @return
      */
     public boolean river() {
         deck.burnCard();
@@ -89,7 +83,6 @@ public class Board {
       
     /**
      * Esegue il reset delle carte del banco e del deck terminando la mano 
-     * @return 
      */
     public boolean clear() {
         this.communityCards.clear();
@@ -97,4 +90,3 @@ public class Board {
         return true;
     }
 }
-        

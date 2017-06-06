@@ -4,12 +4,9 @@ import actions.*;
 import gametypes.GameType;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 import java.util.Set;
 import poker.Board;
 import poker.Card;
-import poker.Game;
-import poker.GameObservable;
 import utilities.ChenEvaluator;
 
 /**
@@ -18,16 +15,11 @@ import utilities.ChenEvaluator;
 public class AIBasicStrategy extends AIStrategy {
 
     private final int aggressiveness;
-    
-    private final int discipline;
-    
+    private final int discipline;    
     private List<Card> cards;
-    
-    private GameType settings;
-   
-    private int stake;
-    
+    private int stake;  
     private int ownBet;
+    private GameType settings;
 
     /**
      * Costruttore della classe
@@ -172,7 +164,6 @@ public class AIBasicStrategy extends AIStrategy {
             }
         }
         return action;
-        
     }
     
     /** {@inheritDoc} */
@@ -233,7 +224,5 @@ public class AIBasicStrategy extends AIStrategy {
     public void currentPlayerActed(ShadowPlayer shadowCopy) {
         // non implementato
     }
-
-
     
 }

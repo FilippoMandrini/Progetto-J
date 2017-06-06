@@ -5,11 +5,13 @@ package gametypes;
  */
 public class CustomGame extends GameType{
 
+    /** {@inheritDoc} */
     @Override
     public String getDescription() {  
         return "Variante personalizzata del poker nella sua versione HoldEm";
     }
 
+    /** {@inheritDoc} */
     @Override
     public String toString() {
         return "Big Blind di base: " + this.bigBlind + "\nIl Big Blind raddoppia: " + !this.isBigBlindFixed + "\nMax giocatori: " + this.maxPlayers +"\nMax numero di raise: " + this.maxRaises;
@@ -32,32 +34,33 @@ public class CustomGame extends GameType{
     }
 
     /**
-     *
-     * @param bigBlind
+     * Imposta il valore del Grande Buio
+     * @param bigBlind il valore del Grande Buio
      */
     public void setBigBlind(int bigBlind) {
         this.bigBlind = bigBlind;
     }
 
     /**
-     *
-     * @param isBigBlindFixed
+     * Imposta se il Grande Buio e' fisso
+     * @param isBigBlindFixed true se fisso, false altrimenti
      */
     public void setIsBigBlindFixed(boolean isBigBlindFixed) {
         this.isBigBlindFixed = isBigBlindFixed;
     }
 
     /**
-     *
-     * @return
+     * Restituisce il numero di turni per il raddoppio del Grande Buio
+     * @return il numero di turni per il raddoppio del Grande Buio
      */
     public int getRoundsForDoubling() {
         return roundsForDoubling;
     }
 
     /**
-     *
-     * @param roundsForDoubling
+     * Imposta il numero di turni per il raddoppio del Grande Buio
+     * @param roundsForDoubling il numero di turni per il raddoppio
+     * @throws IllegalArgumentException quando il Grande Buio e' fisso
      */
     public void setRoundsForDoubling(int roundsForDoubling) {
         
@@ -69,24 +72,26 @@ public class CustomGame extends GameType{
     }
 
     /**
-     *
-     * @return
+     * Indica se esegue sempre lo Showdown
+     * @return true se lo esegue, false altrimenti
      */
     public boolean isAlwaysDoShowdown() {
         return alwaysDoShowdown;
     }
 
     /**
-     *
-     * @param alwaysDoShowdown
+     * Imposta se eseguire sempre lo Showdown
+     * @param alwaysDoShowdown true se eseguirlo sempre, false altrimenti
      */
     public void setAlwaysDoShowdown(boolean alwaysDoShowdown) {
         this.alwaysDoShowdown = alwaysDoShowdown;
     }
 
+    /**
+     * Costruttore della classe
+     */
     public CustomGame() {
         
     }
-    
     
 }

@@ -1,10 +1,8 @@
 package gui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import poker.*;
-import exceptions.*;
-
+/**
+ * Interfaccia per il Login
+ */
 public class InterfacciaLogin extends javax.swing.JFrame {
 
     public InterfacciaLogin() {

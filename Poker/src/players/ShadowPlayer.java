@@ -31,11 +31,6 @@ public class ShadowPlayer extends Player{
      */
     public void setHasCards(boolean hasCards) {
         this.hasCards = hasCards;
-    }
-    
-    
-    
-    
-    
+    } 
     
 }

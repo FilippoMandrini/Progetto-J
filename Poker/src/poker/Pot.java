@@ -16,8 +16,7 @@ public class Pot {
      * Costruttore di Pot 
      * @param bet valore della scommessa
      */
-    public Pot(int bet) 
-    {
+    public Pot(int bet) {
         members = new HashSet<>();
         this.bet = bet;
     }
@@ -42,8 +41,7 @@ public class Pot {
      * Aggiunge un contribuente al pot
      * @param player il giocatore che contribuisce
      */
-    public void addMember(Player player)
-    {
+    public void addMember(Player player) {
         members.add(player);
     }
     
@@ -52,8 +50,7 @@ public class Pot {
      * @param player il giocatore
      * @return true se ha contribuito, false altrimenti
      */
-    public boolean hasMember(Player player)
-    {
+    public boolean hasMember(Player player) {
         return members.contains(player);
     }
     
@@ -61,8 +58,7 @@ public class Pot {
      * Restituisce il valore complessivo di un pot singolo
      * @return  il valore complessivo del singolo pot
      */
-    public int getValue()
-    {
+    public int getValue() {
         int total = bet * members.size();
         return total;
     }
@@ -70,8 +66,7 @@ public class Pot {
     /**
      * Resetta il pot
      */
-    public void reset()
-    {
+    public void reset() {
         members.clear();
         bet = 0;
     }
@@ -82,8 +77,7 @@ public class Pot {
      * @param player il giocatore
      * @return il side pot corrispondente a quell'ammontare
      */
-    public Pot getSidePot(int amount, Player player)
-    {
+    public Pot getSidePot(int amount, Player player) {
         Pot sidePot = new Pot(bet - amount);
         this.bet = amount;
         for (Player member : members)
@@ -91,10 +85,7 @@ public class Pot {
             sidePot.addMember(member);
         }
         members.add(player);
-        return sidePot;
-           
+        return sidePot;     
     }
-    
-    
     
 }
