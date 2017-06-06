@@ -6,9 +6,8 @@
 package model;
 
 import actions.Action;
-import handtypes.Hand;
 import java.util.ArrayList;
-import pokerclient.Client;
+import client.Client;
 
 /**
  *
@@ -21,7 +20,6 @@ public class Player {
     private ArrayList<Card> cards;
     private boolean active;
     private Action lastAction; 
-    private Hand currentHand;
     protected int id = 0;
 
     public Player(String name, int stake) {
@@ -59,14 +57,6 @@ public class Player {
 
     public void setLastAction(Action lastAction) {
         this.lastAction = lastAction;
-    }
-
-    public Hand getCurrentHand() {
-        return currentHand;
-    }
-
-    public void setCurrentHand(Hand currentHand) {
-        this.currentHand = currentHand;
     }
 
     public int getId() {

@@ -1,5 +1,5 @@
 
-package pokerclient;
+package client;
 
 import java.util.Scanner;
 

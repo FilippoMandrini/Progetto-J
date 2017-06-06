@@ -1,5 +1,5 @@
 
-package pokerclient;
+package client;
 
 import java.io.IOException;
 import java.net.ServerSocket;
