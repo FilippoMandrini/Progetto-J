@@ -7,7 +7,13 @@ package players;
 
 import actions.Action;
 import actions.ActionSet;
+import gametypes.GameType;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
 import java.net.Socket;
+import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
 import poker.Board;
 import poker.GameObservable;
@@ -25,6 +31,11 @@ public class HumanCompleteStrategy extends HumanStrategy{
     
     public HumanCompleteStrategy(Socket socket) {
         super(socket);
+         try {
+            in = new Scanner(new InputStreamReader(socket.getInputStream()));
+            out = new PrintStream(socket.getOutputStream(), true);
+        } catch (IOException ex) {
+        }   
         this.encoder = JSONEncoder.getInstance();
         this.decoder = JSONDecoder.getInstance();
     }
@@ -51,11 +62,6 @@ public class HumanCompleteStrategy extends HumanStrategy{
     }
 
     @Override
-    public void gameStarted(GameObservable game) {
-        //    
-    }
-
-    @Override
     public void handStarted(Player dealer) {
         out.println(encoder.encodeHandStarted(dealer));
     }
@@ -78,6 +84,11 @@ public class HumanCompleteStrategy extends HumanStrategy{
     @Override
     public void currentPlayerActed(ShadowPlayer shadowCopy) {
         out.println(encoder.encodeCurrentPlayerActed(shadowCopy));
+    }
+
+    @Override
+    public void gameStarted(List<Player> players, GameType settings) {
+
     }
     
 }

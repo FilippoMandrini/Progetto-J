@@ -5,10 +5,13 @@
  */
 package server;
 
-import actions.*;
 import annotations.JSONExclude;
 import actions.ActionSet;
 import com.google.gson.*;
+import gametypes.CustomGame;
+import gametypes.GameType;
+import gametypes.StandardGame;
+import java.util.List;
 import java.util.Set;
 import players.Player;
 import poker.Board;
@@ -22,6 +25,10 @@ public class JSONEncoder {
     private Gson gson;
    
     private JSONEncoder(){
+                RuntimeTypeAdapterFactory<GameType> gtfactory = RuntimeTypeAdapterFactory
+                .of(GameType.class, "type")
+                .registerSubtype(StandardGame.class, "standard")
+                .registerSubtype(CustomGame.class, "custom");
         gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .setExclusionStrategies(new ExclusionStrategy() {
@@ -37,6 +44,7 @@ public class JSONEncoder {
                     }
 
                 })
+                .registerTypeAdapterFactory(gtfactory)
                 .create();      
     }
     
@@ -122,6 +130,15 @@ public class JSONEncoder {
         JsonObject toSend = new JsonObject();
         toSend.addProperty("methodInvoked", "CURRENTPLAYERACTED");
         toSend.add("shadowCopy", encodeObject(shadowCopy));
+        return gson.toJson(toSend);
+    }
+    
+    public String encodeGameStarted(List<Player> players, GameType settings)
+    {
+        JsonObject toSend = new JsonObject();
+        toSend.addProperty("methodInvoked", "GAMESTARTED");
+        toSend.add("players", encodeObject(players));
+        toSend.add("settings", encodeObject(settings));
         return gson.toJson(toSend);
     }
     

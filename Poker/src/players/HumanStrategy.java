@@ -30,11 +30,7 @@ public abstract class HumanStrategy implements Client {
 
     public HumanStrategy(Socket socket) {
         this.socket = socket;
-        try {
-            in = new Scanner(new InputStreamReader(socket.getInputStream()));
-            out = new PrintStream(socket.getOutputStream(), true);
-        } catch (IOException ex) {
-        }   
+       
     }
     
     

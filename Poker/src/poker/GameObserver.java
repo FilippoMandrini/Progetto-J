@@ -1,5 +1,9 @@
 package poker;
 
+import gametypes.*;
+import java.util.List;
+import java.util.Observer;
+import java.util.Set;
 import players.Player;
 import players.ShadowPlayer;
 
@@ -26,11 +30,7 @@ public abstract interface GameObserver {
      */
     public void messageUpdated(String message);
     
-    /**
-     * Invocato quando inizia il gioco
-     * @param game il gioco
-     */
-    public void gameStarted(GameObservable game);
+    public void gameStarted(List<Player> players, GameType settings);
     
     /**
      * Invocato quando inizia la mano

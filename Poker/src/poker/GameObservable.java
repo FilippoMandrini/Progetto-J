@@ -1,5 +1,6 @@
 package poker;
 
+import gametypes.GameType;
 import java.util.*;
 import players.Player;
 
@@ -57,12 +58,15 @@ public abstract class GameObservable {
         }
     }
 
+
     /**
      * Segnala quando inizia il gioco
+     * @param players la lista dei giocatori
+     * @param settings le impostazioni
      */
-    public synchronized void notifyGameStarted() {
+    public synchronized void notifyGameStarted(List<Player> players, GameType settings) {
         for (GameObserver observer : observers) {
-            observer.gameStarted(this);
+            observer.gameStarted(players, settings);
 
         }
     }
