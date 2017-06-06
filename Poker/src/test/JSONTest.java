@@ -76,7 +76,8 @@ public class JSONTest {
         gsonBuilder.registerTypeAdapterFactory(factory);
         System.out.println(JSONEncoder.getInstance().encodeGameStarted(riccanza, new StandardGame(1000)));
         Type playerListType = new TypeToken<ArrayList<Player>>(){}.getType();
-        List<Player> players = gsonBuilder.create().fromJson(parser.parse(JSONEncoder.getInstance().encodeGameStarted(riccanza, new StandardGame(1000))).getAsJsonObject().get("players"), playerListType);
+        List<Player> players;
+        players = gsonBuilder.create().fromJson(parser.parse(JSONEncoder.getInstance().encodeGameStarted(riccanza, new StandardGame(1000))).getAsJsonObject().get("players"), playerListType);
         System.out.println(players.toString());
     }
 }
