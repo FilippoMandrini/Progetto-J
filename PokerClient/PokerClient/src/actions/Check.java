@@ -1,19 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package actions;
 
 /**
- *
- * @author Nickelsilver
+ * Classe che rappresenta il Check
  */
 public class Check extends Action{
     
+    /**
+     * Costruttore della classe Check
+     */
     public Check() {
         super("Check", "checka");
         this.actionType = ActionSet.CHECK;
-
     }
 }
+

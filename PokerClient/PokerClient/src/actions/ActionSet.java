@@ -1,16 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package actions;
 
 /**
- *
- * @author Nickelsilver
+ * Enumerazione che rappresenta le azioni possibili
  */
 public enum ActionSet {
     
+    /**
+     * Chiamata,Rialzo,Scommessa,Stare,Lasciare,Grande e Piccolo buio
+     */
     CALL("Call"),
     RAISE("Raise"),
     BET("Bet"),
@@ -21,9 +18,11 @@ public enum ActionSet {
     
     private String name;
     
-    ActionSet(String name)
-    {
+    /**
+     * Costruttore dell'enumerazione
+     * @param name nome dell'azione
+     */
+    ActionSet(String name){
         this.name = name;
     }
-    
 }
