@@ -104,6 +104,9 @@ public class Game {
     public void setSettings(GameType settings) {
         this.settings = settings;
     }
+
+    public Game() {
+    }
     
     
     

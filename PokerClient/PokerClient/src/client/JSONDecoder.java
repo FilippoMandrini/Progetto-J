@@ -9,9 +9,14 @@ import actions.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 import gametypes.CustomGame;
 import gametypes.GameType;
 import gametypes.StandardGame;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+import model.*;
 
 /**
  *
@@ -19,11 +24,10 @@ import gametypes.StandardGame;
  */
 public class JSONDecoder {
      
-    private static JSONDecoder instance;
     private final Gson gson;
     private Game game;
    
-    private JSONDecoder(){
+    public JSONDecoder(Game game){
         RuntimeTypeAdapterFactory<Action> afactory = RuntimeTypeAdapterFactory
                 .of(Action.class, "actionType")
                 .registerSubtype(Bet.class, "BET")
@@ -54,13 +58,37 @@ public class JSONDecoder {
                 decodeAct(toDecode);
                 break;
             case "BOARDUPDATED":
-                
-        }
+                decodeBoardUpdated(toDecode);
+                break;
+            case "PLAYERUPDATED":
+                decodePlayerUpdated(toDecode);
+                break;  
+            case "SELFUPDATED":
+                decodeSelfUpdated(toDecode);
+                break;
+            case "CURRENTPLAYERUPDATED":
+                decodeCurrentPlayerUpdated(toDecode);
+                break;
+            case "MESSAGEUPDATED":
+                decodeMessageUpdated(toDecode);
+                break;
+            case "BETTINGUPDATED":
+                decodeBettingUpdated(toDecode);
+                break;
+            case "HANDSTARTED":
+                decodeHandStarted(toDecode);
+                break;
+            case "GAMESTARTED":
+                decodeGameStarted(toDecode);
+                break;
+            case "CURRENTPLAYERACTED":
+                decodeCurrentPlayerActed(toDecode);
+                break;        }
     }
     
     private void decodeAct(String toDecode)
     {
-        
+
     }
     
     private void decodeBoardUpdated(String toDecode)
@@ -83,6 +111,11 @@ public class JSONDecoder {
         
     }
     
+    private void decodeCurrentPlayerActed(String toDecode)
+    {
+        
+    }    
+    
     private void decodeMessageUpdated(String toDecode)
     {
         
@@ -100,6 +133,11 @@ public class JSONDecoder {
     
     private void decodeGameStarted(String toDecode)
     {
+        Type playerListType = new TypeToken<ArrayList<Player>>(){}.getType();
+        JsonParser parser = new JsonParser();
+        game.setSettings(gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("settings"), GameType.class));
+        List<Player> players = gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("players"), playerListType);
+        game.setPlayers(players);
         
     }
 }
