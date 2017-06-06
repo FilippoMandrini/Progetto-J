@@ -63,7 +63,6 @@ public class JSONTest {
                 .registerSubtype(Fold.class, "FOLD")
                 .registerSubtype(SmallBlind.class, "SMALLBLIND");
         gsonBuilder.registerTypeAdapterFactory(factory);
-        ClientPlayer CP1 = gsonBuilder.create().fromJson(parser.parse(JSONEncoder.getInstance().encodePlayerUpdated(A1)).getAsJsonObject().get("player"), ClientPlayer.class);
-        System.out.println(CP1.getLastAction());
+        System.out.println(JSONEncoder.getInstance().encodeBoardUpdated(B1));
     }
 }
