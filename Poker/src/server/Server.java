@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class PokerServer extends Thread {
+public class Server extends Thread {
     
     private ServerSocket server;
     final int port = 7777;
@@ -15,10 +15,10 @@ public class PokerServer extends Thread {
     
     public static void main(String[] args) throws IOException, Exception {
         
-        new PokerServer();
+        new Server();
     }
     
-    public PokerServer() throws Exception {
+    public Server() throws Exception {
         
         this.server = new ServerSocket(this.port);
         this.start();
