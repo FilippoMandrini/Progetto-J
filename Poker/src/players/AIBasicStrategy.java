@@ -196,7 +196,6 @@ public class AIBasicStrategy extends AIStrategy {
     /** {@inheritDoc} */    
     @Override
     public void gameStarted(List<Player> players, GameType settings) {
-
         this.settings = settings;
     }
 

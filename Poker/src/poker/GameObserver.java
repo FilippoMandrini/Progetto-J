@@ -30,6 +30,11 @@ public abstract interface GameObserver {
      */
     public void messageUpdated(String message);
     
+    /**
+     * Invocato quando inizia la partita
+     * @param players la lista dei giocatori
+     * @param settings le impostazioni della partita
+     */
     public void gameStarted(List<Player> players, GameType settings);
     
     /**

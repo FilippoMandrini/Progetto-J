@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package players;
 
 import actions.Action;
@@ -12,29 +7,27 @@ import actions.BigBlind;
 import actions.Call;
 import actions.Check;
 import actions.Fold;
-import actions.GenericAction;
 import actions.Raise;
 import actions.SmallBlind;
 import gametypes.GameType;
-import java.net.Socket;
 import java.util.List;
-import java.util.Observable;
 import java.util.Scanner;
 import java.util.Set;
 import poker.Board;
-import poker.GameObservable;
 
 /**
- *
- * @author Nickelsilver
+ * Classe di test del giocatore umano
  */
 public class HumanTestStrategy extends HumanStrategy {
 
+    /**
+     * Costruttore della classe
+     */
     public HumanTestStrategy() {
         super(null);
     }
     
-    
+    /** {@inheritDoc} */    
     @Override
     public Action act(int minBet, int bet, Set<ActionSet> allowedActions)
     {            
@@ -72,46 +65,55 @@ public class HumanTestStrategy extends HumanStrategy {
         return action;
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void boardUpdated(Board board) {
         
     }
-
+    
+    /** {@inheritDoc} */
     @Override
     public void playerUpdated(Player player) {
 
     }
-
+    
+    /** {@inheritDoc} */
     @Override
     public void messageUpdated(String message) {
 
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void handStarted(Player dealer) {
 
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void currentPlayerUpdated(Player currentPlayer) {
 
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void bettingUpdated(int bet, int minBet, int totalPot) {
 
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void selfUpdated(Player player) {
 
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void currentPlayerActed(ShadowPlayer shadowCopy) {
         
     }
 
+    /** {@inheritDoc} */    
     @Override
     public void gameStarted(List<Player> players, GameType settings) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

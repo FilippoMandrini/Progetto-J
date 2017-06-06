@@ -28,7 +28,7 @@ public class Player implements Comparable {
     /**
      * Costruttore di Player
      * @param name nome del giocatore
-     * @param client
+     * @param client il client del giocatore
      */
     public Player(String name, Client client) {
         this.name = name;
@@ -37,6 +37,13 @@ public class Player implements Comparable {
         this.client = client;
     }
 
+    
+    /**
+     * Costruttore di Player
+     * @param name nome del giocatore
+     * @param stake lo stake di partenza del giocatore
+     * @param client il client del giocatore
+     */
     public Player(String name, int stake, Client client) {
         this.name = name;
         this.stake = stake;
@@ -45,6 +52,12 @@ public class Player implements Comparable {
 
     }
     
+    
+    /**
+     * Costruttore di Player
+     * @param name nome del giocatore
+     * @param stake lo stake di partenza del giocatore
+     */
     protected Player(String name, int stake){
         this.name = name;
         this.stake = stake;
@@ -52,10 +65,18 @@ public class Player implements Comparable {
         this.cards = new ArrayList<>();
     }
 
+    /**
+     * Ritorna l'ID del giocatore
+     * @return l'ID del giocatore
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Imposta l'ID del giocatore
+     * @param id  l'ID del giocatore
+     */
     public void setId(int id) {
         this.id = id;
     }
@@ -67,10 +88,15 @@ public class Player implements Comparable {
     public String getName() {
         return name;
     }
-
+    
+    /**
+     * Restituisce il client associato al giocatore
+     * @return il client associato al giocatore
+     */
     public Client getClient() {
         return client;
     }
+    
     /**
      * Restituisce lo stake del giocatore
      * @return lo stake del giocatore
@@ -79,14 +105,23 @@ public class Player implements Comparable {
         return stake;
     }
 
+    /**
+     * Imposta l'ultima azione compiuta
+     * @param lastAction l'ultima azione compiuta
+     */
     public void setLastAction(Action lastAction) {
         this.lastAction = lastAction;
     }
 
+    /**
+     * Restituisce l'ultima azione compiuta
+     * @return l'ultima azione compiuta
+     */
     public Action getLastAction() {
         return lastAction;
     }
 
+    /** {@inheritDoc} */      
     @Override
     public int hashCode() {
         int hash = 7;
@@ -95,6 +130,7 @@ public class Player implements Comparable {
         return hash;
     }
 
+    /** {@inheritDoc} */      
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -125,6 +161,11 @@ public class Player implements Comparable {
         this.stake = stake;
     }
     
+    /**
+     * Paga la quota della scommessa richiesta per giocare
+     * @param amount la quota della scommessa
+     * @throws IllegalArgumentException se lo stake e' insufficiente
+     */
     public void pay(int amount)
     {
         if (amount > stake)
@@ -134,15 +175,27 @@ public class Player implements Comparable {
         this.stake -= amount;
     }
     
+    /**
+     * Consegna la somma vinta al giocatore
+     * @param amount la somma vinta
+     */
     public void win(int amount)
     {
         stake += amount;
     }
 
+    /**
+     * Imposta la quantita' scommessa corrente
+     * @param bet la quantita' scommessa
+     */
     public void setCurrentBet(int bet) {
         this.currentBet = bet;
     }
 
+    /**
+     * Restituisce la quantita' scommessa corrente
+     * @return la quantita' scommessa corrente
+     */
     public int getCurrentBet() {
         return currentBet;
     }
@@ -156,6 +209,10 @@ public class Player implements Comparable {
         this.cards.add(card);
     }
     
+    /**
+     * Resetta il giocatore
+     * @return true se resetta, altrimenti false
+     */
     public boolean reset() 
     {
         this.cards.clear();
@@ -164,6 +221,10 @@ public class Player implements Comparable {
         return true;
     }
     
+    /**
+     * Restituisce una copia del giocatore senza informazioni sensibili
+     * @return una copia del giocatore
+     */
     public ShadowPlayer getShadowCopy()
     {
         ShadowPlayer copy = new ShadowPlayer(name, stake);
@@ -172,6 +233,7 @@ public class Player implements Comparable {
         copy.setLastAction(lastAction);
         return copy;
     }
+    
     /**
      * Restituisce le carte del giocatore
      * @return le carte del giocatore
@@ -235,11 +297,15 @@ public class Player implements Comparable {
         return 0;
     }
     
+    /** {@inheritDoc} */      
     @Override
     public String toString() {
         return "Giocatore: " + name;
     }
     
+    /**
+     * Folda le carte del giocatore
+     */
     public void foldCards()
     {
         this.cards.clear();
