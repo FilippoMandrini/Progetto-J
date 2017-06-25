@@ -54,7 +54,7 @@ public class JSONTest {
         A1.addCard(C2);
         A1.addCard(C1);
         Board B1 = new Board();
-        B1.flop();
+        B1.dealCommunityCards(3);
         for (Card card : B1.getCommunityCards())
         {
             System.out.println(card.toString());

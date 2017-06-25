@@ -14,7 +14,7 @@ import players.Player;
 import poker.Suit;
 import poker.SuitType;
 
-public class HandTester {
+public class HandTest {
 
     public static void main(String[] args) {
 
