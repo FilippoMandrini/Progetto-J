@@ -1,5 +1,7 @@
 package actions;
 
+import poker.GameFacade;
+
 /**
  * Classe astratta che rappresenta l'azione da compiere
  */
@@ -99,6 +101,8 @@ public abstract class Action {
         this.actionType = actionType;
     }
     
+    public abstract int execute(GameFacade game, int playersLeft);
+
     /** {@inheritDoc} */
     @Override
     public String toString()
