@@ -27,6 +27,7 @@ public class Game {
     private int dealerPosition;
     private int currentPlayerPosition;
     private Player currentPlayer;
+    private String lastMessage;
 
     public Game(GameType settings, List<Player> players) {
         this.settings = settings;

@@ -15,6 +15,7 @@ import gametypes.GameType;
 import gametypes.StandardGame;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import model.*;
 
@@ -26,6 +27,8 @@ public class JSONDecoder {
      
     private final Gson gson;
     private Game game;
+    private final HashMap<String, JSONCommand> commands;
+
    
     public JSONDecoder(Game game){
         RuntimeTypeAdapterFactory<Action> afactory = RuntimeTypeAdapterFactory
@@ -46,103 +49,93 @@ public class JSONDecoder {
                 .registerTypeAdapterFactory(afactory)
                 .registerTypeAdapterFactory(gtfactory)
                 .create();      
+        
+        commands = new HashMap<>();
+        
+        commands.put("ACT", new JSONCommand(){
+            @Override
+            public void execute(String toDecode) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        commands.put("GAMESTARTED", new JSONCommand(){
+            @Override
+            public void execute(String toDecode) {
+                Type playerListType = new TypeToken<ArrayList<Player>>() {
+                }.getType();
+                JsonParser parser = new JsonParser();
+                game.setSettings(gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("settings"), GameType.class));
+                List<Player> players = gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("players"), playerListType);
+                game.setPlayers(players);
+                game.setActivePlayers();
+            }
+        });
+        commands.put("HANDSTARTED", new JSONCommand(){
+            @Override
+            public void execute(String toDecode) {
+                JsonParser parser = new JsonParser();
+                game.setDealer(gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("dealer"), Player.class));
+                game.setDealerPosition(game.getActivePlayers().indexOf(game.getDealer()));
+            }
+        });
+        commands.put("BOARDUPDATED", new JSONCommand(){
+            @Override
+            public void execute(String toDecode) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        commands.put("PLAYERUPDATED", new JSONCommand(){
+            @Override
+            public void execute(String toDecode) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        commands.put("SELFUPDATED", new JSONCommand(){
+            @Override
+            public void execute(String toDecode) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        commands.put("CURRENTPLAYERUPDATED", new JSONCommand(){
+            @Override
+            public void execute(String toDecode) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        commands.put("MESSAGEUPDATED", new JSONCommand(){
+            @Override
+            public void execute(String toDecode) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        commands.put("BETTINGUPDATED", new JSONCommand(){
+            @Override
+            public void execute(String toDecode) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        commands.put("CURRENTPLAYERACTED", new JSONCommand(){
+            @Override
+            public void execute(String toDecode) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        
+        
+        
     }
-    
-    private void decode(String toDecode)
+    public void decode(String toDecode)
     {
-        JsonParser parser = new JsonParser();
+        JsonParser parser = new JsonParser();            
         String method = parser.parse(toDecode).getAsJsonObject().get("methodInvoked").getAsString();
-        switch (method)
+        if (commands.containsKey(method))
         {
-            case "ACT":
-                decodeAct(toDecode);
-                break;
-            case "BOARDUPDATED":
-                decodeBoardUpdated(toDecode);
-                break;
-            case "PLAYERUPDATED":
-                decodePlayerUpdated(toDecode);
-                break;  
-            case "SELFUPDATED":
-                decodeSelfUpdated(toDecode);
-                break;
-            case "CURRENTPLAYERUPDATED":
-                decodeCurrentPlayerUpdated(toDecode);
-                break;
-            case "MESSAGEUPDATED":
-                decodeMessageUpdated(toDecode);
-                break;
-            case "BETTINGUPDATED":
-                decodeBettingUpdated(toDecode);
-                break;
-            case "HANDSTARTED":
-                decodeHandStarted(toDecode);
-                break;
-            case "GAMESTARTED":
-                decodeGameStarted(toDecode);
-                break;
-            case "CURRENTPLAYERACTED":
-                decodeCurrentPlayerActed(toDecode);
-                break;        }
-    }
-    
-    private void decodeAct(String toDecode)
-    {
-
-    }
-    
-    private void decodeBoardUpdated(String toDecode)
-    {
-        
-    }
-    
-    private void decodeSelfUpdated(String toDecode)
-    {
-        
-    }
-    
-    private void decodePlayerUpdated(String toDecode)
-    {
-        
-    }
-    
-    private void decodeCurrentPlayerUpdated(String toDecode)
-    {
-        
-    }
-    
-    private void decodeCurrentPlayerActed(String toDecode)
-    {
-        
-    }    
-    
-    private void decodeMessageUpdated(String toDecode)
-    {
-        
-    }
-    
-    private void decodeBettingUpdated(String toDecode)
-    {
-        
-    }
-    
-    private void decodeHandStarted(String toDecode)
-    {
-        JsonParser parser = new JsonParser();
-        game.setDealer(gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("dealer"), Player.class));
-        game.setDealerPosition(game.getActivePlayers().indexOf(game.getDealer()));
-        
-    }
-  
-    
-    private void decodeGameStarted(String toDecode)
-    {
-        Type playerListType = new TypeToken<ArrayList<Player>>(){}.getType();
-        JsonParser parser = new JsonParser();
-        game.setSettings(gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("settings"), GameType.class));
-        List<Player> players = gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("players"), playerListType);
-        game.setPlayers(players);
-        game.setActivePlayers();
-        
+            commands.get(method).execute(toDecode);
+        }
+        else
+        {
+            throw new IllegalArgumentException("Comunicazione sconosciuta!");
+        }
     }
 }
+   
