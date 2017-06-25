@@ -31,12 +31,13 @@ public class Board {
     }
     
     /**
-     * Distribuisce le due carte personali del giocatore
+     * Distribuisce le carte personali del giocatore
      * @param player il giocatore
+     * @param noOfCards numero di carte da distribuire al giocatore
      */
-    public boolean dealCards(Player player) {
+    public boolean dealHoleCards(Player player, int noOfCards) {
         player.reset();
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < noOfCards; i++) {
             player.addCard(this.deck.dealCard());
         }
         return true;
@@ -49,36 +50,20 @@ public class Board {
      */
     public void preflop(List<Player> giocatori) {
         for (Player player : giocatori) {
-            dealCards(player);
+            dealHoleCards(player, 2);
         }
     }
 
     /**
-     * Mostra le prime tre carte comuni
+     * Mostra le carte comuni
+     * @param noOfCards il numero di carte da mostrare
      */
-    public boolean flop() {
-        for (int i = 0; i < 3; i++) {
+    public void dealCommunityCards(int noOfCards)
+    {
+        deck.burnCard();
+        for (int i = 0; i < noOfCards; i++) {
             communityCards.add(deck.dealCard());
-        }
-        return true;
-    }
-
-    /**
-     * Mostra la quarta carta comune
-     */
-    public boolean turn() {
-        deck.burnCard();
-        communityCards.add(deck.dealCard());
-        return true;
-    }
-
-    /**
-     * Mostra la quinta e ultima carta comune
-     */
-    public boolean river() {
-        deck.burnCard();
-        communityCards.add(deck.dealCard());
-        return true;
+        }    
     }
       
     /**
