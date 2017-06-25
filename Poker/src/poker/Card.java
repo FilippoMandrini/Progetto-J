@@ -9,7 +9,7 @@ public class Card implements Comparable<Card> {
 
     private int rank;
     private Suit suit;
-    private static final String[] SUIT_NAMES = {"Picche", "Fiori", "Denari", "Picche"};
+    private static final String[] SUIT_NAMES = {"Picche", "Fiori", "Denari", "Cuori"};
     private static final String[] RANK_NAMES = {"Due", "Tre", "Quattro", "Cinque", "Sei",
         "Sette", "Otto", "Nove", "Dieci", "Fante", "Regina", "Re", "Asso"};
 
