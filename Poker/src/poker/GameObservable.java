@@ -134,9 +134,9 @@ public abstract class GameObservable {
      * @param players i giocatori
      */
     public void notifyPlayersUpdated(List<Player> players) {
-        for (Player notifyPlayer : players) {
+        for (GameObserver observer : observers) {
             for (Player player : players) {
-                notifyPlayer.getClient().playerUpdated(player);
+                observer.playerUpdated(player);
             }
         }
     }
