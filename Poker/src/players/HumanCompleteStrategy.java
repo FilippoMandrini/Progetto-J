@@ -41,7 +41,7 @@ public class HumanCompleteStrategy extends HumanStrategy{
     @Override
     public Action act(int minBet, int bet, Set<ActionSet> allowedActions) {
         out.println(encoder.encodeAct(minBet, bet, allowedActions));
-        return decoder.decodeAct(in.nextLine());
+        return (Action) decoder.decode(in.nextLine());
     }
     
     /** {@inheritDoc} */

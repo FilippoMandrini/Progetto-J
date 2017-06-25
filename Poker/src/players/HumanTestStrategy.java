@@ -116,6 +116,6 @@ public class HumanTestStrategy extends HumanStrategy {
     /** {@inheritDoc} */    
     @Override
     public void gameStarted(List<Player> players, GameType settings) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
