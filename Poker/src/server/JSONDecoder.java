@@ -11,12 +11,13 @@ import actions.BigBlind;
 import actions.Call;
 import actions.Check;
 import actions.Fold;
-import actions.GenericAction;
 import actions.Raise;
 import actions.SmallBlind;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
+import java.lang.reflect.Type;
+import java.util.HashMap;
 
 /**
  *
@@ -26,7 +27,8 @@ public class JSONDecoder {
      
     private static JSONDecoder instance;
     private final Gson gson;
-   
+    private final HashMap<String, JSONCommand> commands;
+
     private JSONDecoder(){
         RuntimeTypeAdapterFactory<Action> factory = RuntimeTypeAdapterFactory
                 .of(Action.class, "actionType")
@@ -41,6 +43,35 @@ public class JSONDecoder {
                 .setPrettyPrinting()
                 .registerTypeAdapterFactory(factory)
                 .create();      
+        
+        commands = new HashMap<>();
+        
+        commands.put("ACT", new JSONCommand<Action>(){
+            @Override
+            public Action execute(String toDecode) {
+                JsonParser parser = new JsonParser();            
+                Action action = gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("action"), Action.class);
+                return action;
+            }   
+        });
+        commands.put("GAMEJOINED", new JSONCommand<String>(){
+            @Override
+            public String execute(String toDecode) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+        });
+    }
+    
+    public Object decode(String toDecode)
+    {
+        JsonParser parser = new JsonParser();            
+        String method = parser.parse(toDecode).getAsJsonObject().get("methodInvoked").getAsString();
+        if (commands.containsKey(method))
+        {
+            return commands.get(method).execute(toDecode);
+        }
+        return null;
     }
     
     public static synchronized JSONDecoder getInstance()
@@ -51,23 +82,5 @@ public class JSONDecoder {
         }
         return instance;
     }
-    
-    public Action decodeAct(String toDecode)
-    {
-        JsonParser parser = new JsonParser();
-        if (parser.parse(toDecode).getAsJsonObject().get("methodInvoked").getAsString().equalsIgnoreCase("ACt"))
-        {
-            Action action = gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("action"), Action.class);
-            return action;
-        }
-        else
-        {
-              throw new IllegalArgumentException("Errore messaggio ricevuto dal client");
-        }
-    }
-    
-//    public String decodeGameStarted(String toDecode)
-//    {
-//        
-//    }
+
 }
