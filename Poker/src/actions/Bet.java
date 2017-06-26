@@ -16,7 +16,7 @@ public class Bet extends Action {
         super("Bet", "scommette", amount);
         this.actionType = ActionSet.BET;
     } 
-
+    
     @Override
     public int execute(GameFacade game, int playersLeft) {
 

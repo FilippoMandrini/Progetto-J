@@ -12,9 +12,6 @@ public abstract class Action {
     protected int amount;
     protected ActionSet actionType;
 
-    public Action() {
-    }
-    
     /**
      * Costruttore della classe Action
      * @param name nome dell'azione
