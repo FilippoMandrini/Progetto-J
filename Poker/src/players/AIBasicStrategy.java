@@ -192,13 +192,13 @@ public class AIBasicStrategy extends AIStrategy {
 
     /** {@inheritDoc} */    
     @Override
-    public void handStarted(Player dealer) {
+    public void handStarted(Player dealer, int dealerPosition) {
         this.cards = new ArrayList<>();
     }
 
     /** {@inheritDoc} */    
     @Override
-    public void currentPlayerUpdated(Player currentPlayer) {
+    public void currentPlayerUpdated(Player currentPlayer, int currentPlayerPosition) {
         // non implementato
     }
 
@@ -224,5 +224,8 @@ public class AIBasicStrategy extends AIStrategy {
     public void currentPlayerActed(ShadowPlayer shadowCopy) {
         // non implementato
     }
+
+
+
     
 }

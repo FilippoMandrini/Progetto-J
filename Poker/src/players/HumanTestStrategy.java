@@ -24,7 +24,7 @@ public class HumanTestStrategy extends HumanStrategy {
      * Costruttore della classe
      */
     public HumanTestStrategy() {
-        super(null);
+        super();
     }
     
     /** {@inheritDoc} */    
@@ -85,13 +85,13 @@ public class HumanTestStrategy extends HumanStrategy {
 
     /** {@inheritDoc} */    
     @Override
-    public void handStarted(Player dealer) {
+    public void handStarted(Player dealer, int dealerPosition) {
 
     }
 
     /** {@inheritDoc} */    
     @Override
-    public void currentPlayerUpdated(Player currentPlayer) {
+    public void currentPlayerUpdated(Player currentPlayer, int currentPlayerPosition) {
 
     }
 
@@ -118,4 +118,26 @@ public class HumanTestStrategy extends HumanStrategy {
     public void gameStarted(List<Player> players, GameType settings) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public boolean isConnected() {
+        return true;
+    }
+
+    @Override
+    public boolean isReachable(int timeout) {
+        return true;
+    }
+
+    @Override
+    public void setConnected(boolean connected) {
+        //non implementato
+    }
+
+    @Override
+    public void disconnect() {
+        // non implementato
+    }
+    
+    
 }

@@ -11,9 +11,11 @@ public class ShadowPlayer extends Player{
      * Costruttore della classe
      * @param name il nome del giocatore
      * @param stake lo stake del giocatore
+     * @param id l'id del giocatore
      */
-    public ShadowPlayer(String name, int stake) {
+    public ShadowPlayer(String name, int stake, int id) {
         super(name, stake, null);   
+        super.setId(id);
         
     }
 

@@ -1,6 +1,7 @@
 package players;
 
 import actions.Action;
+import actions.Fold;
 import handtypes.Hand;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class Player implements Comparable {
     private Action lastAction; 
     @JSONExclude
     protected final Client client;
-    protected int id = 0;
+    protected int id;
 
     /**
      * Costruttore di Player
@@ -224,10 +225,11 @@ public class Player implements Comparable {
      */
     public ShadowPlayer getShadowCopy()
     {
-        ShadowPlayer copy = new ShadowPlayer(name, stake);
+        ShadowPlayer copy = new ShadowPlayer(name, stake, id);
         copy.setHasCards(!this.cards.isEmpty());
         copy.setCurrentBet(currentBet);
         copy.setLastAction(lastAction);
+        copy.setActive(active);
         return copy;
     }
     
@@ -307,6 +309,18 @@ public class Player implements Comparable {
     {
         this.cards.clear();
         setActive(false);
+        lastAction = new Fold();
     }  
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public boolean hasCards()
+    {
+        return !this.cards.isEmpty();
+    }
+    
+    
      
 }
