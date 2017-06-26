@@ -13,7 +13,7 @@ public class StandardGame extends GameType{
     
     @Override
     public String getDescription() {  
-        return "Variante standard per l'applicazione del poker nella sua versione HoldEm";
+        return "Standard Game: variante standard di poker Hold'em";
     }
 
     @Override

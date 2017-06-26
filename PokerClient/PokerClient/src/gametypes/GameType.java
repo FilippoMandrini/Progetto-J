@@ -18,6 +18,7 @@ public abstract class GameType {
     protected int roundsForDoubling;
     protected boolean alwaysDoShowdown;
     protected int startingStake;
+    protected String description;
     
     public abstract String getDescription();
     
