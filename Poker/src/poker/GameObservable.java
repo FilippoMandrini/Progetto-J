@@ -9,7 +9,7 @@ import players.Player;
  */
 public abstract class GameObservable {
 
-    private final Set<GameObserver> observers = new HashSet<>();
+    protected final Set<GameObserver> observers = new HashSet<>();
 
     /**
      * Conta gli osservatori
@@ -75,9 +75,9 @@ public abstract class GameObservable {
      * Segnala quando inizia la mano
      * @param dealer il dealer della mano
      */
-    public void notifyHandStarted(Player dealer) {
+    public void notifyHandStarted(Player dealer, int dealerPosition) {
         for (GameObserver observer : observers) {
-            observer.handStarted(dealer.getShadowCopy());
+            observer.handStarted(dealer.getShadowCopy(), dealerPosition);
         }
     }
 
@@ -87,7 +87,7 @@ public abstract class GameObservable {
      * @param minBet l'ammontare minimo della puntata
      * @param totalPot il totale delle scommesse nel pot
      */
-    public void notifyBettingUpdate(int bet, int minBet, int totalPot) {
+    public void notifyBettingUpdated(int bet, int minBet, int totalPot) {
         for (GameObserver observer : observers) {
             observer.bettingUpdated(bet, minBet, totalPot);
         }
@@ -96,10 +96,11 @@ public abstract class GameObservable {
     /**
      * Segnala quando il giocatore attuale subisce una modifica
      * @param currentPlayer il giocatore attuale
+     * @param currentPlayerPosition posizione attuale del giocatore
      */
-    public void notifyCurrentPlayerUpdated(Player currentPlayer) {
+    public void notifyCurrentPlayerUpdated(Player currentPlayer, int currentPlayerPosition) {
         for (GameObserver observer : observers) {
-            observer.currentPlayerUpdated(currentPlayer.getShadowCopy());
+            observer.currentPlayerUpdated(currentPlayer.getShadowCopy(), currentPlayerPosition);
         }
     }
 
@@ -119,11 +120,13 @@ public abstract class GameObservable {
      */
     public void notifyHiddenPlayersUpdated(List<Player> players) {
         for (Player notifyPlayer : players) {
-            for (Player player : players) {
-                if (!notifyPlayer.equals(player)) {
-                    notifyPlayer.getClient().playerUpdated(player.getShadowCopy());
-                } else {
-                    notifyPlayer.getClient().selfUpdated(player);
+            if (notifyPlayer.getClient().isConnected()) {
+                for (Player player : players) {
+                    if (!notifyPlayer.equals(player)) {
+                        notifyPlayer.getClient().playerUpdated(player.getShadowCopy());
+                    } else {
+                        notifyPlayer.getClient().selfUpdated(player);
+                    }
                 }
             }
         }
@@ -138,6 +141,12 @@ public abstract class GameObservable {
             for (Player player : players) {
                 observer.playerUpdated(player);
             }
+        }
+    }
+    
+    public void notifyDisconnect() {
+        for (GameObserver observer : observers) {
+            observer.disconnect();          
         }
     }
 

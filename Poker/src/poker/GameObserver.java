@@ -41,13 +41,14 @@ public abstract interface GameObserver {
      * Invocato quando inizia la mano
      * @param dealer il player dealer della mano attuale
      */
-    public void handStarted(Player dealer);
+    public void handStarted(Player dealer, int dealerPosition);
     
     /**
      * Invocato quando il giocatore corrente ha subito modifiche
      * @param currentPlayer il giocatore attuale
+     * @param currentPlayerPosition la posizione del giocatore attuale
      */
-    public void currentPlayerUpdated(Player currentPlayer);
+    public void currentPlayerUpdated(Player currentPlayer, int currentPlayerPosition);
     
     /**
      * Invocato quando viene effettuata una scommessa
@@ -69,5 +70,6 @@ public abstract interface GameObserver {
      */
     public void currentPlayerActed(ShadowPlayer shadowCopy);
     
+    public void disconnect();
     
 }
