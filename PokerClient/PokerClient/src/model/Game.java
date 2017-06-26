@@ -6,14 +6,17 @@
 package model;
 
 import actions.Action;
+import actions.ActionSet;
 import gametypes.GameType;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
  * @author Nickelsilver
  */
-public class Game {
+public class Game extends GameObservable {
     
     private List<Player> players;
     private List<Player> activePlayers;
@@ -36,6 +39,7 @@ public class Game {
     
     public void setActivePlayers()
     {
+        activePlayers.clear();
         for(Player player : players)
         {
             if (player.isActive())
@@ -111,31 +115,22 @@ public class Game {
     }
 
     public Game() {
+        this.activePlayers = new ArrayList<>();
+        this.players = new ArrayList<>();
     }
     
-    public void updatePlayer(Player player)
-    {
-        int itemIndex = players.indexOf(player);
-        if (itemIndex != -1) {
-            players.set(itemIndex, player);
-        }
-    }
-//        for (Player onClient: players)
-//        {
-//            if(player.equals(onClient))
-//            {
-//                onClient.setActive(player.isActive());
-//                onClient.setCards(player.getCards());
-//                onClient.setId(player.getId());
-//                onClient.setLastAction(player.getLastAction());
-//                onClient.setStake(player.getStake());
-//            }
-//        }
-
     public Player getDealer() {
         return dealer;
     }
 
+    public String getLastMessage() {
+        return lastMessage;
+    }
+
+    public void setLastMessage(String lastMessage) {
+        this.lastMessage = lastMessage;
+    }
+    
     public void setDealer(Player dealer) {
         this.dealer = dealer;
     }
@@ -162,6 +157,81 @@ public class Game {
 
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
+    }
+
+    public void updateBoard(Board board) {
+        this.board = board;
+        notifyBoardUpdated(board);
+    }
+    
+    public void updateMessage(String message)
+    {
+        this.lastMessage = message;
+        notifyMessageUpdated(message);
+    }
+    
+    public void updateBetting(int bet, int minBet, int totalPot)
+    {
+        this.bet = bet;
+        this.minBet = minBet;
+        this.totalPot = totalPot;
+        notifyBettingUpdate(bet, minBet, totalPot);
+    }
+    
+    public void updateGameStarted(GameType settings, List<Player> players)
+    {
+        this.settings = settings;
+        this.players = players;
+        setActivePlayers();
+        notifyGameStarted(players, settings);
+    }
+    
+    public void updatePlayer(Player player)
+    {
+        int itemIndex = players.indexOf(player);
+        if (itemIndex != -1) {
+            players.set(itemIndex, player);
+        }
+        itemIndex = activePlayers.indexOf(player);
+        if (itemIndex != -1) {
+            activePlayers.set(itemIndex, player);
+        }
+        notifyPlayerUpdated(player);
+    }
+    
+    public void updateCurrentAction(Player currentPlayer)
+    {
+        this.currentAction = currentPlayer.getLastAction();
+        this.currentPlayer = currentPlayer;
+        notifyCurrentPlayerActed(currentPlayer);
+    }
+    
+    public void updateCurrentPlayer(Player player, int currentPlayerPosition)
+    {
+        if (players.contains(player))
+        {
+            currentPlayer = player;
+            this.currentPlayerPosition = currentPlayerPosition;
+            notifyCurrentPlayerUpdated(currentPlayer, currentPlayerPosition);
+
+        }
+    }
+    
+    public void updateDealer(Player dealer, int dealerPosition)
+    {
+        if (players.contains(dealer))
+        {
+            this.dealer = dealer;
+            this.dealerPosition = dealerPosition;
+            notifyHandStarted(dealer, dealerPosition);
+        }
+    }
+
+    public void actionRequested(int bet, int minBet, Set<ActionSet> allowedActions)
+    {
+        this.bet = bet;
+        this.minBet = minBet;
+        notifyActionRequest(bet, minBet, allowedActions);
     }
     
     

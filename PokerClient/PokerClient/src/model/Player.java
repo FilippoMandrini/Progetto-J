@@ -21,10 +21,12 @@ public class Player {
     private boolean active;
     private Action lastAction; 
     protected int id = 0;
+    public boolean hasCards;
 
     public Player(String name, int stake) {
         this.name = name;
         this.stake = stake;
+        this.cards = new ArrayList();
     }
 
     public int getStake() {
@@ -92,6 +94,26 @@ public class Player {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Player: " + name + " | stake: " + stake;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setHasCards(boolean hasCards) {
+        this.hasCards = hasCards;
+    }
+    
+    public boolean hasCards()
+    {
+        return !this.cards.isEmpty();
+    }    
+    
+    
     
     
     
