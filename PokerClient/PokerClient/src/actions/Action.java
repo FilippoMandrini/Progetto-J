@@ -9,9 +9,6 @@ public abstract class Action {
     protected String description;
     protected int amount;
     protected ActionSet actionType;
-
-    public Action() {
-    }
     
     /**
      * Costruttore della classe Action
