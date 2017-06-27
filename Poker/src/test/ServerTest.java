@@ -49,7 +49,7 @@ public class ServerTest implements Runnable {
             while (true && numClients < game.getSettings().getMaxPlayers()) 
             {
                 client = socket.accept();
-                client.setSoTimeout(30000);
+                client.setSoTimeout(0);
                 in = new BufferedReader(new InputStreamReader(client.getInputStream()));
                 out = new PrintStream(client.getOutputStream(), true);
                 out.println(JSONEncoder.getInstance().encodeGameJoined());
