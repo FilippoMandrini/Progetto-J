@@ -50,12 +50,14 @@ public class Client implements Runnable {
         Sender.init(server);
         try 
         {
-            if(JSONDecoder.getInstance(game).decode(in.readLine()) != null)
+            String toDecode = in.readLine();
+            if(JSONDecoder.getInstance(game).decode(toDecode) != null)
             {
                 Sender.getInstance().sendRaw(JSONEncoder.getInstance().encodeGameJoined("CLIENTPRO"));
             }
         } 
-        catch (IOException ex) {
+        catch (IOException | NullPointerException ex) {
+            disconnected = true;
         }
         while (true && !disconnected)
         {
@@ -63,23 +65,14 @@ public class Client implements Runnable {
             {
                 String toDecode = in.readLine();
                 //System.out.println(toDecode);
-                JSONDecoder.getInstance(game).decode(toDecode);                
+                JSONDecoder.getInstance(game).decode(toDecode);              
             } 
-            catch (InterruptedIOException ex)
+            catch (IOException | NullPointerException ex)
             {
+                System.err.println("CONNESSIONE CON IL SERVER PERSA");
                 disconnected = true;
             }
-            catch (IOException ex) 
-            {
-                System.out.println("CONNESSIONE CON IL SERVER PERSA");
-            }
         }
+        System.err.println("PROGRAMMA TERMINATO");
     }
-
-    public static void main(String[] args) {
-
-        Thread cthread = new Thread(new Client());
-        cthread.start();
-    }
-
 }

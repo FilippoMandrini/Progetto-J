@@ -6,6 +6,7 @@
 package json;
 
 import actions.*;
+import client.Sender;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
@@ -162,9 +163,14 @@ public class JSONDecoder {
                 throw new InterruptedIOException();
             }
         });
-
+        commands.put("PING", new JSONCommand<Void>(){
+            @Override
+            public Void execute(String toDecode) {
+                return null;
+            }
+        });
     }
-    public Object decode(String toDecode) throws InterruptedIOException
+    public Object decode(String toDecode) throws InterruptedIOException, NullPointerException
     {
         JsonParser parser = new JsonParser();            
         String method = parser.parse(toDecode).getAsJsonObject().get("methodInvoked").getAsString();

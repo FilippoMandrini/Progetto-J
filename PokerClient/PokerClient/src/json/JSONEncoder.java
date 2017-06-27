@@ -92,4 +92,9 @@ public class JSONEncoder {
         return jsonElement;
     }
     
+    public String encodePing() {
+        JsonObject toSend = new JsonObject();
+        toSend.addProperty("methodInvoked", "PING");
+        return gson.toJson(toSend);    
+    }     
 }
