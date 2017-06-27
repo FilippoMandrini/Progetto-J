@@ -212,7 +212,9 @@ public class Game extends GameObservable implements Runnable {
             }
             catch (IOException e)
             {
-                System.err.println("Errore Sconosciuto");
+                action = new Fold();
+                disconnectPlayer(currentPlayer);
+                notifyHiddenPlayersUpdated(players);
             }
             playersLeft = action.execute(facade, playersLeft);
             System.out.println("[TEST] "+ currentPlayer.toString() + " " + action.getDescription() + " " + action.getAmount());
@@ -379,7 +381,7 @@ public class Game extends GameObservable implements Runnable {
         {
             for (Player member : pot.getMembers())
             {
-                if (!playersToShow.contains(member) && member.getCards() != null && member.getStake() == 0)
+                if (!playersToShow.contains(member) && member.getCards() != null && member.getStake() == 0 && !member.getCards().isEmpty())
                 {
                     playersToShow.add(member);
                 }

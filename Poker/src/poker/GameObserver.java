@@ -1,9 +1,8 @@
 package poker;
 
 import gametypes.*;
+import java.io.IOException;
 import java.util.List;
-import java.util.Observer;
-import java.util.Set;
 import players.Player;
 import players.ShadowPlayer;
 
@@ -71,5 +70,7 @@ public abstract interface GameObserver {
     public void currentPlayerActed(ShadowPlayer shadowCopy);
     
     public void disconnect();
+    
+    public void ping() throws IOException;
     
 }
