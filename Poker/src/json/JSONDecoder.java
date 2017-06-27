@@ -52,6 +52,12 @@ public class JSONDecoder {
                 return gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("action"), Action.class); 
             }   
         });
+        commands.put("PING", new JSONCommand<Boolean>(){
+            @Override
+            public Boolean execute(String toDecode) {
+                return true;
+            }   
+        });
         commands.put("GAMEJOINED", new JSONCommand<String>(){
             @Override
             public String execute(String toDecode) {

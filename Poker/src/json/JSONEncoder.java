@@ -176,5 +176,10 @@ public class JSONEncoder {
         return gson.toJson(toSend);    
     }
     
+    public String encodePing() {
+        JsonObject toSend = new JsonObject();
+        toSend.addProperty("methodInvoked", "PING");
+        return gson.toJson(toSend);    
+    }    
 
 }
