@@ -27,9 +27,12 @@ public interface Client extends GameObserver{
     
     public boolean isConnected();
     
+    public boolean isBlocked();
+    
     public void setConnected(boolean connected);
         
     @Override
     public void disconnect();
+    
     
 }

@@ -226,6 +226,5 @@ public class AIBasicStrategy extends AIStrategy {
     }
 
 
-
     
 }

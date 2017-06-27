@@ -25,4 +25,15 @@ public abstract class AIStrategy implements Client{
     {
         // non implementato
     }
+    
+    @Override
+    public void ping() {
+        //non implementato
+    }
+
+    @Override
+    public boolean isBlocked()
+    {
+        return false;
+    }
 }

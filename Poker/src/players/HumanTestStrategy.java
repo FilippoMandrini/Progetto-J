@@ -138,6 +138,17 @@ public class HumanTestStrategy extends HumanStrategy {
     public void disconnect() {
         // non implementato
     }
+
+    @Override
+    public void ping() {
+        // non implementato
+    }
+
+    @Override
+    public boolean isBlocked() {
+        return false;
+    }
+    
     
     
 }
