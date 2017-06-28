@@ -4,9 +4,7 @@ package players;
  * Classe che rappresenta la copia del giocatore senza informazioni sensibili
  */
 public class ShadowPlayer extends Player{
-    
-    private boolean hasCards;
-    
+        
     /**
      * Costruttore della classe
      * @param name il nome del giocatore
@@ -23,6 +21,7 @@ public class ShadowPlayer extends Player{
      * Ritorna se il giocatore ha le carte o meno
      * @return  true se non ha foldato, false altrimenti
      */
+    @Override
     public boolean hasCards() {
         return hasCards;
     }

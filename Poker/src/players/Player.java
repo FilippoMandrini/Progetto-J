@@ -25,6 +25,7 @@ public class Player implements Comparable {
     @JSONExclude
     protected final Client client;
     protected int id;
+    protected boolean hasCards;
 
     /**
      * Costruttore di Player
@@ -32,6 +33,7 @@ public class Player implements Comparable {
      * @param client il client del giocatore
      */
     public Player(String name, Client client) {
+        this.hasCards = false;
         this.name = name;
         this.cards = new ArrayList<>();
         this.active = true;
@@ -45,6 +47,7 @@ public class Player implements Comparable {
      * @param client il client del giocatore
      */
     public Player(String name, int stake, Client client) {
+        this.hasCards = false;
         this.name = name;
         this.stake = stake;
         this.client = client;
@@ -58,6 +61,7 @@ public class Player implements Comparable {
      * @param stake lo stake di partenza del giocatore
      */
     protected Player(String name, int stake){
+        this.hasCards = false;
         this.name = name;
         this.stake = stake;
         this.client = null;
@@ -205,10 +209,12 @@ public class Player implements Comparable {
     public void addCard(Card card) 
     {
         this.cards.add(card);
+        this.hasCards = true;
     }
     
     public boolean resetCards()
     {
+        this.hasCards = false;
         this.cards.clear();
         this.active = true;
         return true;
@@ -219,8 +225,7 @@ public class Player implements Comparable {
      */
     public boolean reset() 
     {
-        this.cards.clear();
-        this.active = true;
+        resetCards();
         this.lastAction = null;
         return true;
     }
@@ -313,7 +318,7 @@ public class Player implements Comparable {
      */
     public void foldCards()
     {
-        this.cards.clear();
+        resetCards();
         setActive(false);
         lastAction = new Fold();
         this.setCurrentBet(0);
@@ -327,7 +332,4 @@ public class Player implements Comparable {
     {
         return !this.cards.isEmpty();
     }
-    
-    
-     
 }
