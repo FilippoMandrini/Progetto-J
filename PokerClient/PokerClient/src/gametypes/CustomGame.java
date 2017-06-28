@@ -61,6 +61,11 @@ public class CustomGame extends GameType{
     public CustomGame() {
         
     }
+
+    @Override
+    public String getName() {
+        return "Custom Game";
+    }
     
     
 }

@@ -20,6 +20,11 @@ public class StandardGame extends GameType{
     public String toString() {
         return "Big Blind di base: " + this.bigBlind + "\nIl Big Blind raddoppia: " + !this.isBigBlindFixed + "\nMax giocatori: " + this.maxPlayers +"\nMax numero di raise: " + this.maxRaises;
     }
+    
+    @Override
+    public String getName() {
+        return "Standard Game";
+    }
 
     public StandardGame(int amount) {
         this.maxPlayers = 5;

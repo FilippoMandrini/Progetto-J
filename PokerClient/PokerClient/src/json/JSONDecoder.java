@@ -87,7 +87,7 @@ public class JSONDecoder {
             @Override
             public Void execute(String toDecode) {
                 JsonParser parser = new JsonParser();
-                game.updateDealer(gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("dealer"), Player.class), parser.parse(toDecode).getAsJsonObject().get("dealerPosition").getAsInt());            
+                game.updateHandStarted(gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("dealer"), Player.class), parser.parse(toDecode).getAsJsonObject().get("dealerPosition").getAsInt());          
                 return null;
             }
         });
@@ -172,7 +172,12 @@ public class JSONDecoder {
     }
     public Object decode(String toDecode) throws InterruptedIOException, NullPointerException
     {
-        JsonParser parser = new JsonParser();            
+        JsonParser parser = new JsonParser(); 
+        if (toDecode == null)
+        {
+            throw new InterruptedIOException("Errore");
+        }
+        //System.out.println(toDecode);
         String method = parser.parse(toDecode).getAsJsonObject().get("methodInvoked").getAsString();
         if (commands.containsKey(method))
         {

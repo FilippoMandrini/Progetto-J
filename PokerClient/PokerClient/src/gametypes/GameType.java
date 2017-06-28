@@ -24,6 +24,8 @@ public abstract class GameType {
     
     public abstract String toString();
     
+    public abstract String getName();
+    
     public int getMaxPlayers() {
         return maxPlayers;
     }

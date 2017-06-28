@@ -21,12 +21,15 @@ public class Player {
     private boolean active;
     private Action lastAction; 
     protected int id = 0;
-    public boolean hasCards;
+    private boolean hasCards;
+    private int currentBet;
 
     public Player(String name, int stake) {
+        this.currentBet = 0;
         this.name = name;
         this.stake = stake;
         this.cards = new ArrayList();
+        this.hasCards = false;
     }
 
     public int getStake() {
@@ -110,8 +113,14 @@ public class Player {
     
     public boolean hasCards()
     {
-        return !this.cards.isEmpty();
+        return hasCards;
     }    
+
+    public int getCurrentBet() {
+        return currentBet;
+    }
+    
+    
     
     
     

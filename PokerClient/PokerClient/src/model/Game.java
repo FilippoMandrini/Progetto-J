@@ -31,10 +31,14 @@ public class Game extends GameObservable {
     private int currentPlayerPosition;
     private Player currentPlayer;
     private String lastMessage;
+    private Set<ActionSet> allowedActions;
+    private boolean inTurn;
+    private int noOfHands;
 
     public Game(GameType settings, List<Player> players) {
         this.settings = settings;
         this.players = players;
+        noOfHands = 0;
     }
     
     public void setActivePlayers()
@@ -229,10 +233,32 @@ public class Game extends GameObservable {
 
     public void actionRequested(int bet, int minBet, Set<ActionSet> allowedActions)
     {
+        this.inTurn = true;
         this.bet = bet;
         this.minBet = minBet;
+        this.allowedActions = allowedActions;
         notifyActionRequest(bet, minBet, allowedActions);
     }
+
+    public boolean isInTurn() {
+        return inTurn;
+    }
+
+    public void setInTurn(boolean isInTurn) {
+        this.inTurn = isInTurn;
+    }
+
+    public void updateHandStarted(Player dealer, int dealerPosition) {
+        updateDealer(dealer, dealerPosition);
+        noOfHands++;
+    }
+
+    public int getNoOfHands() {
+        return noOfHands;
+    }
+    
+    
+    
     
     
 }

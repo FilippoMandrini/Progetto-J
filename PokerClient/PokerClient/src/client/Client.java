@@ -5,17 +5,16 @@
  */
 package client;
 
+import gui.MainGUI;
 import json.JSONDecoder;
 import json.JSONEncoder;
 import gui.TextUI;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.InterruptedIOException;
 import java.io.PrintStream;
 import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Scanner;
 import model.Game;
 
 /**
@@ -34,6 +33,8 @@ public class Client implements Runnable {
     @Override
     public void run() 
     {
+        Scanner input = new Scanner(new BufferedReader(new InputStreamReader(System.in)));
+        String name = input.nextLine();
         try 
         {
             server = new Socket(ip, port);
@@ -46,14 +47,20 @@ public class Client implements Runnable {
         }
         Game game = new Game();
         TextUI ui = new TextUI(game);
-        game.addObserver(ui);
+        MainGUI mainGui = new MainGUI(game);
+        mainGui.pack();
+        mainGui.setResizable(false);
+        mainGui.setLocationRelativeTo(null);
+        mainGui.setVisible(true);    
+        //game.addObserver(ui);
+        game.addObserver(mainGui);
         Sender.init(server);
         try 
         {
             String toDecode = in.readLine();
             if(JSONDecoder.getInstance(game).decode(toDecode) != null)
             {
-                Sender.getInstance().sendRaw(JSONEncoder.getInstance().encodeGameJoined("CLIENTPRO"));
+                Sender.getInstance().sendRaw(JSONEncoder.getInstance().encodeGameJoined(name));
             }
         } 
         catch (IOException | NullPointerException ex) {

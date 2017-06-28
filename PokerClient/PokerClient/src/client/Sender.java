@@ -17,6 +17,7 @@ public class Sender {
     private BufferedReader in = null;
     private PrintStream out = null;
     private Socket server;
+    private boolean blocked = false;
     
     private Sender(Socket server) {
 
@@ -31,7 +32,9 @@ public class Sender {
     }
     public void sendRaw(String data)
     {
+        blocked = true;
         out.println(data);
+        blocked = false;
     }
     
     public void sendAction(Action action)
@@ -43,6 +46,12 @@ public class Sender {
     {
         return instance;
     }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+    
+    
     
     public static void init(Socket server)
     {
