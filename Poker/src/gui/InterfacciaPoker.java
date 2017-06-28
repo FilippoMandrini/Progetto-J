@@ -520,7 +520,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
         carta2Player4Label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
         nomePlayer4Label.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        nomePlayer4Label.setForeground(new java.awt.Color(255, 205, 51));
+        nomePlayer4Label.setForeground(new java.awt.Color(255, 201, 51));
         nomePlayer4Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nomePlayer4Label.setText("NomeGiocatore4");
         nomePlayer4Label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 51)));
