@@ -118,8 +118,16 @@ public class Game extends GameObservable implements Runnable {
         {
             shiftCurrentPlayer();
         }
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+        }
         betSmallBlind();
         shiftCurrentPlayer();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+        }
         betBigBlind();
         preFlop();
         if (activePlayers.size() > 1) 
