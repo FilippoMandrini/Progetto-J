@@ -3,7 +3,6 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-import annotations.JSONExclude;
 
 /**
  *  Classe che rappresenta il banco
