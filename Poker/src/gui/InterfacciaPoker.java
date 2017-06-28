@@ -473,6 +473,7 @@ public class InterfacciaPoker extends javax.swing.JFrame {
         carta1Player3Label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/Carte/Retro.png"))); // NOI18N
         carta1Player3Label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
 
+        dealerPlayer3Label.setBackground(new java.awt.Color(153, 0, 153));
         dealerPlayer3Label.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         dealerPlayer3Label.setForeground(new java.awt.Color(102, 0, 0));
         dealerPlayer3Label.setText("D");

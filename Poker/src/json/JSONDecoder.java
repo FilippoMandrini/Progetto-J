@@ -12,6 +12,7 @@ import com.google.gson.JsonParser;
 import gametypes.CustomGame;
 import gametypes.GameType;
 import gametypes.StandardGame;
+import java.io.InterruptedIOException;
 import java.util.HashMap;
 
 /**
@@ -68,9 +69,14 @@ public class JSONDecoder {
         });
     }
     
-    public Object decode(String toDecode)
+    public Object decode(String toDecode) throws InterruptedIOException
     {
-        JsonParser parser = new JsonParser();            
+        JsonParser parser = new JsonParser();  
+        if (toDecode == null)
+        {
+            throw new InterruptedIOException("Errore");
+        }
+        //System.out.println(toDecode);
         String method = parser.parse(toDecode).getAsJsonObject().get("methodInvoked").getAsString();
         if (commands.containsKey(method))
         {

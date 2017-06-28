@@ -310,6 +310,7 @@ public class Player implements Comparable {
         this.cards.clear();
         setActive(false);
         lastAction = new Fold();
+        this.setCurrentBet(0);
     }  
 
     public void setName(String name) {

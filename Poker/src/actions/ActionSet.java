@@ -13,8 +13,8 @@ public enum ActionSet {
     BET("Bet"),
     CHECK("Check"),
     FOLD("Fold"),
-    BIG_BLIND("Big Blind"),
-    SMALL_BLIND("Small Blind");
+    BIG_BLIND("BigBlind"),
+    SMALL_BLIND("SmallBlind");
     
     private String name;
     
@@ -25,4 +25,10 @@ public enum ActionSet {
     ActionSet(String name){
         this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
+    
+    
 }

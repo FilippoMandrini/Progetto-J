@@ -53,7 +53,8 @@ public class HumanCompleteStrategy extends HumanStrategy{
     public Action act(int minBet, int bet, Set<ActionSet> allowedActions) throws IOException, SocketTimeoutException {
         out.println(JSONEncoder.getInstance().encodeAct(minBet, bet, allowedActions));
         blocked = true;
-        Action action = (Action)JSONDecoder.getInstance().decode(in.readLine());
+        String toDecode = in.readLine();
+        Action action = (Action)JSONDecoder.getInstance().decode(toDecode);
         blocked = false;
         return action;
     }

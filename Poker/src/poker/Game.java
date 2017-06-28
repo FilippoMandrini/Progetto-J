@@ -80,6 +80,7 @@ public class Game extends GameObservable implements Runnable {
             {
                 System.out.println("\n\n");
                 System.out.println("[TEST] Mano n°: " + (noOfHands + 1));
+                //notifyMessageUpdated("Mano n° " + (noOfHands + 1));
                 playSingleHand();
                 noOfHands++;
             }
@@ -101,7 +102,8 @@ public class Game extends GameObservable implements Runnable {
         }
         notifyHiddenPlayersUpdated(players);
         System.out.println("Game Over");
-        notifyMessageUpdated("Game Over");
+        setActivePlayers();
+        notifyMessageUpdated("Game Over : " + activePlayers.get(0).getName() + " ha vinto");
         notifyDisconnect();
         
     }
@@ -205,13 +207,7 @@ public class Game extends GameObservable implements Runnable {
                 disconnectPlayer(currentPlayer);
                 notifyHiddenPlayersUpdated(players);
             }
-            catch (IllegalActionException e){
-                action = new Fold();
-                disconnectPlayer(currentPlayer);
-                notifyHiddenPlayersUpdated(players);
-            }
-            catch (IOException e)
-            {
+            catch (IllegalActionException | IOException e){
                 action = new Fold();
                 disconnectPlayer(currentPlayer);
                 notifyHiddenPlayersUpdated(players);
@@ -226,7 +222,7 @@ public class Game extends GameObservable implements Runnable {
             notifyBettingUpdated(bet, minBet, potHandler.getTotalPot());
             notifyCurrentPlayerActed(currentPlayer);
         }
-        for (Player player : players) 
+        for (Player player : activePlayers) 
         {
             player.setCurrentBet(0);
             player.setLastAction(null);

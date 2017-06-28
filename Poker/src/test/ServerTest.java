@@ -30,12 +30,10 @@ public class ServerTest implements Runnable {
     private BufferedReader in = null;
     private PrintStream out = null;
     private ServerSocket socket;
-    private JSONEncoder encoder;
-    private JSONDecoder decoder;
 
     public ServerTest() throws IOException  {
         this.socket = new ServerSocket(7777);
-        this.socket.setSoTimeout(20000);
+        this.socket.setSoTimeout(10000);
     }
     
     @Override

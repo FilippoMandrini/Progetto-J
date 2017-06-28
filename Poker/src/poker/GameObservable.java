@@ -120,6 +120,7 @@ public abstract class GameObservable {
      */
     public void notifyHiddenPlayersUpdated(List<Player> players) {
         for (Player notifyPlayer : players) {
+            //System.out.println(notifyPlayer.getLastAction());
             if (notifyPlayer.getClient().isConnected()) {
                 for (Player player : players) {
                     if (!notifyPlayer.equals(player)) {
