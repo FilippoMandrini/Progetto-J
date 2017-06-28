@@ -17,7 +17,6 @@ import java.beans.PropertyChangeListener;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import javax.swing.JButton;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import json.JSONEncoder;
 import model.Game;
@@ -112,16 +111,17 @@ public class ControlPanel extends GamePanel{
                 {
                     if (game.isInTurn()) 
                     {
-                        System.out.println(JSONEncoder.getInstance().encodeAct(selectedAction));
+                        //System.out.println(JSONEncoder.getInstance().encodeAct(selectedAction));
                         Sender.getInstance().sendAction(selectedAction);
                         SwingUtilities.invokeLater(new Runnable() {
                             @Override
                             public void run() {
                                 resetPanel();
                             }
-                        });;
-                        game.setInTurn(false);                    }
-                    } 
+                        });
+                        game.setInTurn(false);                    
+                    }
+                } 
             }
         });
         return button;

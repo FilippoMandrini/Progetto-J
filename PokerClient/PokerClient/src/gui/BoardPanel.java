@@ -5,7 +5,9 @@
  */
 package gui;
 
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JLabel;
 import model.Card;
 import model.Game;
 
@@ -15,14 +17,20 @@ import model.Game;
  */
 public class BoardPanel extends GamePanel {
 
+    private final List<JLabel> cardLabels;
     
-    private final int NO_OF_CARDS = 5;
-
     public BoardPanel(Game game) {
         super(game);
         initComponents();
+        cardLabels = new ArrayList<>();
+        cardLabels.add(card1Label);
+        cardLabels.add(card2Label);
+        cardLabels.add(card3Label);
+        cardLabels.add(card4Label);
+        cardLabels.add(card5Label);
         updateCards(null);
         updateBetting(0, 0);
+        setBackground(GUIConstants.TABLE_COLOR);
 
     }
 
@@ -47,6 +55,8 @@ public class BoardPanel extends GamePanel {
         headerLabel = new javax.swing.JLabel();
         betDescriptionLabel = new javax.swing.JLabel();
         potDescriptionLabel = new javax.swing.JLabel();
+
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(95, 63, 43), 4));
 
         card5Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         card5Label.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
@@ -185,16 +195,31 @@ public class BoardPanel extends GamePanel {
         {
             noOfCards = cards.size();
         }
-        for (int i = 0; i < NO_OF_CARDS; i++)
+        for (int i = 0; i < GUIConstants.MAX_BOARD_CARDS; i++)
         {
             if (i<noOfCards)
             {
-                // metto carta corrispondente
+                cardLabels.get(i).setIcon(GUIResourcesHandler.getCardImage(cards.get(i)));
             }
             else
             {
-                //metto carta vuota
+                cardLabels.get(i).setIcon(GUIResourcesHandler.getCardOff());
             }
+        }
+        switch(noOfCards)
+        {
+            case 3:
+                setMessage("Il dealer distribuisce il flop");
+                break;
+            case 4:
+                setMessage("Il dealer distribuisce il turn");
+                break;
+            case 5:
+                setMessage("Il dealer distribuisce il river");
+                break;
+            default:
+                break;
+
         }
     }
     

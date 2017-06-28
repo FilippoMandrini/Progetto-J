@@ -9,7 +9,6 @@ import actions.Action;
 import actions.ActionSet;
 import client.Sender;
 import javax.swing.SpinnerNumberModel;
-import json.JSONEncoder;
 import model.Game;
 
 /**
@@ -103,20 +102,22 @@ public class AmountPanel extends GamePanel {
     public void act(Action defaultAction)
     {
         int max = 0;
-        int min = 0;
+        int min = game.getMinBet();
         this.selectedAction = defaultAction;
         okButton.setText(defaultAction.getName());
         if (selectedAction.getActionType() == ActionSet.BET)
         {
-            //max = 70;
             max = game.getCurrentPlayer().getStake();
         }
         if (selectedAction.getActionType() == ActionSet.RAISE)
         {
-            //max = 50;
             max = game.getCurrentPlayer().getStake() + game.getCurrentPlayer().getCurrentBet() - game.getBet();
         }
-        amountSpinner.setModel(new SpinnerNumberModel(game.getMinBet(), game.getMinBet(), max, game.getSettings().getBigBlind()));
+        if (max < min)
+        {
+            min = max;
+        }
+        amountSpinner.setModel(new SpinnerNumberModel(min, min, max, game.getSettings().getBigBlind()));
         amountSpinner.setValue(game.getMinBet());
     }
     

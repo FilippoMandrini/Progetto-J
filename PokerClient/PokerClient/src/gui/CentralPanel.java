@@ -19,15 +19,15 @@ import model.Game;
  *
  * @author Nickelsilver
  */
-public class CenterPanel extends GamePanel {
+public class CentralPanel extends GamePanel {
 
     private final ControlPanel controlPanel;
     private final BoardPanel boardPanel;
-    private GridBagConstraints gc;
+    private final GridBagConstraints gc;
     /**
      * Creates new form CenterPanel
      */
-    public CenterPanel(Game game) {
+    public CentralPanel(Game game) {
         super(game);
         controlPanel = new ControlPanel(game);
         boardPanel = new BoardPanel(game);
@@ -37,21 +37,6 @@ public class CenterPanel extends GamePanel {
         addComponent(controlPanel, 0, 1, 1, 1);
         addComponent(boardPanel, 0, 0, 1, 1);
     }
-    
-//    public static void main(String[] args)
-//    {
-//        JFrame frame = new JFrame();
-//        CenterPanel panel = new CenterPanel(new Game());
-//        frame.add(panel);
-//        Set<ActionSet> allowedActions = new HashSet<>();
-//        allowedActions.add(ActionSet.BET);
-//        allowedActions.add(ActionSet.CHECK);
-//        allowedActions.add(ActionSet.FOLD);
-//        //panel.getControlPanel().continueRequested();
-//        panel.getControlPanel().act(allowedActions);
-//        frame.pack();
-//        frame.setVisible(true);
-//    }
 
     public ControlPanel getControlPanel() {
         return controlPanel;

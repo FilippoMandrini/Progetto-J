@@ -7,7 +7,9 @@ package gui;
 
 import actions.Action;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JLabel;
 import model.Card;
 import model.Game;
 import model.Player;
@@ -18,12 +20,17 @@ import model.Player;
  */
 public class PlayerPanel extends GamePanel {
 
+    List<JLabel> cardLabels;
     /**
      * Creates new form PlayerPanel
      */
     public PlayerPanel(Game game) {
         super(game);
         initComponents();
+        setBorder(GUIConstants.PANEL_BORDER);
+        cardLabels = new ArrayList<>();
+        cardLabels.add(card1Label);
+        cardLabels.add(card2Label);
     }
 
     /**
@@ -125,6 +132,25 @@ public class PlayerPanel extends GamePanel {
         repaint();
     }
     
+    public void activate()
+    {
+        this.setBackground(GUIConstants.TABLE_COLOR);
+        repaint();
+    }
+    
+    public void updateAction(Player player)
+    {
+        Action action = player.getLastAction();
+        if (action != null) 
+        {
+            actionLabel.setText(action.getName());
+        } 
+        else 
+        {
+            actionLabel.setText("");
+        }    
+    }
+    
     public void update(Player player) 
     {
         playerLabel.setText(player.getName());
@@ -138,30 +164,31 @@ public class PlayerPanel extends GamePanel {
         {
             betLabel.setText("€ " + bet);
         }
-        Action action = player.getLastAction();
-        if (action != null) 
-        {
-            actionLabel.setText(action.getName());
-        } 
-        else 
-        {
-            actionLabel.setText("");
-        }
+        updateAction(player);
         if (player.hasCards()) 
         {
             List<Card> cards = player.getCards();
-            if (cards.size() == 2) 
+            if (cards.size() == GUIConstants.MAX_HOLE_CARDS) 
             {
-                // carte visibili
+                for (int i= 0; i < GUIConstants.MAX_HOLE_CARDS; i++)
+                {
+                    cardLabels.get(i).setIcon(GUIResourcesHandler.getCardImage(cards.get(i)));
+                }
             } 
             else 
             {
-                // carte invisibili
-            }
+                for (int i= 0; i < GUIConstants.MAX_HOLE_CARDS; i++)
+                {
+                    cardLabels.get(i).setIcon(GUIResourcesHandler.getCardOn());
+                }
+            }            
         } 
         else 
         {
-            // nessuna carta
+            for (int i= 0; i < GUIConstants.MAX_HOLE_CARDS; i++)
+            {
+                cardLabels.get(i).setIcon(GUIResourcesHandler.getCardOff());
+            }
         }
         repaint();
     }
@@ -170,23 +197,24 @@ public class PlayerPanel extends GamePanel {
     {
         if(isDealer)
         {
-            //icona dealer
+            dealerLabel.setIcon(GUIResourcesHandler.getDealerOn());
         }
         else
         {
-            //icona dealer assente
+            dealerLabel.setIcon(GUIResourcesHandler.getDealerOff());
         }
+        repaint();
     }
     
-    public void setCurrent(boolean isDealer)
+    public void setCurrent(boolean isCurrent)
     {
-        if(isDealer)
+        if(isCurrent)
         {
-            //nome colorato
+            playerLabel.setForeground(GUIConstants.CURRENT_COLOR);
         }
         else
         {
-            //nome normale
+            playerLabel.setForeground(GUIConstants.STANDARD_COLOR);
         }
     }    
 

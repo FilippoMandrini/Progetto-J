@@ -18,6 +18,8 @@ public class GamePanel extends JPanel{
 
     public GamePanel(Game game) {
         this.game = game;
+        setBackground(GUIConstants.TABLE_COLOR);
+
     }
     
 }

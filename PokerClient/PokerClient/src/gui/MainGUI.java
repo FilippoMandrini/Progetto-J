@@ -40,7 +40,7 @@ public class MainGUI extends JFrame implements GameObserver {
     
     private GridBagConstraints gc;
         
-    private CenterPanel centerPanel;
+    private CentralPanel centralPanel;
     
     private MessagePanel messagePanel;
     
@@ -48,8 +48,8 @@ public class MainGUI extends JFrame implements GameObserver {
     
     private List<PlayerPanel> panels;
         
-    private Game game;
-
+    private final Game game;
+    
     public MainGUI(Game game) {
         
         super("Poker Texas Hold'em");
@@ -60,7 +60,7 @@ public class MainGUI extends JFrame implements GameObserver {
     private void initComponents()
     {
         gc = new GridBagConstraints();
-        centerPanel = new CenterPanel(game);
+        centralPanel = new CentralPanel(game);
         panelMap = new HashMap<>();
         messagePanel = new MessagePanel(game);
         setLayout(new GridBagLayout());
@@ -95,7 +95,8 @@ public class MainGUI extends JFrame implements GameObserver {
                 default:
                 }
         }
-        addComponent(centerPanel, 4, 1, 1, 1);
+        getContentPane().setBackground(GUIConstants.TABLE_COLOR);
+        addComponent(centralPanel, 4, 1, 1, 1);
         addComponent(messagePanel, 4, 0, 1, 1);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
@@ -114,7 +115,7 @@ public class MainGUI extends JFrame implements GameObserver {
 
     @Override
     public void boardUpdated(Board board) {
-        centerPanel.updateBoardCards(board.getCommunityCards());
+        centralPanel.updateBoardCards(board.getCommunityCards());
     }
 
     @Override
@@ -128,7 +129,7 @@ public class MainGUI extends JFrame implements GameObserver {
 
     @Override
     public void messageUpdated(String message) {
-        centerPanel.setHeader(message);
+        centralPanel.setHeader(message);
     }
 
     @Override
@@ -139,6 +140,7 @@ public class MainGUI extends JFrame implements GameObserver {
             PlayerPanel current = panels.get(i);
             panelMap.put(players.get(i), panels.get(i));
             current.update(players.get(i));
+            current.activate();
         }   
         repaint();
         pack();
@@ -154,12 +156,11 @@ public class MainGUI extends JFrame implements GameObserver {
     @Override
     public void currentPlayerUpdated(Player currentPlayer, int currentPlayerPosition) {
         setCurrent(currentPlayer);
-        currentPlayerActed(currentPlayer);
     }
 
     @Override
     public void bettingUpdated(int bet, int minBet, int totalPot) {
-        centerPanel.updateBoardBetting(bet, totalPot);
+        centralPanel.updateBoardBetting(bet, totalPot);
     }
 
     @Override
@@ -173,11 +174,11 @@ public class MainGUI extends JFrame implements GameObserver {
         PlayerPanel playerPanel = panelMap.get(player);
         if (playerPanel != null) 
         {
-            playerPanel.update(player);
+            playerPanel.updateAction(player);
             Action action = player.getLastAction();
             if (action != null) 
             {
-                centerPanel.setMessage(player.getName() + " " + action.getDescription());
+                centralPanel.setMessage(player.getName() + " " + action.getDescription());
                 repaint();
             }
         } 
@@ -189,14 +190,14 @@ public class MainGUI extends JFrame implements GameObserver {
 
     @Override
     public void actionRequest(int bet, int minBet, Set<ActionSet> allowedActions) {
-        centerPanel.setMessage("Proprio turno: compiere un azione");
-        centerPanel.actionRequest(allowedActions);
+        centralPanel.setMessage("Proprio turno: compiere un azione");
+        centralPanel.actionRequest(allowedActions);
     }
 
     @Override
     public void disconnect() {
-        centerPanel.disconnect();
-        centerPanel.setMessage("Sei stato disconnesso dal server!");
+        centralPanel.disconnect();
+        centralPanel.setMessage("Sei stato disconnesso dal server!");
         for (PlayerPanel panel : panelMap.values())
         {
             panel.waiting();
@@ -209,18 +210,18 @@ public class MainGUI extends JFrame implements GameObserver {
         {
             for(Player player : panelMap.keySet())
             {
-                panelMap.get(currentPlayer).setCurrent(player.equals(currentPlayer));
+                panelMap.get(player).setCurrent(player.equals(currentPlayer));
             }
         }
     }
 
     private void setDealer(Player dealer) 
     {
-        if (game.getCurrentPlayer() != null && game.getCurrentPlayer().equals(dealer)) 
+        if (game.getDealer() != null && game.getDealer().equals(dealer)) 
         {
             for(Player player : panelMap.keySet())
             {
-                panelMap.get(dealer).setCurrent(player.equals(dealer));
+                panelMap.get(player).setCurrent(player.equals(dealer));
             }
         }
     }
