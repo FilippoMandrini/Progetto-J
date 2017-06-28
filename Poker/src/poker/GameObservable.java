@@ -119,10 +119,11 @@ public abstract class GameObservable {
      * @param players il giocatore
      */
     public void notifyHiddenPlayersUpdated(List<Player> players) {
+        ArrayList<Player> toNotifyPlayers = new ArrayList<>();
+        toNotifyPlayers.addAll(players);
         for (Player notifyPlayer : players) {
-            //System.out.println(notifyPlayer.getLastAction());
             if (notifyPlayer.getClient().isConnected()) {
-                for (Player player : players) {
+                for (Player player : toNotifyPlayers) {
                     if (!notifyPlayer.equals(player)) {
                         notifyPlayer.getClient().playerUpdated(player.getShadowCopy());
                     } else {

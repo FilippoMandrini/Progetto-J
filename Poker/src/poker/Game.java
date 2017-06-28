@@ -19,8 +19,8 @@ public class Game extends GameObservable implements Runnable {
 
     private final GameType settings;
     private final Board board;
-    private final List<Player> players;
-    private final List<Player> activePlayers;
+    private List<Player> players;
+    private List<Player> activePlayers;
     private Player currentPlayer;
     private int currentPlayerPosition;
     private Player dealer;
@@ -222,6 +222,10 @@ public class Game extends GameObservable implements Runnable {
             notifyBettingUpdated(bet, minBet, potHandler.getTotalPot());
             notifyCurrentPlayerActed(currentPlayer);
         }
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ex) {
+        }
         for (Player player : activePlayers) 
         {
             player.setCurrentBet(0);
@@ -299,9 +303,9 @@ public class Game extends GameObservable implements Runnable {
      */
     private void betSmallBlind()
     {
-        Action smallBlind = new SmallBlind(currentBigBlind/2);
-        currentPlayer.setLastAction(smallBlind);
-        smallBlind.execute(facade, 0);
+        currentAction = new SmallBlind(currentBigBlind/2);
+        currentPlayer.setLastAction(currentAction);
+        currentAction.execute(facade, 0);
         notifyCurrentPlayerActed(currentPlayer);
         notifyBettingUpdated(bet, minBet, potHandler.getTotalPot());
         System.out.println("[TEST] "+ currentPlayer.toString() + " paga Small Blind: " + currentBigBlind/2);
@@ -312,9 +316,9 @@ public class Game extends GameObservable implements Runnable {
      */
     private void betBigBlind()
     {
-        Action bigBlind = new BigBlind(currentBigBlind);
-        currentPlayer.setLastAction(bigBlind);
-        bigBlind.execute(facade, 0);
+        currentAction = new BigBlind(currentBigBlind);
+        currentPlayer.setLastAction(currentAction);
+        currentAction.execute(facade, 0);
         notifyCurrentPlayerActed(currentPlayer);
         notifyBettingUpdated(bet, minBet, potHandler.getTotalPot());
         System.out.println("[TEST] "+ currentPlayer.toString() + " paga Big Blind: " + currentBigBlind);
@@ -410,6 +414,10 @@ public class Game extends GameObservable implements Runnable {
         }
         potHandler.distributePots(getRanking(), activePlayers, dealerPosition);
         notifyPlayersUpdated(players);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException ex) {
+        }
     }
 
     /**
@@ -580,5 +588,4 @@ public class Game extends GameObservable implements Runnable {
     public void run() {
         this.playGame();
     }
-
 }

@@ -36,7 +36,7 @@ public class Board {
      * @param noOfCards numero di carte da distribuire al giocatore
      */
     public boolean dealHoleCards(Player player, int noOfCards) {
-        player.reset();
+        player.resetCards();
         for (int i = 0; i < noOfCards; i++) {
             player.addCard(this.deck.dealCard());
         }

@@ -21,7 +21,7 @@ public class Player implements Comparable {
     private Hand currentHand;
     private boolean active;
     private int currentBet;
-    private Action lastAction; 
+    protected Action lastAction; 
     @JSONExclude
     protected final Client client;
     protected int id;
@@ -207,6 +207,12 @@ public class Player implements Comparable {
         this.cards.add(card);
     }
     
+    public boolean resetCards()
+    {
+        this.cards.clear();
+        this.active = true;
+        return true;
+    }
     /**
      * Resetta il giocatore
      * @return true se resetta, altrimenti false

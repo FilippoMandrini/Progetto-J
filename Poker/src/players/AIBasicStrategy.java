@@ -5,6 +5,8 @@ import gametypes.GameType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import poker.Board;
 import poker.Card;
 import utilities.ChenEvaluator;
@@ -42,6 +44,10 @@ public class AIBasicStrategy extends AIStrategy {
     /** {@inheritDoc} */    
     @Override
     public Action act(int minBet, int bet, Set<ActionSet> allowedActions){
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException ex) {
+        }
         Action action = null;
         if (allowedActions.size() == 1 && allowedActions.contains(ActionSet.CHECK))
         {
