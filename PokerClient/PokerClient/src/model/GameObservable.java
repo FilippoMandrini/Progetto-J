@@ -132,7 +132,7 @@ public abstract class GameObservable {
     
     /**
      * Segnala quando i giocatori subiscono modifiche
-     * @param players i giocatori
+     * @param player i giocatori
      */
     public void notifyPlayerUpdated(Player player) {
         for (GameObserver observer : observers) {
