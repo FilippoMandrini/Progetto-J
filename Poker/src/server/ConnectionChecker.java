@@ -9,8 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import players.Client;
 import players.Player;
 import poker.Game;
@@ -62,7 +60,7 @@ public class ConnectionChecker implements Runnable {
             }
             try 
             {
-                Thread.sleep(2000);
+                Thread.sleep(1000);
             } 
             catch (InterruptedException ex) {
             }

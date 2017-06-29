@@ -29,8 +29,8 @@ public class GameRunnable implements Runnable {
     
     @Override
     public void run() {
-        gameThread.start();
         connectionThread.start(); 
+        gameThread.start();
         try {
             gameThread.join();
         } catch (InterruptedException ex) {

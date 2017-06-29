@@ -90,7 +90,8 @@ public class Game extends GameObservable implements Runnable {
         }
         notifyHiddenPlayersUpdated(players);
         setActivePlayers();
-        notifyMessageUpdated("Game Over : " + activePlayers.get(0).getName() + " ha vinto");
+        if (activePlayers.get(0).getStake()!= 0)
+            notifyMessageUpdated("Game Over : " + activePlayers.get(0).getName() + " ha vinto");
         notifyDisconnect();
     }
     
