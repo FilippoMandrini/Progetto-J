@@ -38,7 +38,7 @@ public class Game extends GameObservable {
     public Game(GameType settings, List<Player> players) {
         this.settings = settings;
         this.players = players;
-        noOfHands = 0;
+        noOfHands = 1;
     }
     
     public void setActivePlayers()

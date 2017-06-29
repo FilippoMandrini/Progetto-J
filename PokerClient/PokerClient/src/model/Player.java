@@ -7,7 +7,6 @@ package model;
 
 import actions.Action;
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  *
@@ -34,6 +33,10 @@ public class Player {
 
     public int getStake() {
         return stake;
+    }
+
+    public void setCurrentBet(int currentBet) {
+        this.currentBet = currentBet;
     }
 
     public void setStake(int stake) {
@@ -74,14 +77,16 @@ public class Player {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + Objects.hashCode(this.name);
-        hash = 79 * hash + this.id;
+        int hash = 7;
+        hash = 59 * hash + this.id;
         return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
         if (obj == null) {
             return false;
         }
@@ -89,14 +94,13 @@ public class Player {
             return false;
         }
         final Player other = (Player) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
         if (this.id != other.id) {
             return false;
         }
         return true;
     }
+
+
 
     @Override
     public String toString() {
