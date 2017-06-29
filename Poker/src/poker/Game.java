@@ -8,8 +8,6 @@ import handtypes.*;
 import java.io.IOException;
 import java.net.SocketTimeoutException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import utilities.HandEvaluator;
 
 /**
@@ -19,8 +17,8 @@ public class Game extends GameObservable implements Runnable {
 
     private final GameType settings;
     private final Board board;
-    private List<Player> players;
-    private List<Player> activePlayers;
+    private final List<Player> players;
+    private final List<Player> activePlayers;
     private Player currentPlayer;
     private int currentPlayerPosition;
     private Player dealer;
@@ -49,6 +47,12 @@ public class Game extends GameObservable implements Runnable {
         facade = new GameFacade(this);
     }
     
+    @Override
+    public void run() 
+    {
+        this.playGame();
+    }
+ 
     /**
      * Esegue la partita
      * Gestisce la lista dei giocatori e se possono giocare. Se ci sono almeno due giocatori
@@ -56,30 +60,15 @@ public class Game extends GameObservable implements Runnable {
      */
     public void playGame()
     {
-        System.out.println("[TEST] Giocatori: ");
         notifyGameStarted(players, settings);
-        for (Player player : players)
-        {
-            System.out.println("[TEST] " + player.toString() + " con stake " + player.getStake());
-        }
-        System.out.println("[TEST] Inizio Partita...");
         int noOfHands = 0;
         dealerPosition = -1;
         currentPlayerPosition = -1;
         while(true)
         {
-            int playersAbleToPlay = 0;
-            for (Player player : players)
-            {
-                if (player.getStake() >= currentBigBlind)
-                {
-                    playersAbleToPlay++;
-                }
-            }
+            int playersAbleToPlay = playersAbleToPlay(settings.isOnlyHumans());
             if (playersAbleToPlay > 1)
             {
-                System.out.println("\n\n");
-                System.out.println("[TEST] Mano n°: " + (noOfHands + 1));
                 //notifyMessageUpdated("Mano n° " + (noOfHands + 1));
                 playSingleHand();
                 noOfHands++;
@@ -98,14 +87,11 @@ public class Game extends GameObservable implements Runnable {
         {
             player.reset();
             player.setActive(false);
-            System.out.println("[TEST] " + player.toString() + " stake : " + player.getStake());
         }
         notifyHiddenPlayersUpdated(players);
-        System.out.println("Game Over");
         setActivePlayers();
         notifyMessageUpdated("Game Over : " + activePlayers.get(0).getName() + " ha vinto");
         notifyDisconnect();
-        
     }
     
     /**
@@ -118,16 +104,18 @@ public class Game extends GameObservable implements Runnable {
         {
             shiftCurrentPlayer();
         }
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException ex) {
-        }
+        try 
+        {
+            Thread.sleep(settings.getAIdelay());
+        } 
+        catch (InterruptedException ex) {}
         betSmallBlind();
         shiftCurrentPlayer();
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException ex) {
-        }
+        try 
+        {
+            Thread.sleep(settings.getAIdelay());
+        } 
+        catch (InterruptedException ex) {}
         betBigBlind();
         preFlop();
         if (activePlayers.size() > 1) 
@@ -198,42 +186,46 @@ public class Game extends GameObservable implements Runnable {
         {
             shiftCurrentPlayer();
             Action action = null;
-            try {
-                if (!currentPlayer.getCards().isEmpty() && currentPlayer.getStake() == 0) {
+            try 
+            {
+                if (!currentPlayer.getCards().isEmpty() && currentPlayer.getStake() == 0) 
+                {
                     action = new Check();
-                } else {
+                } 
+                else 
+                {
                     Set<ActionSet> allowedActions = getActionSet(currentPlayer);
                     action = currentPlayer.getClient().act(minBet, bet, allowedActions);
-                    if (action == null || !(allowedActions.contains(action.getActionType()))) {
+                    if (action == null || !(allowedActions.contains(action.getActionType()))) 
+                    {
                         throw new IllegalActionException("Azione non possibile!");
                     }
                 }
             }
-            catch (SocketTimeoutException e) {
+            catch (SocketTimeoutException e) 
+            {
                 action = new Fold();
                 currentPlayer.getClient().disconnect();
                 disconnectPlayer(currentPlayer);
                 notifyHiddenPlayersUpdated(players);
             }
-            catch (IllegalActionException | IOException e){
+            catch (IllegalActionException | IOException e)
+            {
                 action = new Fold();
                 disconnectPlayer(currentPlayer);
                 notifyHiddenPlayersUpdated(players);
             }
             playersLeft = action.execute(facade, playersLeft);
-            System.out.println("[TEST] "+ currentPlayer.toString() + " " + action.getDescription() + " " + action.getAmount());
-            System.out.println("[TEST] bet: " + bet + " stake: " + currentPlayer.getStake());
-            System.out.println("[TEST] Pot totale: " + potHandler.getTotalPot());
-            System.out.println("[TEST] RPM: " + playersLeft);
             currentAction = action;
             currentPlayer.setLastAction(action);
             notifyBettingUpdated(bet, minBet, potHandler.getTotalPot());
             notifyCurrentPlayerActed(currentPlayer);
         }
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException ex) {
-        }
+        try 
+        {
+            Thread.sleep(settings.getAIdelay());
+        } 
+        catch (InterruptedException ex) {}
         for (Player player : activePlayers) 
         {
             player.setCurrentBet(0);
@@ -293,7 +285,6 @@ public class Game extends GameObservable implements Runnable {
         currentPlayerPosition = (currentPlayerPosition +1) % (activePlayers.size());
         currentPlayer = activePlayers.get(currentPlayerPosition);
         notifyCurrentPlayerUpdated(currentPlayer, currentPlayerPosition);
-        System.out.println("[TEST] Current Player: " + currentPlayer.toString());
     }
     
     /**
@@ -303,7 +294,6 @@ public class Game extends GameObservable implements Runnable {
     {
         dealerPosition = (dealerPosition +1) % (activePlayers.size());
         dealer = activePlayers.get(dealerPosition);
-        System.out.println("[TEST] Current Dealer: " + dealer.toString());
     }
     
     /**
@@ -316,7 +306,6 @@ public class Game extends GameObservable implements Runnable {
         currentAction.execute(facade, 0);
         notifyCurrentPlayerActed(currentPlayer);
         notifyBettingUpdated(bet, minBet, potHandler.getTotalPot());
-        System.out.println("[TEST] "+ currentPlayer.toString() + " paga Small Blind: " + currentBigBlind/2);
     }
     
     /**
@@ -329,7 +318,6 @@ public class Game extends GameObservable implements Runnable {
         currentAction.execute(facade, 0);
         notifyCurrentPlayerActed(currentPlayer);
         notifyBettingUpdated(bet, minBet, potHandler.getTotalPot());
-        System.out.println("[TEST] "+ currentPlayer.toString() + " paga Big Blind: " + currentBigBlind);
     }
     
     /**
@@ -343,11 +331,6 @@ public class Game extends GameObservable implements Runnable {
         minBet = currentBigBlind;
         this.board.dealCommunityCards(noOfCards);
         notifyBoardUpdated(board);
-        System.out.println("[TEST] Scopro " + noOfCards + " carta/e...");
-        for(Card card : board.getCommunityCards())
-        {
-            System.out.println("[TEST] " + card.toString());
-        }
         bettingRound();
     }
     
@@ -361,11 +344,6 @@ public class Game extends GameObservable implements Runnable {
         for(Player player : activePlayers)
         {
             this.board.dealHoleCards(player, 2);
-            System.out.println("[TEST] "+ player.toString() + " ha carte: ");
-            for(Card card : player.getCards())
-            {
-                System.out.println("[TEST] " + card.toString());
-            }
         }
         notifyHiddenPlayersUpdated(players);
         bettingRound();
@@ -377,7 +355,6 @@ public class Game extends GameObservable implements Runnable {
      */
     private void showdown()
     {
-        System.out.println("[TEST] Showdown...");
         currentHandStage = 5;
         bet = 0;
         for (Player player : activePlayers)
@@ -407,25 +384,13 @@ public class Game extends GameObservable implements Runnable {
         }
         List<Player> playersToShowList = new ArrayList<>(playersToShow);
         notifyPlayersUpdated(playersToShowList);
-        for(Player playerToShow : playersToShow)
-        {
-            System.out.println("[TEST] " + playerToShow.toString() + " ha la mano: ");
-            System.out.println(playerToShow.getCurrentHand().toString());
-        }
-        System.out.println("[TEST] Classifica...");
-        for (Hand hand : getRanking().keySet())
-        {
-            for (Player player : getRanking().get(hand))
-            {
-                System.out.println("[TEST] " + player.toString());
-            }
-        }
         potHandler.distributePots(getRanking(), activePlayers, dealerPosition);
         notifyPlayersUpdated(players);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException ex) {
-        }
+        try 
+        {
+            Thread.sleep(5000);
+        } 
+        catch (InterruptedException ex) {}
     }
 
     /**
@@ -472,9 +437,11 @@ public class Game extends GameObservable implements Runnable {
      * Aggiunge un giocatore 
      * @param player il giocatore
      */
-    public void addPlayer(Player player) {
+    public void addPlayer(Player player) 
+    {
 
-        if (!players.contains(player)) {
+        if (!players.contains(player)) 
+        {
             players.add(player);
             player.setId(players.size());
             player.setStake(settings.getStartingStake());
@@ -509,8 +476,35 @@ public class Game extends GameObservable implements Runnable {
         }
         if (spy)
             notifyHiddenPlayersUpdated(players);
-
     }
+    
+    private int playersAbleToPlay(boolean onlyHumans) 
+    {
+        int noOfPlayers = 0;
+        int noOfHumans = 0;
+        for (Player player : players)
+        {
+            if (player.getClient().isHuman()) 
+            {
+                if (player.getStake() >= currentBigBlind) 
+                {
+                    noOfHumans++;
+                }
+            }     
+        }
+        if (noOfHumans > 0 || !onlyHumans)
+        {
+            for (Player player : players)
+            {
+                if (player.getStake() >= currentBigBlind) 
+                {
+                    noOfPlayers++;
+                }            
+            }
+        }
+        return noOfPlayers;
+    }
+
 
     /**
      * Restituisce i giocatori
@@ -592,8 +586,4 @@ public class Game extends GameObservable implements Runnable {
         return facade;
     }
 
-    @Override
-    public void run() {
-        this.playGame();
-    }
 }
