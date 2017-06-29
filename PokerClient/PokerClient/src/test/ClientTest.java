@@ -5,7 +5,8 @@
  */
 package test;
 
-import client.Client;
+import gui.LoginFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
  *
@@ -14,9 +15,10 @@ import client.Client;
 public class ClientTest {
 
     public static void main(String[] args) {
-        Client client = new Client();
-        Thread mainThread = new Thread(client);
-        mainThread.start();
+        LoginFrame frame = new LoginFrame();
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
     
 }
