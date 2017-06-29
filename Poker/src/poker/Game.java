@@ -47,6 +47,9 @@ public class Game extends GameObservable implements Runnable {
         facade = new GameFacade(this);
     }
     
+    /**
+     * Lancia la partita
+     */
     @Override
     public void run() 
     {
@@ -452,6 +455,10 @@ public class Game extends GameObservable implements Runnable {
         }
     }
     
+    /**
+     * Elimina il giocatore disconnesso
+     * @param player il giocatore disconnesso
+     */
     public void disconnectPlayer(Player player)
     {
         if(players.contains(player))

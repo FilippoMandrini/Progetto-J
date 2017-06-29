@@ -7,6 +7,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Classe di test di valutazione della mano
+ */
 public class Test {
 
     public static void main(String[] args) throws NoSuchMethodException {

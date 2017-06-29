@@ -13,6 +13,10 @@ public class DoppiaCoppia extends Hand{
     private Card secondPair;
     private Card firstKicker;
 
+    /**
+     * Costruttore della classe
+     * @param cards la lista delle carte
+     */
     public DoppiaCoppia(List<Card> cards) {
         super(cards);
         this.firstPair = this.cards.get(0);
@@ -20,11 +24,19 @@ public class DoppiaCoppia extends Hand{
         this.firstKicker = this.cards.get(4);
     }
 
+    /**
+     * Calcola il punteggio della singola mano 
+     * @return il numero rappresentante il punteggio
+     */
     @Override
     public double getPoints() {
         return 200 + firstPair.getRank() + (double) secondPair.getRank() /100 + (double)firstKicker.getRank() / 10000;
     }
     
+    /**
+     * Ritorna la descrizione della mano
+     * @return la descrizione della mano
+     */
     @Override
     public String toString()
     {

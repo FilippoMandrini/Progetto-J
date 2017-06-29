@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poker;
 
 import handtypes.Hand;
@@ -13,13 +8,15 @@ import java.util.Map;
 import players.Player;
 
 /**
- *
- * @author Nickelsilver
+ * Classe che gestisce i pot
  */
 public class PotHandler {
     
     private final List<Pot> pots;
     
+    /**
+     * Costruttore della classe
+     */
     public PotHandler() {
         this.pots = new ArrayList<>();
     }
@@ -151,15 +148,26 @@ public class PotHandler {
         }
     }
 
+    /**
+     * Ritorna la lista dei pots
+     * @return la lista dei pots
+     */
     public List<Pot> getPots() {
         return pots;
     }
     
+    /**
+     * Resetta i post
+     */
     public void clearPots()
     {
         pots.clear();
     }
 
+    /**
+     * Restituisce un report dei pots (quantità e contribuenti)
+     * @return il report dei pots
+     */
     @Override
     public String toString() {
         String report = new String();
@@ -174,5 +182,4 @@ public class PotHandler {
         return report;
     }
 
-    
 }

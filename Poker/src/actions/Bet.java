@@ -18,6 +18,13 @@ public class Bet extends Action {
     } 
     
     @Override
+    /**
+     * Esegue la scommessa
+     * @param game la partita
+     * @param playersLeft il numero di giocatori che devono ancora agire
+     * @throws IllegalActionException quando l'azione non viene consentita
+     * @return il numero di giocatori che devono ancora agire dopo questa azione
+     */
     public int execute(GameFacade game, int playersLeft) {
 
         if (amount < game.getMinBet() && amount < game.getCurrentPlayerStake())

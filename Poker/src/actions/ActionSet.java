@@ -6,7 +6,7 @@ package actions;
 public enum ActionSet {
     
     /**
-     * Chiamata,Rialzo,Scommessa,Stare,Lasciare,Grande e Piccolo buio
+     * Chiamata, Rialzo, Scommessa, Stare, Lasciare, Grande e Piccolo buio
      */
     CALL("Call"),
     RAISE("Raise"),
@@ -26,9 +26,12 @@ public enum ActionSet {
         this.name = name;
     }
 
+    /**
+     * Ritorna il nome dell'azione
+     * @return il nome dell'azione
+     */
     public String getName() {
         return name;
     }
-    
-    
+
 }

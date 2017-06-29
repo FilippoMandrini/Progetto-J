@@ -17,6 +17,11 @@ public class SmallBlind extends Action {
     }
 
     @Override
+    /**
+     * Esegue la puntata del piccolo buio
+     * @param game la partita
+     * @param playersLeft il numero di giocatori che devono ancora agire
+     */
     public int execute(GameFacade game, int playersLeft) {
         game.payCurrentPlayer(amount);
         game.setCurrentPlayerBet(amount);

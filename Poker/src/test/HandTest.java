@@ -14,6 +14,9 @@ import players.Player;
 import poker.Suit;
 import poker.SuitType;
 
+/**
+ * Classe di test delle mani
+ */
 public class HandTest {
 
     public static void main(String[] args) {
@@ -139,10 +142,6 @@ public class HandTest {
                 System.out.println(player.toString());
             }
         }
-        
-
-
-        
     }
 
 }

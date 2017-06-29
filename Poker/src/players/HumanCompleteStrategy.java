@@ -48,7 +48,15 @@ public class HumanCompleteStrategy extends HumanStrategy{
         }   
     }
     
-    /** {@inheritDoc} */
+     /**
+     * Invocato quando un esegue un'azione
+     * @param minBet l'importo minimo della scommessa
+     * @param bet la scommessa
+     * @param allowedActions la lista delle azioni consentite
+     * @return l'azione compiuta
+     * @throws java.io.IOException
+     * @throws java.net.SocketTimeoutException
+     */
     @Override
     public Action act(int minBet, int bet, Set<ActionSet> allowedActions) throws IOException, SocketTimeoutException {
         out.println(JSONEncoder.getInstance().encodeAct(minBet, bet, allowedActions));
@@ -113,6 +121,11 @@ public class HumanCompleteStrategy extends HumanStrategy{
         out.println(JSONEncoder.getInstance().encodeGameStarted(players, settings));
     }
 
+    /**
+     * Restituisce un valore booleano che indica se è raggiungibile
+     * @param timeout il tempo per il timeout
+     * @return true se raggiungibile, false altrimenti
+     */
     @Override
     public boolean isReachable(int timeout) {
         try {
@@ -122,21 +135,36 @@ public class HumanCompleteStrategy extends HumanStrategy{
         }
     }
     
+    /**
+     * Restituisce un valore booleano che indica se è connesso
+     * @return true se connesso, false altrimenti
+     */
     @Override
     public boolean isConnected() {
         return connected;
     }
 
+    /**
+     * Imposta se è connesso
+     * @param connected true se connesso, false altrimenti
+     */
     @Override
     public void setConnected(boolean connected) {
         this.connected = connected;
     }
 
+    /**
+     * Disconnette il client
+     */
     @Override
     public void disconnect() {
         out.println(JSONEncoder.getInstance().encodeDisconnect());
     }
 
+    /**
+     * Esegue il ping
+     * @throws IOException in caso di errore
+     */
     @Override
     public void ping() throws IOException {
         out.println(JSONEncoder.getInstance().encodePing());
@@ -146,6 +174,7 @@ public class HumanCompleteStrategy extends HumanStrategy{
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         int hash = 5;
@@ -153,6 +182,7 @@ public class HumanCompleteStrategy extends HumanStrategy{
         return hash;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -171,15 +201,13 @@ public class HumanCompleteStrategy extends HumanStrategy{
         return true;
     }
 
+    /**
+     * Restituisce un valore booleano che indica se è bloccato
+     * @return true se bloccato, false altrimenti
+     */
     @Override
     public boolean isBlocked() {
         return blocked;
     }
-    
-    
-
-    
-    
-    
     
 }

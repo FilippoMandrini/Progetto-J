@@ -5,18 +5,28 @@ package gametypes;
  */
 public class StandardGame extends GameType{
     
-    /** {@inheritDoc} */
+    /**
+     * Ritorna la descrizione delle impostazioni
+     * @return la descrizione delle impostazioni
+     */
     @Override
     public String getDescription() {  
         return "Variante standard per l'applicazione del poker nella sua versione HoldEm";
     }
 
-    /** {@inheritDoc} */
+    /**
+     * Ritorna la descrizione dettagliata delle impostazioni
+     * @return la descrizione dettagliata delle impostazioni
+     */
     @Override
     public String toString() {
         return "Big Blind di base: " + this.bigBlind + "\nIl Big Blind raddoppia: " + !this.isBigBlindFixed + "\nMax giocatori: " + this.maxPlayers +"\nMax numero di raise: " + this.maxRaises;
     }
     
+    /**
+     * Ritorna il nome delle impostazioni
+     * @return il nome delle impostazioni
+     */
     @Override
     public String getName()
     {
@@ -24,7 +34,7 @@ public class StandardGame extends GameType{
     }
 
     /**
-     * Costruttore della classe
+     * Costruttore della classe (Partita Standard)
      * @param amount valore dello stake di partenza
      */
     public StandardGame(int amount) {

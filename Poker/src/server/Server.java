@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package server;
 
 import gametypes.StandardGame;
@@ -21,8 +16,7 @@ import players.Player;
 import poker.Game;
 
 /**
- *
- * @author Nickelsilver
+ * Classe del server
  */
 public class Server implements Runnable {
 
@@ -31,11 +25,18 @@ public class Server implements Runnable {
     private final ServerSocket socket;
     private final int MAX_NO_OF_GAMES = 2;
 
+    /**
+     * Costruttore della classe server
+     * @throws IOException 
+     */
     public Server() throws IOException  {
         this.socket = new ServerSocket(7777);
         this.socket.setSoTimeout(10000);
     }
     
+    /**
+     * Lancia in esecuzione il server
+     */
     @Override
     public void run()
     {

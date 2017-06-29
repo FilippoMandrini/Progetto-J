@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
 import actions.Action;
@@ -10,7 +5,6 @@ import actions.BigBlind;
 import actions.Call;
 import actions.SmallBlind;
 import gametypes.StandardGame;
-import handtypes.DoppiaCoppia;
 import handtypes.Hand;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +20,7 @@ import poker.SuitType;
 import utilities.HandEvaluator;
 
 /**
- *
- * @author Nickelsilver
+ * Classe di test della gestione dei Pot
  */
 public class PotHandlerTest {
     

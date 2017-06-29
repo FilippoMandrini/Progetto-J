@@ -1,6 +1,5 @@
 package handtypes;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import poker.Card;
@@ -11,11 +10,19 @@ import poker.Card;
  */
 public class CartaAlta extends Hand{
 
+    /**
+     * Costruttore della classe
+     * @param cards la lista delle carte
+     */
     public CartaAlta(List<Card> cards) {
         super(cards);
         Collections.sort(cards);
     }
     
+    /**
+     * Calcola il punteggio della singola mano 
+     * @return il numero rappresentante il punteggio
+     */
     @Override
     public double getPoints() {
         double points = 0;
@@ -28,6 +35,10 @@ public class CartaAlta extends Hand{
         return points;
     }
     
+    /**
+     * Ritorna la descrizione della mano
+     * @return la descrizione della mano
+     */
     @Override
     public String toString()
     {

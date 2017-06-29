@@ -5,24 +5,33 @@ package gametypes;
  */
 public class CustomGame extends GameType{
 
-    /** {@inheritDoc} */
+    /**
+     * Ritorna la descrizione delle impostazioni
+     * @return la descrizione delle impostazioni
+     */
     @Override
     public String getDescription() {  
         return "Variante personalizzata del poker nella sua versione HoldEm";
     }
 
-    /** {@inheritDoc} */
+    /**
+     * Ritorna la descrizione dettagliata delle impostazioni
+     * @return la descrizione dettagliata delle impostazioni
+     *//** {@inheritDoc} */
     @Override
     public String toString() {
         return "Big Blind di base: " + this.bigBlind + "\nIl Big Blind raddoppia: " + !this.isBigBlindFixed + "\nMax giocatori: " + this.maxPlayers +"\nMax numero di raise: " + this.maxRaises;
     }
     
     @Override
+    /**
+     * Ritorna il nome delle impostazioni
+     * @return il nome delle impostazioni
+     */
     public String getName()
     {
         return "Custom Game";
     }
-
 
     /**
      * Imposta il valore massimo dei giocatori
@@ -70,7 +79,6 @@ public class CustomGame extends GameType{
      * @throws IllegalArgumentException quando il Grande Buio e' fisso
      */
     public void setRoundsForDoubling(int roundsForDoubling) {
-        
         if(isBigBlindFixed)
         {
             throw new IllegalArgumentException("Parameter cannot be changed");
@@ -94,10 +102,18 @@ public class CustomGame extends GameType{
         this.alwaysDoShowdown = alwaysDoShowdown;
     }
 
+    /**
+     * Ritorna il ritardo per le azioni dei bot
+     * @return il ritardo per le azioni dei bot
+     */
     public int getAIdelay() {
         return AIdelay;
     }
 
+    /**
+     * Imposta il ritardo per le azioni dei bot
+     * @param AIdelay il ritardo per le azioni dei bot
+     */
     public void setAIdelay(int AIdelay) {
         this.AIdelay = AIdelay;
     }

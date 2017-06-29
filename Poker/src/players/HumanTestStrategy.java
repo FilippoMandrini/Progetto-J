@@ -27,7 +27,13 @@ public class HumanTestStrategy extends HumanStrategy {
         super();
     }
     
-    /** {@inheritDoc} */    
+    /**
+     * Determina l'azione da eseguire
+     * @param minBet la puntata minima
+     * @param bet la puntata
+     * @param allowedActions le azioni consentite
+     * @return l'azione richiesta
+     */  
     @Override
     public Action act(int minBet, int bet, Set<ActionSet> allowedActions)
     {            
@@ -119,36 +125,50 @@ public class HumanTestStrategy extends HumanStrategy {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Restituisce un valore booleano che indica se è connesso
+     * @return true se connesso, false altrimenti
+     */
     @Override
     public boolean isConnected() {
         return true;
     }
 
+    /**
+     * Restituisce un valore booleano che indica se è raggiungibile
+     * @param timeout il tempo per il timeout
+     * @return true se raggiungibile, false altrimenti
+     */
     @Override
     public boolean isReachable(int timeout) {
         return true;
     }
 
+    /** {@inheritDoc} */  
     @Override
     public void setConnected(boolean connected) {
         //non implementato
     }
 
+    /** {@inheritDoc} */  
     @Override
     public void disconnect() {
         // non implementato
     }
 
+    /** {@inheritDoc} */  
     @Override
     public void ping() {
         // non implementato
     }
 
+     /**
+     * Restituisce un valore booleano che indica se è bloccato
+     * @return true se bloccato, false altrimenti
+     */
     @Override
     public boolean isBlocked() {
         return false;
     }
-    
-    
     
 }
