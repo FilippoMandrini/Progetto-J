@@ -125,10 +125,10 @@ public class PlayerPanel extends GamePanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public void waiting()
+    public void waiting(String parameter)
     {
         this.setBackground(Color.GRAY);
-        playerLabel.setText("Attesa giocatore...");
+        playerLabel.setText(parameter);
         repaint();
     }
     
@@ -151,10 +151,25 @@ public class PlayerPanel extends GamePanel {
         }    
     }
     
+    public void updateStake(Player player)
+    {
+        stakeLabel.setText("€ " + player.getStake());
+    }
+    
+    public void updateName(Player player)
+    {
+        String oldName = playerLabel.getText();
+        playerLabel.setText(player.getName());
+        if (player.getName().equalsIgnoreCase("Disconnesso"))
+        {
+            waiting(oldName + " - Disconnesso");
+        }
+    }
+    
     public void update(Player player) 
     {
-        playerLabel.setText(player.getName());
-        stakeLabel.setText("€ " + player.getStake());
+        updateName(player);
+        updateStake(player);
         int bet = player.getCurrentBet();
         if (bet == 0) 
         {

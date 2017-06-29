@@ -40,9 +40,7 @@ public class ControlPanel extends GamePanel{
     private final AmountPanel amountPanel;    
     
     private Action selectedAction;
-    
-    private final Object lock = new Object();
-        
+            
     public ControlPanel(Game game) {
         super(game);
         Dimension dim = new Dimension(520, 50);

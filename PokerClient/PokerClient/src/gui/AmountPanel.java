@@ -96,7 +96,6 @@ public class AmountPanel extends GamePanel {
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
         SpinnerNumberModel model = (SpinnerNumberModel)amountSpinner.getModel();
         amountSpinner.setValue(model.getMinimum());
-        selectedAction = null;
     }//GEN-LAST:event_resetButtonActionPerformed
 
     public void act(Action defaultAction)

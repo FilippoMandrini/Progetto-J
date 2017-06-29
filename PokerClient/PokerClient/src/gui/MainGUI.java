@@ -68,7 +68,7 @@ public class MainGUI extends JFrame implements GameObserver {
         for (int i= 0; i< GUIConstants.MAX_PLAYERS; i++)
         {
             PlayerPanel panel = new PlayerPanel(game);
-            panel.waiting();
+            panel.waiting("Attesa giocatori");
             panels.add(panel);
             switch (i) {
                 
@@ -175,6 +175,8 @@ public class MainGUI extends JFrame implements GameObserver {
         if (playerPanel != null) 
         {
             playerPanel.updateAction(player);
+            playerPanel.updateStake(player);
+            playerPanel.updateName(player);
             Action action = player.getLastAction();
             if (action != null) 
             {
@@ -200,7 +202,7 @@ public class MainGUI extends JFrame implements GameObserver {
         centralPanel.setMessage("Sei stato disconnesso dal server!");
         for (PlayerPanel panel : panelMap.values())
         {
-            panel.waiting();
+            panel.waiting("Disconnesso");
         }
     }
     
@@ -221,7 +223,7 @@ public class MainGUI extends JFrame implements GameObserver {
         {
             for(Player player : panelMap.keySet())
             {
-                panelMap.get(player).setCurrent(player.equals(dealer));
+                panelMap.get(player).setDealer(player.equals(dealer));
             }
         }
     }
