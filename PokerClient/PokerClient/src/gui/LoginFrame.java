@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import client.Client;
@@ -14,8 +9,7 @@ import javax.swing.JOptionPane;
 import org.apache.commons.validator.routines.InetAddressValidator;
 
 /**
- *
- * @author Nickelsilver
+ * Pannello per il Login
  */
 public class LoginFrame extends JFrame {
     
@@ -25,12 +19,9 @@ public class LoginFrame extends JFrame {
     //public BufferedReader in = null;
     //public PrintStream out = null;
     private String nickname;
+    
     /**
-     * Creates new form LoginDialog
-     * @param parent
-     * @param modal
-     * @param lock
-     * @param socket
+     * Costruttore della finestra di Login
      */
     public LoginFrame() {
         super("Connessione al server");
@@ -61,6 +52,7 @@ public class LoginFrame extends JFrame {
         connectionLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Login");
 
         jLabel1.setText("IP:");
 

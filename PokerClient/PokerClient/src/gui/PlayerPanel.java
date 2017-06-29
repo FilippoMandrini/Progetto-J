@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import actions.Action;
@@ -15,14 +10,14 @@ import model.Game;
 import model.Player;
 
 /**
- *
- * @author Nickelsilver
+ * Pannello del giocatore
  */
 public class PlayerPanel extends GamePanel {
 
     List<JLabel> cardLabels;
+    
     /**
-     * Creates new form PlayerPanel
+     * Crea un nuovo PlayerPanel
      */
     public PlayerPanel(Game game) {
         super(game);

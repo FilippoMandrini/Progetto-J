@@ -1,28 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package json;
 
 import actions.*;
 import annotations.JSONExclude;
-import actions.ActionSet;
 import com.google.gson.*;
 import gametypes.CustomGame;
 import gametypes.GameType;
 import gametypes.StandardGame;
-import java.util.Set;
-import model.Board;
+
 /**
- *
- * @author Nickelsilver
+ * Classe dell'Encoder JSON
  */
 public class JSONEncoder {
 
     private static JSONEncoder instance;
     private Gson gson;
    
+    /**
+     * Costruttore dell'encoder
+     */
     private JSONEncoder(){
         RuntimeTypeAdapterFactory<Action> afactory = RuntimeTypeAdapterFactory
                 .of(Action.class, "type")
@@ -56,6 +51,10 @@ public class JSONEncoder {
                 .create();      
     }
     
+    /**
+     * Restituisce l'istanza dell'encoder
+     * @return l'istanza dell'encoder
+     */
     public static synchronized JSONEncoder getInstance()
     {
         if (instance == null)
@@ -65,6 +64,11 @@ public class JSONEncoder {
         return instance;
     }
     
+    /**
+     * Codifica il messaggio di azione
+     * @param action l'azione scelta
+     * @return la stringa codificata del messaggio
+     */
     public String encodeAct(Action action)
     {
         JsonObject toSend = new JsonObject();
@@ -73,6 +77,11 @@ public class JSONEncoder {
         return gson.toJson(toSend);
     }
     
+    /**
+     * Codifica il messaggio di partecipazione alla partita
+     * @param playerName il nome del giocatore
+     * @return la stringa codificata del messaggio
+     */
     public String encodeGameJoined(String playerName)
     {
         JsonObject toSend = new JsonObject();
@@ -81,7 +90,11 @@ public class JSONEncoder {
         return gson.toJson(toSend);
     }
     
-    
+    /**
+     * Codifica un oggetto
+     * @param toEncode l'oggetto da codificare
+     * @return l'oggetto codificato con json
+     */
     public JsonElement encodeObject(Object toEncode)
     {
         JsonElement jsonElement = gson.toJsonTree(toEncode);
@@ -92,6 +105,10 @@ public class JSONEncoder {
         return jsonElement;
     }
     
+    /**
+     * Codifica il messaggio di Ping
+     * @return la stringa codificata del messaggio
+     */
     public String encodePing() {
         JsonObject toSend = new JsonObject();
         toSend.addProperty("methodInvoked", "PING");

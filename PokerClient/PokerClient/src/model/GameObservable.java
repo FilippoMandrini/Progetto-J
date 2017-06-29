@@ -130,6 +130,10 @@ public abstract class GameObservable {
         }
     }
     
+    /**
+     * Segnala quando i giocatori subiscono modifiche
+     * @param players i giocatori
+     */
     public void notifyPlayerUpdated(Player player) {
         for (GameObserver observer : observers) {
             if (player.getCards() == null || player.getCards().isEmpty()) {
@@ -140,6 +144,12 @@ public abstract class GameObservable {
         }
     }
     
+    /**
+     * Segnala quando viene richiesta un'azione
+     * @param bet la puntata
+     * @param minBet la puntata minima
+     * @param allowedActions le azioni consentite
+     */
     public void notifyActionRequest(int bet, int minBet, Set<ActionSet> allowedActions) {
         for (GameObserver observer : observers) 
         {
@@ -147,6 +157,9 @@ public abstract class GameObservable {
         }
     }
     
+    /**
+     * Segnala la disconnessione
+     */
     public void notifyDisconnect() {
         for (GameObserver observer : observers) 
         {
@@ -154,5 +167,4 @@ public abstract class GameObservable {
         }
     }    
     
-
 }

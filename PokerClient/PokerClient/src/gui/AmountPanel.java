@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import actions.Action;
@@ -12,13 +7,12 @@ import javax.swing.SpinnerNumberModel;
 import model.Game;
 
 /**
- *
- * @author Nickelsilver
+ * Pannello per le puntate
  */
 public class AmountPanel extends GamePanel {
 
     /**
-     * Creates new form AmountPanel
+     * Crea un nuovo AmountPanel
      * @param game il gioco su cui è definito
      */
     public AmountPanel(Game game) {
@@ -81,7 +75,7 @@ public class AmountPanel extends GamePanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-       
+
         int amount = (int)amountSpinner.getValue();
         selectedAction.setAmount(amount);
         if(selectedAction!=null)

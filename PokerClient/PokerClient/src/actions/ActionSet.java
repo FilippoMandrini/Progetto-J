@@ -26,9 +26,12 @@ public enum ActionSet {
         this.name = name;
     }
 
+    /**
+     * Ritorna il nome dell'azione
+     * @return il nome dell'azione
+     */
     public String getName() {
         return name;
     }
-    
     
 }

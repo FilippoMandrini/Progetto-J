@@ -96,7 +96,10 @@ public abstract class Action {
         this.actionType = actionType;
     }
     
-    /** {@inheritDoc} */
+    /**
+     * Ritorna la descrizione dell'azione
+     * @return la descrizione dell'azione
+     */
     @Override
     public String toString()
     {
@@ -104,4 +107,3 @@ public abstract class Action {
     }
     
 }
-    

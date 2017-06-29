@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import actions.ActionSet;
@@ -16,16 +11,16 @@ import model.Card;
 import model.Game;
 
 /**
- *
- * @author Nickelsilver
+ * Pannello centrale
  */
 public class CentralPanel extends GamePanel {
 
     private final ControlPanel controlPanel;
     private final BoardPanel boardPanel;
     private final GridBagConstraints gc;
+    
     /**
-     * Creates new form CenterPanel
+     * Crea un nuovo CenterPanel
      */
     public CentralPanel(Game game) {
         super(game);

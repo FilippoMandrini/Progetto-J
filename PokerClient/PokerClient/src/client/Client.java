@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package client;
 
 import gui.MainGUI;
@@ -16,8 +11,7 @@ import java.net.Socket;
 import model.Game;
 
 /**
- *
- * @author Nickelsilver
+ * Classe per il Client
  */
 public class Client implements Runnable {
 
@@ -29,11 +23,21 @@ public class Client implements Runnable {
     public boolean disconnected = false;
     private final String nickname;
 
+    /**
+     * Costruttore del Client
+     * @param server la socket del server
+     * @param nickname il nickname del giocatore
+     */
     public Client(Socket server, String nickname) {
         this.nickname = nickname;
         this.server = server;
     }
     
+    /**
+     * Lancia il Client che si connette al Server
+     * Visualizza la GUI per permettere all'utente di giocare
+     * una partita
+     */
     @Override
     public void run() 
     {

@@ -66,7 +66,10 @@ public class Card implements Comparable<Card> {
         return SUIT_NAMES[suit.getValue()];
     }
 
-    /** {@inheritDoc} */
+    /**
+     * Restituisce il nome della carta
+     * @return il nome della carta
+     */
     @Override
     public String toString() {
         return RANK_NAMES[rank] + " di " + SUIT_NAMES[suit.getValue()];
@@ -91,6 +94,7 @@ public class Card implements Comparable<Card> {
         return true;
     }
 
+    /** {@inheritDoc} */
     @Override
     public int hashCode() {
         int hash = 3;
