@@ -21,10 +21,12 @@ import poker.Game;
  */
 public class ConnectionChecker implements Runnable {
     
+    private boolean isGameRunning;
     private List<Client> clients;
 
     public ConnectionChecker(Game game) 
     {
+        isGameRunning = true;
         clients = new ArrayList<>();
         for (Player player : game.getPlayers()) 
         {
@@ -40,7 +42,7 @@ public class ConnectionChecker implements Runnable {
 
     private void checkConnections() 
     {
-        while (true) 
+        while (isGameRunning) 
         {        
             updateClients();
             for (int i = 0; i<clients.size(); i++) 
@@ -85,4 +87,14 @@ public class ConnectionChecker implements Runnable {
         }
         clients = connected;
     }
+
+    public boolean isIsGameRunning() {
+        return isGameRunning;
+    }
+
+    public void setIsGameRunning(boolean isGameRunning) {
+        this.isGameRunning = isGameRunning;
+    }
+    
+    
 }

@@ -5,6 +5,8 @@
  */
 package server;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import poker.Game;
 
 /**
@@ -13,20 +15,28 @@ import poker.Game;
  */
 public class GameRunnable implements Runnable {
     
-    private Game game;
-    private ConnectionChecker checker;
+    private final Game game;
+    private final ConnectionChecker checker;
+    private final Thread gameThread;
+    private final Thread connectionThread;
 
     public GameRunnable(Game game) {
         this.game = game;
-        this.checker = new ConnectionChecker(game);
+        checker = new ConnectionChecker(game);
+        gameThread = new Thread(game);
+        connectionThread = new Thread(checker);
     }
     
     @Override
     public void run() {
-        Thread gameThread = new Thread(game);
         gameThread.start();
-        Thread clientChecker = new Thread(checker);
-        clientChecker.start();  
+        connectionThread.start(); 
+        try {
+            gameThread.join();
+        } catch (InterruptedException ex) {
+            // niente
+        }
+        checker.setIsGameRunning(false);
     }
     
     
