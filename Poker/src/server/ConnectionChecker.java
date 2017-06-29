@@ -47,12 +47,7 @@ public class ConnectionChecker implements Runnable {
             updateClients();
             for (int i = 0; i<clients.size(); i++) 
             {
-                if (!clients.get(i).isReachable(2000)) 
-                {
-                    clients.get(i).setConnected(false);
-                    clients.remove(i);
-                }
-                else if (!clients.get(i).isBlocked())
+                if (!clients.get(i).isBlocked())
                 {
                     try 
                     {
@@ -67,7 +62,7 @@ public class ConnectionChecker implements Runnable {
             }
             try 
             {
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             } 
             catch (InterruptedException ex) {
             }

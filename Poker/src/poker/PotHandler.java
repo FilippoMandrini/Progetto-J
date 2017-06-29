@@ -85,7 +85,7 @@ public class PotHandler {
     public void distributePots(Map<Hand, List<Player>> ranking, List<Player> players, int dealerPosition)
     {
         int totalPot = getTotalPot();
-        System.out.println("[TEST] Distribuzione vincite...");
+        //System.out.println("[TEST] Distribuzione vincite...");
         Map<Player, Integer> winners =  new HashMap<>();
         for (Hand hand : ranking.keySet())
         {
@@ -146,7 +146,7 @@ public class PotHandler {
         }
         for (Player winner : winners.keySet())
         {
-            System.out.println("[TEST] " + winner.toString() + " vince " + winners.get(winner));
+            //System.out.println("[TEST] " + winner.toString() + " vince " + winners.get(winner));
             winner.win(winners.get(winner));      
         }
     }

@@ -82,7 +82,7 @@ public class Server implements Runnable {
             GameRunnable mainRunnable = new GameRunnable(game);
             Thread mainThread = new Thread(mainRunnable);
             mainThread.start();
-            System.out.println("Lanciato Gioco n° " + (i++));
+            System.out.println("Lanciato Gioco n° " + (i + 1));
         }
     }
 }

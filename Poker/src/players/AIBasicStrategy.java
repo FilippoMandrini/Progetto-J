@@ -72,7 +72,7 @@ public class AIBasicStrategy extends AIStrategy {
             {
                 if ((chenScore - scoreToPlay) >= ((20.0 - scoreToPlay)/2.0))
                 {
-                    System.out.println("[BOTTEST] Carte ottime");
+                    //System.out.println("[BOTTEST] Carte ottime");
                     switch (aggressiveness) {
                         case 0:
                             if (allowedActions.contains(ActionSet.CALL)) 
@@ -153,7 +153,7 @@ public class AIBasicStrategy extends AIStrategy {
                 }
                 else
                 {   
-                    System.out.println("[BOTTEST] Carte decenti");
+                    //System.out.println("[BOTTEST] Carte decenti");
                     if (allowedActions.contains(ActionSet.CHECK)) 
                     {
                         action = new Check();
