@@ -45,7 +45,7 @@ public class AIBasicStrategy extends AIStrategy {
     @Override
     public Action act(int minBet, int bet, Set<ActionSet> allowedActions){
         try {
-            Thread.sleep(1500);
+            Thread.sleep(settings.getAIdelay());
         } catch (InterruptedException ex) {
         }
         Action action = null;

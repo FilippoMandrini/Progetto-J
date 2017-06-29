@@ -9,4 +9,9 @@ import java.util.Scanner;
  */
 public abstract class HumanStrategy implements Client {
     
+    @Override
+    public boolean isHuman()
+    {
+        return true;
+    }
 }

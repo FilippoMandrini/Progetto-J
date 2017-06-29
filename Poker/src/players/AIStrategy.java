@@ -36,4 +36,10 @@ public abstract class AIStrategy implements Client{
     {
         return false;
     }
+    
+    @Override
+    public boolean isHuman()
+    {
+        return false;
+    }
 }
