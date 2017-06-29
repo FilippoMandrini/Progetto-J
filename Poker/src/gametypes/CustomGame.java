@@ -16,6 +16,13 @@ public class CustomGame extends GameType{
     public String toString() {
         return "Big Blind di base: " + this.bigBlind + "\nIl Big Blind raddoppia: " + !this.isBigBlindFixed + "\nMax giocatori: " + this.maxPlayers +"\nMax numero di raise: " + this.maxRaises;
     }
+    
+    @Override
+    public String getName()
+    {
+        return "Custom Game";
+    }
+
 
     /**
      * Imposta il valore massimo dei giocatori
@@ -85,6 +92,14 @@ public class CustomGame extends GameType{
      */
     public void setAlwaysDoShowdown(boolean alwaysDoShowdown) {
         this.alwaysDoShowdown = alwaysDoShowdown;
+    }
+
+    public int getAIdelay() {
+        return AIdelay;
+    }
+
+    public void setAIdelay(int AIdelay) {
+        this.AIdelay = AIdelay;
     }
 
     /**

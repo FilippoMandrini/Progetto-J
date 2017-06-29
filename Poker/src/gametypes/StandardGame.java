@@ -16,6 +16,12 @@ public class StandardGame extends GameType{
     public String toString() {
         return "Big Blind di base: " + this.bigBlind + "\nIl Big Blind raddoppia: " + !this.isBigBlindFixed + "\nMax giocatori: " + this.maxPlayers +"\nMax numero di raise: " + this.maxRaises;
     }
+    
+    @Override
+    public String getName()
+    {
+        return "Standard Game";
+    }
 
     /**
      * Costruttore della classe
@@ -28,6 +34,8 @@ public class StandardGame extends GameType{
         this.alwaysDoShowdown = true;
         this.startingStake = amount;
         this.bigBlind = 50;
+        this.AIdelay = 2000;
+        this.onlyHumans = true;
     }
     
 }

@@ -12,6 +12,8 @@ public abstract class GameType {
     protected int roundsForDoubling;
     protected boolean alwaysDoShowdown;
     protected int startingStake;
+    protected int AIdelay;
+    protected boolean onlyHumans;
     
     /**
      * Ritorna la descrizione delle impostazioni
@@ -23,8 +25,11 @@ public abstract class GameType {
      * Ritorna la descrizione dettagliata delle impostazioni
      * @return descrizione dettagliata delle impostazioni
      */
+    @Override
     public abstract String toString();
     
+    public abstract String getName();
+
     /**
      * Ritorna il numero massimo di giocatori possibili
      * @return il numero massimo di giocatori possibili
@@ -72,4 +77,16 @@ public abstract class GameType {
     public void setStartingStake(int startingStake) {
         this.startingStake = startingStake;
     }  
+
+    public int getAIdelay() {
+        return AIdelay;
+    }
+
+    public boolean isOnlyHumans() {
+        return onlyHumans;
+    }
+    
+    
+    
+    
 }
