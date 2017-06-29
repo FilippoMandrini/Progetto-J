@@ -43,6 +43,8 @@ public class AIBasicStrategy extends AIStrategy {
     
     /**
      * Invocato quando esegue un'azione
+     * Le azioni del bot e le quantità delle scommesse si basano sulla aggressività
+     * e sulla disciplina impostate
      * @param minBet l'importo minimo della scommessa
      * @param bet la scommessa
      * @param allowedActions la lista delle azioni consentite

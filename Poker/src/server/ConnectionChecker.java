@@ -40,7 +40,7 @@ public class ConnectionChecker implements Runnable {
     }
 
     /**
-     * Controlla le connessioni dei clients
+     * Controlla lo stato delle connessioni dei clients
      */
     private void checkConnections() 
     {
@@ -89,7 +89,7 @@ public class ConnectionChecker implements Runnable {
     }
 
     /**
-     * Controlla se la partita è in corso
+     * Segnala se la partita è in corso
      * @return true se la partita è in esecuzione, false altrimenti
      */
     public boolean isIsGameRunning() {

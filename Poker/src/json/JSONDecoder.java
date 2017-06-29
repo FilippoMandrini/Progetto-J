@@ -70,7 +70,7 @@ public class JSONDecoder {
      * Esegue la decodifica
      * @param toDecode stringa da decodificare
      * @return l'oggetto dopo la decodifica
-     * @throws InterruptedIOException quando manda la stringa da decodificare
+     * @throws InterruptedIOException quando manca la stringa da decodificare
      */
     public Object decode(String toDecode) throws InterruptedIOException
     {

@@ -470,6 +470,9 @@ public class Game extends GameObservable implements Runnable {
         }
     }
     
+    /**
+     * Controlla se i client sono connessi per rimuovere quelli disconnessi
+     */
     public void checkClientConnections()
     {
         boolean spy = false;
@@ -485,6 +488,11 @@ public class Game extends GameObservable implements Runnable {
             notifyHiddenPlayersUpdated(players);
     }
     
+    /**
+     * Controlla quanti giocatori (umani e bot) possono giocare
+     * @param onlyHumans true se sono ammessi solo giocatori umani, false altrimenti
+     * @return il numero dei giocatori che possono giocare
+     */
     private int playersAbleToPlay(boolean onlyHumans) 
     {
         int noOfPlayers = 0;
@@ -530,65 +538,121 @@ public class Game extends GameObservable implements Runnable {
     }
 
     /**
-     * Ritorna se sono o no presenti i players
-     * @return true se sono presenti players, false altrimenti
+     * Ritorna se sono o no presenti i giocatori
+     * @return true se sono presenti dei giocatori, false altrimenti
      */
     public boolean hasPlayers() {
         return !players.isEmpty();
     }
 
+    /**
+     * Ritorna la lista dei giocatori attivi
+     * @return la lista dei giocatori attivi
+     */
     public List<Player> getActivePlayers() {
         return activePlayers;
     }
 
+    /**
+     * Ritorna il giocatore corrente
+     * @return il giocatore corrente
+     */
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
 
+    /**
+     * Ritorna la posizione del giocatore corrente
+     * @return la posizione del giocatore corrente
+     */
     public int getCurrentPlayerPosition() {
         return currentPlayerPosition;
     }
 
+    /**
+     * Ritorna il gestore dei pots
+     * @return il gestore dei pots
+     */
     public PotHandler getPotHandler() {
         return potHandler;
     }
 
+    /**
+     * Ritorna il valore della puntata
+     * @return il valore della puntata
+     */
     public int getBet() {
         return bet;
     }
 
+    /**
+     * Ritorna il valore della puntata minima
+     * @return il valore della puntata minima
+     */
     public int getMinBet() {
         return minBet;
     }
 
+    /**
+     * Ritorna il numero dei raise
+     * @return il numero dei raise
+     */
     public int getRaises() {
         return raises;
     }
 
+    /**
+     * Ritorna il valore del grande buio
+     * @return il valore del grande buio
+     */
     public int getCurrentBigBlind() {
         return currentBigBlind;
     }
 
+    /**
+     * Imposta la posizione del giocatore attuale
+     * @param currentPlayerPosition la posizione del giocatore attuale
+     */
     public void setCurrentPlayerPosition(int currentPlayerPosition) {
         this.currentPlayerPosition = currentPlayerPosition;
     }
 
+    /**
+     * Imposta il valore della scommessa
+     * @param bet il valore della scommessa
+     */
     public void setBet(int bet) {
         this.bet = bet;
     }
 
+    /**
+     * Imposta il valore della scommessa minima
+     * @param minBet il valore della scommessa minima
+     */
     public void setMinBet(int minBet) {
         this.minBet = minBet;
     }
 
+    /**
+     * Imposta l'ultimo giocatore aggressore
+     * @param lastAggressor l'ultimo giocatore aggressore
+     */
     public void setLastAggressor(Player lastAggressor) {
         this.lastAggressor = lastAggressor;
     }
 
+    /**
+     * Imposta il giocatore attuale
+     * @param currentPlayer il giocatore attuale
+     */
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
 
+    /**
+     * Restituisce la GameFacade
+     * @return la GameFacade
+     */
     public synchronized GameFacade getFacade() {
         return facade;
     }

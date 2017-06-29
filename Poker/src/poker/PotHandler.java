@@ -157,7 +157,7 @@ public class PotHandler {
     }
     
     /**
-     * Resetta i post
+     * Resetta i pots
      */
     public void clearPots()
     {

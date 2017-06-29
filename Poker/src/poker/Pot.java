@@ -30,8 +30,8 @@ public class Pot {
     }
     
     /**
-     * Restituisce la lista dei giocatori
-     * @return la lista dei giocatori
+     * Restituisce la lista dei giocatori contribuenti
+     * @return la lista dei giocatori contribuenti
      */
     public Set<Player> getMembers() {
         return members;
@@ -46,7 +46,7 @@ public class Pot {
     }
     
     /**
-     * Ritorna se e' o no presente un contribuente al pot
+     * Ritorna se è o no presente un contribuente al pot
      * @param player il giocatore
      * @return true se ha contribuito, false altrimenti
      */
@@ -56,7 +56,7 @@ public class Pot {
     
     /**
      * Restituisce il valore complessivo di un pot singolo
-     * @return  il valore complessivo del singolo pot
+     * @return il valore complessivo del singolo pot
      */
     public int getValue() {
         int total = bet * members.size();

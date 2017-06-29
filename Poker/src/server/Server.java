@@ -35,7 +35,10 @@ public class Server implements Runnable {
     }
     
     /**
-     * Lancia in esecuzione il server
+     * Lancia in esecuzione il server.
+     * Attende la connessione da parte dei client per un certo periodo e 
+     * aggiunge gli utenti ad una nuova partita, aggiunge dei bot per riempire 
+     * i posti vuoti e inizia la partita
      */
     @Override
     public void run()

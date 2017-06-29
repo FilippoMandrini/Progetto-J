@@ -67,55 +67,86 @@ public class HumanCompleteStrategy extends HumanStrategy{
         return action;
     }
     
-    /** {@inheritDoc} */
+    /**
+     * Invocato quando si aggiorna la board
+     * @param board il tavolo
+     */
     @Override
     public void boardUpdated(Board board) {
         out.println(JSONEncoder.getInstance().encodeBoardUpdated(board));
     }
     
-    /** {@inheritDoc} */
+    /**
+     * Invocato quando si aggiorna lo stato di un giocatore
+     * @param player il giocatore
+     */
     @Override
     public void playerUpdated(Player player) {
         out.println(JSONEncoder.getInstance().encodePlayerUpdated(player));
     }
     
-    /** {@inheritDoc} */
+    /**
+     * Invocato per inviare messaggi al client
+     * @param message il messaggio
+     */
     @Override
     public void messageUpdated(String message) {
         out.println(JSONEncoder.getInstance().encodeMessageUpdated(message));
     }
     
-    /** {@inheritDoc} */
+    /**
+     * Invocato quando inizia la mano
+     * @param dealer il player dealer della mano attuale
+     */
     @Override
     public void handStarted(Player dealer, int dealerPosition) {
         out.println(JSONEncoder.getInstance().encodeHandStarted(dealer, dealerPosition));
     }
     
-    /** {@inheritDoc} */
+    /**
+     * Invocato quando il giocatore corrente ha subito modifiche
+     * @param currentPlayer il giocatore attuale
+     * @param currentPlayerPosition la posizione del giocatore attuale
+     */
     @Override
     public void currentPlayerUpdated(Player currentPlayer, int currentPlayerPosition) {
         out.println(JSONEncoder.getInstance().encodeCurrentPlayerUpdated(currentPlayer, currentPlayerPosition));
     }
     
-    /** {@inheritDoc} */
+    /**
+     * Invocato quando viene effettuata una scommessa
+     * @param bet l'importo della scommessa
+     * @param minBet l'importo minimo della scommessa
+     * @param totalPot il totale delle scommesse nel pot
+     */
     @Override
     public void bettingUpdated(int bet, int minBet, int totalPot) {
         out.println(JSONEncoder.getInstance().encodeBettingUpdated(bet, minBet, totalPot));
     }
     
-    /** {@inheritDoc} */
+    /**
+     * Invocato quando il giocatore stesso subisce una modifica
+     * @param player il giocatore stesso
+     */
     @Override
     public void selfUpdated(Player player) {
         out.println(JSONEncoder.getInstance().encodeSelfUpdated(player));
     }
     
-    /** {@inheritDoc} */
+    /**
+     * Invocato quando il giocatore attuale compie un'azione
+     * @param shadowCopy la copia pubblica del giocatore
+     */
     @Override
     public void currentPlayerActed(ShadowPlayer shadowCopy) {
         out.println(JSONEncoder.getInstance().encodeCurrentPlayerActed(shadowCopy));
     }
     
-    /** {@inheritDoc} */
+    /**
+     * Invocato quando inizia la partita
+     * @param players la lista dei giocatori
+     * @param settings le impostazioni della partita
+     */
     @Override
     public void gameStarted(List<Player> players, GameType settings) {
         out.println(JSONEncoder.getInstance().encodeGameStarted(players, settings));
@@ -154,7 +185,7 @@ public class HumanCompleteStrategy extends HumanStrategy{
     }
 
     /**
-     * Disconnette il client
+     * Invocato quando il giocatore si disconnette
      */
     @Override
     public void disconnect() {
@@ -162,7 +193,7 @@ public class HumanCompleteStrategy extends HumanStrategy{
     }
 
     /**
-     * Esegue il ping
+     * Invocato per il ping
      * @throws IOException in caso di errore
      */
     @Override
