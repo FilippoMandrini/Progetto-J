@@ -177,7 +177,7 @@ public class JSONDecoder {
         {
             throw new InterruptedIOException("Errore");
         }
-        //System.out.println(toDecode);
+        System.out.println(toDecode);
         String method = parser.parse(toDecode).getAsJsonObject().get("methodInvoked").getAsString();
         if (commands.containsKey(method))
         {
