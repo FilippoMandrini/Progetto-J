@@ -350,4 +350,9 @@ public class Player implements Comparable {
     {
         return !this.cards.isEmpty();
     }
+    
+    public boolean isAllIn()
+    {
+        return (!this.cards.isEmpty() && this.stake == 0);
+    }
 }

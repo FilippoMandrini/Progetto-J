@@ -189,39 +189,7 @@ public class Game extends GameObservable implements Runnable {
         while (playersLeft > 0)
         {
             shiftCurrentPlayer();
-            Action action = null;
-            try 
-            {
-                if (!currentPlayer.getCards().isEmpty() && currentPlayer.getStake() == 0) 
-                {
-                    action = new Check();
-                } 
-                else 
-                {
-                    Set<ActionSet> allowedActions = getActionSet(currentPlayer);
-                    action = currentPlayer.getClient().act(minBet, bet, allowedActions);
-                    if (action == null || !(allowedActions.contains(action.getActionType()))) 
-                    {
-                        throw new IllegalActionException("Azione non possibile!");
-                    }
-                }
-            }
-            catch (SocketTimeoutException e) 
-            {
-                action = new Fold();
-                currentPlayer.getClient().disconnect();
-                disconnectPlayer(currentPlayer);
-                notifyHiddenPlayersUpdated(players);
-            }
-            catch (IllegalActionException | IOException e)
-            {
-                action = new Fold();
-                disconnectPlayer(currentPlayer);
-                notifyHiddenPlayersUpdated(players);
-            }
-            playersLeft = action.execute(facade, playersLeft);
-            currentAction = action;
-            currentPlayer.setLastAction(action);
+            playersLeft = askAndExecuteAction(playersLeft);
             notifyBettingUpdated(bet, minBet, potHandler.getTotalPot());
             notifyCurrentPlayerActed(currentPlayer);
         }
@@ -239,6 +207,44 @@ public class Game extends GameObservable implements Runnable {
         notifyHiddenPlayersUpdated(players);
     }
     
+    private int askAndExecuteAction(int playersLeft) 
+    {
+        Action action = null;
+        try 
+        {
+            if (currentPlayer.isAllIn()) 
+            {
+                action = new Check();
+            } 
+            else 
+            {
+                Set<ActionSet> allowedActions = getActionSet(currentPlayer);
+                action = currentPlayer.getClient().act(minBet, bet, allowedActions);
+                if (action == null || !(allowedActions.contains(action.getActionType()))) 
+                {
+                    throw new IllegalActionException("Azione non possibile!");
+                }
+            }
+        } 
+        catch (SocketTimeoutException e) 
+        {
+            action = new Fold();
+            currentPlayer.getClient().disconnect();
+            disconnectPlayer(currentPlayer);
+            notifyHiddenPlayersUpdated(players);
+        } 
+        catch (IllegalActionException | IOException e) 
+        {
+            action = new Fold();
+            disconnectPlayer(currentPlayer);
+            notifyHiddenPlayersUpdated(players);
+        }
+        playersLeft = action.execute(facade, playersLeft);
+        currentAction = action;
+        currentPlayer.setLastAction(action);
+        return playersLeft;
+    }
+    
     /**
      * Ritorna un set delle mosse che il giocatore può compiere
      * @param player il giocatore
@@ -247,7 +253,7 @@ public class Game extends GameObservable implements Runnable {
     private Set<ActionSet> getActionSet(Player player)
     {
         Set<ActionSet> allowedActions = new HashSet<>();
-        if (!player.getCards().isEmpty() && player.getStake() == 0)
+        if (player.isAllIn())
         {
             allowedActions.add(ActionSet.CHECK);
         }
@@ -370,7 +376,7 @@ public class Game extends GameObservable implements Runnable {
         {
             for (Player member : pot.getMembers())
             {
-                if (!playersToShow.contains(member) && member.getCards() != null && member.getStake() == 0 && !member.getCards().isEmpty())
+                if (!playersToShow.contains(member) && member.getCards() != null && member.isAllIn())
                 {
                     playersToShow.add(member);
                 }
