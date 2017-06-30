@@ -15,7 +15,8 @@ public class ActionFactory {
      * @param type il tipo dell'azione
      * @param amount la quantità della scommessa
      * @return la azione creata
-     * @throws NoSuchMethodException quando si verificano errori durante la creazione dell'azione
+     * @throws java.lang.ClassNotFoundException quando si verificano errori durante la creazione dell'azione
+     * @throws java.lang.InstantiationException quando si verificano errori durante la creazione dell'azione
      */
     public Action createAction(ActionSet type, int amount) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, SecurityException
     {
