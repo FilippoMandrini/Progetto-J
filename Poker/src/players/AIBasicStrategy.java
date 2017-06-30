@@ -5,8 +5,6 @@ import gametypes.GameType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import poker.Board;
 import poker.Card;
 import utilities.ChenEvaluator;

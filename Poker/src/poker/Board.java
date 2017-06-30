@@ -34,6 +34,7 @@ public class Board {
      * Distribuisce le carte personali del giocatore
      * @param player il giocatore
      * @param noOfCards numero di carte da distribuire al giocatore
+     * @return true a consegna avvenuta con successo
      */
     public boolean dealHoleCards(Player player, int noOfCards) {
         player.resetCards();
@@ -68,6 +69,7 @@ public class Board {
       
     /**
      * Esegue il reset delle carte del banco e del deck terminando la mano 
+     * @return true a reset compiuto
      */
     public boolean clear() {
         this.communityCards.clear();

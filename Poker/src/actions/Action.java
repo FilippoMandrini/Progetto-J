@@ -102,6 +102,7 @@ public abstract class Action {
      * Esegue l'azione scelta
      * @param game la partita
      * @param playersLeft il numero di giocatori che devono ancora agire
+     * @return il numero di giocatori che devono ancora agire dopo l'azione
      */
     public abstract int execute(GameFacade game, int playersLeft);
 
