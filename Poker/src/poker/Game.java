@@ -17,21 +17,21 @@ public class Game extends GameObservable implements Runnable {
 
     private final GameType settings;
     private final Board board;
+    private final PotHandler potHandler;
     private final List<Player> players;
     private final List<Player> activePlayers;
+    private final GameFacade facade;
+    private Action currentAction;
     private Player currentPlayer;
-    private int currentPlayerPosition;
     private Player dealer;
+    private Player lastAggressor;
+    private int currentPlayerPosition;
     private int dealerPosition;
-    private final PotHandler potHandler;
     private int bet;
     private int minBet;
-    private Player lastAggressor;
-    private Action currentAction;
     private int raises;
     private int currentBigBlind;
     private int currentHandStage;
-    private final GameFacade facade;
 
     /**
      * Costruttore di Game
@@ -45,6 +45,8 @@ public class Game extends GameObservable implements Runnable {
         board = new Board();
         potHandler = new PotHandler();
         facade = new GameFacade(this);
+        dealerPosition = -1;
+        currentPlayerPosition = -1;
     }
     
     /**
@@ -64,22 +66,9 @@ public class Game extends GameObservable implements Runnable {
     public void playGame()
     {
         notifyGameStarted(players, settings);
-        int noOfHands = 0;
-        dealerPosition = -1;
-        currentPlayerPosition = -1;
-        while(true)
+        while(playersAbleToPlay(settings.isOnlyHumans()) > 1)
         {
-            int playersAbleToPlay = playersAbleToPlay(settings.isOnlyHumans());
-            if (playersAbleToPlay > 1)
-            {
-                //notifyMessageUpdated("Mano n° " + (noOfHands + 1));
-                playSingleHand();
-                noOfHands++;
-            }
-            else
-            {
-                break;
-            }
+            playSingleHand();
         }
         board.clear();
         potHandler.clearPots();
