@@ -5,11 +5,11 @@ package players;
  */
 public abstract class AIStrategy implements Client{
 
-    @Override
     /**
      * Restituisce un valore booleano che indica se è connesso
      * @return true se connesso, false altrimenti
      */
+    @Override
     public boolean isConnected() {
         return true;
     }
