@@ -4,7 +4,6 @@ import actions.Action;
 import actions.ActionSet;
 import gametypes.GameType;
 import model.Board;
-
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import javax.swing.JFrame;
 import model.Game;
 import model.GameObserver;
@@ -31,12 +29,19 @@ public class MainGUI extends JFrame implements GameObserver {
     private List<PlayerPanel> panels; 
     private final Game game;
     
+    /**
+     * Costruttore di MainGUI
+     * @param game la partita
+     */
     public MainGUI(Game game) {   
         super("Poker Texas Hold'em");
         this.game = game;
         initComponents();
     }
     
+    /**
+     * Inizializza la GUI
+     */
     private void initComponents()
     {
         gc = new GridBagConstraints();
@@ -81,6 +86,9 @@ public class MainGUI extends JFrame implements GameObserver {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
+    /**
+     * Aggiunge un Component
+     */
     private void addComponent(Component component, int x, int y, int width, int height) {
         gc.gridx = x;
         gc.gridy = y;
@@ -93,11 +101,13 @@ public class MainGUI extends JFrame implements GameObserver {
         getContentPane().add(component, gc);
     }
 
+    /** @inheritDoc */
     @Override
     public void boardUpdated(Board board) {
         centralPanel.updateBoardCards(board.getCommunityCards());
     }
 
+    /** @inheritDoc */
     @Override
     public void playerUpdated(Player player, boolean toShow) {
         PlayerPanel playerPanel = panelMap.get(player);
@@ -107,11 +117,13 @@ public class MainGUI extends JFrame implements GameObserver {
         }
     }
 
+    /** @inheritDoc */
     @Override
     public void messageUpdated(String message) {
         centralPanel.setHeader(message);
     }
 
+    /** @inheritDoc */
     @Override
     public void gameStarted(List<Player> players, GameType settings) {
         
@@ -127,27 +139,32 @@ public class MainGUI extends JFrame implements GameObserver {
         messagePanel.setHeader("Benvenuto al tavolo! Variante: " + settings.getName());
     }
 
+    /** @inheritDoc */
     @Override
     public void handStarted(Player dealer, int dealerPosition) {
         setDealer(dealer);
         messagePanel.setNotify("Mano n° " + game.getNoOfHands());
     }
 
+    /** @inheritDoc */
     @Override
     public void currentPlayerUpdated(Player currentPlayer, int currentPlayerPosition) {
         setCurrent(currentPlayer);
     }
 
+    /** @inheritDoc */
     @Override
     public void bettingUpdated(int bet, int minBet, int totalPot) {
         centralPanel.updateBoardBetting(bet, totalPot);
     }
 
+    /** @inheritDoc */
     @Override
     public void selfUpdated(Player player) {
         playerUpdated(player, true);
     }
 
+    /** @inheritDoc */
     @Override
     public void currentPlayerActed(Player player) 
     {
@@ -170,12 +187,14 @@ public class MainGUI extends JFrame implements GameObserver {
         }
     }
 
+    /** @inheritDoc */
     @Override
     public void actionRequest(int bet, int minBet, Set<ActionSet> allowedActions) {
         centralPanel.setMessage("Proprio turno: compiere un azione");
         centralPanel.actionRequest(allowedActions);
     }
 
+    /** @inheritDoc */
     @Override
     public void disconnect() {
         centralPanel.disconnect();
@@ -186,6 +205,10 @@ public class MainGUI extends JFrame implements GameObserver {
         }
     }
     
+    /**
+     * Imposta il giocatore corrente nella GUI
+     * @param currentPlayer il giocatore corrente
+     */
     private void setCurrent(Player currentPlayer) 
     {
         if (game.getCurrentPlayer() != null && game.getCurrentPlayer().equals(currentPlayer)) 
@@ -197,6 +220,10 @@ public class MainGUI extends JFrame implements GameObserver {
         }
     }
 
+    /**
+     * Imposta il giocatore dealer nella GUI
+     * @param dealer il giocatore dealer
+     */
     private void setDealer(Player dealer) 
     {
         if (game.getDealer() != null && game.getDealer().equals(dealer)) 
