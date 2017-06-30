@@ -1,7 +1,6 @@
 package json;
 
 import actions.*;
-import client.Sender;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
@@ -11,7 +10,6 @@ import gametypes.GameType;
 import gametypes.StandardGame;
 import java.io.InterruptedIOException;
 import java.lang.reflect.Type;
-import java.nio.channels.InterruptedByTimeoutException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -30,7 +28,7 @@ public class JSONDecoder {
     private final HashMap<String, JSONCommand> commands;
 
     /**
-     * Costruttore del decoder
+     * Costruttore del decoder con caricamento dei comandi
      * @param game la partita
      */
     private JSONDecoder(Game game){
