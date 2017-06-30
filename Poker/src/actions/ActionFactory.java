@@ -15,7 +15,7 @@ public class ActionFactory {
      * @return la azione creata
      * @throws NoSuchMethodException quando si verificano errori durante la creazione dell'azione
      */
-    public Action createAction(ActionSet type, int amount) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, SecurityException
+    public Action createAction(ActionSet type, int amount) throws ClassNotFoundException, InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException, SecurityException
     {
         Class<?> c = Class.forName("actions." + type.getName());
         Constructor<?> cons = null;

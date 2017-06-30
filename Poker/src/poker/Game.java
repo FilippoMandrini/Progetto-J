@@ -207,6 +207,12 @@ public class Game extends GameObservable implements Runnable {
         notifyHiddenPlayersUpdated(players);
     }
     
+    /**
+     * Richiede un'azione al giocatore e la esegue
+     * @param playersLeft il numero dei giocatori che devono agire
+     * @throws IllegalActionException quando l'azione non è consentita
+     * @return il numero di giocatori che devono ancora agire dopo l'azione
+     */
     private int askAndExecuteAction(int playersLeft) 
     {
         Action action = null;

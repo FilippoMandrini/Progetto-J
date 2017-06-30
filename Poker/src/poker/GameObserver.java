@@ -39,6 +39,7 @@ public abstract interface GameObserver {
     /**
      * Invocato quando inizia la mano
      * @param dealer il player dealer della mano attuale
+     * @param dealerPosition la posizione del dealer
      */
     public void handStarted(Player dealer, int dealerPosition);
     
@@ -76,6 +77,7 @@ public abstract interface GameObserver {
     
     /**
      * Invocato per il ping
+     * @throws java.io.IOException
      */
     public void ping() throws IOException;
     

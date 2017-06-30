@@ -17,17 +17,18 @@ public class CustomGame extends GameType{
     /**
      * Ritorna la descrizione dettagliata delle impostazioni
      * @return la descrizione dettagliata delle impostazioni
-     *//** {@inheritDoc} */
+     */
     @Override
     public String toString() {
         return "Big Blind di base: " + this.bigBlind + "\nIl Big Blind raddoppia: " + !this.isBigBlindFixed + "\nMax giocatori: " + this.maxPlayers +"\nMax numero di raise: " + this.maxRaises;
     }
     
-    @Override
+    
     /**
      * Ritorna il nome delle impostazioni
      * @return il nome delle impostazioni
      */
+    @Override
     public String getName()
     {
         return "Custom Game";
@@ -106,6 +107,7 @@ public class CustomGame extends GameType{
      * Ritorna il ritardo per le azioni dei bot
      * @return il ritardo per le azioni dei bot
      */
+    @Override
     public int getAIdelay() {
         return AIdelay;
     }

@@ -11,10 +11,7 @@ import java.net.Socket;
 import java.net.SocketTimeoutException;
 import java.util.List;
 import java.util.Objects;
-import java.util.Scanner;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import poker.Board;
 import json.JSONDecoder;
 import json.JSONEncoder;
@@ -36,6 +33,7 @@ public class HumanCompleteStrategy extends HumanStrategy{
     /**
      * Costruttore della classe
      * @param socket il socket del client
+     * @throws java.io.IOException in caso di problemi con InputStream / OutputStream
      */
     public HumanCompleteStrategy(Socket socket) throws IOException {
         this.socket = socket;
@@ -54,8 +52,8 @@ public class HumanCompleteStrategy extends HumanStrategy{
      * @param bet la scommessa
      * @param allowedActions la lista delle azioni consentite
      * @return l'azione compiuta
-     * @throws java.io.IOException
-     * @throws java.net.SocketTimeoutException
+     * @throws java.io.IOException in caso di errori di stream o codifica/decodifica
+     * @throws java.net.SocketTimeoutException in caso di timeout
      */
     @Override
     public Action act(int minBet, int bet, Set<ActionSet> allowedActions) throws IOException, SocketTimeoutException {
@@ -97,6 +95,7 @@ public class HumanCompleteStrategy extends HumanStrategy{
     /**
      * Invocato quando inizia la mano
      * @param dealer il player dealer della mano attuale
+     * @param dealerPosition la posizione del dealer
      */
     @Override
     public void handStarted(Player dealer, int dealerPosition) {

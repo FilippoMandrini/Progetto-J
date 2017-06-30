@@ -351,6 +351,10 @@ public class Player implements Comparable {
         return !this.cards.isEmpty();
     }
     
+    /**
+     * Indica se il giocatore è in All-In
+     * @return true se il giocatore è in All-In, false altrimenti
+     */
     public boolean isAllIn()
     {
         return (!this.cards.isEmpty() && this.stake == 0);
