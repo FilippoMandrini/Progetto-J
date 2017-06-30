@@ -157,7 +157,7 @@ public class PlayerPanel extends GamePanel {
         playerLabel.setText(player.getName());
         if (player.getName().equalsIgnoreCase("Disconnesso"))
         {
-            waiting(oldName + " - Disconnesso");
+            waiting(player.getName());
         }
     }
     
