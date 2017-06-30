@@ -10,11 +10,19 @@ import poker.Card;
  */
 public class Colore extends Hand{
      
+    /**
+     * Costruttore della classe
+     * @param cards la lista delle carte
+     */
     public Colore(List<Card> cards) {
         super(cards);
         Collections.sort(this.cards);
     }
     
+    /**
+     * Calcola il punteggio della singola mano 
+     * @return il numero rappresentante il punteggio
+     */
     @Override
     public double getPoints() {
         double points = 500;
@@ -27,6 +35,10 @@ public class Colore extends Hand{
         return points;
     }
     
+    /**
+     * Ritorna la descrizione della mano
+     * @return la descrizione della mano
+     */
     @Override
     public String toString()
     {

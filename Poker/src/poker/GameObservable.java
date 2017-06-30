@@ -146,6 +146,9 @@ public abstract class GameObservable {
         }
     }
     
+    /**
+     * Segnala la disconnessione
+     */
     public void notifyDisconnect() {
         for (GameObserver observer : observers) {
             observer.disconnect();          

@@ -69,8 +69,14 @@ public abstract interface GameObserver {
      */
     public void currentPlayerActed(ShadowPlayer shadowCopy);
     
+    /**
+     * Invocato quando il giocatore si disconnette
+     */
     public void disconnect();
     
+    /**
+     * Invocato per il ping
+     */
     public void ping() throws IOException;
     
 }

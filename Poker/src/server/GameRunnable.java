@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package server;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import poker.Game;
 
 /**
- *
- * @author Nickelsilver
+ * Classe del Game (Runnable)
  */
 public class GameRunnable implements Runnable {
     
@@ -20,6 +12,10 @@ public class GameRunnable implements Runnable {
     private final Thread gameThread;
     private final Thread connectionThread;
 
+    /**
+     * Costruttore di GameRunnable
+     * @param game la partita
+     */
     public GameRunnable(Game game) {
         this.game = game;
         checker = new ConnectionChecker(game);
@@ -27,6 +23,9 @@ public class GameRunnable implements Runnable {
         connectionThread = new Thread(checker);
     }
     
+    /**
+     * Lancia in esecuzione la partita
+     */
     @Override
     public void run() {
         connectionThread.start(); 
@@ -38,7 +37,5 @@ public class GameRunnable implements Runnable {
         }
         checker.setIsGameRunning(false);
     }
-    
-    
     
 }

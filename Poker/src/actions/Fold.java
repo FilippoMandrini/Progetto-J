@@ -16,6 +16,12 @@ public class Fold extends Action {
     }
 
     @Override
+    /**
+     * Esegue il ritiro
+     * @param game la partita
+     * @param playersLeft il numero di giocatori che devono ancora agire
+     * @return il numero di giocatori che devono ancora agire dopo questa azione
+     */
     public int execute(GameFacade game, int playersLeft) {
         
         game.foldCurrentPlayer();

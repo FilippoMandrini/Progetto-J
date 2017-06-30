@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package server;
 
 import java.io.IOException;
@@ -14,14 +9,17 @@ import players.Player;
 import poker.Game;
 
 /**
- *
- * @author Nickelsilver
+ * Classe per il controllo delle connessioni
  */
 public class ConnectionChecker implements Runnable {
     
     private boolean isGameRunning;
     private List<Client> clients;
 
+    /**
+     * Costruttore della classe ConnectionChecker
+     * @param game la partita
+     */
     public ConnectionChecker(Game game) 
     {
         isGameRunning = true;
@@ -32,12 +30,18 @@ public class ConnectionChecker implements Runnable {
         }
     }
 
+    /**
+     * Lancia il controllo delle connessioni
+     */
     @Override
     public void run() 
     {
         checkConnections();
     }
 
+    /**
+     * Controlla lo stato delle connessioni dei clients
+     */
     private void checkConnections() 
     {
         while (isGameRunning) 
@@ -67,6 +71,9 @@ public class ConnectionChecker implements Runnable {
         }
     }
     
+    /**
+     * Prepara la lista dei clients connessi
+     */
     public void updateClients()
     {
         ArrayList<Client> connected = new ArrayList<>();
@@ -81,13 +88,20 @@ public class ConnectionChecker implements Runnable {
         clients = connected;
     }
 
+    /**
+     * Segnala se la partita è in corso
+     * @return true se la partita è in esecuzione, false altrimenti
+     */
     public boolean isIsGameRunning() {
         return isGameRunning;
     }
 
+    /**
+     * Imposta se la partita è in corso
+     * @param isGameRunning true se la partita è in esecuzione, false altrimenti
+     */
     public void setIsGameRunning(boolean isGameRunning) {
         this.isGameRunning = isGameRunning;
     }
-    
     
 }

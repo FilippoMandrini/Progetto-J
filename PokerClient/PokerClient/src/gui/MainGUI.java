@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
-/**
- *
- * @author Nickelsilver
- */
 import actions.Action;
 import actions.ActionSet;
 import gametypes.GameType;
@@ -29,29 +20,18 @@ import model.GameObserver;
 import model.Player;
 
 /**
- * The game's main frame.
- * 
- * This is the core class of the Swing UI client application.
- * 
- * @author Oscar Stigter
+ * GUI del gioco
  */
 public class MainGUI extends JFrame implements GameObserver {
         
-    
     private GridBagConstraints gc;
-        
     private CentralPanel centralPanel;
-    
     private MessagePanel messagePanel;
-    
     private Map<Player, PlayerPanel> panelMap;
-    
-    private List<PlayerPanel> panels;
-        
+    private List<PlayerPanel> panels; 
     private final Game game;
     
-    public MainGUI(Game game) {
-        
+    public MainGUI(Game game) {   
         super("Poker Texas Hold'em");
         this.game = game;
         initComponents();

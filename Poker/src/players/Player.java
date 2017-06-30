@@ -78,7 +78,7 @@ public class Player implements Comparable {
 
     /**
      * Imposta l'ID del giocatore
-     * @param id  l'ID del giocatore
+     * @param id l'ID del giocatore
      */
     public void setId(int id) {
         this.id = id;
@@ -86,7 +86,7 @@ public class Player implements Comparable {
 
     /**
      * Restituisce il nome del giocatore
-     * @return nome del giocatore
+     * @return il nome del giocatore
      */
     public String getName() {
         return name;
@@ -204,7 +204,7 @@ public class Player implements Comparable {
     
     /**
      * Dà una carta al giocatore
-     * @param card la carta del giocatore
+     * @param card la carta data al giocatore
      */
     public void addCard(Card card) 
     {
@@ -212,6 +212,10 @@ public class Player implements Comparable {
         this.hasCards = true;
     }
     
+    /**
+     * Resetta le carte del giocatore
+     * @return true se resetta, false altrimenti
+     */
     public boolean resetCards()
     {
         this.hasCards = false;
@@ -219,6 +223,7 @@ public class Player implements Comparable {
         this.active = true;
         return true;
     }
+    
     /**
      * Resetta il giocatore
      * @return true se resetta, altrimenti false
@@ -292,7 +297,9 @@ public class Player implements Comparable {
         this.active = active;
     }
     
-    /** {@inheritDoc} */
+    /**
+     * Override di compareTo necessario per determinare la classifica dei giocatori
+     */
     @Override
     public int compareTo(Object t) {
         final Player other = (Player) t;
@@ -307,7 +314,10 @@ public class Player implements Comparable {
         return 0;
     }
     
-    /** {@inheritDoc} */      
+    /**
+     * Restituisce una stringa col nome del giocatore
+     * @return la stringa con nome del giocatore
+     */      
     @Override
     public String toString() {
         return "Giocatore: " + name;
@@ -324,10 +334,18 @@ public class Player implements Comparable {
         this.setCurrentBet(0);
     }  
 
+    /**
+     * Imposta il nome del giocatore
+     * @param name il nome del giocatore
+     */
     public void setName(String name) {
         this.name = name;
     }
     
+    /**
+     * Ritorna un valore booleano che indica se il giocatore ha le carte
+     * @return true se ha le carte, false altrimenti
+     */
     public boolean hasCards()
     {
         return !this.cards.isEmpty();

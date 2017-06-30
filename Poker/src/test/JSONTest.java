@@ -1,28 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package test;
 
-import actions.Action;
-import actions.ActionSet;
-import actions.Bet;
-import actions.BigBlind;
-import actions.Call;
-import actions.Check;
-import actions.Fold;
-import actions.Raise;
-import actions.SmallBlind;
+import actions.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-import gametypes.CustomGame;
-import gametypes.GameType;
-import gametypes.StandardGame;
+import gametypes.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -38,8 +23,7 @@ import json.JSONEncoder;
 import json.RuntimeTypeAdapterFactory;
 
 /**
- *
- * @author Nickelsilver
+ * Classe di test per la codifica JSON
  */
 public class JSONTest {
 

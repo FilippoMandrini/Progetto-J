@@ -98,9 +98,17 @@ public abstract class Action {
         this.actionType = actionType;
     }
     
+    /**
+     * Esegue l'azione scelta
+     * @param game la partita
+     * @param playersLeft il numero di giocatori che devono ancora agire
+     */
     public abstract int execute(GameFacade game, int playersLeft);
 
-    /** {@inheritDoc} */
+    /**
+     * Ritorna la descrizione dell'azione
+     * @return la descrizione dell'azione
+     */
     @Override
     public String toString()
     {

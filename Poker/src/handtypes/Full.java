@@ -12,17 +12,29 @@ public class Full extends Hand{
     private Card three;
     private Card pair;
 
+    /**
+     * Costruttore della classe
+     * @param cards la lista delle carte
+     */
     public Full(List<Card> cards) {
         super(cards);
         this.three = this.cards.get(0);
         this.pair = this.cards.get(3);
     }
     
+    /**
+     * Calcola il punteggio della singola mano 
+     * @return il numero rappresentante il punteggio
+     */
     @Override
     public double getPoints() {
         return 600 + three.getRank() + (double) pair.getRank() / 100.;
     }
 
+    /**
+     * Ritorna la descrizione della mano
+     * @return la descrizione della mano
+     */
     @Override
     public String toString() 
     {

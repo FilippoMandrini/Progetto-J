@@ -17,6 +17,11 @@ import poker.GameFacade;
     }
 
     @Override
+    /**
+     * Esegue la puntata del grande buio
+     * @param game la partita
+     * @param playersLeft il numero di giocatori che devono ancora agire
+     */
     public int execute(GameFacade game, int playersLeft) {
         game.payCurrentPlayer(amount);
         game.setCurrentPlayerBet(amount);

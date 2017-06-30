@@ -13,6 +13,10 @@ public class Tris extends Hand {
     private Card firstKicker;
     private Card secondKicker;
 
+    /**
+     * Costruttore della classe
+     * @param cards la lista delle carte
+     */
     public Tris(List<Card> cards) {
         super(cards);
         this.three = this.cards.get(0);
@@ -20,11 +24,19 @@ public class Tris extends Hand {
         this.secondKicker = this.cards.get(4);
     }
 
+    /**
+     * Calcola il punteggio della singola mano 
+     * @return il numero rappresentante il punteggio
+     */
     @Override
     public double getPoints() {
         return 300 + three.getRank() + (double) firstKicker.getRank() / 100 + (double) secondKicker.getRank() / 10000;
     }
     
+    /**
+     * Ritorna la descrizione della mano
+     * @return la descrizione della mano
+     */
     @Override
     public String toString()
     {

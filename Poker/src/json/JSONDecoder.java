@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package json;
 
 import actions.*;
@@ -16,8 +11,7 @@ import java.io.InterruptedIOException;
 import java.util.HashMap;
 
 /**
- *
- * @author Nickelsilver
+ * Classe del Decoder JSON
  */
 public class JSONDecoder {
      
@@ -25,6 +19,9 @@ public class JSONDecoder {
     private final Gson gson;
     private final HashMap<String, JSONCommand> commands;
 
+    /**
+     * Costruttore del decoder
+     */
     private JSONDecoder(){
         RuntimeTypeAdapterFactory<Action> afactory = RuntimeTypeAdapterFactory
                 .of(Action.class, "type")
@@ -69,6 +66,12 @@ public class JSONDecoder {
         });
     }
     
+    /**
+     * Esegue la decodifica
+     * @param toDecode stringa da decodificare
+     * @return l'oggetto dopo la decodifica
+     * @throws InterruptedIOException quando manca la stringa da decodificare
+     */
     public Object decode(String toDecode) throws InterruptedIOException
     {
         JsonParser parser = new JsonParser();  
@@ -85,6 +88,10 @@ public class JSONDecoder {
         return null;
     }
     
+    /**
+     * Restituisce l'istanza del decoder
+     * @return l'istanza del decoder
+     */
     public static synchronized JSONDecoder getInstance()
     {
         if (instance == null)

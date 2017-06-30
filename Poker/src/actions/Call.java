@@ -16,8 +16,13 @@ public class Call extends Action {
     }
 
     @Override
+    /**
+     * Esegue la chiamata
+     * @param game la partita
+     * @param playersLeft il numero di giocatori che devono ancora agire
+     * @return il numero di giocatori che devono ancora agire dopo questa azione
+     */
     public int execute(GameFacade game, int playersLeft) {
-
         int callAmount = game.getBet() - game.getCurrentPlayerBet();
         if (callAmount > game.getCurrentPlayerStake())
         {

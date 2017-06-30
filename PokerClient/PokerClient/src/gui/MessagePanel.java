@@ -1,20 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import model.Game;
 
 /**
- *
- * @author Nickelsilver
+ * Pannello dei messaggi
  */
 public class MessagePanel extends GamePanel {
 
     /**
-     * Creates new form MessagePanel
+     * Crea un nuovo MessagePanel
      */
     public MessagePanel(Game game) {
         super(game);

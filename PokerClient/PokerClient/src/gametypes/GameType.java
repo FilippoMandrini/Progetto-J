@@ -17,17 +17,21 @@ public abstract class GameType {
     
     /**
      * Ritorna la descrizione delle impostazioni
-     * @return descrizione delle impostazioni
+     * @return la descrizione delle impostazioni
      */
     public abstract String getDescription();
     
     /**
      * Ritorna la descrizione dettagliata delle impostazioni
-     * @return descrizione dettagliata delle impostazioni
+     * @return la descrizione dettagliata delle impostazioni
      */
     @Override
     public abstract String toString();
     
+    /**
+     * Ritorna il nome delle impostazioni
+     * @return il nome delle impostazioni
+     */
     public abstract String getName();
 
     /**
@@ -78,15 +82,20 @@ public abstract class GameType {
         this.startingStake = startingStake;
     }  
 
+    /**
+     * Ritorna la durata delle azioni dei bot
+     * @return la durata delle azioni dei bot
+     */
     public int getAIdelay() {
         return AIdelay;
     }
 
+    /**
+     * Indica se sono ammessi solo giocatori umani
+     * @return true se sono ammessi solo umani, false altrimenti
+     */
     public boolean isOnlyHumans() {
         return onlyHumans;
     }
-    
-    
-    
     
 }

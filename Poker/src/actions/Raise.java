@@ -18,6 +18,13 @@ public class Raise extends Action {
     }   
     
     @Override
+    /**
+     * Esegue il rilancio
+     * @param game la partita
+     * @param playersLeft il numero di giocatori che devono ancora agire
+     * @throws IllegalActionException quando il valore del raise supera lo stake del giocatore
+     * @return il numero di giocatori che devono ancora agire dopo questa azione
+     */
     public int execute(GameFacade game, int playersLeft) {
 
         if (game.getBet() + amount - game.getCurrentPlayerBet() > game.getCurrentPlayerStake())

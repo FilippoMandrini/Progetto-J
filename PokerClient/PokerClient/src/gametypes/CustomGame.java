@@ -5,18 +5,28 @@ package gametypes;
  */
 public class CustomGame extends GameType{
 
-    /** {@inheritDoc} */
+    /**
+     * Ritorna la descrizione delle impostazioni
+     * @return la descrizione delle impostazioni
+     */
     @Override
     public String getDescription() {  
         return "Variante personalizzata del poker nella sua versione HoldEm";
     }
 
-    /** {@inheritDoc} */
+    /**
+     * Ritorna la descrizione dettagliata delle impostazioni
+     * @return la descrizione dettagliata delle impostazioni
+     */
     @Override
     public String toString() {
         return "Big Blind di base: " + this.bigBlind + "\nIl Big Blind raddoppia: " + !this.isBigBlindFixed + "\nMax giocatori: " + this.maxPlayers +"\nMax numero di raise: " + this.maxRaises;
     }
     
+    /**
+     * Ritorna il nome delle impostazioni
+     * @return il nome delle impostazioni
+     */
     @Override
     public String getName()
     {
@@ -25,8 +35,8 @@ public class CustomGame extends GameType{
 
 
     /**
-     * Imposta il valore massimo dei giocatori
-     * @param maxPlayers valore massimo dei giocatori
+     * Imposta il numero massimo dei giocatori
+     * @param maxPlayers il numero massimo dei giocatori
      */
     public void setMaxPlayers(int maxPlayers) {
         this.maxPlayers = maxPlayers;
@@ -34,7 +44,7 @@ public class CustomGame extends GameType{
 
     /**
      * Imposta il numero massimo dei raise
-     * @param maxRaises numero massimo dei raise
+     * @param maxRaises il numero massimo dei raise
      */
     public void setMaxRaises(int maxRaises) {
         this.maxRaises = maxRaises;
@@ -94,10 +104,18 @@ public class CustomGame extends GameType{
         this.alwaysDoShowdown = alwaysDoShowdown;
     }
 
+    /**
+     * Ritorna la durata delle azioni dei bot
+     * @return la durata delle azioni dei bot
+     */
     public int getAIdelay() {
         return AIdelay;
     }
 
+    /**
+     * Imposta la durata delle azioni dei bot
+     * @param AIdelay la durata delle azioni dei bot
+     */
     public void setAIdelay(int AIdelay) {
         this.AIdelay = AIdelay;
     }

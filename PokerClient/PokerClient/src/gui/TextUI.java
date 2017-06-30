@@ -1,19 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
-import actions.Action;
-import actions.ActionSet;
-import actions.Bet;
-import actions.BigBlind;
-import actions.Call;
-import actions.Check;
-import actions.Fold;
-import actions.Raise;
-import actions.SmallBlind;
+import actions.*;
 import client.Sender;
 import gametypes.GameType;
 import java.util.List;
@@ -26,8 +13,7 @@ import model.GameObserver;
 import model.Player;
 
 /**
- *
- * @author Nickelsilver
+ * Classe per il testo della GUI
  */
 public class TextUI implements GameObserver {
 

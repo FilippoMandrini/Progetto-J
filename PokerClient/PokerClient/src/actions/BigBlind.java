@@ -6,7 +6,7 @@ package actions;
  public class BigBlind extends Action {
 
     /**
-     * Costruttore che rappresenta il BigBlind
+     * Costruttore di BigBlind
      * @param amount valore del grande buio
      */
     public BigBlind(int amount) {

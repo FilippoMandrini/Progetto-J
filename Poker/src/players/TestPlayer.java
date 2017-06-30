@@ -1,10 +1,8 @@
 package players;
 
-import actions.Action;
-import actions.GenericAction;
-import java.io.BufferedReader;
-import java.util.Scanner;
-
+/**
+ * Classe per un giocatore di prova
+ */
 public class TestPlayer extends Player {
     
     public TestPlayer(String name) {

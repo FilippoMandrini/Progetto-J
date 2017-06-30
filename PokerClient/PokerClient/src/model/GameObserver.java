@@ -3,9 +3,7 @@ package model;
 import actions.ActionSet;
 import gametypes.*;
 import java.util.List;
-import java.util.Observer;
 import java.util.Set;
-
 
 /**
  * Interfaccia observer del game
@@ -21,6 +19,7 @@ public abstract interface GameObserver {
     /**
      * Invocato quando si aggiorna lo stato di un giocatore
      * @param player il giocatore
+     * @param toShow true se è da mostrare
      */
     public void playerUpdated(Player player, boolean toShow);
     
@@ -40,6 +39,7 @@ public abstract interface GameObserver {
     /**
      * Invocato quando inizia la mano
      * @param dealer il player dealer della mano attuale
+     * @param dealerPosition la posizione del dealer
      */
     public void handStarted(Player dealer, int dealerPosition);
     
@@ -66,12 +66,21 @@ public abstract interface GameObserver {
 
     /**
      * Invocato quando il giocatore attuale compie un'azione
-     * @param shadowCopy la copia pubblica del giocatore
+     * @param player il giocatore attuale
      */
     public void currentPlayerActed(Player player);
 
+    /**
+     * Invocato quando viene richiesta un'azione
+     * @param bet la puntata
+     * @param minBet la puntata minima
+     * @param allowedActions le azioni consentite
+     */
     public void actionRequest(int bet, int minBet, Set<ActionSet> allowedActions);
     
+    /**
+     * Invocato quando il giocatore si disconnette
+     */
     public void disconnect();
     
 }

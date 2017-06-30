@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import actions.Action;
@@ -22,23 +17,16 @@ import json.JSONEncoder;
 import model.Game;
 
 /**
- *
- * @author Nickelsilver
+ * Classe per il pannello dei controlli
  */
 public class ControlPanel extends GamePanel{
     
-    private final JButton checkButton;
-    
-    private final JButton callButton;
-    
-    private final JButton betButton;
-    
-    private final JButton raiseButton;
-    
+    private final JButton checkButton;    
+    private final JButton callButton; 
+    private final JButton betButton; 
+    private final JButton raiseButton;  
     private final JButton foldButton;
-    
     private final AmountPanel amountPanel;    
-    
     private Action selectedAction;
             
     public ControlPanel(Game game) {

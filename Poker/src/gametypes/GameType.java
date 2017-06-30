@@ -17,17 +17,21 @@ public abstract class GameType {
     
     /**
      * Ritorna la descrizione delle impostazioni
-     * @return descrizione delle impostazioni
+     * @return la descrizione delle impostazioni
      */
     public abstract String getDescription();
     
     /**
      * Ritorna la descrizione dettagliata delle impostazioni
-     * @return descrizione dettagliata delle impostazioni
+     * @return la descrizione dettagliata delle impostazioni
      */
     @Override
     public abstract String toString();
     
+    /**
+     * Ritorna il nome delle impostazioni
+     * @return il nome delle impostazioni
+     */
     public abstract String getName();
 
     /**
@@ -78,15 +82,20 @@ public abstract class GameType {
         this.startingStake = startingStake;
     }  
 
+    /**
+     * Ritorna il ritardo per le azioni dei bot
+     * @return il ritardo per le azioni dei bot
+     */
     public int getAIdelay() {
         return AIdelay;
     }
 
+    /**
+     * Ritorna se la partita è solo con giocatori umani
+     * @return true se la partita è solo con giocatori umani, false altrimenti
+     */
     public boolean isOnlyHumans() {
         return onlyHumans;
     }
-    
-    
-    
     
 }
