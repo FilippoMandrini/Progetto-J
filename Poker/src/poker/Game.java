@@ -522,7 +522,6 @@ public class Game extends GameObservable implements Runnable {
         return noOfPlayers;
     }
 
-
     /**
      * Restituisce i giocatori
      * @return la lista dei giocatori
@@ -658,5 +657,4 @@ public class Game extends GameObservable implements Runnable {
     public synchronized GameFacade getFacade() {
         return facade;
     }
-
 }
