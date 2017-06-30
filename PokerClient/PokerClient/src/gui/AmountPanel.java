@@ -18,7 +18,6 @@ public class AmountPanel extends GamePanel {
     public AmountPanel(Game game) {
         super(game);
         initComponents();
-        
     }
 
     @SuppressWarnings("unchecked")
@@ -95,7 +94,7 @@ public class AmountPanel extends GamePanel {
 
     /**
      * Aggiorna il pannello per l'azione
-     * @param defaultAction azione di default
+     * @param defaultAction l'azione
      */
     public void act(Action defaultAction)
     {

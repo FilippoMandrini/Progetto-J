@@ -13,11 +13,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
-import json.JSONEncoder;
 import model.Game;
 
 /**
- * Classe per il pannello dei controlli
+ * Classe per il pannello dei pulsanti
  */
 public class ControlPanel extends GamePanel{
     
@@ -28,7 +27,11 @@ public class ControlPanel extends GamePanel{
     private final JButton foldButton;
     private final AmountPanel amountPanel;    
     private Action selectedAction;
-            
+
+    /**
+     * Costruttore di ControlPanel
+     * @param game la partita
+     */
     public ControlPanel(Game game) {
         super(game);
         Dimension dim = new Dimension(520, 50);
@@ -59,6 +62,9 @@ public class ControlPanel extends GamePanel{
       });
     }
     
+    /**
+     * Resetta il pannello
+     */
     private void resetPanel()
     {
         removeAll();
@@ -66,13 +72,17 @@ public class ControlPanel extends GamePanel{
         validate();
     }
 
+    /**
+     * Crea un pulsante
+     * @param action l'azione associata al pulsante
+     * @return il pulsante creato
+     */
     private JButton createActionButton(ActionSet action) {
         JButton button = new JButton(action.getName());
         button.setSize(100, 30);
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
                 ActionFactory factory = new ActionFactory();
                 try 
                 {
@@ -113,8 +123,11 @@ public class ControlPanel extends GamePanel{
         return button;
     }
     
+    /**
+     * Aggiunge i pulsanti delle azioni consentite
+     * @param allowedActions le azioni consentite
+     */
     public void act(Set<ActionSet> allowedActions) {
-
         SwingUtilities.invokeLater(new Runnable() 
         {
             @Override

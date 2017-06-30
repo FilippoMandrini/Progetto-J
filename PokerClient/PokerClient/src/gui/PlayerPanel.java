@@ -117,7 +117,7 @@ public class PlayerPanel extends GamePanel {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Modifica pannello per l'attesa
+     * Modifica il pannello per l'attesa
      * @param parameter stringa da visualizzare
      */
     public void waiting(String parameter)
@@ -128,7 +128,7 @@ public class PlayerPanel extends GamePanel {
     }
     
     /**
-     * Modifica pannella per lo stato attivo
+     * Modifica il pannello per lo stato attivo
      */
     public void activate()
     {
@@ -241,7 +241,7 @@ public class PlayerPanel extends GamePanel {
     
     /**
      * Imposta la visualizzazione del giocatore attuale
-     * @param isCurrent true se ilgiocatore sta agendo, false altrimenti
+     * @param isCurrent true se il giocatore sta agendo, false altrimenti
      */
     public void setCurrent(boolean isCurrent)
     {

@@ -34,39 +34,71 @@ public class CentralPanel extends GamePanel {
         addComponent(boardPanel, 0, 0, 1, 1);
     }
 
+    /**
+     * Ritorna il pannello dei controlli
+     * @return il pannello dei controlli
+     */
     public ControlPanel getControlPanel() {
         return controlPanel;
     }
 
+    /**
+     * Ritorna il pannello del Board
+     * @return il pannello del Board
+     */
     public BoardPanel getBoardPanel() {
         return boardPanel;
     }
     
+    /**
+     * Permette di visualizzare i pulsanti per le azioni consentite
+     * @param allowedActions le azioni consentite
+     */
     public void actionRequest(Set<ActionSet> allowedActions)
     {
         controlPanel.act(allowedActions);
     }
     
+    /**
+     * Imposta il messaggio del Board
+     * @param message il messaggio del Board
+     */
     public void setMessage(String message)
     {
         boardPanel.setMessage(message);
     }
     
+    /**
+     * Imposta l'intestazione del Board
+     * @param header l'intestazione del Board
+     */
     public void setHeader(String header)
     {
         boardPanel.setHeader(header);
     }
     
+    /**
+     * Aggiorna la visualizzazione delle carte comuni
+     * @param cards le carte comuni
+     */
     public void updateBoardCards(List<Card> cards)
     {
         boardPanel.updateCards(cards);
     }
     
+    /**
+     * Aggiona la puntata sul Board
+     * @param bet la puntata
+     * @param totalPot il pot complessivo
+     */
     public void updateBoardBetting(int bet, int totalPot)
     {
         boardPanel.updateBetting(bet, totalPot);
     }
     
+    /**
+     * Imposta lo sfondo del Board dopo la disconnessione
+     */
     public void disconnect()
     {
         boardPanel.setBackground(Color.GRAY);
@@ -88,6 +120,14 @@ public class CentralPanel extends GamePanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Aggiunge un Component
+     * @param component l'elemento
+     * @param x coordinata x
+     * @param y coordinata y
+     * @param width larghezza
+     * @param height altezza
+     */
     private void addComponent(Component component, int x, int y, int width, int height) {
         gc.gridx = x;
         gc.gridy = y;

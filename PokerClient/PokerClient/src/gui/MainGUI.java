@@ -88,6 +88,11 @@ public class MainGUI extends JFrame implements GameObserver {
 
     /**
      * Aggiunge un Component
+     * @param component l'elemento
+     * @param x la coordinata x
+     * @param y la coordinata y
+     * @param width la largezza
+     * @param height l'altezza
      */
     private void addComponent(Component component, int x, int y, int width, int height) {
         gc.gridx = x;
