@@ -34,4 +34,6 @@ public class ShadowPlayer extends Player{
         this.hasCards = hasCards;
     } 
     
+    
+    
 }

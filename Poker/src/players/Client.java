@@ -3,8 +3,8 @@ package players;
 import actions.Action;
 import actions.ActionSet;
 import java.io.IOException;
-import java.net.SocketTimeoutException;
 import java.util.Set;
+import java.util.concurrent.TimeoutException;
 import poker.GameObserver;
 
 /**
@@ -21,7 +21,7 @@ public interface Client extends GameObserver{
      * @throws java.io.IOException
      * @throws java.net.SocketTimeoutException
      */
-    public Action act(int minBet, int bet, Set<ActionSet> allowedActions) throws IOException, SocketTimeoutException;
+    public Action act(int minBet, int bet, Set<ActionSet> allowedActions) throws IOException, TimeoutException;
     
     /**
      * Restituisce un valore booleano che indica se è raggiungibile

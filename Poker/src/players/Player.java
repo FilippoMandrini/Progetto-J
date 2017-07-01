@@ -1,6 +1,7 @@
 package players;
 
 import actions.Action;
+import actions.ActionSet;
 import actions.Fold;
 import handtypes.Hand;
 import java.util.ArrayList;
@@ -8,6 +9,8 @@ import java.util.List;
 import java.util.Objects;
 import poker.Card;
 import annotations.JSONExclude;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Classe astratta che rappresenta un generico giocatore
@@ -16,7 +19,7 @@ public class Player implements Comparable {
 
     protected String name;
     private int stake;
-    private ArrayList<Card> cards;
+    private final ArrayList<Card> cards;
     @JSONExclude
     private Hand currentHand;
     private boolean active;
@@ -66,6 +69,111 @@ public class Player implements Comparable {
         this.stake = stake;
         this.client = null;
         this.cards = new ArrayList<>();
+    }
+    
+    /**
+     * Resetta le carte del giocatore
+     * @return true se resetta, false altrimenti
+     */
+    public boolean resetCards()
+    {
+        this.hasCards = false;
+        this.cards.clear();
+        this.active = true;
+        return true;
+    }
+    
+    /**
+     * Resetta il giocatore
+     * @return true se resetta, altrimenti false
+     */
+    public boolean resetAll() 
+    {
+        resetCards();
+        this.lastAction = null;
+        return true;
+    }
+    
+    /**
+     * Restituisce una copia del giocatore senza informazioni sensibili
+     * @return una copia del giocatore
+     */
+    public ShadowPlayer getShadowCopy()
+    {
+        ShadowPlayer copy = new ShadowPlayer(name, stake, id);
+        copy.setHasCards(!this.cards.isEmpty());
+        copy.setCurrentBet(currentBet);
+        copy.setLastAction(lastAction);
+        copy.setActive(active);
+        return copy;
+    }
+        
+    /**
+     * Paga la quota della scommessa richiesta per giocare
+     * @param amount la quota della scommessa
+     * @throws IllegalArgumentException se lo stake e' insufficiente
+     */
+    public void pay(int amount)
+    {
+        if (amount > stake)
+        {
+            throw new IllegalArgumentException("Stake insufficiente per coprire puntata");
+        }
+        this.stake -= amount;
+    }
+        
+    /**
+     * Folda le carte del giocatore
+     */
+    public void foldCards()
+    {
+        resetCards();
+        setActive(false);
+        lastAction = new Fold();
+        this.setCurrentBet(0);
+    }  
+    
+        
+    /**
+     * Ritorna un set delle mosse che il giocatore può compiere
+     * @param bet la scommessa attuale del gioco
+     * @param raises il numero di raise attuale
+     * @param maxRaises il massimo numero di raise permesso dal gioco
+     * @return set delle mosse che il giocatore può compiere
+     */
+    public Set<ActionSet> getActionSet(int bet, int raises, int maxRaises)
+    {
+        Set<ActionSet> allowedActions = new HashSet<>();
+        if (this.isAllIn())
+        {
+            allowedActions.add(ActionSet.CHECK);
+        }
+        else
+        {
+            if (bet == 0)
+            {
+                allowedActions.add(ActionSet.CHECK);
+                allowedActions.add(ActionSet.BET);
+            }
+            else if (currentBet < bet)
+            {
+                allowedActions.add(ActionSet.CALL);
+                if(raises < maxRaises && (bet - currentBet) < stake)
+                {
+                    allowedActions.add(ActionSet.RAISE);
+                }
+            }
+            else
+            {
+                allowedActions.add(ActionSet.CHECK);
+                if(raises < maxRaises && (bet - currentBet) < stake)
+                {
+                    allowedActions.add(ActionSet.RAISE);
+                }
+            }
+            allowedActions.add(ActionSet.FOLD);
+        }
+        return allowedActions;
     }
 
     /**
@@ -124,57 +232,12 @@ public class Player implements Comparable {
         return lastAction;
     }
 
-    /** {@inheritDoc} */      
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.name);
-        hash = 23 * hash + this.id;
-        return hash;
-    }
-
-    /** {@inheritDoc} */      
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Player other = (Player) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        return true;
-    }
-
     /**
      * Imposta lo stake del giocatore
      * @param stake lo stake di partenza del giocatore
      */
     public void setStake(int stake) {
         this.stake = stake;
-    }
-    
-    /**
-     * Paga la quota della scommessa richiesta per giocare
-     * @param amount la quota della scommessa
-     * @throws IllegalArgumentException se lo stake e' insufficiente
-     */
-    public void pay(int amount)
-    {
-        if (amount > stake)
-        {
-            throw new IllegalArgumentException("Stake insufficiente per coprire puntata");
-        }
-        this.stake -= amount;
     }
     
     /**
@@ -210,43 +273,6 @@ public class Player implements Comparable {
     {
         this.cards.add(card);
         this.hasCards = true;
-    }
-    
-    /**
-     * Resetta le carte del giocatore
-     * @return true se resetta, false altrimenti
-     */
-    public boolean resetCards()
-    {
-        this.hasCards = false;
-        this.cards.clear();
-        this.active = true;
-        return true;
-    }
-    
-    /**
-     * Resetta il giocatore
-     * @return true se resetta, altrimenti false
-     */
-    public boolean reset() 
-    {
-        resetCards();
-        this.lastAction = null;
-        return true;
-    }
-    
-    /**
-     * Restituisce una copia del giocatore senza informazioni sensibili
-     * @return una copia del giocatore
-     */
-    public ShadowPlayer getShadowCopy()
-    {
-        ShadowPlayer copy = new ShadowPlayer(name, stake, id);
-        copy.setHasCards(!this.cards.isEmpty());
-        copy.setCurrentBet(currentBet);
-        copy.setLastAction(lastAction);
-        copy.setActive(active);
-        return copy;
     }
     
     /**
@@ -296,24 +322,7 @@ public class Player implements Comparable {
     public void setActive(boolean active) {
         this.active = active;
     }
-    
-    /**
-     * Override di compareTo necessario per determinare la classifica dei giocatori
-     */
-    @Override
-    public int compareTo(Object t) {
-        final Player other = (Player) t;
-        double diff = other.getHandPoints() - this.getHandPoints();
-        if(diff>0)
-            return 1;
-        if(diff==0)
-            return 0;
-        if(diff<0)
-            return -1;
-        
-        return 0;
-    }
-    
+
     /**
      * Restituisce una stringa col nome del giocatore
      * @return la stringa con nome del giocatore
@@ -322,17 +331,6 @@ public class Player implements Comparable {
     public String toString() {
         return "Giocatore: " + name;
     }
-    
-    /**
-     * Folda le carte del giocatore
-     */
-    public void foldCards()
-    {
-        resetCards();
-        setActive(false);
-        lastAction = new Fold();
-        this.setCurrentBet(0);
-    }  
 
     /**
      * Imposta il nome del giocatore
@@ -359,4 +357,54 @@ public class Player implements Comparable {
     {
         return (!this.cards.isEmpty() && this.stake == 0);
     }
+        
+    /**
+     * Override di compareTo necessario per determinare la classifica dei giocatori
+     * @param t
+     */
+    @Override
+    public int compareTo(Object t) {
+        final Player other = (Player) t;
+        double diff = other.getHandPoints() - this.getHandPoints();
+        if(diff>0)
+            return 1;
+        if(diff==0)
+            return 0;
+        if(diff<0)
+            return -1;
+        
+        return 0;
+    }
+    
+    /** {@inheritDoc} */      
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 23 * hash + Objects.hashCode(this.name);
+        hash = 23 * hash + this.id;
+        return hash;
+    }
+
+    /** {@inheritDoc} */      
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Player other = (Player) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

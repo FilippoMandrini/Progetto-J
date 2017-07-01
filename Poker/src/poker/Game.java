@@ -6,8 +6,8 @@ import exceptions.*;
 import gametypes.*;
 import handtypes.*;
 import java.io.IOException;
-import java.net.SocketTimeoutException;
 import java.util.*;
+import java.util.concurrent.TimeoutException;
 import utilities.HandEvaluator;
 
 /**
@@ -77,13 +77,19 @@ public class Game extends GameObservable implements Runnable {
         bet = 0;
         for (Player player : players)
         {
-            player.reset();
+            player.resetAll();
             player.setActive(false);
         }
         notifyHiddenPlayersUpdated(players);
-        setActivePlayers();
-        if (activePlayers.get(0).getStake()!= 0)
-            notifyMessageUpdated("Game Over : " + activePlayers.get(0).getName() + " ha vinto");
+        Collections.sort(players, (Player o1, Player o2) -> o2.getStake()-o1.getStake());
+        if (players.get(0).getClient().isHuman())
+        {
+            notifyMessageUpdated("Game over : " + players.get(0).getName() + " ha vinto");
+        }
+        else
+        {
+            notifyMessageUpdated("Game over : hai perso");
+        }
         notifyDisconnect();
     }
     
@@ -111,23 +117,18 @@ public class Game extends GameObservable implements Runnable {
         catch (InterruptedException ex) {}
         betBigBlind();
         preFlop();
-        if (activePlayers.size() > 1) 
+        int[] stageCards = {3, 1, 1};
+        for (int i = 0; i < stageCards.length + 1; i++)
         {
-            nextHandStage(3);
-            if (activePlayers.size() > 1) 
+            if (activePlayers.size() > 1)
             {
-                nextHandStage(1);
-                if (activePlayers.size() > 1) 
-                {
-                    nextHandStage(1);
-                    if (activePlayers.size() > 1) 
-                    {
-                        showdown();
-                    }
-                }
+                if(i < stageCards.length)
+                    nextHandStage(stageCards[i]);
+                else
+                    showdown();
             }
         }
-    }    
+    }
     
     /**
      * Reinizializza il tavolo per poter iniziare una nuova mano.
@@ -145,7 +146,7 @@ public class Game extends GameObservable implements Runnable {
         activePlayers.clear();
         for (Player player: players)
         {
-            player.reset();
+            player.resetAll();
         }
         setActivePlayers();
         shiftDealer();
@@ -204,7 +205,7 @@ public class Game extends GameObservable implements Runnable {
      */
     private int askAndExecuteAction(int playersLeft) 
     {
-        Action action = null;
+        Action action;
         try 
         {
             if (currentPlayer.isAllIn()) 
@@ -213,73 +214,39 @@ public class Game extends GameObservable implements Runnable {
             } 
             else 
             {
-                Set<ActionSet> allowedActions = getActionSet(currentPlayer);
+                Set<ActionSet> allowedActions = currentPlayer.getActionSet(bet, raises, settings.getMaxRaises());
                 action = currentPlayer.getClient().act(minBet, bet, allowedActions);
-                if (action == null || !(allowedActions.contains(action.getActionType()))) 
+                if (!(allowedActions.contains(action.getActionType()))) 
                 {
                     throw new IllegalActionException("Azione non possibile!");
                 }
             }
         } 
-        catch (SocketTimeoutException e) 
+        catch (TimeoutException ex) 
         {
             action = new Fold();
             currentPlayer.getClient().disconnect();
             disconnectPlayer(currentPlayer);
             notifyHiddenPlayersUpdated(players);
         } 
-        catch (IllegalActionException | IOException e) 
+        catch (IllegalActionException | IOException | NullPointerException ex) 
         {
             action = new Fold();
             disconnectPlayer(currentPlayer);
             notifyHiddenPlayersUpdated(players);
         }
-        playersLeft = action.execute(facade, playersLeft);
+        try
+        {
+            playersLeft = action.execute(facade, playersLeft);
+        }
+        catch (IllegalActionException ex)
+        {
+            action = new Fold();
+            playersLeft = action.execute(facade, playersLeft);
+        }
         currentAction = action;
         currentPlayer.setLastAction(action);
         return playersLeft;
-    }
-    
-    /**
-     * Ritorna un set delle mosse che il giocatore può compiere
-     * @param player il giocatore
-     * @return set delle mosse che il giocatore può compiere
-     */
-    private Set<ActionSet> getActionSet(Player player)
-    {
-        Set<ActionSet> allowedActions = new HashSet<>();
-        if (player.isAllIn())
-        {
-            allowedActions.add(ActionSet.CHECK);
-        }
-        else
-        {
-            int currentPlayerBet = player.getCurrentBet();
-            int currentPlayerStake = player.getStake();
-            if (bet == 0)
-            {
-                allowedActions.add(ActionSet.CHECK);
-                allowedActions.add(ActionSet.BET);
-            }
-            else if (currentPlayerBet < bet)
-            {
-                allowedActions.add(ActionSet.CALL);
-                if(raises < settings.getMaxRaises() && (bet - currentPlayerBet) < currentPlayerStake)
-                {
-                    allowedActions.add(ActionSet.RAISE);
-                }
-            }
-            else
-            {
-                allowedActions.add(ActionSet.CHECK);
-                if(raises < settings.getMaxRaises() && (bet - currentPlayerBet) < currentPlayerStake)
-                {
-                    allowedActions.add(ActionSet.RAISE);
-                }
-            }
-            allowedActions.add(ActionSet.FOLD);
-        }
-        return allowedActions;
     }
     
     /**
@@ -389,7 +356,7 @@ public class Game extends GameObservable implements Runnable {
         }
         List<Player> playersToShowList = new ArrayList<>(playersToShow);
         notifyPlayersUpdated(playersToShowList);
-        potHandler.distributePots(getRanking(), activePlayers, dealerPosition);
+        potHandler.distributePots(getRanking(activePlayers), activePlayers, dealerPosition);
         notifyPlayersUpdated(players);
         try 
         {
@@ -400,12 +367,13 @@ public class Game extends GameObservable implements Runnable {
 
     /**
      * Restituisce la classifica dei giocatori in base alle mani 
+     * @param players i giocatori di cui calcolare la classifica
      * @return la classifica dei giocatori in base alle mani
      */
-    private Map<Hand, List<Player>> getRanking()
+    public Map<Hand, List<Player>> getRanking(List<Player> players)
     {
         Map<Hand, List<Player>> ranking = new TreeMap<>();
-        for (Player player : activePlayers)
+        for (Player player : players)
         {
             List<Player> currentHandPlayers = ranking.get(player.getCurrentHand());
 

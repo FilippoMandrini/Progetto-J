@@ -9,7 +9,7 @@ import server.Server;
 public class ServerTest {
     
     public static void main(String[] args) throws IOException {
-        Thread server = new Thread(new Server());
+        Thread server = new Thread(new Server(10000, 30000));
         server.start();
     }
 }

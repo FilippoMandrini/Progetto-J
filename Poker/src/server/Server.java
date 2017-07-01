@@ -24,14 +24,21 @@ public class Server implements Runnable {
     private PrintStream out = null;
     private final ServerSocket socket;
     private final int MAX_NO_OF_GAMES = 2;
+    private final int ACCEPT_TO;
+    private final int READ_TO;
+    
 
     /**
      * Costruttore della classe server
+     * @param acceptTO tiemout di attesa massima prima di far partire il gioco
+     * @param readTO timeout di attesa massima di un giocatore durante la partita
      * @throws IOException 
      */
-    public Server() throws IOException  {
+    public Server(int acceptTO, int readTO) throws IOException  {
         this.socket = new ServerSocket(7777);
-        this.socket.setSoTimeout(10000);
+        this.ACCEPT_TO = acceptTO;
+        this.READ_TO = readTO;
+        this.socket.setSoTimeout(ACCEPT_TO);
     }
     
     /**
@@ -46,8 +53,8 @@ public class Server implements Runnable {
         for(int i = 0; i < MAX_NO_OF_GAMES; i++)
         {
             int numClients = 0;
-            Socket client = null;
-            Game game = new Game(new StandardGame(1000));
+            Socket client;
+            Game game = new Game(new StandardGame(75));
             while (numClients == 0)
             {
                 try 
@@ -55,7 +62,7 @@ public class Server implements Runnable {
                     while (numClients < game.getSettings().getMaxPlayers()) 
                     {
                         client = socket.accept();
-                        client.setSoTimeout(0);
+                        client.setSoTimeout(READ_TO);
                         in = new BufferedReader(new InputStreamReader(client.getInputStream()));
                         out = new PrintStream(client.getOutputStream(), true);
                         out.println(JSONEncoder.getInstance().encodeGameJoined());

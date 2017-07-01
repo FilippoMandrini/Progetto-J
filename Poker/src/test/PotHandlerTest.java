@@ -76,7 +76,7 @@ public class PotHandlerTest {
         int dealerPosition = 1;
         for (Player player : G1.getPlayers())
         {
-            player.reset();
+            player.resetAll();
         }
         A1.setActive(true);
         A2.setActive(true);

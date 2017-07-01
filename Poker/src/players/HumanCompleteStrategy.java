@@ -12,6 +12,7 @@ import java.net.SocketTimeoutException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.TimeoutException;
 import poker.Board;
 import json.JSONDecoder;
 import json.JSONEncoder;
@@ -53,13 +54,21 @@ public class HumanCompleteStrategy extends HumanStrategy{
      * @param allowedActions la lista delle azioni consentite
      * @return l'azione compiuta
      * @throws java.io.IOException in caso di errori di stream o codifica/decodifica
-     * @throws java.net.SocketTimeoutException in caso di timeout
+     * @throws java.util.concurrent.TimeoutException in caso di timeout
      */
     @Override
-    public Action act(int minBet, int bet, Set<ActionSet> allowedActions) throws IOException, SocketTimeoutException {
+    public Action act(int minBet, int bet, Set<ActionSet> allowedActions) throws IOException, TimeoutException {
         out.println(JSONEncoder.getInstance().encodeAct(minBet, bet, allowedActions));
         blocked = true;
-        String toDecode = in.readLine();
+        String toDecode = new String();
+        try
+        {
+             toDecode = in.readLine();
+        }
+        catch (SocketTimeoutException ex)
+        {
+            throw new TimeoutException("Timeout");
+        }
         Action action = (Action)JSONDecoder.getInstance().decode(toDecode);
         blocked = false;
         return action;
