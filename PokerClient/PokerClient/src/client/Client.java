@@ -44,7 +44,6 @@ public class Client implements Runnable {
         Game game = new Game();
         MainGUI mainGui = new MainGUI(game);
         mainGui.pack();
-        mainGui.setResizable(false);
         mainGui.setLocationRelativeTo(null);
         mainGui.setVisible(true);    
         game.addObserver(mainGui);

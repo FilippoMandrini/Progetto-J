@@ -151,6 +151,15 @@ public class PlayerPanel extends GamePanel {
         {
             actionLabel.setText("");
         }    
+        int bet = player.getCurrentBet();
+        if (bet == 0) 
+        {
+            betLabel.setText("");
+        } 
+        else 
+        {
+            betLabel.setText("€ " + bet);
+        }
     }
     
     /**
@@ -184,15 +193,6 @@ public class PlayerPanel extends GamePanel {
     {
         updateName(player);
         updateStake(player);
-        int bet = player.getCurrentBet();
-        if (bet == 0) 
-        {
-            betLabel.setText("");
-        } 
-        else 
-        {
-            betLabel.setText("€ " + bet);
-        }
         updateAction(player);
         if (player.hasCards()) 
         {
