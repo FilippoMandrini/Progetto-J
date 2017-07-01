@@ -54,7 +54,7 @@ public class Server implements Runnable {
         {
             int numClients = 0;
             Socket client;
-            Game game = new Game(new StandardGame(75));
+            Game game = new Game(new StandardGame(2000));
             while (numClients == 0)
             {
                 try 
