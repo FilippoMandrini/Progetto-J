@@ -96,6 +96,7 @@ public class AmountPanel extends GamePanel {
     {
         int max = 0;
         int min = game.getMinBet();
+        int shift = game.getSettings().getBigBlind();
         this.selectedAction = defaultAction;
         okButton.setText(defaultAction.getName());
         if (selectedAction.getActionType() == ActionSet.BET)
@@ -106,11 +107,12 @@ public class AmountPanel extends GamePanel {
         {
             max = game.getCurrentPlayer().getStake() + game.getCurrentPlayer().getCurrentBet() - game.getBet();
         }
-        if (max < min)
+        if (max <= min)
         {
             min = max;
+            shift = min;
         }
-        amountSpinner.setModel(new SpinnerNumberModel(min, min, max, game.getSettings().getBigBlind()));
+        amountSpinner.setModel(new SpinnerNumberModel(min, min, max, shift));
         amountSpinner.setValue(game.getMinBet());
     }
     
