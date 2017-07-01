@@ -254,8 +254,8 @@ public class Game extends GameObservable implements Runnable {
         }
         else
         {
-            int currentPlayerBet = currentPlayer.getCurrentBet();
-            int currentPlayerStake = currentPlayer.getStake();
+            int currentPlayerBet = player.getCurrentBet();
+            int currentPlayerStake = player.getStake();
             if (bet == 0)
             {
                 allowedActions.add(ActionSet.CHECK);
