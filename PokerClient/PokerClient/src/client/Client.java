@@ -45,6 +45,7 @@ public class Client implements Runnable {
         MainGUI mainGui = new MainGUI(game);
         mainGui.pack();
         mainGui.setLocationRelativeTo(null);
+        mainGui.setResizable(false);
         mainGui.setVisible(true);    
         game.addObserver(mainGui);
         try 
