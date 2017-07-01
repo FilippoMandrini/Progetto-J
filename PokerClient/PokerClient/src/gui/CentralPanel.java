@@ -102,6 +102,10 @@ public class CentralPanel extends GamePanel {
     public void disconnect()
     {
         boardPanel.setBackground(Color.GRAY);
+        controlPanel.removeAll();
+        controlPanel.validate();
+        controlPanel.repaint();
+
     }
 
     @SuppressWarnings("unchecked")

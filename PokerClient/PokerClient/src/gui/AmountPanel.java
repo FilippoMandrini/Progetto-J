@@ -3,6 +3,9 @@ package gui;
 import actions.Action;
 import actions.ActionSet;
 import client.Sender;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SpinnerNumberModel;
 import model.Game;
 
@@ -101,6 +104,13 @@ public class AmountPanel extends GamePanel {
         int max = 0;
         int min = game.getMinBet();
         int shift = game.getSettings().getBigBlind();
+        System.out.println("[TEST]");
+        System.out.println("min " + min);
+        System.out.println("max " + max);
+        System.out.println("shift " + shift);
+        System.out.println(game.getCurrentPlayer().getStake());
+        System.out.println(game.getBet());
+        System.out.println(game.getMinBet());
         this.selectedAction = defaultAction;
         okButton.setText(defaultAction.getName());
         if (selectedAction.getActionType() == ActionSet.BET)
@@ -109,15 +119,27 @@ public class AmountPanel extends GamePanel {
         }
         if (selectedAction.getActionType() == ActionSet.RAISE)
         {
+            min = game.getSettings().getBigBlind();
             max = game.getCurrentPlayer().getStake() + game.getCurrentPlayer().getCurrentBet() - game.getBet();
         }
         if (max <= min)
         {
             min = max;
             shift = min;
+            System.out.println("min " + min);
+            System.out.println("max " + max);
+            System.out.println("shift " + shift);
         }
-        amountSpinner.setModel(new SpinnerNumberModel(min, min, max, shift));
-        amountSpinner.setValue(game.getMinBet());
+        SpinnerNumberModel spinnerModel = new SpinnerNumberModel(min, min, max, shift);
+        amountSpinner.setModel(spinnerModel);
+        amountSpinner.setValue(min);
+//        try {
+//            amountSpinner.commitEdit();
+//        } catch (ParseException ex) {
+//            spinnerModel.setValue(min);
+//        }
+        repaint();
+        validate();
     }
     
     /**
