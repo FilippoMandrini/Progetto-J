@@ -19,11 +19,15 @@ public class TextUI implements GameObserver {
 
     private Game game;
     
+    /**
+     * Costruttore di TextUI
+     * @param game la partita
+     */
     public TextUI(Game game) {
         this.game = game;
     }
 
-    
+    /** @inheritDoc */
     @Override
     public void boardUpdated(Board board) {
         if (!board.getCommunityCards().isEmpty())
@@ -33,6 +37,7 @@ public class TextUI implements GameObserver {
         }
     }
 
+    /** @inheritDoc */
     @Override
     public void playerUpdated(Player player, boolean toShow) {
         
@@ -50,11 +55,13 @@ public class TextUI implements GameObserver {
         }
     }
 
+    /** @inheritDoc */
     @Override
     public void messageUpdated(String message) {
         System.out.println("--INIZIO MESSAGGIO DAL SERVER--\n" + message + "\n--FINE MESSAGGIO DAL SERVER--");
     }
 
+    /** @inheritDoc */
     @Override
     public void gameStarted(List<Player> players, GameType settings) {
         System.out.println("[PARTITA INIZIATA]");
@@ -66,22 +73,26 @@ public class TextUI implements GameObserver {
         }
     }
 
+    /** @inheritDoc */
     @Override
     public void handStarted(Player dealer, int dealerPosition) {
         System.out.println("[NUOVA MANO]");
         System.out.println("Il giocatore " + dealer.getName() +" in posizione " + dealerPosition + " è il dealer");
     }
 
+    /** @inheritDoc */
     @Override
     public void currentPlayerUpdated(Player currentPlayer, int currentPlayerPosition) {
         System.out.println("E' il turno del giocatore " + currentPlayer.getName() +" in posizione " + currentPlayerPosition);
     }
 
+    /** @inheritDoc */
     @Override
     public void bettingUpdated(int bet, int minBet, int totalPot) {
         System.out.println("Scommessa attuale: " + bet + " | Scommessa minima: " + minBet + " | POT TOTALE: " + totalPot);
     }
 
+    /** @inheritDoc */
     @Override
     public void selfUpdated(Player player) {
         System.out.println("La tua nuova situazione è la seguente: ");
@@ -93,11 +104,13 @@ public class TextUI implements GameObserver {
         }
     }
 
+    /** @inheritDoc */
     @Override
     public void currentPlayerActed(Player player) {
         System.out.println("Il giocatore corrente " + player.getLastAction());
     }
 
+    /** @inheritDoc */
     @Override
     public void actionRequest(int bet, int minBet, Set<ActionSet> allowedActions) {
         System.out.println("[AZIONE RICHIESTA]");
@@ -135,6 +148,7 @@ public class TextUI implements GameObserver {
         Sender.getInstance().sendAction(action);
     }
 
+    /** @inheritDoc */
     @Override
     public void disconnect() {
         System.out.println("--[CLIENT DISCONNESSO DAL SERVER]--");

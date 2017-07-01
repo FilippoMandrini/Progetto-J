@@ -74,6 +74,7 @@ public abstract class GameObservable {
     /**
      * Segnala quando inizia la mano
      * @param dealer il dealer della mano
+     * @param dealerPosition la posizione del dealer
      */
     public void notifyHandStarted(Player dealer, int dealerPosition) {
         for (GameObserver observer : observers) {

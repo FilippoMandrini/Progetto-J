@@ -35,6 +35,7 @@ public class Board {
     
     /**
      * Esegue il reset delle carte del banco e del deck terminando la mano
+     * @return true a reset compiuto
      */
     public boolean clear() {
         this.communityCards.clear();

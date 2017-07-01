@@ -108,6 +108,7 @@ public class CustomGame extends GameType{
      * Ritorna la durata delle azioni dei bot
      * @return la durata delle azioni dei bot
      */
+    @Override
     public int getAIdelay() {
         return AIdelay;
     }

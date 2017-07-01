@@ -22,6 +22,7 @@ public class Sender {
     /**
      * Costruttore del Sender
      * @param server la socket del server
+     * @throws IOException in caso di problemi di apertura dello stream
      */
     private Sender(Socket server) {
 
