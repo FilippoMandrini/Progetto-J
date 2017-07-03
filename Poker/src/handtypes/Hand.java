@@ -1,5 +1,6 @@
 package handtypes;
 
+import exceptions.WrongCardNumberException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,10 +25,21 @@ public abstract class Hand implements Comparable {
      */
     public Hand(List<Card> cards) {
         this.cards = new ArrayList<>();
-        for (Card carta : cards)
+        try 
         {
-            this.cards.add(carta);
+            if (cards.size() != 5)
+                throw new WrongCardNumberException("Max 5 carte");
+            for (Card carta : cards) {
+                if (carta == null)
+                    throw new WrongCardNumberException("carta nulla");
+                this.cards.add(carta);
+            }
         }
+        catch (NullPointerException ex)
+        {
+            throw new WrongCardNumberException("Cards è null");
+        }
+            
     }
     
     /**

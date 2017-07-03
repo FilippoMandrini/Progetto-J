@@ -26,7 +26,10 @@ public class ScalaColore extends Hand {
      */
     @Override
     public double getPoints() {
-        return 800 + high.getRank();
+        if (cards.get(0).getRank() == 12 && cards.get(1).getRank() == 3) {
+            return 800 + this.cards.get(1).getRank();
+        }
+        return 800 + this.cards.get(0).getRank();
     }
     
     /**
@@ -34,8 +37,10 @@ public class ScalaColore extends Hand {
      * @return la descrizione della mano
      */
     @Override
-    public String toString()
-    {
-        return "Scala Colore di " + Card.getRankName(high.getRank());
+    public String toString() {
+        if (cards.get(0).getRank() == 12 && cards.get(1).getRank() == 3) {
+            return "Scala Colore al " + Card.getRankName(this.cards.get(1).getRank());
+        }
+        return "Scala Colore al " + Card.getRankName(this.cards.get(0).getRank());
     }
 }
