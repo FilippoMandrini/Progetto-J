@@ -12,6 +12,7 @@ import poker.Card;
 public abstract class Hand implements Comparable {
     
     protected List<Card> cards;
+    protected double points;
     
     /**
      * Calcola il punteggio della singola mano 
@@ -39,7 +40,6 @@ public abstract class Hand implements Comparable {
         {
             throw new WrongCardNumberException("Cards è null");
         }
-            
     }
     
     /**
@@ -72,15 +72,13 @@ public abstract class Hand implements Comparable {
         return result;
     }       
 
-    /** @inheritDoc */
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.cards);
+        int hash = 3;
+        hash = 31 * hash + (int) (Double.doubleToLongBits(this.points) ^ (Double.doubleToLongBits(this.points) >>> 32));
         return hash;
     }
 
-    /** @inheritDoc */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -93,10 +91,11 @@ public abstract class Hand implements Comparable {
             return false;
         }
         final Hand other = (Hand) obj;
-        if (!Objects.equals(this.cards, other.cards)) {
+        if (Double.doubleToLongBits(this.points) != Double.doubleToLongBits(other.points)) {
             return false;
         }
         return true;
     }
+    
     
 }

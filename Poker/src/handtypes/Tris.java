@@ -22,6 +22,8 @@ public class Tris extends Hand {
         this.three = this.cards.get(0);
         this.firstKicker = this.cards.get(3);
         this.secondKicker = this.cards.get(4);
+        this.points = 300 + three.getRank() + (double) firstKicker.getRank() / 100 + (double) secondKicker.getRank() / 10000;
+
     }
 
     /**
@@ -30,7 +32,7 @@ public class Tris extends Hand {
      */
     @Override
     public double getPoints() {
-        return 300 + three.getRank() + (double) firstKicker.getRank() / 100 + (double) secondKicker.getRank() / 10000;
+        return points;
     }
     
     /**

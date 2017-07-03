@@ -24,6 +24,8 @@ public class Coppia extends Hand {
         this.secondKicker = this.cards.get(3);
         this.thirdKicker = this.cards.get(4);
         this.firstKicker = this.cards.get(2);
+        this.points = 100 + pair.getRank() + (double) firstKicker.getRank() / 100. + (double) secondKicker.getRank() / 10000. + (double) thirdKicker.getRank() / 1000000.;
+
     }
 
     /**
@@ -32,7 +34,7 @@ public class Coppia extends Hand {
      */
     @Override
     public double getPoints() {
-        return 100 + pair.getRank() + (double) firstKicker.getRank() / 100. + (double) secondKicker.getRank() / 10000. + (double) thirdKicker.getRank() / 1000000.;
+        return points;
     }
 
     /**

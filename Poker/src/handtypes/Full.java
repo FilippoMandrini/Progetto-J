@@ -20,6 +20,8 @@ public class Full extends Hand{
         super(cards);
         this.three = this.cards.get(0);
         this.pair = this.cards.get(3);
+        this.points = 600 + three.getRank() + (double) pair.getRank() / 100.;
+
     }
     
     /**
@@ -28,7 +30,7 @@ public class Full extends Hand{
      */
     @Override
     public double getPoints() {
-        return 600 + three.getRank() + (double) pair.getRank() / 100.;
+        return this.points;
     }
 
     /**

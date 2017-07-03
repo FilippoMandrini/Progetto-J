@@ -17,6 +17,14 @@ public class CartaAlta extends Hand{
     public CartaAlta(List<Card> cards) {
         super(cards);
         Collections.sort(cards);
+        double pts = 0;
+        double i = 1;
+        for (Card card: this.cards)
+        {
+            pts = pts + (double)card.getRank() / (double)Math.pow(100, i);
+            i += 1;
+        }
+        this.points = pts;
     }
     
     /**
@@ -25,13 +33,6 @@ public class CartaAlta extends Hand{
      */
     @Override
     public double getPoints() {
-        double points = 0;
-        double i = 1;
-        for (Card card: this.cards)
-        {
-            points = points + (double)card.getRank() / (double)Math.pow(100, i);
-            i += 1;
-        }
         return points;
     }
     

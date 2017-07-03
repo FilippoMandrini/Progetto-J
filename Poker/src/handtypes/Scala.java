@@ -15,6 +15,13 @@ public class Scala extends Hand {
      */
     public Scala(List<Card> cards) {
         super(cards);
+        if (cards.get(0).getRank() == 12 && cards.get(1).getRank() == 3) {
+            this.points = 400 + this.cards.get(1).getRank();
+        }
+        else
+        {
+            this.points = 400 + this.cards.get(0).getRank();
+        }
     }
 
     /**
@@ -23,10 +30,7 @@ public class Scala extends Hand {
      */
     @Override
     public double getPoints() {
-        if (cards.get(0).getRank() == 12 && cards.get(1).getRank() == 3) {
-            return 400 + this.cards.get(1).getRank();
-        }
-        return 400 + this.cards.get(0).getRank();
+        return points;
     }
 
     /**

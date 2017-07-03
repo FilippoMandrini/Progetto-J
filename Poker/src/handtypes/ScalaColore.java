@@ -18,6 +18,13 @@ public class ScalaColore extends Hand {
     public ScalaColore(List<Card> cards) {
         super(cards);
         this.high = this.cards.get(0);
+        if (cards.get(0).getRank() == 12 && cards.get(1).getRank() == 3) {
+            this.points = 800 + this.cards.get(1).getRank();
+        }
+        else
+        {
+            this.points = 800 + this.cards.get(0).getRank();
+        }
     }
     
     /**
@@ -26,10 +33,7 @@ public class ScalaColore extends Hand {
      */
     @Override
     public double getPoints() {
-        if (cards.get(0).getRank() == 12 && cards.get(1).getRank() == 3) {
-            return 800 + this.cards.get(1).getRank();
-        }
-        return 800 + this.cards.get(0).getRank();
+        return points;
     }
     
     /**

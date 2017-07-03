@@ -17,6 +17,14 @@ public class Colore extends Hand{
     public Colore(List<Card> cards) {
         super(cards);
         Collections.sort(this.cards);
+        double pts = 500;
+        double i = 0;
+        for (Card card: this.cards)
+        {
+            pts = pts + (double)card.getRank() /  (double)Math.pow(100, i);
+            i += 1;
+        }
+        this.points = pts;
     }
     
     /**

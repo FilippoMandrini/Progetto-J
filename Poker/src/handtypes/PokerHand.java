@@ -20,6 +20,8 @@ public class PokerHand extends Hand{
         super(cards);
         this.poker = cards.get(0);
         this.firstKicker = cards.get(4);
+        this.points = 700 + poker.getRank() + (double) firstKicker.getRank()/100;
+
     }
 
     /**
@@ -28,7 +30,7 @@ public class PokerHand extends Hand{
      */
     @Override
     public double getPoints() {
-        return 700 + poker.getRank() + (double) firstKicker.getRank()/100;
+        return this.points;
     }
     
     /**
