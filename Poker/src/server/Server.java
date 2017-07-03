@@ -23,7 +23,7 @@ public class Server implements Runnable {
     private BufferedReader in = null;
     private PrintStream out = null;
     private final ServerSocket socket;
-    private final int MAX_NO_OF_GAMES = 2;
+    private final int MAX_NO_OF_GAMES = 5;
     private final int ACCEPT_TO;
     private final int READ_TO;
     
@@ -54,7 +54,7 @@ public class Server implements Runnable {
         {
             int numClients = 0;
             Socket client;
-            Game game = new Game(new StandardGame(2000));
+            Game game = new Game(new StandardGame(5000));
             while (numClients == 0)
             {
                 try 
