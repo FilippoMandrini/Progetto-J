@@ -198,6 +198,7 @@ public class HumanCompleteStrategy extends HumanStrategy{
     @Override
     public void disconnect() {
         out.println(JSONEncoder.getInstance().encodeDisconnect());
+        this.connected = false;
     }
 
     /**
