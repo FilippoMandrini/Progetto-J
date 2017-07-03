@@ -35,7 +35,7 @@ public abstract class HandEvaluator {
      * @throws WrongCardNumberException
      */
     @SuppressWarnings("empty-statement")
-    private static Hand evaluateFull(List<Card> cards) throws WrongCardNumberException {
+    public static Hand evaluateFull(List<Card> cards) throws WrongCardNumberException {
         if (cards.size() != 7) {
             throw new WrongCardNumberException("Carte in numero errato");
         }
@@ -91,7 +91,7 @@ public abstract class HandEvaluator {
      * @return il punteggio per questo specifico gruppo di carte
      * @throws WrongCardNumberException
      */
-    private static Hand evaluateSingle(List<Card> cards) throws WrongCardNumberException {
+    public static Hand evaluateSingle(List<Card> cards) throws WrongCardNumberException {
         if (cards.size() != 5) {
             throw new WrongCardNumberException("Carte in numero errato");
         }
@@ -136,6 +136,10 @@ public abstract class HandEvaluator {
         cards.clear();
         if (checkColore(sortedCards) && checkScala(sortedCards)) {
             return new ScalaColore(sortedCards);
+        }
+        if (max == 5)
+        {
+            throw new WrongCardNumberException("Impossibile avere 5 carte uguali");
         }
         if (max == 4) {
             return new PokerHand(sortedCards);
