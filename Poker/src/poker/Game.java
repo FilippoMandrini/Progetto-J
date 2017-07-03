@@ -390,7 +390,7 @@ public class Game extends GameObservable implements Runnable {
     /**
      * Imposta se i giocatori risultano attivi oppure no
      */
-    public void setActivePlayers()
+    private void setActivePlayers()
     {
         for (Player player: players)
         {
@@ -412,9 +412,12 @@ public class Game extends GameObservable implements Runnable {
      */
     public void addPlayer(Player player) 
     {
-
         if (!players.contains(player)) 
         {
+            if (players.size() == settings.getMaxPlayers())
+            {
+                throw new IllegalStateException("Numero di player massimo già raggiunto");
+            }
             players.add(player);
             player.setId(players.size());
             player.setStake(settings.getStartingStake());
@@ -443,7 +446,7 @@ public class Game extends GameObservable implements Runnable {
     /**
      * Controlla se i client sono connessi per rimuovere quelli disconnessi
      */
-    public void checkClientConnections()
+    private void checkClientConnections()
     {
         boolean spy = false;
         for (Player player : players)
