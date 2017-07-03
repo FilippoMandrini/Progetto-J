@@ -32,6 +32,21 @@ public class Card implements Comparable<Card> {
         this.rank = rank;
         this.suit = suit;
     }
+
+    public Card(int rank, int suit) {
+        if (rank > 12 || rank < 0)
+        {
+            throw new IllegalArgumentException("Valore della carta non valido");
+        }
+        if (suit > 3 || suit < 0)
+        {
+            throw new IllegalArgumentException("Seme della carta non valido");
+        }
+        this.rank = rank;
+        this.suit = new Suit(suit);
+    }
+    
+    
   
     /**
      * Ritorna il valore della carta
@@ -98,16 +113,15 @@ public class Card implements Comparable<Card> {
     /** {@inheritDoc} */
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + this.rank;
-        hash = 53 * hash + Objects.hashCode(this.suit);
-        return hash;
+        return this.rank * 40 + suit.getValue();
     }
 
     /** {@inheritDoc} */
     @Override
     public int compareTo(Card t) {
-        return t.getRank() - this.getRank();
+        return t.hashCode() - this.hashCode();
     }
+    
+    
 
 }

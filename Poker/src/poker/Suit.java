@@ -1,5 +1,6 @@
 package poker;
 
+import java.util.Objects;
 import static poker.SuitType.*;
 
 /**
@@ -25,7 +26,7 @@ public class Suit {
      * @param value il valore simbolico del seme
      */
     public Suit(int value) {
-        this.seed = seedConvert(value);
+        this.seed = getSuitType(value);
         this.value = value;
     }
 
@@ -50,18 +51,49 @@ public class Suit {
      * @param value valore simbolico del seme
      * @return il seme come enumerazione
      */
-    private SuitType seedConvert(int value){
+    public static SuitType getSuitType(int value){
         switch (value){
             case 0:
-                return HEARTS;
-            case 1:
                 return SPADES;
-            case 2:
+            case 1:
                 return CLUBS;
-            case 3:
+            case 2:
                 return DIAMONDS;
+            case 3:
+                return HEARTS;
         }
         return null;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.seed);
+        hash = 53 * hash + this.value;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Suit other = (Suit) obj;
+        if (this.value != other.value) {
+            return false;
+        }
+        if (this.seed != other.seed) {
+            return false;
+        }
+        return true;
+    }
+    
+    
     
 }
