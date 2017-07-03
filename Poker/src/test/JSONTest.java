@@ -41,24 +41,16 @@ public class JSONTest {
         Card C2 = new Card(2, new Suit(1));
         A1.addCard(C2);
         A1.addCard(C1);
-        Board B1 = new Board();
-        B1.dealCommunityCards(3);
-        for (Card card : B1.getCommunityCards()) {
-            System.out.println(card.toString());
-        }
-        Set<ActionSet> allowedActions = new HashSet<>();
-        allowedActions.add(ActionSet.BET);
-        allowedActions.add(ActionSet.CALL);
         JsonParser parser = new JsonParser();
         RuntimeTypeAdapterFactory<Action> afactory = RuntimeTypeAdapterFactory
                 .of(Action.class, "type")
-                .registerSubtype(Bet.class, "be")
-                .registerSubtype(Call.class, "ca")
-                .registerSubtype(Raise.class, "ra")
-                .registerSubtype(Check.class, "ch")
-                .registerSubtype(BigBlind.class, "bb")
-                .registerSubtype(Fold.class, "fo")
-                .registerSubtype(SmallBlind.class, "sb");
+                .registerSubtype(Bet.class, "bet")
+                .registerSubtype(Call.class, "call")
+                .registerSubtype(Raise.class, "raise")
+                .registerSubtype(Check.class, "check")
+                .registerSubtype(BigBlind.class, "big_blind")
+                .registerSubtype(Fold.class, "fold")
+                .registerSubtype(SmallBlind.class, "small_blind");
         RuntimeTypeAdapterFactory<GameType> gtfactory = RuntimeTypeAdapterFactory
                 .of(GameType.class, "type")
                 .registerSubtype(StandardGame.class, "standard")
@@ -71,8 +63,8 @@ public class JSONTest {
         Type playerListType = new TypeToken<ArrayList<Player>>() {
         }.getType();
         List<Player> players;
-        //players = gsonBuilder.create().fromJson(parser.parse(JSONEncoder.getInstance().encodeGameStarted(riccanza, new StandardGame(1000))).getAsJsonObject().get("players"), playerListType);
-        //System.out.println(players.toString());
+        players = gson.fromJson(parser.parse(JSONEncoder.getInstance().encodeGameStarted(riccanza, new StandardGame(1000))).getAsJsonObject().get("players"), playerListType);
+        System.out.println(players.toString());
         JsonElement jsonElement = gson.toJsonTree(new Bet(1000));
         jsonElement.getAsJsonObject().addProperty("objectType", new Bet(1000).getClass().getSimpleName());
         JsonObject toSend = new JsonObject();
@@ -80,6 +72,6 @@ public class JSONTest {
         String toDecode = gson.toJson(toSend);
         System.out.println(toDecode);
         Action action = gson.fromJson(parser.parse(toDecode).getAsJsonObject().get("action"), Action.class);
-        System.out.println("fine");
+        System.out.println(action.getName() + " " + action);
     }
 }

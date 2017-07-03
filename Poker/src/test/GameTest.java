@@ -15,9 +15,9 @@ public class GameTest {
         Player A2 = new Player("Bot_2", new AIBasicStrategy(70, 10));
         Player A3 = new Player("Bot_3", new AIBasicStrategy(90, 10));
         Player H2 = new TestPlayer("Alice");
-//        H2.setStake(1000);
-        Player H3 = new TestPlayer("Luca");
-//        H3.setStake(1000);
+        H2.setStake(1000);
+        Player H3 = new TestPlayer("Luca");        
+        H3.setStake(1000);
         Game MAIN = new Game(new StandardGame(5000));
         MAIN.addPlayer(A1);
         MAIN.addObserver(A1.getClient());
