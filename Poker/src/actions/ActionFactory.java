@@ -20,6 +20,10 @@ public class ActionFactory {
         Class<?> c = Class.forName("actions." + type.getName());
         Constructor<?> cons = null;
         Action action;
+        if (amount < 0)
+        {
+            throw new IllegalArgumentException("Amount non può essere negativo");
+        }
         try {
             cons = c.getConstructor(int.class);
             action = (Action)cons.newInstance(amount);
