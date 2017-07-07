@@ -2,20 +2,16 @@ package poker;
 
 import exceptions.WrongCardNumberException;
 import handtypes.CartaAlta;
-import handtypes.Coppia;
-import handtypes.DoppiaCoppia;
-import handtypes.Full;
 import handtypes.Hand;
-import handtypes.PokerHand;
-import handtypes.ScalaColore;
-import handtypes.Tris;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Classe di test della mano
+ */
 public class HandTest {
      
     private List<Card> cards;
@@ -50,7 +46,6 @@ public class HandTest {
         Assert.assertNotNull(hand);
     }
     
-
     @Test
     public void testConstructors() {
         Hand hand;

@@ -1,28 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poker;
 
-import actions.Action;
-import actions.ActionFactory;
-import actions.ActionSet;
-import actions.Bet;
-import actions.BigBlind;
-import actions.Call;
-import actions.Check;
-import actions.Fold;
-import actions.Raise;
-import actions.SmallBlind;
+import actions.*;
 import java.lang.reflect.InvocationTargetException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- *
- * @author Nickelsilver
+ * Classe di test delle azioni
  */
 public class ActionFactoryTest {
 

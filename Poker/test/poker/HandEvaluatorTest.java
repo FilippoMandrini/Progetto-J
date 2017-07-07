@@ -1,20 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poker;
 
-import handtypes.CartaAlta;
-import handtypes.Colore;
-import handtypes.Coppia;
-import handtypes.DoppiaCoppia;
-import handtypes.Full;
-import handtypes.Hand;
-import handtypes.PokerHand;
-import handtypes.Scala;
-import handtypes.ScalaColore;
-import handtypes.Tris;
+import handtypes.*;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.Assert;
@@ -23,8 +9,7 @@ import org.junit.Test;
 import utilities.HandEvaluator;
 
 /**
- *
- * @author Nickelsilver
+ * Classe di test della valutazione delle mani
  */
 public class HandEvaluatorTest {
     
@@ -44,10 +29,11 @@ public class HandEvaluatorTest {
         HEARTS = new Suit(3);
         cards = new ArrayList<>();
     }
+    
     @Test
     public void testCartaAlta() {
-
         double first, second;
+        
         cards.clear();
         cards.add(new Card(12, SPADES));
         cards.add(new Card(10, HEARTS));
@@ -115,7 +101,6 @@ public class HandEvaluatorTest {
 
     @Test
     public void testCoppia() {
-
         double first, second;
 
         cards.clear();
@@ -184,8 +169,7 @@ public class HandEvaluatorTest {
     }
 
     @Test
-    public void testDoppiaCoppia() {
-       
+    public void testDoppiaCoppia() {    
         double first, second;
 
         cards.clear();
@@ -199,7 +183,6 @@ public class HandEvaluatorTest {
         hand = HandEvaluator.evaluateFull(cards);
         Assert.assertTrue(hand instanceof DoppiaCoppia);
         first = hand.getPoints();
-
 
         cards.clear();
         cards.add(new Card(11, SPADES));
@@ -256,7 +239,6 @@ public class HandEvaluatorTest {
 
     @Test
     public void testTris() {
-
         double first, second;
         
         cards.clear();
@@ -325,8 +307,7 @@ public class HandEvaluatorTest {
     }
 
     @Test
-    public void straight() {
-
+    public void testScala() {
         double first, second;
 
         cards.clear();
@@ -367,7 +348,6 @@ public class HandEvaluatorTest {
         second = hand.getPoints();
         Assert.assertTrue(first == second);
 
-
         cards.clear();
         cards.add(new Card(11, SPADES));
         cards.add(new Card(7, DIAMONDS));
@@ -380,7 +360,6 @@ public class HandEvaluatorTest {
         Assert.assertTrue(hand instanceof Scala);
         second = hand.getPoints();
         Assert.assertTrue(first > second);
-
 
         cards.clear();
         cards.add(new Card(12, SPADES));
@@ -395,7 +374,6 @@ public class HandEvaluatorTest {
         second = hand.getPoints();
         Assert.assertTrue(first == second);
 
-
         cards.clear();
         cards.add(new Card(11, HEARTS));
         cards.add(new Card(12, HEARTS));
@@ -408,12 +386,10 @@ public class HandEvaluatorTest {
         Assert.assertTrue(hand instanceof Scala);
         second = hand.getPoints();
         Assert.assertTrue(first > second);
-
     }
 
     @Test
-    public void testColore() {
-        
+    public void testColore() {   
         double first, second;
 
         cards.clear();
@@ -467,7 +443,6 @@ public class HandEvaluatorTest {
         second = hand.getPoints();
         Assert.assertTrue(first > second);
 
-
         cards.clear();
         cards.add(new Card(12, SPADES));
         cards.add(new Card(10, SPADES));
@@ -480,7 +455,6 @@ public class HandEvaluatorTest {
         Assert.assertTrue(hand instanceof Colore);
         second = hand.getPoints();
         Assert.assertTrue(first > second);
-
 
         cards.clear();
         cards.add(new Card(12, SPADES));
@@ -497,8 +471,7 @@ public class HandEvaluatorTest {
     }
 
     @Test
-    public void fullHouse() {
-
+    public void testFull() {
         double first, second;
 
         cards.clear();
@@ -526,7 +499,6 @@ public class HandEvaluatorTest {
         second = hand.getPoints();
         Assert.assertTrue(first > second);
         
-
         cards.clear();
         cards.add(new Card(12, HEARTS));
         cards.add(new Card(10, SPADES));
@@ -568,8 +540,7 @@ public class HandEvaluatorTest {
     }
 
     @Test
-    public void fourOfAKind() {
-
+    public void testPoker() {
         double first, second;
         
         cards.clear();
@@ -610,7 +581,6 @@ public class HandEvaluatorTest {
         second = hand.getPoints();
         Assert.assertTrue(first > second);
 
-
         cards.clear();
         cards.add(new Card(12, SPADES));
         cards.add(new Card(12, HEARTS));
@@ -623,12 +593,10 @@ public class HandEvaluatorTest {
         Assert.assertTrue(hand instanceof PokerHand);
         second = hand.getPoints();
         Assert.assertTrue(first == second);
-
     }
 
     @Test
-    public void straightFlush() {
-
+    public void testScalaColore() {
         double first, second;
         
         cards.clear();
@@ -703,8 +671,6 @@ public class HandEvaluatorTest {
         cards.add(new Card(7, HEARTS));    
         hand = HandEvaluator.evaluateFull(cards);
         Assert.assertTrue(hand instanceof Colore);
-
     }
 
 }
-

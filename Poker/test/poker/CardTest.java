@@ -4,7 +4,9 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-
+/**
+ * Classe di test delle carte
+ */
 public class CardTest {
     
     private Suit SPADES;
@@ -31,8 +33,6 @@ public class CardTest {
         H10 = new Card(10, HEARTS); 
     }
     
-    
-
     @Test
     public void testBasic() {
         Card card = new Card(10, HEARTS);
@@ -41,7 +41,7 @@ public class CardTest {
         Assert.assertEquals(HEARTS, card.getSuit());
         Assert.assertEquals(3, card.getSuit().getValue());
         Assert.assertEquals("Regina di Cuori", card.toString());
-        card = new Card(0, SPADES); // Automatic trimming.
+        card = new Card(0, SPADES);
         Assert.assertNotNull(card);
         Assert.assertEquals(0, card.getRank());
         Assert.assertEquals(SPADES, card.getSuit());
@@ -76,7 +76,6 @@ public class CardTest {
             Assert.fail("Nessuna eccezione lanciata!");
         } catch (IllegalArgumentException e) {}
         
-
         try {
             card = new Card(0, -1);
             Assert.fail("Nessuna eccezione lanciata!");
@@ -86,7 +85,6 @@ public class CardTest {
 
     @Test
     public void testSortingEqualsCompare() {
-        
         Assert.assertEquals(D12, D12);
         Assert.assertFalse(C12.equals(D12));
         Assert.assertFalse(H10.equals(P3));

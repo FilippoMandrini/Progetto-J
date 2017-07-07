@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poker;
 
 import gametypes.StandardGame;
@@ -18,8 +13,7 @@ import players.Player;
 import utilities.HandEvaluator;
 
 /**
- *
- * @author Nickelsilver
+ * Classe di test della classifica
  */
 public class RankingTest {
     
@@ -72,8 +66,6 @@ public class RankingTest {
         Hand H4 = new Full(cards);
         second = HandEvaluator.evaluateSingle(cards);
         Assert.assertEquals(second, first);
-        
-        
     }
     
     @Test 
