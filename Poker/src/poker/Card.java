@@ -17,7 +17,7 @@ public class Card implements Comparable<Card> {
      * Costruttore di Card
      * @param rank valore della carta
      * @param suit seme della carta
-     * @throws IllegalArgumentException quando si imposta rank o suit non validi
+     * @throws IllegalArgumentException quando si impostano rank o suit non validi
      */
     public Card(int rank, Suit suit) {
         
@@ -33,6 +33,12 @@ public class Card implements Comparable<Card> {
         this.suit = suit;
     }
 
+    /**
+     * Costruttore di Card
+     * @param rank valore della carta
+     * @param suit valore simbolico del seme della carta
+     * @throws IllegalArgumentException quando si impostano rank o suit non validi
+     */
     public Card(int rank, int suit) {
         if (rank > 12 || rank < 0)
         {
@@ -46,8 +52,6 @@ public class Card implements Comparable<Card> {
         this.suit = new Suit(suit);
     }
     
-    
-  
     /**
      * Ritorna il valore della carta
      * @return valore della carta
@@ -122,6 +126,4 @@ public class Card implements Comparable<Card> {
         return t.hashCode() - this.hashCode();
     }
     
-    
-
 }
