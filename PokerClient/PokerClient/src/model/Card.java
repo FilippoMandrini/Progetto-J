@@ -17,6 +17,7 @@ public class Card implements Comparable<Card> {
      * Costruttore di Card
      * @param rank valore della carta
      * @param suit seme della carta
+     * @throws IllegalArgumentException quando il valore o il seme non sono validi
      */
     public Card(int rank, Suit suit) {
         

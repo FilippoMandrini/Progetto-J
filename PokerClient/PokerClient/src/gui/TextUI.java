@@ -13,7 +13,7 @@ import model.GameObserver;
 import model.Player;
 
 /**
- * Classe per il testo della GUI
+ * Classe per la UI testuale
  */
 public class TextUI implements GameObserver {
 
