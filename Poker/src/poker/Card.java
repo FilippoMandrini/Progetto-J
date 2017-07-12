@@ -108,7 +108,7 @@ public class Card implements Comparable<Card> {
         if (this.rank != other.rank) {
             return false;
         }
-        if (!Objects.equals(this.suit, other.suit)) {
+        if (!this.suit.equals(other.suit)) {
             return false;
         }
         return true;

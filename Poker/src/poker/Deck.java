@@ -8,18 +8,14 @@ import java.util.ArrayList;
  */
 public class Deck {
     
-    private ArrayList<Card> deck;
+    private final ArrayList<Card> deck;
    
     /**
      * Costruttore di Deck
      */
     public Deck() {
         this.deck = new ArrayList();
-        for(int i=0; i<4 ; i++){
-            for(int j=0; j<13 ; j++){
-                deck.add(new Card(j,new Suit(i)));
-            }
-        }
+        fill();
     }
     
     /**
@@ -27,12 +23,17 @@ public class Deck {
      */
     public void restore() {
         this.deck.clear();
-        for(int i=0; i<4 ; i++){
-            for(int j=0; j<13 ; j++){
-                deck.add(new Card(j,new Suit(i)));
+        fill();
+    }    
+    
+    public void fill()
+    {
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 13; j++) {
+                deck.add(new Card(j, new Suit(i)));
             }
         }
-    }    
+    }
  
     /**
      * Estrae una carta dal deck casualmente
